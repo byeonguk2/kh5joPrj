@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #wrap{
+            width: 1050px;
+            border: 1px solid black;
+            margin: auto;
+        }
+        /* 헤더 */
+        header{
+            width: 100%;
+            height: 145px;
+        }
+        .header-top{
+            display: grid;
+            grid-template-rows: 1fr 3fr;
+            grid-template-columns: 3fr 10fr 1fr 1fr 1fr;
+            font-size: 12px;
+        }
+
+        #serach-area{
+            display: flex;
+        }
+        
+        #serach{
+            justify-content: right;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            margin-left: 15px;
+            width: 500px;
+            height: 25px;
+            border: 2px solid #754327;
+            border-right: none;
+            opacity: 0.5;
+        }
+
+        #img01{
+           margin-top: 15px;
+           padding: 1.5px;
+           border: 2px solid #754327;
+           border-left: none;
+           opacity: 0.5;
+        }
+
+        nav { 
+            height: 41.68px;
+            grid-column: span 6;
+            background-color: #754327;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        nav a{
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bolder;
+            font-size: 16px;
+        }
+
+        nav > a:nth-child(1) {
+            display: flex;
+        }
+
+        #img02{
+            margin-top: 2px;
+            margin-right: 5px;
+            filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(37deg) brightness(104%) contrast(104%);
+
+        }
+        /* 메인 */
+
+        /* 푸터 */
+        footer{
+            display: grid;
+            grid-template-rows: 1fr 3fr 2fr;
+            grid-template-columns: 3fr 10fr 1fr 1fr 1fr;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>    
+    <div id="wrap">
+        <header>
+            <!-- 로그인, 로고, 검색창 -->
+            <div class="header-top">
+                <div></div>
+                <div></div>
+                <div>회원가입</div>
+                <div>로그인</div>
+                <div>고객센터</div>
+                <div></div>
+                <div><img src="./logo.png" alt="로고 이미지" height="53px"></div>
+                <div id="serach-area">
+                    <input id="serach" type="text" placeholder="검색어를 입력해주세요">
+                    <img id="img01" width="24px" height="24px" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" alt="돋보기">
+                </div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <!-- 네비게이션 -->
+            <nav>
+                <a href="">
+                    <img id="img02" width="16px" height="18px" src="https://www.flaticon.com/svg/vstatic/svg/3917/3917065.svg?token=exp=1700476763~hmac=1fb752030c60129c49e751ef77933e27" alt="카테고리 아이콘">
+                    <div>카테고리</div>
+                </a>
+                <a href="">신상품</a>
+                <a href="">베스트</a>
+                <a href="">구매팁</a>
+                <a href="">이벤트</a>
+                <a href="">배송안내</a>              
+            </nav>
+        </header>
+        <main>
+
+        </main>
+        <footer>
+            <div></div>
+        </footer>
+    </div>
+
+    
+
+
+</body>
+</html>

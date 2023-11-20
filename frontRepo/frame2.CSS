@@ -1,0 +1,91 @@
+#wrap{
+    width: 1050px;
+    /* 마진 0인지 고민 */
+    margin: auto;
+    border: 1px solid red;
+}
+header{
+    height: 145px;
+    background-color: lightgray; 
+}
+    #header_top{
+        display: grid;
+        grid-template-rows: 25px 78.32px;
+        grid-template-columns: 3fr 10fr 3fr;
+    }
+        #toplink_menu{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            font-size: 12px;
+            text-align: center;
+        }
+    nav{
+        height: 41.68px;
+        grid-column: span 6;
+            background-color: #754327;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+    }
+main{
+    /* 높이 임의 설정 */
+    height: 300px;
+    background-color: lightyellow;
+    display: grid;
+    grid-template-columns: 200px 50px 800px;
+
+}
+#side_menu{
+    background-color: lightpink;
+}
+#content_area{
+    background-color: lightcoral;
+}
+
+footer{
+    height: 603.07px;background-color: lightblue;
+}
+
+/* 헤더 세부 */
+
+#serach-area{
+    display: flex;
+    justify-content: center;
+}
+
+#serach{
+    justify-content: right;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    width: 500px;
+    height: 25px;
+    border: 2px solid #754327;
+    border-right: none;
+    opacity: 0.5;
+}
+
+#img01{
+   margin-top: 15px;
+   padding: 1.5px;
+   border: 2px solid #754327;
+   border-left: none;
+   opacity: 0.5;
+}
+nav a{
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bolder;
+    font-size: 16px;
+}
+#img02{
+    margin-top: 2px;
+    margin-right: 5px;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(37deg) brightness(104%) contrast(104%);
+}
+nav > a:nth-child(1) {
+    display: flex;
+}
+#logo{
+    padding-left: 30px;
+}
