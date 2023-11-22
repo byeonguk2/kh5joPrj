@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>판매자 정보등록</title>
+    <link rel="stylesheet" href="/판매자 등록/businessJoin.css">
+</head>
+<body>
+    <div>
+        <h1 class="header-Letter">사업자 필수 서류 등록</h1>
+        <div>
+            <p>사업자 필수서류</p>
+            <ul>
+                <li>사업자등록첨부</li>
+                <li>통자사본첨부(법인명의,대표자명의)</li>
+                <li>통신판매업신고증 첨부</li>
+            </ul>
+        </div>
+        <div>
+            <p>기본정보</p>
+            <div>
+                <p class="input-info-letter">사업자등록증 등록</p>
+                <p class="input-info-letter2">x 사업자등록</p>
+                <button class="input-info-button">등록하기</button>
+            </div>
+        </div>
+        <form action="">
+            <p>사업자정보 확인</p>
+            <div id="business-join-area">
+                <div class="business-join">
+                    <p class="p-letter">사업자등록번호</p>
+                    <input type="text">
+                    <button>인증받기</button>
+                </div>
+                <div class="business-join">
+                    <p class="p-letter">사업형태</p>
+                    <div class="radio-area">
+                        <label>
+                            <input type="radio" name="chk_info"  class="join-radio">
+                            법인사업자
+                        </label>
+                        <label>
+                            <input type="radio" name="chk_info"  class="join-radio">
+                            일반사업자
+                        </label>
+                    </div>
+                </div>
+                <div class="business-join">
+                    <p class="p-letter">대표자명</p>
+                    <input type="text">
+                </div>
+                <div class="business-join">
+                    <p class="p-letter">상호(법인명)</p>
+                    <input type="text">
+                </div>
+                <div class="business-join">
+                    <p class="p-letter">업태/업종</p>
+                    <div>
+                        <input type="text" class="ip2 ip2-1">
+                        <input type="text" class="ip2 ip2-1" id="ip1">
+                    </div>
+                </div>
+                <div class="business-join a">
+                    <p class="p-letter">사업장주소</p>
+                    <input type="text">
+                    <button>주소검색</button>
+                </div>
+                <div class="business-join a">
+                    <p class="p-letter"></p>
+                    <input type="text">
+                </div>
+                <div class="business-join">
+                    <p class="p-letter"></p>
+                    <input type="text">
+                </div>
+                <div class="business-join">
+                    <p class="p-letter">통신판매업신고번호</p>
+                    <input type="text">
+                </div>
+                <div class="business-join a">
+                    <p class="p-letter">정산계좌</p>
+                    <div>
+                        <select name="">
+
+                        </select>
+                        <input type="text" class="recipient">
+                    </div>
+                </div>
+                <div class="business-join">
+                    <p class="p-letter"></p>
+                    <input type="text">
+                </div>
+            </div>
+            <div id="singup-file">
+                <p id="check-letter">필수서류등록</p>
+                <div class="singup-file-area">
+                    <p class="singup-file-letter">통장사본등록</p>
+                    <p class="singup-file-letter2">x통장사본등록</p>
+                    <button class="singup-btn">등록하기</button>
+                </div>
+                <div class="singup-file-area">
+                    <p class="singup-file-letter">통장사본등록</p>
+                    <p class="singup-file-letter2">x통장사본등록</p>
+                    <button class="singup-btn">등록하기</button>
+                </div>
+            </div>
+            <div>
+                <button class="lastbtn btn1">홈으로</button>
+                <button class="lastbtn btn2">제출하기</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

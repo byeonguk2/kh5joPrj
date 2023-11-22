@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <style>
+        /* 폰트 */
+        @import url('https://fonts.googleapis.com/css2?family=Dokdo&family=Gasoek+One&family=Nanum+Brush+Script&family=Nanum+Pen+Script&family=Roboto:wght@100&display=swap');
+        /* 기본세팅 */
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed, 
+        figure, figcaption, footer, header, hgroup, 
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+        /* HTML5 display-role reset for older browsers */
+        article, aside, details, figcaption, figure, 
+        footer, header, hgroup, menu, nav, section {
+            display: block;
+        }
+        body {
+            line-height: 1;
+        }
+        ol, ul {
+            list-style: none;
+        }
+        blockquote, q {
+            quotes: none;
+        }
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+            content: '';
+            content: none;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        /* 헤더 */
+        header {
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: 964b00;
+            height: 70px;
+        }
+        /* 헤더 왼쪽 */
+        .header-left-area{
+            display: flex;
+            align-items: center;
+        }
+        .hamburger {
+            background-image: url(/imageRepo/hamburger.svg);
+            width: 20px;
+            height: 20px;
+            margin-left: 20px;
+        }
+        .header-logo {
+            background-image: url(/imageRepo/nongraLogo.png);
+            width: 75px;
+            height:55px;
+            margin-left: 30px;
+            margin-bottom:5px;
+            background-size: cover;
+        }
+        .header-ltter {
+            margin-top: 10px;
+            margin-left: 10px;
+            font-size: 20px;
+            height: 49px;
+            color: black;
+            display: flex;
+            align-items: center;
+        }
+        /* 헤더 오른쪽 */
+        .header-right-area {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 350px;
+        }
+        /* 종 움직이기 */
+        i:hover{
+        transform-origin: 50% 0%;
+        animation-name: shake;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-delay: 0.5s;
+        }
+        
+        @keyframes shake{
+            0%{
+                transform: rotate(0deg);
+            }
+            10%{
+                transform: rotate(45deg);
+            }
+            20%{
+                transform: rotate(-45deg);
+            }
+            30%{
+                transform: rotate(30deg);
+            }
+            40%{
+                transform: rotate(-30deg);
+            }
+            50%{
+                transform: rotate(10deg);
+            }
+            60%{
+                transform: rotate(-10deg);
+            }
+            70%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(0deg);
+            }
+        }
+
+        .icon {
+            background-image: url(/imageRepo/chevron-down.svg);
+            width: 20px;
+            height: 20px;
+            background-position: 0px -3px;
+        }
+        aside {
+            width: 230px;
+            border-top: none;
+            margin-left: -400px;
+            transition: 0.8s;
+        }
+
+        .aside-item {
+            width: 100%;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0.8;
+            border-right: 1px solid gray;
+        }
+        .aside-item > label {
+            width: 85px;
+            text-align: left;
+        }
+        .aside-last-item{
+            height: 150px;
+        }
+        .side-icon {
+            width: 35px;
+            height: 35px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-left: 20px;
+        }
+        .side-icon2 {
+            width: 30px;
+            height: 30px;
+            background-image: url(/imageRepo/chevron-down.svg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-right: 20px;
+            opacity: 0.5;
+        }
+        #icon-user {
+            background-image: url(/imageRepo/user.svg);
+        }
+        #icon-chart {
+            background-image: url(/imageRepo/bar-chart-2.svg);
+        }
+        #icon-gift {
+            background-image: url(/imageRepo/gift.svg);
+        }
+        #icon-check {
+            background-image: url(/imageRepo/check-square.svg);
+        }
+        #icon-smile {
+            background-image: url(/imageRepo/smile.svg);
+        }
+        #icon-lotate {
+            background-image: url(/imageRepo/rotate-ccw.svg);
+        }
+        #icon-file {
+            background-image: url(/imageRepo/file-text.svg);
+        }
+        #icon-truck {
+            background-image: url(/imageRepo/truck.svg);
+        }
+        #icon-mail {
+            background-image: url(/imageRepo/mail.svg);
+        }
+        #icon-book {
+            background-image: url(/imageRepo/book-open.svg);
+        }
+        #icon-phone {
+            background-image: url(/imageRepo/phone-forwarded.svg);
+        }
+        .delete {
+            margin-left: 0;
+            transition: 0.5s;
+        }
+        .menu{
+            font-size: 0px;
+        }
+        .plus-menu{
+            width: 100%;
+            height: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0.8;
+            border-right: 1px solid gray;
+            font-size: 14px;
+            display: flex;
+            justify-content: center;
+        }
+        .plus-menu > a {
+            text-decoration: none;
+            color: black;
+        }
+        .rotate{
+            transform: rotate( -90deg );
+        }
+        .aside-last-item > div > div {
+            height: 50px;
+            width: 231px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .aside-last-item > div > div > strong {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left-area">
+            <div class="hamburger"></div>
+            <div class="header-logo"></div>
+            <div class="header-ltter">
+                <Strong>판 매 자  페 이 지</Strong>
+            </div>
+        </div>
+        
+        <div class="header-right-area">
+            <label>온라인 문의</label>
+            <label>|</label>
+            <label>도움말</label>
+            <label>|</label>
+            <i class="fa fa-bell" style="font-size:24px"></i>
+            <label>판매자 님</label>
+            <div class="icon"></div>
+        </div>
+    </header>
+    <aside>
+        <div class="aside-item sitem1">
+            <div class="side-icon side-user" id="icon-user" style="border-top: none;"></div>
+            <label>판매자 정보</label>
+            <div class="side-icon2"></div>
+        </div>      
+        <div class="menu"><a href="">내 정보조회</a></div>
+        <div class="menu"><a href="">회원탈퇴</a></div>
+        <div class="aside-item sitem2">
+            <div class="side-icon" id="icon-chart"></div>
+            <label>통계조회</label>
+            <div class="side-icon2"></div>
+        </div>    
+        <div class="aside-item sitem3">
+            <div class="side-icon" id="icon-gift"></div>
+            <label>상품관리</label>
+            <div class="side-icon2"></div>
+        </div>    
+        <div class="menu"><a href="">상품관리</a></div>
+        <div class="menu"><a href="">상품등록</a></div>
+        <div class="aside-item sitem4">
+            <div class="side-icon" id="icon-check"></div>
+            <label>상품문의관리</label>
+            <div class="side-icon2" onclick="fun01"></div>
+        </div>    
+        <div class="aside-item sitem5">
+            <div class="side-icon" id="icon-smile"></div>
+            <label>리뷰 관리</label>
+            <div class="side-icon2"></div>
+        </div>   
+        <div class="aside-item sitem6">
+            <div class="side-icon" id="icon-lotate"></div>
+            <label>주문 조회</label>
+            <div class="side-icon2"></div>
+        </div>    
+        <div class="aside-item sitem7">
+            <div class="side-icon" id="icon-file"></div>
+            <label>환불조회</label>
+            <div class="side-icon2"></div>
+        </div>    
+        <div class="aside-item sitem8">
+            <div class="side-icon" id="icon-truck"></div>
+            <label>배송관리</label>
+            <div class="side-icon2"></div>
+        </div>    
+        <div class="aside-item sitem9">
+            <div class="side-icon" id="icon-mail"></div>
+            <label>쪽지목록</label>
+            <div class="side-icon2"></div>
+        </div>   
+        <div class="menu"><a href="">보낸쪽지</a></div>
+        <div class="menu"><a href="">받은쪽지</a></div>
+        <div class="aside-item sitem10">
+            <div class="side-icon" id="icon-book"></div>
+            <label>공지사항</label>
+            <div class="side-icon2"></div>
+        </div>    
+        <div class="aside-item sitem11">
+            <div class="side-icon" id="icon-phone"></div>
+            <label>고객센터</label>
+            <div class="side-icon2"></div>
+        </div>     
+        <div class="aside-item aside-last-item">
+            <div>
+                <div><strong>고객센터 문의</strong></div>
+                <div><strong>1566-1234</strong></div>
+            </div>
+        </div>
+    </aside>
+
+    <script>
+        const aside = document.querySelector("aside");
+        const hamburger = document.querySelector(".hamburger");
+        // document.createElement(".delete");
+        console.log(aside);
+        console.log(hamburger);
+        hamburger.addEventListener("click",() => {
+            aside.classList.toggle("delete")
+            console.log(aside);
+        });
+       
+        const side = document.querySelector(".sitem1 > .side-icon2");   
+        side.addEventListener("click",()=>{
+            const menu = document.querySelectorAll(".menu"); 
+            side.classList.toggle("rotate");
+            for(let i = 0; i < 2; i++){
+                menu[i].classList.toggle("plus-menu");
+            }
+        });
+        const side2 = document.querySelector(".sitem2 > .side-icon2");   
+        side2.addEventListener("click",()=>{
+            const menu = document.querySelectorAll(".menu"); 
+            side2.classList.toggle("rotate");
+        });
+        const side3 = document.querySelector(".sitem3 > .side-icon2");  
+        console.log(side2); 
+        side3.addEventListener("click",()=>{
+            const menu = document.querySelectorAll(".menu");
+            side3.classList.toggle("rotate");
+            for(let i = 2; i < 4; i++){
+                menu[i].classList.toggle("plus-menu");
+            }
+        });
+        const side4 = document.querySelector(".sitem4 > .side-icon2");   
+        side4.addEventListener("click",()=>{
+            const menu = document.querySelectorAll(".menu"); 
+            side4.classList.toggle("rotate");
+        });
+        const side5 = document.querySelector(".sitem5 > .side-icon2");   
+        side5.addEventListener("click",()=>{
+            const menu = document.querySelectorAll(".menu"); 
+            side5.classList.toggle("rotate");
+        });
+        const side6 = document.querySelector(".sitem6 > .side-icon2");   
+        side6.addEventListener("click",()=>{
+            const menu = document.querySelectorAll(".menu"); 
+            side6.classList.toggle("rotate");
+        });
+        const side7 = document.querySelector(".sitem7 > .side-icon2");   
+        side7.addEventListener("click",()=>{
+            const menu = document.querySelectorAll(".menu"); 
+            side7.classList.toggle("rotate");
+        });
+        const side8 = document.querySelector(".sitem8 > .side-icon2");   
+        side8.addEventListener("click",()=>{
+            const menu = document.querySelectorAll(".menu"); 
+            side8.classList.toggle("rotate");
+        });
+        const side9 = document.querySelector(".sitem9 > .side-icon2");  
+        console.log(side3); 
+        side9.addEventListener("click",()=>{
+            const menu = document.querySelectorAll(".menu");
+            side9.classList.toggle("rotate");
+            for(let i = 4; i < 6; i++){
+                menu[i].classList.toggle("plus-menu");
+            }
+        });
+        const side10 = document.querySelector(".sitem10 > .side-icon2");   
+        side10.addEventListener("click",()=>{
+            const menu = document.querySelectorAll(".menu"); 
+            side10.classList.toggle("rotate");
+        });
+        const side11 = document.querySelector(".sitem11 > .side-icon2");   
+        side11.addEventListener("click",()=>{
+            const menu = document.querySelectorAll(".menu"); 
+            side11.classList.toggle("rotate");
+        });
+    </script>
+</body>
+</html>

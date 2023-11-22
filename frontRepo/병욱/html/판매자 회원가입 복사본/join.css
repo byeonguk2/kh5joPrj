@@ -1,0 +1,183 @@
+#entire-area {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+#entire-area > div {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+}
+h1 {
+    font-size: 28px;
+    font-weight: 500;
+    color: rgb(51, 51, 51);
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+/* 디브창 */
+.css-1pfwvb8 {
+    position: relative;
+    box-sizing: border-box;
+    /* padding: 10px 10px 0px; */
+    border-top: 1px solid rgb(51, 51, 51);
+    /* border-bottom: 1px solid rgb(51, 51, 51);     */
+}
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0px;
+}
+.css-1qif6pj::before {
+    content: "*";
+    color: rgb(238, 106, 123);
+    font-size: 14px;
+}
+.css-1qif6pj {
+    position: absolute;
+    top: -35px;
+    right: 0px;
+    font-size: 12px;
+}
+
+.css-1og0zk9 {
+    padding: 25px 25px 0px 25px;
+    display: flex;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-bottom: 0px;
+}
+.css-1o72o4s {
+    color: rgb(238, 106, 123);
+    padding: 0px 2px 0px 4px;
+}
+.css-3y93rl {
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 500;
+    width: 140px;
+}
+.css-gjavw0 {
+    display: flex;
+    flex-direction: row;
+}
+.css-gjavw0 > input {
+    padding: 0px 20px;
+    width: 290px;
+    height: 42px;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 3px;
+}
+.css-16yppgg:disabled {
+    border-color: rgb(221, 221, 221);
+    color: rgb(187, 187, 187);
+    font-weight: normal;
+}
+.css-16yppgg {
+    color: #754327;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 3px;
+    margin-left: 15px;
+    height: 100%px;
+    width: 110px;
+    border: 1px solid #754327;
+}
+.css-1jq3evw {
+    padding: 20px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+.css-y8jzgf {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 0px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid black;
+}
+.css-1l9ha14 {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    width: 140px;
+}
+.css-y8jzgf > div {
+    flex: 1 1 0%;
+}
+.css-1kxq9ne {
+    display: flex;
+    flex-direction: column;
+    gap: 5px 0px;
+}
+.css-te3lwu {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    line-height: 19px;
+    font-size: 18px;
+}
+.css-te3lwu > input:not([disabled]) {
+    cursor: pointer;
+}
+.css-te3lwu > input {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    margin: 0px 4px 0px 0px;
+    background: url(https://3p-partner.kurly.com/static/media/check_off.2476345c64b06070f34cde35ad226c1b.svg) no-repeat;
+    outline: none;
+}
+.css-9e3umx {
+    font-size: 18px;
+    color: rgb(51, 51, 51);
+    font-weight: 500;
+    margin: 8px 0px 4px;
+}
+.css-rgntm7 {
+    font-size: 12px;
+    color: rgb(102, 102, 102);
+    margin: 0px 0px;
+}
+.css-1sa9fvm {
+    display: flex;
+    width: 440px;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    font-size: 14px;
+}
+.css-1kxzrwz {
+    color: #754327;
+}
+.css-1ame89c {
+    color: rgb(153, 153, 153);
+}
+.last{
+    margin: 40px 0px 20px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0px 10px;
+}
+.last-btn{
+    width: 200px;
+    height: 56px;
+    border: 1px solid black;
+}
+.l-a{
+    color: rgb(153, 153, 153);
+    border: 1px solid rgb(153, 153, 153);
+}
+.l-b {
+    color: #754327;
+    border: 1px solid #754327;
+}

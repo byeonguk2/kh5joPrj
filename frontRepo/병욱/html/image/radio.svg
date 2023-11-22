@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>common_btn_radio_on</title>
+    <defs>
+        <circle id="path-1" cx="12" cy="12" r="5"></circle>
+        <filter x="-20.0%" y="-10.0%" width="140.0%" height="140.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Common" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Content-layout" transform="translate(-516.000000, -3787.000000)">
+            <g id="Group-6" transform="translate(129.000000, 2754.000000)">
+                <g id="판매가" transform="translate(137.000000, 779.000000)">
+                    <g id="con" transform="translate(30.000000, 68.000000)">
+                        <g id="부가세" transform="translate(0.000000, 180.000000)">
+                            <g id="Common/common_btn_radio_check" transform="translate(220.000000, 6.000000)">
+                                <circle id="Oval-2" fill="#5F0080" cx="12" cy="12" r="12"></circle>
+                                <g id="Oval-2">
+                                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
