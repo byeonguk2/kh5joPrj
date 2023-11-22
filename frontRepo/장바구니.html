@@ -7,15 +7,75 @@
 <style>
     #wrap{
         width: 1050px;
-        background-color: aquamarine;
+        border: 1px solid black;
     }
+    main{
+        padding: 40px;
+        display: grid;
+        grid-template-columns: 1fr 3fr 18fr 4fr 4fr 1fr;
+        grid-template-rows: 25px 30px 40px 40px;
+        font-size: 14px;
+    }
+    .select-area{
+        grid-column: span 6;
+        border-bottom: 1px solid black;
+    }
+    .overall-select{
+        display: inline;
+    }
+    .delete-selection{
+        display: inline;
+    }
+    .side{
+        border: 1px solid rgb(172, 172, 172);
+        display: inline;
+        margin: 10px;
+        width: 5px;
+    }
+    .store-area{
+        margin-top: 5px;
+        grid-column: span 5;
+    }
+    .store-button-area{
+        margin-top: 5px;
+        
+    }
+    .product-area div{
+        display: inline;
+    }
+ 
 </style>
 </head>
 <body>
     <div id="wrap">
         <main>
-
-
+        <div class="select-area">
+            <input type="checkbox"></input>
+            <div class="overall-select">전체선택</div>
+            <div class="side"></div>
+            <div class="delete-selection">선택삭제</div>
+        </div>
+        <div class="store-area">
+            <div class="store-name">농라마켓</div>
+            <div class="product-area">
+                <div>체크박스</div>
+                <div>상품이미지</div>
+                <div>상품명</div>
+                <div>수량</div>
+                <div>상품가격</div>
+                <div>취소버튼</div>
+            </div>
+        </div>
+        <div class="store-button-area">
+            <button>▽</button>
+        </div>
+        <div class="total-price-area">
+            <div>상품가격</div>
+            <div>~~~원</div>
+        </div>
+        <div class="order-button-area">
+            <input type="button" value="주문하기">
+        </div>
 
 
 
