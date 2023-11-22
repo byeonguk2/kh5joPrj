@@ -8,52 +8,55 @@
     <style>
         #wrap{
             width: 1050px;
-            border: 1px solid black;
+            /* border: 1px solid black; */
             margin: auto;
         }
 
         header{
             display: grid;
-            grid-template-rows: 1fr 3fr 2fr;
+            grid-template-rows: 1fr 4fr 2fr;
             grid-template-columns: 3fr 10fr 1fr 1fr 1fr;
             font-size: 12px;
         }
 
-        #serach-area{
+        #serach1{
+            border: 1.8px solid #754327;
+            width: 450px;
+            height: 40px;
             display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 7px;
+            margin: 10px;
         }
         
+        #serach-area{
+            margin: auto;
+        }
+
         #serach{
-            justify-content: right;
-            margin-top: 15px;
-            margin-bottom: 15px;
-            margin-left: 15px;
-            width: 500px;
-            height: 25px;
-            border: 2px solid #754327;
-            border-right: none;
-            opacity: 0.5;
+            width: 400px;
+            height: 35px;
+            border: none;
+            padding: 0%;
         }
 
         #img01{
-           margin-top: 15px;
-           padding: 1.5px;
-           border: 2px solid #754327;
-           border-left: none;
            opacity: 0.5;
         }
 
         nav { 
             grid-column: span 6;
-            background-color: #754327;
+            background-color: white;
             display: flex;
             justify-content: space-around;
             align-items: center;
+            box-shadow: 0 3px 4px 0px rgba(0, 0, 0, 0.07);
         }
 
         nav a{
             text-decoration: none;
-            color: #ffffff;
+            color: rgb(97,89,89);
             font-weight: bolder;
             font-size: 16px;
         }
@@ -64,9 +67,36 @@
 
         #img02{
             margin-top: 2px;
-            margin-right: 5px;
-            filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(37deg) brightness(104%) contrast(104%);
+            margin-right: 15px;
+            filter: invert(33%) sepia(1%) saturate(2082%) hue-rotate(314deg) brightness(107%) contrast(96%);
+        }
 
+        #serach-btn{
+            border: none;
+            background-color: #ffffff;
+            padding: 0%;
+            width: 40px;
+            height: 39px;
+        }
+
+        .logo{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 35px;
+        }
+        pre{
+            color: rgb(97,89,89);
+            font-size: 30px;
+        }
+
+        .top-menu{
+            text-align: center;
+        }
+        
+        .top-menu a{
+            text-decoration: none;
+            color: black;
         }
 
     </style>
@@ -79,14 +109,26 @@
         <header>
             <div></div>
             <div></div>
-            <div>회원가입</div>
-            <div>로그인</div>
-            <div>고객센터</div>
+            <div class="top-menu">
+                <a href="">회원가입</a>
+            </div>
+            <div class="top-menu">
+                <a href="">로그인</a>
+            </div>
+            <div class="top-menu">
+                <a href="">고객센터</a>
+            </div>
             <div></div>
-            <div>농라</div>
+            <a class="logo" href="">
+                <img width="120px" height="100px" src="./logo.png" alt="로고 이미지">
+            </a>
             <div id="serach-area">
-                <input id="serach" type="text" placeholder="검색어를 입력해주세요">
-                <img id="img01" width="24px" height="24px" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" alt="돋보기">
+                <div id="serach1">
+                    <input id="serach" type="text" placeholder=" 검색어를 입력해주세요">
+                    <button id="serach-btn">
+                        <img id="img01" width="27px" height="27px" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" alt="돋보기">
+                    </button>
+                </div>
             </div>
             <div></div>
             <div></div>
@@ -107,8 +149,10 @@
 
 
         </header>
+        <main>
+            <pre>안녕하세요 농라입니다 </pre>
+        </main>
     </div>
-
     
 
 
