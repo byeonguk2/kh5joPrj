@@ -120,3 +120,17 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,eclipse,java
+*.classpath
+javaWorkSpace/nongra/.project
+javaWorkSpace/nongra/src/.project
+javaWorkSpace/nongra/src/main/webapp/META-INF/MANIFEST.MF
+javaWorkSpace/Servers/.project
+*.policy
+*.properties
+*.project
+javaWorkSpace/Servers2/Tomcat v9.0 Server at localhost-config/context.xml
+javaWorkSpace/Servers2/Tomcat v9.0 Server at localhost-config/server.xml
+javaWorkSpace/Servers/Tomcat v9.0 Server at localhost-config/tomcat-users.xml
+javaWorkSpace/Servers2/Tomcat v9.0 Server at localhost-config/tomcat-users.xml
+javaWorkSpace/Servers/Tomcat v9.0 Server at localhost-config/server.xml
+javaWorkSpace/Servers/Tomcat v9.0 Server at localhost-config/context.xml
