@@ -1,0 +1,116 @@
+@charset "UTF-8";
+.icon {
+            background-image: url(/imageRepo/chevron-down.svg);
+            width: 20px;
+            height: 20px;
+            background-position: 0px -3px;
+        }
+        aside {
+            width: 230px;
+            border-top: none;
+            margin-left: -400px;
+            transition: 0.8s;
+        }
+
+        .aside-item {
+            width: 100%;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0.8;
+            border-right: 1px solid gray;
+        }
+        .aside-item > label {
+            width: 85px;
+            text-align: left;
+        }
+        .aside-last-item{
+            height: 150px;
+        }
+        .side-icon {
+            width: 35px;
+            height: 35px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-left: 20px;
+        }
+        .side-icon2 {
+            width: 30px;
+            height: 30px;
+            background-image: url(/nongra/resources/img/common/aside/seller/chevron-down.svg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-right: 20px;
+            opacity: 0.5;
+        }
+        #icon-user {
+            background-image: url(/nongra/resources/img/common/aside/seller/user.svg);
+        }
+        #icon-chart {
+            background-image: url(/nongra/resources/img/common/aside/seller/bar-chart-2.svg);
+        }
+        #icon-gift {
+            background-image: url(/nongra/resources/img/common/aside/seller/gift.svg);
+        }
+        #icon-check {
+            background-image: url(/nongra/resources/img/common/aside/seller/check-square.svg);
+        }
+        #icon-smile {
+            background-image: url(/nongra/resources/img/common/aside/seller/smile.svg);
+        }
+        #icon-lotate {
+            background-image: url(/nongra/resources/img/common/aside/seller/rotate-ccw.svg);
+        }
+        #icon-file {
+            background-image: url(/nongra/resources/img/common/aside/seller/file-text.svg);
+        }
+        #icon-truck {
+            background-image: url(/nongra/resources/img/common/aside/seller/truck.svg);
+        }
+        #icon-mail {
+            background-image: url(/nongra/resources/img/common/aside/seller/mail.svg);
+        }
+        #icon-book {
+            background-image: url(/nongra/resources/img/common/aside/seller/book-open.svg);
+        }
+        #icon-phone {
+            background-image: url(/nongra/resources/img/common/aside/seller/phone-forwarded.svg);
+        }
+        .delete {
+            margin-left: 0;
+            transition: 0.5s;
+        }
+        .menu{
+            font-size: 0px;
+        }
+        .plus-menu{
+            width: 100%;
+            height: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0.8;
+            border-right: 1px solid gray;
+            font-size: 14px;
+            display: flex;
+            justify-content: center;
+        }
+        .plus-menu > a {
+            text-decoration: none;
+            color: black;
+        }
+        .rotate{
+            transform: rotate( -90deg );
+        }
+        .aside-last-item > div > div {
+            height: 50px;
+            width: 231px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .aside-last-item > div > div > strong {
+            font-size: 20px;
+            font-weight: bold;
+        }
