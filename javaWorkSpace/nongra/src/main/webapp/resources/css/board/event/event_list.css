@@ -1,0 +1,38 @@
+#wrap_event{
+    width: 1050px;
+}
+main{
+    height: 1265px;
+    padding: 50px 0px 80px;
+    display: grid;
+    grid-template-columns: 200px 50px 800px;
+}
+aside{
+    width: 100%;
+
+}
+
+.title_event_board{
+    width: 100%;
+    font-size: 24px;
+    padding: 5px 0px 38px;
+    border-bottom: 2.5px solid black;
+}
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 40px;
+}
+.card_event {
+    margin: 10px;
+    box-sizing: border-box;
+}
+.img_event img{
+    height: 232px;
+}
+.text_event{
+    font-size: 16px;
+    font-weight: 900;
+    height: 100px;
+}

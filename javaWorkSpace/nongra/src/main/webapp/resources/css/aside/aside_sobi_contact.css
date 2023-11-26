@@ -1,0 +1,21 @@
+#wrap_contact{
+    background-color: #d9d9d9;
+    width: 175px;
+    height: 197px;
+    color: rgb(97, 89, 89);
+    padding-top: 30px;
+    padding-left: 15px;
+}
+#cs_center{
+    font-size: 18px;
+}
+#conctact_number{
+    font-size: 30px;
+    font-weight: 900;
+}
+#gap_contact{
+    font-size: 10px;
+}
+#operation_time{
+    font-size: 14px;
+}
