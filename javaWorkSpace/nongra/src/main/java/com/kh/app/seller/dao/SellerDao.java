@@ -31,9 +31,9 @@ public class SellerDao {
 		return returnId;
 	}
 
-	public int join(SellerVo joinVo, Connection conn) throws Exception {
+	public int join(SellerVo joinVo, Connection conn, String[] strArr) throws Exception {
 		
-		String sql = "INSERT ALL INTO MEMBER( MEMBER_NO ,ID ,NICK ,PWD ,EMAIL ,NAME ,PHONE ) VALUES (SEQ_MEMBER.NEXTVAL,?,?,?,?,?,?) INTO SELLER( SELLER_NO ,BUSINESS_NO ,BUSINESS_FORM ,BUSINESS_NAME ,BUSINESS_PHONE ,CORPORATION_NAME ,UPTAE ,UPJONG,BUSINEES_ZIPCODE ,BUSINESS_ADDRESS ,DETAILED_ADR ,REPORT_NUMBER ,BANK ,DEPOSITOR ,ACCOUNT ) VALUES (SEQ_SELLER.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?,?,?,?) SELECT * FROM DUAL";
+		String sql = "INSERT ALL INTO MEMBER( MEMBER_NO ,ID ,NICK ,PWD ,EMAIL ,NAME ,PHONE ) VALUES (SEQ_MEMBER.NEXTVAL,?,?,?,?,?,?) INTO SELLER( SELLER_NO ,BUSINESS_NO ,BUSINESS_FORM ,BUSINESS_NAME ,BUSINESS_PHONE ,CORPORATION_NAME ,UPTAE ,UPJONG,BUSINEES_ZIPCODE ,BUSINESS_ADDRESS ,DETAILED_ADR ,REPORT_NUMBER ,BANK ,DEPOSITOR ,ACCOUNT ) VALUES (SEQ_SELLER.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?,?,?,?) INTO BUSINESS_FILE ( FILE_NO,FILE_SRC ) VALUES (SEQ_BUSINESS_FILE.NEXTVAL,?) INTO BUSINESS_FILE ( FILE_NO,FILE_SRC ) VALUES (SEQ_BUSINESS_FILE.NEXTVAL,?) SELECT * FROM DUAL";
 		
 		System.out.println("들어");
 		
@@ -45,6 +45,7 @@ public class SellerDao {
 		pstmt.setString(4, joinVo.getEmail());
 		pstmt.setString(5, joinVo.getName());
 		pstmt.setString(6, joinVo.getPhone());
+		
 		pstmt.setString(7, joinVo.getBusinessNo());
 		pstmt.setString(8, joinVo.getBusinessForm());
 		pstmt.setString(9, joinVo.getBusineesName());
@@ -59,6 +60,9 @@ public class SellerDao {
 		pstmt.setString(18, joinVo.getBank());
 		pstmt.setString(19, joinVo.getDepositor());
 		pstmt.setString(20, joinVo.getAccount());
+		
+		pstmt.setString(21, strArr[0]);
+		pstmt.setString(22, strArr[1]);
 		
 		int result = pstmt.executeUpdate();
 		

@@ -2,13 +2,12 @@ package com.kh.app.seller.vo;
 
 public class SellerVo {
 	
-	
 
 	public SellerVo(String memberNo, String sellerNo, String nick, String id, String password, String password_re,
 			String email, String name, String phone, String businessNo, String businessForm, String busineesName,
 			String busineesPhone, String corporationName, String uptae, String upjong, String busineesZipCode,
-			String busineesAdr, String detailedAdr, String reportNumber, String bank, String depositor,
-			String account) {
+			String busineesAdr, String detailedAdr, String reportNumber, String bank, String depositor, String account,
+			String fileNo, String fileSrc) {
 		super();
 		this.memberNo = memberNo;
 		this.sellerNo = sellerNo;
@@ -33,6 +32,8 @@ public class SellerVo {
 		this.bank = bank;
 		this.depositor = depositor;
 		this.account = account;
+		this.fileNo = fileNo;
+		this.fileSrc = fileSrc;
 	}
 
 	public SellerVo() {
@@ -66,6 +67,26 @@ public class SellerVo {
 	private String bank;
 	private String depositor;
 	private String account;
+	
+	private String fileNo;
+	private String fileSrc;
+	
+	public String getFileNo() {
+		return fileNo;
+	}
+
+	public void setFileNo(String fileNo) {
+		this.fileNo = fileNo;
+	}
+
+	public String getFileSrc() {
+		return fileSrc;
+	}
+
+	public void setFileSrc(String fileSrc) {
+		this.fileSrc = fileSrc;
+	}
+
 	public String getMemberNo() {
 		return memberNo;
 	}
@@ -258,7 +279,9 @@ public class SellerVo {
 				+ ", busineesName=" + busineesName + ", busineesPhone=" + busineesPhone + ", corporationName="
 				+ corporationName + ", uptae=" + uptae + ", upjong=" + upjong + ", busineesZipCode=" + busineesZipCode
 				+ ", busineesAdr=" + busineesAdr + ", detailedAdr=" + detailedAdr + ", reportNumber=" + reportNumber
-				+ ", bank=" + bank + ", depositor=" + depositor + ", account=" + account + "]";
+				+ ", bank=" + bank + ", depositor=" + depositor + ", account=" + account + ", fileNo=" + fileNo
+				+ ", fileSrc=" + fileSrc + "]";
 	}
-	
+
+
 }

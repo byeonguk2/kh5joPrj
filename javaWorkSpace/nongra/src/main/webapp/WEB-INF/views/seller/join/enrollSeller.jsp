@@ -12,7 +12,7 @@
     <script defer type="text/javascript" src="/nongra/resources/js/join/enrollSeller.js"></script>
 </head>
 <body>
-     <form action="/nongra/seller/enroll" method="post" name="joinForm" onsubmit="return enrollCheck()">
+     <form action="/nongra/seller/enroll" method="post" enctype="multipart/form-data" name="joinForm" onsubmit="return enrollCheck()">
         <h1 class="header-Letter">사업자 필수 서류 등록</h1>
         <div>
             <p>사업자 필수서류</p>
@@ -29,7 +29,7 @@
                 <p class="input-info-letter2">x 사업자등록</p>
                 <div class="filebox">
 				    <label for="file">등록하기</label> 
-				    <input type="file" id="file">
+				    <input type="file" id="file" name="f">
 				</div>
             </div>
         </div>
@@ -176,8 +176,8 @@
                     <p class="singup-file-letter">통장사본등록</p>
                     <p class="singup-file-letter2">x통장사본등록</p>
                     <div class="filebox">
-					    <label for="file">등록하기</label> 
-					    <input type="file" id="file">
+					    <label for="file2">등록하기</label> 
+					    <input type="file" name="f2" id="file2">
 					</div>
                 </div>
             </div>
