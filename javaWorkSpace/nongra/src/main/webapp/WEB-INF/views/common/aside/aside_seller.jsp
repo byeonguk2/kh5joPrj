@@ -28,7 +28,7 @@
             <div class="side-icon2"></div>
         </div>    
         <div class="menu"><a href="">상품관리</a></div>
-        <div class="menu"><a href="">상품등록</a></div>
+        <div class="menu"><a href="/nongra/seller/register">상품등록</a></div>
         <div class="aside-item sitem4">
             <div class="side-icon" id="icon-check"></div>
             <label>상품문의관리</label>
@@ -59,8 +59,8 @@
             <label>쪽지목록</label>
             <div class="side-icon2"></div>
         </div>   
-        <div class="menu"><a href="">보낸쪽지</a></div>
-        <div class="menu"><a href="">받은쪽지</a></div>
+        <div class="menu"><a href="/nongra/seller/note/send">보낸쪽지</a></div>
+        <div class="menu"><a href="/nongra/seller/note/recive">받은쪽지</a></div>
         <div class="aside-item sitem10">
             <div class="side-icon" id="icon-book"></div>
             <label>공지사항</label>
