@@ -1,0 +1,329 @@
+@charset "UTF-8";
+/* 기본세팅 */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* 가운데로 정렬 */
+body > form{
+    margin: auto;
+    width: 640px;
+    height: 1650px;
+    /* border: 1px solid black; */
+}
+/* 상단 h1글자 */
+.header-Letter {
+    text-align: center;
+    font-size: 28px;
+    margin: 50px 0px 30px;
+    font-weight: 500;
+    color: rgb(51, 51, 51);
+}
+body > form > :nth-child(2) {
+    height: 92px;
+    border: 1px solid rgb(238, 238, 238);
+    font-size: 16px;
+    margin: 40px 0px 0px;
+    padding: 30px;
+}
+body > form > :nth-child(2) > p {
+    font-size: 16px;
+    height: 16px;
+}
+body > form > :nth-child(2) > ul {
+    font-size: 14px;
+    color: rgb(119, 119, 119);
+    height: 58px;
+    margin: 18px 0px 0px;
+}
+body > form > :nth-child(2) > ul > li {
+    margin: 0px 0px 8px;
+}
+body > form > :nth-child(2) > ul > li::before {
+    vertical-align: baseline;
+    content: "·";
+    padding-right: 5px;
+}
+
+body > form > :nth-child(3) {
+    height: 138px;
+    margin-top: 50px;
+}
+body > form > :nth-child(3) > p {
+    font-size: 20px;
+    height: 21px;
+    padding: 0px 0px 15px;
+}
+body > form > :nth-child(3) > div {
+    display: flex;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 100px;
+    padding: 0px 30px;
+    border: 1px solid rgb(238, 238, 238);
+    border-top: 1px solid black;
+}
+.input-info-letter {
+    font-size: 16px;
+    width: 160px;
+    font-weight: 500;
+}
+.input-info-letter2{
+    font-size: 12px;
+    color: red;
+    width: 290px;
+}
+
+.filebox label {
+    display: inline-block;
+    width: 120px;
+    height: 44px;
+    margin: 0px 0px 0px 8px;
+    background-color: white;
+    border: 1px solid #754327;
+    color: #754327;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 46px;
+   	font-size: 14px;
+   	cursor: pointer;
+}
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+.enroll-info-area > p {
+    font-size: 20px;
+    margin: 30px 0px 0px;
+    padding: 0px 0px 15px;
+    border-bottom: 1px solid #754327;
+}
+.enroll-info-area > :nth-child(2) {
+    padding: 20px 20px 0px;
+}
+.business-join {
+    height: 44px;
+    display: flex;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.p-letter {
+    font-size: 14px;
+    width: 140px;
+}
+.business-join > input {
+    width: 290px;
+    height: 42px;
+    padding: 0px 20px;
+    border-radius: 5px;
+    border: 1px solid rgb(204, 204, 204);
+}
+.business-join > button {
+    width: 120px;
+    height: 44px;
+    margin: 0px 0px 0px 8px;
+    color: #754327;
+    border: 1px solid #754327;
+    background-color: white;
+    border-radius: 5px;
+}
+.radio-area {
+    display: flex;
+    align-items: center;
+}
+.join-radio {
+    /* appearance: none; */
+    width: 24px;
+    height: 24px;
+    margin: 0px 6px 0px 0px;
+}
+.radio-area > label {
+    display: flex;
+    flex-wrap: wrap;
+    /* -webkit-box-align: center; */
+    align-items: center;
+    font-size: 14px;
+    line-height: 15px;
+    margin-right: 20px;
+}
+.a {
+    margin-bottom: 5px;
+}
+.ip2 {
+    padding: 0px 20px;
+    height: 44px;
+}
+.ip2-1 {
+    border: 1px solid rgb(204, 204, 204);
+    font-size: 16px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    width: 160px;
+}
+#ip1 {
+    margin-left: 8px;
+}
+select {
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 3px;
+    width: 130px;
+    height: 44px;
+    color: rgb(204, 204, 204);
+    text-align: center;
+}
+.recipient{
+    border: 1px solid rgb(204, 204, 204);
+    font-size: 16px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    width: 189.80px;
+    margin-left: 8px;
+    height: 44px;
+    padding: 0px;
+}
+#business-join-area {
+    border-bottom: 1px solid rgb(204, 204, 204);;
+}
+#check-letter{
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 500;
+}
+#singup-file {
+    margin-top: 40px;
+}
+.singup-file-area {
+    display: flex;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 100px;
+    padding: 0px 30px;
+    border: 1px solid rgb(238, 238, 238);
+}
+.singup-file-letter {
+    font-size: 16px;
+    width: 160px;
+    font-weight: 500;
+}
+.singup-file-letter2{
+    flex: 1 1 0%;
+    font-size: 12px;
+    color: rgb(240, 63, 64);
+}
+.singup-btn{
+    color: #754327;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 3px;
+    margin-left: 8px;
+    height: 44px;
+    width: 120px;
+    border: 1px solid #754327;
+    background-color: white;
+}
+.enroll-info-area > :nth-last-child(1) {
+    display: flex;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    justify-content: center;
+    margin: 40px 0px;
+    gap: 0px 10px;
+}
+.lastbtn {
+    width: 160px;
+    text-align: center;
+    text-decoration: none;
+    height: 56px;
+    font-size: 16px;
+    border-radius: 3px;
+    border: 1px solid;
+    background-color: white;
+}
+.btn1 {
+    border-color: rgb(221, 221, 221);
+    color: rgb(51, 51, 51);
+}
+.btn2 {
+    border-color: #754327;
+    color: #754327;
+}
+.account-name {
+	text-align: center;
+	font-size: 12px;
+}
+.left {
+	text-align: left;
+}
+.css-1og0zk92 {
+    display: flex;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-bottom: 0px;
+    margin-top: 6px;
+}
+.css-3y93rl {
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 500;
+    width: 140px;
+    height: 14px;
+    
+}
+.rowletter-area{
+	display: grid;
+	font-size: 11px;
+	justify-content: center;
+	color: red;
+}
