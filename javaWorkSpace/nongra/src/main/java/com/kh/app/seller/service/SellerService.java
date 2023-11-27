@@ -21,14 +21,14 @@ public class SellerService {
 		return returnId;
 	}
 
-	public int join(SellerVo joinVo) throws Exception {
+	public int join(SellerVo joinVo, String[] strArr) throws Exception {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
 		SellerDao dao = new SellerDao();
-		int result = dao.join(joinVo,conn);
+		int result = dao.join(joinVo,conn,strArr);
 		
-		if(result == 2) {
+		if(result == 4) {
 			JDBCTemplate.commit(conn);
 		}else {
 			JDBCTemplate.rollback(conn);

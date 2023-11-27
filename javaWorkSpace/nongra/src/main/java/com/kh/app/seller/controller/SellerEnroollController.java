@@ -1,17 +1,27 @@
 package com.kh.app.seller.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import com.kh.app.seller.service.SellerService;
 import com.kh.app.seller.vo.SellerVo;
 
+@MultipartConfig(
+		maxFileSize = 1024*1024*10		//파일 하나당 크
+		,maxRequestSize = 1024*1024*50  // 리퀘스트 전체 크
+		)
 @WebServlet("/seller/enroll")
 public class SellerEnroollController extends HttpServlet {
 
@@ -29,7 +39,6 @@ public class SellerEnroollController extends HttpServlet {
 			session.removeAttribute("joinVo");
 			
 			String business_no = req.getParameter("business_no");
-			System.out.println(business_no);
 			String business_form = req.getParameter("business_form");
 			String business_name = req.getParameter("business_name");
 			String business_phone = req.getParameter("business_phone");
@@ -45,7 +54,61 @@ public class SellerEnroollController extends HttpServlet {
 			String bank = req.getParameter("bank");
 			String depositor = req.getParameter("depositor");
 			String account = req.getParameter("account");
-
+			
+			// 첨부파일 전부 받아오기 
+			Collection<Part> parts = req.getParts();
+			
+			Part f = req.getPart("f");
+			System.out.println(f);
+			System.out.println(f.getSubmittedFileName());
+			
+			Part f2 = req.getPart("f2");
+			System.out.println(f2);
+			System.out.println(f2.getSubmittedFileName());
+			
+			// 읽기
+			InputStream in = null;
+			InputStream in2 = null;
+			if(f2.getSubmittedFileName() != null && f.getSubmittedFileName() != null) {
+			in = f.getInputStream();
+			in2 = f2.getInputStream();
+			}else {
+				throw new Exception("사진 첨부를 안함..");
+			}
+			
+			//내보내기
+			String sep = File.separator;
+			
+			String fileName = sep+f.getSubmittedFileName();
+			String fileName2 = sep+f2.getSubmittedFileName();
+			
+			String path = req.getServletContext().getRealPath(sep+"resources"+sep+"upload"+sep+"img");
+			System.out.println(path);
+			
+			File target = new File (path+sep+fileName);
+			File target2 = new File (path+sep+fileName2);
+			
+			FileOutputStream out = new FileOutputStream(target);
+			FileOutputStream out2 = new FileOutputStream(target2);
+			
+			// 1024	바이트를 전부 읽는다.
+			byte[] buf = new byte[1024];
+			int size = 0;
+			while((size =in.read(buf)) != -1) {
+				out.write(buf,0,size);
+			}
+			byte[] buf2 = new byte[1024];
+			int size2 = 0;
+			while((size =in.read(buf)) != -1) {
+				out2.write(buf,0,size);
+			}
+			
+			String[] strArr = new String[2];
+			strArr[0] = path+sep+fileName;
+			strArr[2] = path+sep+fileName2;
+			
+			System.out.println(strArr);
+			
 			joinVo.setBusinessNo(business_no);
 			joinVo.setBusinessForm(business_form);
 			joinVo.setBusineesName(business_name);
@@ -62,10 +125,10 @@ public class SellerEnroollController extends HttpServlet {
 			joinVo.setAccount(account);
 			
 			SellerService ss = new SellerService();
-			int result = ss.join(joinVo);
+			int result = ss.join(joinVo,strArr);
 			
-			if(result != 2) {
-				throw new Exception("[ERROR-S002] 디비 인서트 값 2가아님");
+			if(result != 4) {
+				throw new Exception("[ERROR-S002] 디비 인서트 값 4가아님");
 			}
 			
 			req.setAttribute("joinVo", joinVo);
