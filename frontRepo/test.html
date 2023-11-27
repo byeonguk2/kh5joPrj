@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<table border="1">
+  <tr>
+    <td colspan="3"><input type="checkbox" id="checkAll">전체 선택</td>  
+  </tr>
+  <tr>
+    <td> <input type="checkbox" class ="chk"> Option 1<br></td>
+    <td> <input type="checkbox" class ="chk"> Option 2<br></td>
+    <td> <input type="checkbox" class ="chk"> Option 3<br></td>
+  </tr>
+</table>
+</body>
+</html>
+
+<script>
+    document.querySelector('#checkAll');
+
+checkAll.addEventListener('click', function(){
+
+    const isChecked = checkAll.checked;
+
+    if(isChecked){
+        const checkboxes = document.querySelectorAll('.chk');
+
+        for(const checkbox of checkboxes){
+            checkbox.checked = true;
+        }
+    }else{
+        const checkboxes = document.querySelectorAll('.chk');
+        for(const checkbox of checkboxes){
+            checkbox.checked = false;
+        }
+    }
+})
+////////////////////////////////////////////////////////////
+const checkboxes = document.querySelectorAll('.chk');
+for(const checkbox of checkboxes){
+  checkbox.addEventListener('click',function(){
+    
+    const totalCnt = checkboxes.length;
+  
+    const checkedCnt = document.querySelectorAll('.chk:checked').length;
+    
+    if(totalCnt == checkedCnt){
+      document.querySelector('#checkAll').checked = true;
+    }else{
+      document.querySelector('#checkAll').checked = false;
+    }
+    
+  });
+  
+}
+</script>
