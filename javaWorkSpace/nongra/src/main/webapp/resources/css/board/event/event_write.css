@@ -1,0 +1,26 @@
+main{
+    height: 1265px;
+    padding: 50px 0px 80px;
+    display: grid;
+    grid-template-columns: 200px 50px 800px;
+}
+.title_event_board{
+    width: 100%;
+    font-size: 24px;
+    padding: 5px 0px 38px;
+    border-bottom: 2.5px solid black;
+}
+#content_event_detail img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#content_event_detail pre {
+    font-size: 16px;
+    padding: 0px 15px 0px 15px;
+}
+#title_event_detail {
+    font-size: 16px;
+    font-weight: 900;
+    padding: 20px 0px 20px 0px;
+}
