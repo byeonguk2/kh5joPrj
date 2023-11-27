@@ -1,0 +1,144 @@
+#wrap{
+    width: 1050px;
+    height: 200px;
+    margin: auto;
+}
+button{
+    border-color: white;
+    border: none;
+}
+.order-head{
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 900;
+}
+.head-text{
+    font-size: 20px;
+    font-weight: 900;
+    
+}
+.order{
+    margin-top: 15px;
+    height: 23px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(202, 202, 202);
+}
+.simple-ver{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.detail-ver{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr 2fr;
+    height: 150px;
+    border-bottom: 1px solid lightgray;
+}
+.product-image-area{
+    display: flex;
+    place-content: center center;
+    padding-left: 10px;
+}
+.detail-ver > div > img{
+    height: 150px;
+    width: 100px;
+    object-fit: contain;
+}
+.product-name-area{
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+}
+.product-cnt-area{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.product-price{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.orderer-area{
+    margin-top: 70px;
+}
+td:nth-child(1){
+    width: 200px;
+}
+.description{
+    font-size: 13px;
+    color: rgb(168, 168, 168);
+}
+td{
+    font-size: 16px;
+    font-weight: 500;
+}
+.text{
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightgray;
+}
+.orderer-table{
+    margin-top: 10px;
+    margin-bottom: 100px;
+}
+.delivery-add{
+    border-bottom: 1px solid lightgrey;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+.delivery-req{
+    margin-top: 10px;
+}
+.delivery-btn{
+    width: 70px;
+    height: 30px;
+    background-color: white;
+    font-weight: 600;
+    border: 1px solid #754327;
+    border-radius: 3px;
+}
+.pay-btn-area{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.pay-btn{
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 900;
+    color: white;
+    background-color: #754327;
+    border-radius: 3px;
+}
+.pay-amount{
+    margin-top: 10px;
+}
+.pay-table td{
+    font-size: 18px;
+    font-weight: 500;
+}
+.inquiry{
+    font-size: 13px;
+    color: lightgrey;
+}
+.personal-data-area{
+    margin-top: 70px;
+}
+.personal-data-agr{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.personal-data-total-agr{
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 700;
+}
