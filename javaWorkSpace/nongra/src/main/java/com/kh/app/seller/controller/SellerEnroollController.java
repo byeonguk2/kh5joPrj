@@ -18,23 +18,27 @@ import javax.servlet.http.Part;
 import com.kh.app.seller.service.SellerService;
 import com.kh.app.seller.vo.SellerVo;
 
+// 업로드한 파일 크기 지정
 @MultipartConfig(
-		maxFileSize = 1024*1024*10		//파일 하나당 크
-		,maxRequestSize = 1024*1024*50  // 리퀘스트 전체 크
+		maxFileSize = 1024*1024*10		//파일 하나당 크기
+		,maxRequestSize = 1024*1024*50  // 리퀘스트 전체 크기
 		)
+// 맵핑 
 @WebServlet("/seller/enroll")
 public class SellerEnroollController extends HttpServlet {
-
+	
+	// GET요청 받음 (enrollSeller)
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getRequestDispatcher("/WEB-INF/views/seller/join/enrollSeller.jsp").forward(req, resp);
 	}
+	
+	// POST 요청 받음 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		HttpSession session = req.getSession();
 		try {
 			req.setCharacterEncoding("UTF-8");
-			HttpSession session = req.getSession();
 			SellerVo joinVo = (SellerVo)session.getAttribute("joinVo");
 			session.removeAttribute("joinVo");
 			
@@ -66,9 +70,9 @@ public class SellerEnroollController extends HttpServlet {
 			System.out.println(f2);
 			System.out.println(f2.getSubmittedFileName());
 			
-			// 읽기
 			InputStream in = null;
 			InputStream in2 = null;
+			// 읽기
 			if(f2.getSubmittedFileName() != null && f.getSubmittedFileName() != null) {
 			in = f.getInputStream();
 			in2 = f2.getInputStream();
@@ -103,11 +107,12 @@ public class SellerEnroollController extends HttpServlet {
 				out2.write(buf,0,size);
 			}
 			
+			in.close();
+			out.close();
+			
 			String[] strArr = new String[2];
 			strArr[0] = path+sep+fileName;
-			strArr[2] = path+sep+fileName2;
-			
-			System.out.println(strArr);
+			strArr[1] = path+sep+fileName2;
 			
 			joinVo.setBusinessNo(business_no);
 			joinVo.setBusinessForm(business_form);
@@ -131,15 +136,15 @@ public class SellerEnroollController extends HttpServlet {
 				throw new Exception("[ERROR-S002] 디비 인서트 값 4가아님");
 			}
 			
-			req.setAttribute("joinVo", joinVo);
-			req.getRequestDispatcher("/seller/insertNo").forward(req, resp);
+			session.setAttribute("alertMsg", "회원가입 성공");
+			resp.sendRedirect("/nongra/seller/login");
 			
 		}catch (Exception e) {
 			System.out.println("[ERROR-S001] 회원가입중 예외발생..");
 			e.printStackTrace();
 			System.out.println(e.getMessage());
-			req.setAttribute("errorMsg", "회원가입중 실패..");
-			req.getRequestDispatcher("/WEB-INF/views/common/fail.jsp").forward(req, resp);
+			session.setAttribute("alertMsg", "회원가입 실패");
+			resp.sendRedirect("/nongra/seller/join");
 		}
 		
 	}

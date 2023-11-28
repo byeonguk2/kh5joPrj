@@ -43,7 +43,7 @@ public class SellerLoginController extends HttpServlet {
 			session.setAttribute("alertMsg", "로그인성공");
 			session.setAttribute("loginSeller", loginSeller);
 			
-			resp.sendRedirect("/nongra/home");
+			resp.sendRedirect("/nongra/seller/home");
 		}catch (Exception e) {
 			System.out.println("[ERROR-S004]로그인중 문제 발생.");
 			e.printStackTrace();

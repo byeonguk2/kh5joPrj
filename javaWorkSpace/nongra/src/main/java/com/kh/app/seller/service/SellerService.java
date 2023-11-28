@@ -8,17 +8,24 @@ import com.kh.app.util.db.JDBCTemplate;
 
 
 public class SellerService {
-
+	
+	//아이디 체크 (회원가입시 클라이언트에게 아이디를 받아온다)
 	public int idCheck(String id) throws Exception {
 		
+		// conn 가져오기 
 		Connection conn = JDBCTemplate.getConnection();
 		
+		// dao 선언 / 호출 
 		SellerDao dao = new SellerDao();
-		int returnId = dao.idCheck(conn, id);
 		
+		// 디비 조회후 받아온 값 저장 
+		int num = dao.idCheck(conn, id);
+		
+		// close
 		JDBCTemplate.close(conn);
 		
-		return returnId;
+		//return
+		return num;
 	}
 
 	public int join(SellerVo joinVo, String[] strArr) throws Exception {
@@ -39,39 +46,6 @@ public class SellerService {
 		return result;
 	}
 
-	public int insertNo(SellerVo vo) throws Exception {
-		
-		Connection conn = JDBCTemplate.getConnection();
-		
-		SellerDao dao = new SellerDao();
-		int result = dao.insertNo(vo,conn);
-		
-		if(result == 1) {
-			JDBCTemplate.commit(conn);
-		}else {
-			JDBCTemplate.rollback(conn);
-		}
-				
-		JDBCTemplate.close(conn);
-		
-		return result;
-	}
-
-	public String selectNo(SellerVo vo) throws Exception {
-		
-		Connection conn = JDBCTemplate.getConnection();
-		
-		SellerDao dao = new SellerDao();
-		String sellerNo = dao.selectNo(vo,conn);
-		
-		JDBCTemplate.close(conn);
-		
-		if(sellerNo == null) {
-			throw new Exception("사업자 번호가 존재하지 않음");
-		}
-		
-		return sellerNo;
-	}
 
 	public SellerVo login(SellerVo vo) throws Exception {
 		
