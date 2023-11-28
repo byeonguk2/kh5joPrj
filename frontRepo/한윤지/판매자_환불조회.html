@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title{
+            font-weight: 700;
+            font-size: 40px;
+            padding: 40px;
+            
+        }
+        main{
+            width: 1340px;
+            
+        }
+        .table{
+            display: flex;
+            justify-content: center;
+        }
+        table{
+            width: 1250px;
+            border-top: 3px solid black;
+            border-bottom: 3px solid black;
+            padding: 0px;
+            border-collapse: collapse;
+        }
+
+        thead{
+            background-color: #ffddca;
+            height: 60px;
+        }
+        thead > tr{
+            border-bottom: 3px solid black;
+        }
+        thead > tr > th{
+            width: 125px;
+            padding: 1px;
+        }
+        tbody > tr{
+            height: 60px;
+            border-bottom: 2px solid black;
+        }
+        tbody > tr > th:nth-child(10){
+            text-align: right;
+        }
+        table button{
+            font-size: 17px;
+            background-color: white;
+            padding: 4px;
+            margin-left: 1px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <main>
+            <div class="title">환불조회</div>
+            <div class="table">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>결제번호</th>
+                            <th>아이디</th>
+                            <th>닉네임</th>
+                            <th>주문일자</th>
+                            <th>결제형태</th>
+                            <th>상품번호</th>
+                            <th>상품이름</th>
+                            <th>상품가격</th>
+                            <th>환불여부</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>2156</th>
+                            <th>user01</th>
+                            <th>닉네임</th>
+                            <th>2023.11.28</th>
+                            <th>농라페이</th>
+                            <th>1</th>
+                            <th>고구마</th>
+                            <th>11,000</th>
+                            <th>N</th>
+                        </tr>
+                        <tr>
+                            <th>27534</th>
+                            <th>user01</th>
+                            <th>닉네임</th>
+                            <th>2023.11.28</th>
+                            <th>농라페이</th>
+                            <th>1</th>
+                            <th>고구마</th>
+                            <th>11,000</th>
+                            <th>N</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
+
+
+        </main>
+    </div>
+</body>
+</html>
