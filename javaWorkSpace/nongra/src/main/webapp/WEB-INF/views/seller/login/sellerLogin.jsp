@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     <% 
     	String alertMsg = (String)session.getAttribute("alertMsg"); 
-    	session.removeAttribute("arletMsg");
+    	session.removeAttribute("alertMsg");
     %>
 <!DOCTYPE html>
 <html>

@@ -10,32 +10,41 @@ import com.kh.app.util.db.JDBCTemplate;
 
 public class SellerDao {
 
+	// 아이디 체크 로직
 	public int idCheck(Connection conn, String id) throws Exception {
 		
+		// sql문 (WHERE문을 이용해 ID를 조회후 COUNT가 성공하면 1 실패하면 0 반환 )
 		String sql = "SELECT COUNT(ID) FROM MEMBER WHERE ID = ?";
 		
+		// pstmt
 		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		// 회원가입시 받은 아이디 
 		pstmt.setString(1, id);
 		
+		//rs 
 		ResultSet rs = pstmt.executeQuery();
 		
-		int returnId = 0;
+		// 0상태로 초기화
+		int num = 0;
 		
+		//만약에 rs.next가 존재한다면 1으로 반환 
 		if(rs.next()) {
-			returnId = rs.getInt(1);
+			num = rs.getInt(1);
 		}
 		
+		//close
 		JDBCTemplate.close(pstmt);
 		JDBCTemplate.close(rs);
 		
-		return returnId;
+		// return 
+		return num;
 	}
-
+	
+	// 판매자 회원가입 
 	public int join(SellerVo joinVo, Connection conn, String[] strArr) throws Exception {
 		
-		String sql = "INSERT ALL INTO MEMBER( MEMBER_NO ,ID ,NICK ,PWD ,EMAIL ,NAME ,PHONE ) VALUES (SEQ_MEMBER.NEXTVAL,?,?,?,?,?,?) INTO SELLER( SELLER_NO ,BUSINESS_NO ,BUSINESS_FORM ,BUSINESS_NAME ,BUSINESS_PHONE ,CORPORATION_NAME ,UPTAE ,UPJONG,BUSINEES_ZIPCODE ,BUSINESS_ADDRESS ,DETAILED_ADR ,REPORT_NUMBER ,BANK ,DEPOSITOR ,ACCOUNT ) VALUES (SEQ_SELLER.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?,?,?,?) INTO BUSINESS_FILE ( FILE_NO,FILE_SRC ) VALUES (SEQ_BUSINESS_FILE.NEXTVAL,?) INTO BUSINESS_FILE ( FILE_NO,FILE_SRC ) VALUES (SEQ_BUSINESS_FILE.NEXTVAL,?) SELECT * FROM DUAL";
-		
-		System.out.println("들어");
+		String sql = "INSERT ALL INTO MEMBER ( MEMBER_NO ,ID ,NICK ,PWD ,EMAIL ,NAME ,PHONE ) VALUES (SEQ_MEMBER.NEXTVAL,?,?,?,?,?,?) INTO SELLER ( SELLER_NO ,MEMBER_NO ,BUSINESS_NO ,BUSINESS_FORM ,BUSINESS_NAME ,BUSINESS_PHONE ,CORPORATION_NAME ,UPTAE ,UPJONG ,BUSINEES_ZIPCODE ,BUSINESS_ADDRESS ,DETAILED_ADR ,REPORT_NUMBER ,BANK ,DEPOSITOR ,ACCOUNT ) VALUES (SEQ_SELLER.NEXTVAL,SEQ_MEMBER.CURRVAL,?,?,?,?, ?,?,?,?,?,?, ?,?,?,?) INTO BUSINESS_FILE ( FILE_NO,SELLER_NO,FILE_SRC ) VALUES ( SEQ_BUSINESS_FILE.NEXTVAL,SEQ_SELLER.CURRVAL,?) INTO BUSINESS_FILE ( FILE_NO,SELLER_NO,FILE_SRC ) VALUES ((SELECT GET_ITEM_SEQ()FROM DUAL),SEQ_SELLER.CURRVAL,?) SELECT * FROM DUAL";
 		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
@@ -72,42 +81,11 @@ public class SellerDao {
 		
 		return result;
 	}
-
-	public String selectNo(SellerVo vo, Connection conn) throws Exception {
-		
-		String sql = "SELECT SELLER_NO FROM SELLER WHERE BUSINESS_NO = ?";
-		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, vo.getBusinessNo());
-		ResultSet rs = pstmt.executeQuery();
-		String sellerNo = null;
-		
-		if(rs.next()) {
-			sellerNo = rs.getString("SELLER_NO");
-		}
-		
-		JDBCTemplate.close(pstmt);
-		JDBCTemplate.close(rs);
-		
-		return sellerNo;
-	}
-
-	public int insertNo(SellerVo vo, Connection conn) throws Exception {
-		
-		String sql = "UPDATE MEMBER SET SELLER_NO = ? WHERE ID = ?";
-		
-		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, vo.getSellerNo());
-		pstmt.setString(2, vo.getId());
-		int result = pstmt.executeUpdate();
-		
-		JDBCTemplate.close(pstmt);
-		
-		return result;
-	}
-
+	
+	// 판매자 로그인
 	public SellerVo login(SellerVo vo, Connection conn) throws Exception {
 		
-		String sql = "SELECT * FROM MEMBER M JOIN SELLER S ON (M.SELLER_NO = S.SELLER_NO) WHERE M.ID = ? AND M.PWD = ?";
+		String sql = "SELECT * FROM SELLER S JOIN MEMBER M ON (S.MEMBER_NO = M.MEMBER_NO) WHERE M.ID = ? AND M.PWD = ?";
 		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, vo.getId());
@@ -117,6 +95,8 @@ public class SellerDao {
 		
 		SellerVo loginSeller = null;
 		if(rs.next()) {
+			
+			System.out.println(rs.getString("MEMBER_NO"));
 			
 			String memberNo = rs.getString("MEMBER_NO");
 			String id = rs.getString("ID");
@@ -172,6 +152,7 @@ public class SellerDao {
 			loginSeller.setBank(bank);
 			loginSeller.setDepositor(depositor);
 			loginSeller.setAccount(account);
+			System.out.println(loginSeller);
 		}
 		System.out.println("들어옴");
 		System.out.println(loginSeller);

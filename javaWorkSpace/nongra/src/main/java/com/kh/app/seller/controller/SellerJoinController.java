@@ -15,11 +15,13 @@ import com.kh.app.seller.vo.SellerVo;
 @WebServlet("/seller/join")
 public class SellerJoinController extends HttpServlet {
 
+	// GET요청 받은 동시에 jsp 파일로 보내줌 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getRequestDispatcher("/WEB-INF/views/seller/join/sellerJoin.jsp").forward(req, resp);
 	}
 	
+	// POST파
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
@@ -56,15 +58,16 @@ public class SellerJoinController extends HttpServlet {
 			vo.setEmail(email);
 			vo.setName(name);
 			vo.setPhone(phone);
-			System.out.println(vo);
+			
 			HttpSession session = req.getSession();
 			session.setAttribute("joinVo", vo);
+			
 			resp.sendRedirect("/nongra/seller/enroll");
 		}catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("[ERROR-S001] 회원가입중 예외발생");
-			req.setAttribute("errorMsg", "회원가입중 예외발생");
-			req.getRequestDispatcher("/WEB-INF/views/common/fail.jsp").forward(req, resp);
+			req.setAttribute("alertMsg", "회원가입 실패");
+			resp.sendRedirect("/nongra/seller/join");
 		}
 		
 		
