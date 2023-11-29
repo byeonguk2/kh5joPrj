@@ -1,23 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>장바구니</title>
-    <style>
+	console.log(1);
 
-    </style>
-</head>
-<body>
-    <div id="cover">
-        <main>
-        </main>
-
-
-    </div>
-</body>
-</html>
-<script>
     const down = document.querySelector('.product-cnt-down');
     down.addEventListener('click',()=>{
         let number = document.querySelector('.product-cnt').innerText;
@@ -33,8 +15,3 @@
         let number = document.querySelector('.product-cnt').innerText;
         document.querySelector('.product-cnt').innerText = parseInt(number) + 1;
     })
-    
-
-
-
-</script>
