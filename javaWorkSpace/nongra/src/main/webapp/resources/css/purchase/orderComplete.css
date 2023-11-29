@@ -1,0 +1,89 @@
+@charset "UTF-8";
+#cover{
+    width: 1050px;
+	margin: auto;
+}
+main{
+	display: flex;
+	justify-content: center;
+}
+#order-complete-area{
+    width: 400px;
+    height: 600px;
+    border-radius: 3px;
+    border: 1px solid lightgray;
+	margin-top: 20px;
+}
+.check-icon-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130px;
+}
+.check-icon{
+    border: 5px solid #754327;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.check-icon img{
+    filter: invert(27%) sepia(11%) saturate(3053%) hue-rotate(337deg) brightness(93%) contrast(85%);
+    height: 35px;
+    width: 35px;
+}
+#order-complete-area > div:nth-child(2){
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    height: 100px;
+}
+.price-area{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.explanation-area{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.explanation-area > div{
+    display: inline;
+}
+table tr > td:nth-child(1){
+    display: flex;
+    justify-content: start;
+    width: 15px;
+}
+table{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.button-area{
+    display: flex;
+    justify-content: center;
+}
+.button-area button{
+    width: 360px;
+    height: 60px;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+}
+#fbutton{
+    border: 1.5px solid rgb(236, 236, 236);
+}
+#tbutton{
+    border-radius: 5px;
+    background-color: #754327;
+    color: white;
+}
