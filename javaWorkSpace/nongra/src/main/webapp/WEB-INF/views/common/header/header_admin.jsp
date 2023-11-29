@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/nongra/resources/css/header/header_admin.css">
+<script type="text/javascript" src="/nongra/resources/js/common/header/header_admin.js"></script>
 </head>
 <body>
 	<div id="wrap">
@@ -20,7 +21,7 @@
             </div>
         </div>
         	<div class="nav-area">
-		        <nav>
+		        <nav class="nav-main" id="nav-main">
 		           <a href="" class="chagePage pix">회원관리</a>
 	               <a href="" class="chagePage">상품관리</a>
 	               <a href="" class="chagePage">통계관리</a>
