@@ -74,13 +74,3 @@
 </html>
 
 <script type="text/javascript"><%@include file="/resources/js/purchase/cart.js"%></script>
-
-
-
-
-
-
-
-
-
-
