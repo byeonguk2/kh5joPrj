@@ -13,7 +13,7 @@ public class AdminHomeSelvlet extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/WEB-INF/views/common/header/header_admin.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/adminHome_test.jsp").forward(req, resp);
 	}
 	
 }

@@ -19,6 +19,7 @@ idInput[0].addEventListener("keyup",()=>{
 	}
 	idCheck[0].disabled = true;
 })
+
 // idInput[1].addEventListener("keyup",()=>{
 //     console.log(idInput[1].value.length);
 //     const x = idInput[1].value.length;

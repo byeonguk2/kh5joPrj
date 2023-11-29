@@ -6,10 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/nongra/resources/css/header/header_admin.css">
-<script type="text/javascript" src="/nongra/resources/js/common/header/header_admin.js"></script>
 </head>
 <body>
-	<div id="wrap">
 		<header>
         <div class="header-area">
             <div class="header-logo">
@@ -31,6 +29,6 @@
 		        </nav>
         	</div>
     	</header>
-	</div>
+    	<script type="text/javascript" src="/nongra/resources/js/common/header/header_admin.js"></script>
 </body>
 </html>

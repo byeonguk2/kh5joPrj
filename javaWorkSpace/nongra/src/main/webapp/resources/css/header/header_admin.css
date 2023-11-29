@@ -2,7 +2,6 @@
 	width: 1500px;
     margin: auto;
     height: 1000px;
-    background-color: red;
     height: 1500px;
 }
 .header-area{
@@ -22,7 +21,7 @@
 	width: 95px;
 }
 .header-logo > strong {
-	font-size: 20px;
+/*	font-size: 20px;*/
     font-weight: bold;
     margin-left: 20px;
 }
@@ -41,7 +40,7 @@ nav{
     background-color: white;
   	animation: down 0.5s ease;
   	top: 0px;
-  	width: 1500px;
+  	width: 1500px;	
 }
 .chagePage {
     text-align: center;
@@ -51,5 +50,7 @@ nav{
     color: rgb(97,89,89);
 }
 .fixed {
+	opacity: 95%;
 	position: fixed;
+    z-index: 301;
 }
