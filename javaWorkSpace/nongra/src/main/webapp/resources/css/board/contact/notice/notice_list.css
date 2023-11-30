@@ -1,0 +1,188 @@
+body, button, input, select, textarea {
+    font-size: 14px;
+    color: #333;
+}
+body{
+    margin: 0;
+}
+main{
+    position: relative;
+    min-width: 1050px;
+    display: flex;
+    padding: 50px 0px 80px;
+    margin: 0px auto;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+.section{
+    width: 200px;
+}
+
+.section_name {
+    height: 75px;
+    padding: 5px 0px 35px 1px;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 35px;
+    color: #333;
+    letter-spacing: -1px;
+}
+.board_name{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-bottom: 27px;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: 24px;
+    color: rgb(51, 51, 51);
+    letter-spacing: -0.5px;
+    line-height: 48px;
+}
+.menu_area {
+    border: 1px solid rgb(242, 242, 242);
+}
+ul {
+    list-style-type: none;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+.menu_list.active, .menu_list:hover {
+    background-color: rgb(250, 250, 250);
+    color: #754327;
+    font-weight: 900;
+}
+.menu_list.active svg use, .menu_list:hover svg use {
+    stroke: #754327; /* hover되면 테두리 색상을 변경 */
+}
+
+.menu_list {
+    cursor: pointer;
+    border-bottom: 1px solid rgb(242, 242, 242);
+    padding: 15px 13px 15px 20px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    line-height: 19px;
+    letter-spacing: -0.3px;
+    font-size: 14px;
+    color: rgb(102, 102, 102);
+    font-weight: 900;
+}
+a {
+    text-decoration: none;
+}
+.content_area{
+    width: 820px;
+}
+.board_name {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-bottom: 27px;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+.board_list {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 10px;
+}
+.post_list{
+    display: list-item;
+    text-align: -webkit-match-parent;
+    width: 100%;
+    border-top: 1px solid rgb(238, 238, 238);
+}
+.post{
+    display: block;
+    margin: 0;
+}
+.change_cursor{
+    position: relative;
+    padding: 15px 34px;
+    cursor: pointer;
+}
+.post_title_emphasized{
+    max-width: 797px;
+    font-size: 15px;
+    line-height: 1.64;
+    color: #754327;
+    font-weight: 900;
+}
+.post_title_normal{
+    max-width: 797px;
+    font-size: 15px;
+    line-height: 1.64;
+    color: rgb(17, 17, 17);
+}
+.post_date{
+    font-size: 12px;
+    font-weight: 300;
+    color: rgb(136, 136, 136);
+}
+.open_arrow{
+    position: absolute;
+    display: inline-block;
+    width: 30px;
+    min-height: 71px;
+    top: 0px;
+    right: 24px;
+}
+.svg1{
+    fill: rgb(136, 136, 136);
+    margin-top: 24px;
+    transform: rotate(90deg);
+    width: 24;
+    height: 24;
+}
+.add_list{
+    width: 100%;
+    padding: 16px;
+    border-top: 1px solid rgb(238, 238, 238);
+    border-bottom: 1px solid rgb(238, 238, 238);
+    font-size: 14px;
+    color: #754327;
+    text-align: center;
+    cursor: pointer;
+}
+.svg2{
+    fill: #754327;
+    margin: 0px 0px -2px 4px;
+    transform: rotate(90deg);
+    width: 14;
+    height: 14;
+}
+.post_detail{
+    box-sizing: border-box;
+    padding: 25px 34px;
+    background-color: rgb(250, 250, 250);
+    width: 810px;
+    word-break: break-all;
+    font-size: 13px;
+    font-weight: normal;
+    color: rgb(17, 17, 17);
+    line-height: 1.62;
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    margin: 0;
+}
