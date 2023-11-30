@@ -5,16 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!-- jQuery 포함 -->
-<script src="/nongra/resources/summernote/lang/summernote-ko-KR.js"></script>
-<script src="/nongra/resources/summernote/summernote-lite.js"></script>
-<link rel="stylesheet" href="/nongra/resources/summernote/summernote-lite.css">
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 <style>
 
 	main{
 		display: grid;
-		grid-template-columns: 231px 1271px;
+		grid-template-columns: 231px 8fr;
 	}
 
 	.content-area{
@@ -24,7 +28,6 @@
 		border: 1px solid gray;
 		margin: 10px;
 		border-radius: 20px;
-		width: 1251px;
 		box-sizing: border-box;		
 	}
 
@@ -37,7 +40,13 @@
 	}
 	.input-area *{
 		display: block;
-		margin: 20px;
+		margin-top: 15px;
+	}
+	.category-area{
+		display: flex;
+	}
+	.category-area *{
+		margin : 0px;
 	}
 	.input-area{
 		grid-column: span 2;
@@ -46,11 +55,11 @@
 		grid-column: span 2;
 	}
 
-	.text-area pre{ 
+	.text-area div{ 
 		margin: 25px;
 	}
 
-	.text-area >pre:nth-child(5){ 
+	.text-area >div:nth-child(5){ 
 		margin-bottom: 20px;
 	}
 
@@ -101,26 +110,30 @@
 				<h1><span>상품등록</span></h1>
 				<div></div>
 				<div class="text-area">
-					<pre>판매글 제목</pre>
-					<pre>상품명</pre>
-					<pre>재고</pre>
-					<pre>원산지</pre>
-					<pre>상품 카테고리</pre>
+					<div>판매글 제목</div>
+					<div>가격</div>
+					<div>재고</div>
+					<div>원산지</div>
+					<div>상품 카테고리</div>
 					<label id="option-text" for="option">물품 옵션 설정
 						<input type="checkbox" name="option" id="option">
 					</label>
 				</div>
 					<div class="input-area">
-						<input type="text">
-						<input type="text">
-						<input type="text">
-						<input type="text">
-						<select name="">
-							<option value="아무거나">아무거나</option>
-						</select>
-						<select name="">
-							<option value="아무거나">아무거나</option>
-						</select>
+						<input type="text" name="title">
+						<input type="text" name="price">
+						<input type="text" name="stock">
+						<input type="text" name="origin">
+						<div class="category-area">
+							<select name="category">
+								<option value="아무거나">아무거나</option>
+							</select>
+							<button type="button" name="category1" value="category1" onclick="openPopUp();">카테고리1</button>
+							<select name="">
+								<option value="아무거나">아무거나</option>
+							</select>
+							<button type="button" name="category2" value="category2" onclick="openPopUp2();">카테고리2</button>
+						</div>
 						<input type="text">
 						<input type="file">
 					
@@ -140,26 +153,33 @@
 		</main>
 	</div>
 <script>
-	$('.summernote').summernote({
-		 height: 300,                 // 에디터 높이
-		  minHeight: null,             // 최소 높이
-		  maxHeight: null,             // 최대 높이
-		  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-		  lang: "ko-KR",					// 한글 설정
-		  placeholder: '최대3000자까지 쓸 수 있습니다'	,//placeholder 설정
-		  toolbar: [
-				    // [groupName, [list of button]]
-				    ['fontname', ['fontname']],
-				    ['fontsize', ['fontsize']],
-				    ['color', ['color']],
-				    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
-				    ['para', ['ul', 'ol', 'paragraph']],
-				    ['height', ['height']]
-					  ],
-				fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
-				fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
-	          
-		});
+	function openPopUp() {
+		let options = "toolbar=no,scrollbars=no,resizable=yes,status=no,menubar=no,width=800, height=800, top=0,left=0";
+		window.open("/nongra/seller/register/category","카테고리선택", options);
+	}
+	function openPopUp2(){
+		let options = "toolbar=no,scrollbars=no,resizable=yes,status=no,menubar=no,width=800, height=800, top=0,left=0";
+		window.open("/nongra/seller/register/category2", "카테고리2선택" , options);
+	}
+
+
+$('.summernote').summernote({
+	height : 300,
+	  toolbar: [
+		    // [groupName, [list of button]]
+		    ['fontname', ['fontname']],
+		    ['fontsize', ['fontsize']],
+		    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+		    ['color', ['forecolor','color']],
+		    ['table', ['table']],
+		    ['para', ['ul', 'ol', 'paragraph']],
+		    ['height', ['height']],
+		    ['insert',['picture','link','video']],
+		    ['view', ['fullscreen', 'help']]
+		  ],
+		fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+		fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
+});
 	</script>
 </body>
 </html>
