@@ -1,3 +1,3 @@
 function showPopup() {
-    window.open("배송지.html","배송지","width=400, height=300,left=100,top=50");
+    window.open("/nongra/address/shipping-address/list","배송지","width=570px, height=400px,left=100,top=50");
 }
