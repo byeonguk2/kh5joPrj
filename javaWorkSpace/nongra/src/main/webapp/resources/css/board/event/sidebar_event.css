@@ -3,25 +3,25 @@ section {
     height: 1000px;
     
 }
-#board_name{
+.board_name{
     width: 100%;
     font-size: 28px;
     padding: 3px;
     padding: 5px 0px 35px 1px;
 }
-#menu_list{
+.menu_list{
     width: 100%;
     margin-left: 7px;
     font-weight: 900;
 }
-#menu_list > div {
+.menu_list > div {
     border:  0.8px solid #d1d1d1;
     width: 162px;
     height: 17px;
     padding: 15px 13px 15px 20px;
     font-size: 14px;
 }
-#menu_list a {
+.menu_list a {
     color: rgb(97, 89, 89);
     text-decoration: none;
 }
