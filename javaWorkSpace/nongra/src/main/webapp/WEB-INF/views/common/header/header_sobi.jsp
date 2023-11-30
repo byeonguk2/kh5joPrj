@@ -10,7 +10,7 @@
 		<script defer src="/nongra/resources/js/common/header_sobi.js"></script>
 	</head>
 	<body>
-		<div id="wrap">
+
             <header>
                 <div></div>
                 <div></div>
@@ -38,7 +38,7 @@
                 <div></div>
                 <div></div>
                 <div></div>
-                <nav>
+                <nav  style="z-index: 2;">
                     <a href="">
                         <img id="img02" width="16px" height="18px" src="https://www.flaticon.com/svg/vstatic/svg/3917/3917065.svg?token=exp=1700476763~hmac=1fb752030c60129c49e751ef77933e27" alt="카테고리 아이콘">
                         <div>카테고리</div>

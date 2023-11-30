@@ -24,6 +24,8 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"><defs><path id="gfk9q0rhta" d="M1.657 1.657L9.657 1.657 9.657 9.657"></path></defs><g fill="none" fill-rule="evenodd"><g><g><g><g transform="translate(-339 -398) translate(0 386) translate(339 12) translate(4.69 6.343)"><use stroke="#666666" stroke-linecap="round" stroke-width="1.8" stroke-linejoin="round" transform="rotate(45 5.657 5.657)" xlink:href="#gfk9q0rhta"></use></g></g></g></g></g></svg>
                 </a></li>
             </ul>
+            <div class="btn_menu_cs"></div>
+            <%@ include file="/WEB-INF/views/common/aside/aside_sobi_contact.jsp" %>
         </div>
         <div class="content_area">
             <div class="board_name">공지사항</div>
@@ -63,7 +65,7 @@
                             [농라 사칭 사례]
                             농라의 공식 웹사이트(https://www.nongra.com/)가 아닌 사칭 웹사이트(농라의 상호명, 주소지, 사업자등록번호 등 도용)를 통해 대체불가토큰 (NFT) 무상 지급 등 허위의 이벤트 참여 독려
                             농라 또는 농라 임직원임을 사칭하며 SNS/구인 구직 사이트/문자 등을 통해 일자리를 제안하며 농라를 사칭한 웹사이트에 가입하도록 하고, 이후 활동비 명목으로 선입금을 유도하여 현금을 편취하는 사례
-                            이외 농라의 공식 웹사이트(https://www.coupang.com/)는 아니나, 농라의 상호명, 주소지, 사업자등록번호 등을 도용하여 표시한 모조 사이트
+                            이외 농라의 공식 웹사이트(https://www.nongra.com/)는 아니나, 농라의 상호명, 주소지, 사업자등록번호 등을 도용하여 표시한 모조 사이트
                             <br>
                             이와 같은 사례들은 농라과는 전혀 무관한 이벤트 및 사이트로, 사칭으로 인한 피해가 발생하지 않도록 확인되지 않은 사이트로의 연결을 유도하는 등 의심가는 이메일, 문자 등을 수신하신 경우에는 각별한 주의 부탁드립니다.
                             감사합니다.</p>
