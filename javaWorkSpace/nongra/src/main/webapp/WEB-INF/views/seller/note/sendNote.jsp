@@ -8,7 +8,7 @@
 <style>
 	main{
 		display: grid;
-		grid-template-columns: 1.4fr 8fr;
+		grid-template-columns: 231px 8fr;
 	}
 	
 	.content-area{
@@ -18,7 +18,7 @@
 		margin-left: 10px;
 		margin-top: 10px;
 		border-radius: 20px;
-		width: 100%;
+		width: 99%;
 		box-sizing: border-box;
 	}
 	.send{
@@ -153,7 +153,7 @@
 							</tbody>
 						</table>
 						<div class="send-bottom-area">
-							<button>작성하기</button>
+							<button onclick="openPopup();">작성하기</button>
 							<button>삭제</button>
 						</div>
 					</div>
@@ -174,8 +174,13 @@
 					checkAll[i].checked = false;
 				}
 			}
-
 		}
+
+		function openPopup(){
+			let options = "toolbar=no,scrollbars=no,resizable=yes,status=no,menubar=no,width=800, height=800, top=0,left=0";
+			window.open("/nongra/seller/note/write","쪽지작성", options);
+		}
+
 	</script>
 </body>
 </html>
