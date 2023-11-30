@@ -1,0 +1,98 @@
+.faq_search_tab {
+    position: relative;
+    padding: 30px;
+    border-radius: 10px;
+    background: #f8f8f8;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.faq_search_tab .search_title {
+    display: inline-block;
+    margin-right: 17px;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: -.02em;
+    vertical-align: middle;
+}
+.search_area .title+.search_wrap {
+    display: inline-block;
+    width: 560px;
+    vertical-align: middle;
+    margin: 0 auto;
+}
+.search_wrap .search_area {
+    position: relative;
+    width: 100%;
+}
+.search_area .search_area {
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 0 14px;
+    font-size: 14px;
+    line-height: 44px;
+    height: 44px;
+    letter-spacing: -.3px;
+    width: 100%;
+}
+.btn_search{
+    background-size: 26px auto;
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: 9px;
+    right: 14px;
+    overflow: hidden;
+    text-indent: -99999px;
+    background: url('/nongra/resources/img/common/icon/icon_search_black.svg') no-repeat 50%;
+    display: inline-block;
+    border: none;
+}
+.input_search{
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 0 14px;
+    font-size: 14px;
+    line-height: 44px;
+    height: 40px;
+    letter-spacing: -.3px;
+    width: 100%;
+    width: 410px;
+}
+.tab_area{
+    margin-top: 40px;
+    padding-bottom: 40px;
+    position: relative;
+    display: flex;
+    margin: 30px 0px 0px;
+}
+.btn_faq_tab.on{
+    z-index: 1;
+    border-color: rgb(51, 51, 51) rgb(51, 51, 51) rgb(255, 255, 255);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    color: rgb(51, 51, 51);
+    background-color: rgb(255, 255, 255);
+    font-weight: 600;
+}
+.btn_faq_tab {
+    position: relative;
+    flex: 1 1 0%;
+    height: 60px;
+    margin-left: -1px;
+    text-align: center;
+    font-size: 15px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(221, 221, 221) rgb(221, 221, 221) rgb(51, 51, 51);
+    border-image: initial;
+    background-color: rgb(249, 250, 251);
+    color: rgb(102, 102, 102);
+}

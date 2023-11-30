@@ -4,6 +4,7 @@ body, button, input, select, textarea {
 }
 body{
     margin: 0;
+    width: 1050px;
 }
 main{
     position: relative;
@@ -14,6 +15,7 @@ main{
     flex-direction: row;
     -webkit-box-pack: justify;
     justify-content: space-between;
+    z-index: 1;
 }
 .section{
     width: 200px;
@@ -27,6 +29,7 @@ main{
     line-height: 35px;
     color: #333;
     letter-spacing: -1px;
+    box-sizing: border-box;
 }
 .board_name{
     display: flex;
@@ -185,4 +188,7 @@ p {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     margin: 0;
+}
+.btn_menu_cs{
+    height: 150px;
 }
