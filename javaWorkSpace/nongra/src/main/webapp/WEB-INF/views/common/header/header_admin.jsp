@@ -1,13 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 <link rel="stylesheet" href="/nongra/resources/css/header/header_admin.css">
 </head>
-<body>
 		<header>
         <div class="header-area">
             <div class="header-logo">
@@ -30,5 +25,3 @@
         	</div>
     	</header>
     	<script type="text/javascript" src="/nongra/resources/js/common/header/header_admin.js"></script>
-</body>
-</html>

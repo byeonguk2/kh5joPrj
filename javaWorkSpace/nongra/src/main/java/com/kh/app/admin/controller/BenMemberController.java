@@ -8,12 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/admin/home")
-public class AdminHomeSelvlet extends HttpServlet {
-
+@WebServlet("/admin/memberBen")
+public class BenMemberController extends HttpServlet {
+	
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/WEB-INF/views/adminHome_test.jsp").forward(req, resp);
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		req.getRequestDispatcher("/WEB-INF/views/admin/member/memberBen.jsp").forward(req, resp);
+		
 	}
 	
 }
