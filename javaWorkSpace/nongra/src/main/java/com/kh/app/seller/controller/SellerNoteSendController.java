@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 public class SellerNoteSendController extends HttpServlet{
 	
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getRequestDispatcher("/WEB-INF/views/seller/note/sendNote.jsp").forward(req, resp);
-		
 	}
+	
 }
