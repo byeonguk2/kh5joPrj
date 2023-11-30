@@ -13,7 +13,7 @@
 	<div id="wrap">
 		<%@ include file="/WEB-INF/views/common/header/header_sobi.jsp"%>
 
-		<form name="form" action="">
+		<form name="form" action="https://www.naver.com/">
 			<div class="main">
 				<h2 class="management">내 정보 관리</h2>
 				<div id="box">내 정보 변경</div>
@@ -29,7 +29,7 @@
 						<div class="block">
 							<input type="text" name="user_nick" id="user_nick"
 								class="txt placeholder" placeholder="닉네임" maxlength="12"
-								value="mook"
+								value=""
 								onkeypress="if(event.keyCode== 40 || event.keyCode == 41) event.returnValue = false;"
 								onkeydown="chkLength(this, 12, 'nick');" onpaste="return false">
 							<button class="btn1" style='cursor: pointer;'
@@ -109,7 +109,7 @@
 					<dd class="line">
 						<div class="block_last">
 							<input type="text" name="mobile" class="phonetxt"
-								placeholder="휴대폰 번호" value="010-5233-6266"> <span
+								placeholder="휴대폰 번호" value=""> <span
 								class="ierror">ex) 010-0000-0000</span>
 							<p id="sns_phone_msg" style="display: none">
 								인증하신 휴대폰 번호가 변경되신 경우 <a
@@ -125,9 +125,9 @@
 					<dd class="line">
 						<div class="block_last2">
 							<input type="text" name="email1" class="txt length02"
-								placeholder="메일주소" value="jay6266"> <span class="at">@</span>
+								placeholder="메일주소" value=""> <span class="at">@</span>
 							<input type="text" name="email2" class="txt length02"
-								placeholder="메일주소" value="naver.com"> <select
+								placeholder="메일주소" value=""> <select
 								onclick="selectMail()" name="select_email" id="select_email">
 								<option>메일주소선택</option>
 								<option name="mailoption" value="naver.com">naver.com</option>
