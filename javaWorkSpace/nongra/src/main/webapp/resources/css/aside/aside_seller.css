@@ -1,15 +1,16 @@
 @charset "UTF-8";
 .icon {
-            background-image: url(/imageRepo/chevron-down.svg);
-            width: 20px;
-            height: 20px;
-            background-position: 0px -3px;
-        }
+	background-image: url(/imageRepo/chevron-down.svg);
+	width: 20px;
+	height: 20px;
+	background-size: cover;
+}
         aside {
             width: 230px;
             border-top: none;
             margin-left: -400px;
             transition: 0.8s;
+            box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.07);
         }
 
         .aside-item {
@@ -19,7 +20,6 @@
             justify-content: space-between;
             align-items: center;
             opacity: 0.8;
-            border-right: 1px solid gray;
         }
         .aside-item > label {
             width: 85px;
@@ -35,7 +35,7 @@
             background-size: cover;
             margin-left: 20px;
         }
-        .side-icon2 {
+        .down_icon{
             width: 30px;
             height: 30px;
             background-image: url(/nongra/resources/img/common/aside/seller/chevron-down.svg);
@@ -91,7 +91,6 @@
             justify-content: space-between;
             align-items: center;
             opacity: 0.8;
-            border-right: 1px solid gray;
             font-size: 14px;
             display: flex;
             justify-content: center;
