@@ -108,7 +108,16 @@
     font-size: 14px;
     line-height: 1.64;
     color: rgb(17, 17, 17);
+    position: relative;
+    padding: 25px 34px;
+    cursor: pointer;
+
 }
 .faq_height{
     height: 75px;
+}
+.faq_change_cursor{
+    position: relative;
+    padding: 25px 34px;
+    cursor: pointer;
 }

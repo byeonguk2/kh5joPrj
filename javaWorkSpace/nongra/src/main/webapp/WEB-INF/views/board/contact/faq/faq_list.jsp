@@ -52,7 +52,7 @@
             </div>
             <ul class="board_list">
                 <li class="post_list">
-                    <div class="post change_cursor">
+                    <div class="post faq_change_cursor">
                         <span class="post_q">Q</span>
                         <span class="post_title_faq">
                             [배송일정] 배송 날짜와 시간을 지정할 수 있나요?
@@ -64,7 +64,7 @@
                 </li>
 
                 <li class="post_list">
-                    <div class="post change_cursor faq_height">
+                    <div class="post faq_change_cursor">
                         <span class="post_q">Q</span>
                         <span class="post_title_faq">
                             [배송일정] 배송조회를 했는데 배송정보가 없다고 나와요.
@@ -85,13 +85,11 @@
                 </li>
 
                 <li class="post_list">
-                    <div class="post change_cursor">
-                        <div class="post_title_emphasized">
-                            [공지] 농라 사칭사이트 주의 안내          
-                        </div>
-                        <div class="post_date">
-                            2023.07.14
-                        </div>
+                    <div class="post faq_change_cursor">
+                        <span class="post_q">Q</span>
+                        <span class="post_title_faq">
+                            [배송일정] 배송 날짜와 시간을 지정할 수 있나요?
+                        </span>
                         <span class="open_arrow">
                             <svg class="svg1" width="24" height="24" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: rgb(136, 136, 136);"><path fill="#888888" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg>
                         </span>
@@ -99,88 +97,96 @@
                 </li>
 
                 <li class="post_list">
-                    <div class="post change_cursor">
-                        <div class="post_title_normal">
-                            [공지] 농라 사칭사이트 주의 안내          
-                        </div>
-                        <div class="post_date">
-                            2023.07.14
-                        </div>
+                    <div class="post faq_change_cursor">
+                        <span class="post_q">Q</span>
+                        <span class="post_title_faq">
+                            [배송일정] 배송 날짜와 시간을 지정할 수 있나요?
+                        </span>
                         <span class="open_arrow">
                             <svg class="svg1" width="24" height="24" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: rgb(136, 136, 136);"><path fill="#888888" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg>
                         </span>
                     </div>
                 </li>
 
+                
                 <li class="post_list">
-                    <div class="post change_cursor">
-                        <div class="post_title_normal">
-                            [공지] 농라 사칭사이트 주의 안내          
-                        </div>
-                        <div class="post_date">
-                            2023.07.14
-                        </div>
+                    <div class="post faq_change_cursor">
+                        <span class="post_q">Q</span>
+                        <span class="post_title_faq">
+                            [배송일정] 배송 날짜와 시간을 지정할 수 있나요?
+                        </span>
                         <span class="open_arrow">
                             <svg class="svg1" width="24" height="24" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: rgb(136, 136, 136);"><path fill="#888888" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg>
                         </span>
                     </div>
                 </li>
 
+                
                 <li class="post_list">
-                    <div class="post change_cursor">
-                        <div class="post_title_normal">
-                            [공지] 농라 사칭사이트 주의 안내          
-                        </div>
-                        <div class="post_date">
-                            2023.07.14
-                        </div>
+                    <div class="post faq_change_cursor">
+                        <span class="post_q">Q</span>
+                        <span class="post_title_faq">
+                            [배송일정] 배송 날짜와 시간을 지정할 수 있나요?
+                        </span>
                         <span class="open_arrow">
                             <svg class="svg1" width="24" height="24" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: rgb(136, 136, 136);"><path fill="#888888" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg>
                         </span>
                     </div>
                 </li>
 
+                
                 <li class="post_list">
-                    <div class="post change_cursor">
-                        <div class="post_title_normal">
-                            [공지] 농라 사칭사이트 주의 안내          
-                        </div>
-                        <div class="post_date">
-                            2023.07.14
-                        </div>
+                    <div class="post faq_change_cursor">
+                        <span class="post_q">Q</span>
+                        <span class="post_title_faq">
+                            [배송일정] 배송 날짜와 시간을 지정할 수 있나요?
+                        </span>
                         <span class="open_arrow">
                             <svg class="svg1" width="24" height="24" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: rgb(136, 136, 136);"><path fill="#888888" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg>
                         </span>
                     </div>
                 </li>
 
+                
                 <li class="post_list">
-                    <div class="post change_cursor">
-                        <div class="post_title_normal">
-                            [공지] 농라 사칭사이트 주의 안내          
-                        </div>
-                        <div class="post_date">
-                            2023.07.14
-                        </div>
+                    <div class="post faq_change_cursor">
+                        <span class="post_q">Q</span>
+                        <span class="post_title_faq">
+                            [배송일정] 배송 날짜와 시간을 지정할 수 있나요?
+                        </span>
                         <span class="open_arrow">
                             <svg class="svg1" width="24" height="24" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: rgb(136, 136, 136);"><path fill="#888888" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg>
                         </span>
                     </div>
                 </li>
 
+                
                 <li class="post_list">
-                    <div class="post change_cursor">
-                        <div class="post_title_normal">
-                            [공지] 농라 사칭사이트 주의 안내          
-                        </div>
-                        <div class="post_date">
-                            2023.07.14
-                        </div>
+                    <div class="post faq_change_cursor">
+                        <span class="post_q">Q</span>
+                        <span class="post_title_faq">
+                            [배송일정] 배송 날짜와 시간을 지정할 수 있나요?
+                        </span>
                         <span class="open_arrow">
                             <svg class="svg1" width="24" height="24" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: rgb(136, 136, 136);"><path fill="#888888" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg>
                         </span>
                     </div>
                 </li>
+
+                
+                <li class="post_list">
+                    <div class="post faq_change_cursor">
+                        <span class="post_q">Q</span>
+                        <span class="post_title_faq">
+                            [배송일정] 배송 날짜와 시간을 지정할 수 있나요?
+                        </span>
+                        <span class="open_arrow">
+                            <svg class="svg1" width="24" height="24" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: rgb(136, 136, 136);"><path fill="#888888" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg>
+                        </span>
+                    </div>
+                </li>
+
+                
 
                 <div class="add_list">더보기
                     <svg class="svg2" width="14" height="14" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: #754327;"><path fill="#754327" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg><path fill="#0051f5" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path>
