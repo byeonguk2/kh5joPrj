@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>	
 <style type="text/css">
-		#main-area{
+	#main-area{
 		display: grid;
 		grid-template-columns: 230px 8fr;
 		padding-top: 145px;
@@ -98,12 +98,7 @@
 			<form action="" method="post">
 				<div class="form_above">
 					<div class="select_search_area">
-						<h2>회원조회/수정</h2>
-						<div class="select_div">
-							<span>• 회원조회</span>
-								<div><input name="a" type="radio" value="판매자" checked="true">판매자</div>
-								<div><input name="a" type="radio" value="판매자">소비자</div>
-						</div>
+						<h2>요청허가/조회</h2>
 						<div class="search_div">
 							<span>• 회원검색</span>
 							<select name="" id="">
@@ -141,7 +136,7 @@
 								<td>파트너</td>
 								<td>정상</td>
 								<td>2023.11.23</td>
-								<td><button type="button">회원정보수정</button></td>
+								<td><button type="button" class="ben-btn">요청확인</button></td>
 							</tr>
 							<tr>
 								<th></th>
@@ -151,7 +146,7 @@
 								<td>파트너</td>
 								<td>정상</td>
 								<td>2023.9.23</td>
-								<td><button type="button">회원정보수정</button></td>
+								<td><button type="button" class="ben-btn">요청확인</button></td>
 							</tr>
 							<tr>
 								<th></th>
@@ -161,7 +156,7 @@
 								<td>파트너</td>
 								<td>정상</td>
 								<td>2023.9.23</td>
-								<td><button type="button">회원정보수정</button></td>
+								<td><button type="button" class="ben-btn">요청확인</button></td>
 							</tr>
 							<tr>
 								<th></th>
@@ -171,7 +166,7 @@
 								<td>파트너</td>
 								<td>정상</td>
 								<td>2023.9.23</td>
-								<td><button type="button">회원정보수정</button></td>
+								<td><button type="button" class="ben-btn">요청확인</button></td>
 							</tr>
 							<tr>
 								<th></th>
@@ -181,7 +176,7 @@
 								<td>파트너</td>
 								<td>정상</td>
 								<td>2023.9.23</td>
-								<td><button type="button">회원정보수정</button></td>
+								<td><button type="button" class="ben-btn">요청확인</button></td>
 							</tr>
 							<tr>
 								<th></th>
@@ -191,7 +186,7 @@
 								<td>파트너</td>
 								<td>정상</td>
 								<td>2023.9.23</td>
-								<td><button type="button">회원정보수정</button></td>
+								<td><button type="button" class="ben-btn">요청확인</button></td>
 							</tr>
 							<tr>
 								<th></th>
@@ -201,7 +196,7 @@
 								<td>파트너</td>
 								<td>정상</td>
 								<td>2023.9.23</td>
-								<td><button type="button">회원정보수정</button></td>
+								<td><button type="button" class="ben-btn">요청확인</button></td>
 							</tr>
 							<tr>
 								<th></th>
@@ -211,7 +206,7 @@
 								<td>일반회원</td>
 								<td>정상</td>
 								<td>2023.9.23</td>
-								<td><button type="button">회원정보수정</button></td>
+								<td><button type="button" class="ben-btn">요청확인</button></td>
 							</tr>
 							<tr>
 								<th></th>
@@ -221,7 +216,7 @@
 								<td>일반회원</td>
 								<td>정상</td>
 								<td>2023.9.23</td>
-								<td><button>회원정보수정</button></td>
+								<td><button type="button" class="ben-btn">요청확인</button></td>
 							</tr>
 							<tr>
 								<th></th>
@@ -231,7 +226,7 @@
 								<td>일반회원</td>
 								<td>정상</td>
 								<td>2023.9.23</td>
-								<td><button type="button">회원정보수정</button></td>
+								<td><button type="button" class="ben-btn">요청확인</button></td>
 							</tr>
 						</tbody>
 					</table>
@@ -263,7 +258,7 @@
 		menu1.innerHTML = "회원 조회/수정";
 		menu1.href = "/nongra/admin/select";
 		menu2.innerHTML = "회원 정지/해제";
-		menu2.href = "/nongra/admin/memberBen";
+        menu2.href = "/nongra/admin/memberBen";
 		menu3.innerHTML = "사업자 허가 여부";
 		menu3.href = "/nongra/admin/member/request";
 		}

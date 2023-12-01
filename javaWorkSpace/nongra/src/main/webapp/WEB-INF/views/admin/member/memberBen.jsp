@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>	
 <style type="text/css">
-	#main-area{
+		#main-area{
 		display: grid;
 		grid-template-columns: 230px 8fr;
 		padding-top: 145px;
@@ -51,20 +51,42 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr 2fr 2fr 2fr 2fr 3fr 4fr;
 		align-items: center;
-		border-top: 1px solid black;
+		border-top: none;
+		border-bottom: 1px solid black;
+		height: 80px;
 	}
 	td {
 		text-align: center;
-		height: 40px;
 		line-height: 40px;
 	}
-	.btn-paging{
-		display: flex;
-		justify-content: space-between;
+	thead > tr {
+		border-top: 1px solid black;
+		border-bottom: 1px solid black;
 	}
     .ben-btn{
         width: 90px;
     }
+    .paging-btn-area{
+    	display: grid;
+    	grid-template-columns: 1fr 2fr 1fr;
+    }
+    .paging-btn{
+    	display: flex;
+		height: 80px;
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
+    }
+    .ben-btn{
+        width: 90px;
+    }
+	.paging-btn{
+		font-size: 30px;
+	}
+	.paging-btn > button{
+		width: 60px;
+		height: 30px;
+	}
 </style>
 </head>
 <body>
@@ -75,7 +97,7 @@
 			<form action="" method="post">
 				<div class="form_above">
 					<div class="select_search_area">
-						<h2>회원조회/수정</h2>
+						<h2>회원정지/해제</h2>
 						<div class="select_div">
 							<span>• 회원조회</span>
 								<div><input name="a" type="radio" value="판매자" checked="true">판매자</div>
@@ -118,7 +140,7 @@
 								<td>파트너</td>
 								<td>정상</td>
 								<td>2023.11.23</td>
-								<td><button type="button" class="ben-btn">회원정지</button></td>
+								<td><button type="button" class="ben-btn" onclick="open.window()">회원정지</button></td>
 							</tr>
 							<tr>
 								<th></th>
@@ -128,7 +150,7 @@
 								<td>파트너</td>
 								<td>정상</td>
 								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">회원정지해제</button></td>
+								<td><button type="button" class="ben-btn">정지해제</button></td>
 							</tr>
 							<tr>
 								<th></th>
@@ -158,7 +180,7 @@
 								<td>파트너</td>
 								<td>정상</td>
 								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">회원정지해제</button></td>
+								<td><button type="button" class="ben-btn">정지해제</button></td>
 							</tr>
 							<tr>
 								<th></th>
@@ -168,7 +190,7 @@
 								<td>파트너</td>
 								<td>정상</td>
 								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">회원정지해제</button></td>
+								<td><button type="button" class="ben-btn">정지해제</button></td>
 							</tr>
 							<tr>
 								<th></th>
@@ -178,7 +200,7 @@
 								<td>파트너</td>
 								<td>정상</td>
 								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">회원정지해제</button></td>
+								<td><button type="button" class="ben-btn">정지해제</button></td>
 							</tr>
 							<tr>
 								<th></th>
@@ -188,7 +210,7 @@
 								<td>일반회원</td>
 								<td>정상</td>
 								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">회원정지해제</button></td>
+								<td><button type="button" class="ben-btn">정지해제</button></td>
 							</tr>
 							<tr>
 								<th></th>
@@ -198,7 +220,7 @@
 								<td>일반회원</td>
 								<td>정상</td>
 								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">회원정보수정</button></td>
+								<td><button type="button" class="ben-btn">회원정지</button></td>
 							</tr>
 							<tr>
 								<th></th>
@@ -208,21 +230,23 @@
 								<td>일반회원</td>
 								<td>정상</td>
 								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">회원정보수정</button></td>
-							</tr>
-							<tr id="btn-tr">
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td><button>이전</button></td>
-								<td><button>다음</button></td>
-								<td></td>
-								<td></td>
+								<td><button type="button" class="ben-btn">정지해제</button></td>
 							</tr>
 						</tbody>
 					</table>
-					
+				</div>
+				<div class="paging-btn-area">
+					<div></div>
+					<div class="paging-btn">
+						<button>이전</button>
+						<a href="">1</a>
+						<a href="">2</a>
+						<a href="">3</a>
+						<a href="">4</a>
+						<a href="">5</a>
+						<button>다음</button>
+					</div>
+					<div></div>
 				</div>
 			</from>
 		</div>
@@ -240,6 +264,7 @@
 		menu2.innerHTML = "회원 정지/해제";
         menu2.href = "/nongra/admin/memberBen";
 		menu3.innerHTML = "사업자 허가 여부";
+		menu3.href = "/nongra/admin/member/request";
 		}
 		createAsideLetter()
 		
