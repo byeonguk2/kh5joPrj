@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/faq")
-public class MkTestServlet extends HttpServlet{
+@WebServlet("/qna")
+public class MkTestServlet2 extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //		req.getRequestDispatcher("/WEB-INF/views/board/board_event/event_list.jsp").forward(req, resp);
@@ -18,6 +18,8 @@ public class MkTestServlet extends HttpServlet{
 //		req.getRequestDispatcher("/WEB-INF/views/board/contact/sidebar_contact.jsp").forward(req, resp);
 //		req.getRequestDispatcher("/WEB-INF/views/board/event/sidebar_event.jsp").forward(req, resp);
 //		req.getRequestDispatcher("/WEB-INF/views/board/contact/notice/notice_list.jsp").forward(req, resp);
-		req.getRequestDispatcher("/WEB-INF/views/board/contact/faq/faq_list.jsp").forward(req, resp);
+//		req.getRequestDispatcher("/WEB-INF/views/board/contact/faq/faq_list.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/board/contact/qna/qna_list.jsp").forward(req, resp);
+
 	}
 }
