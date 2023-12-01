@@ -1,0 +1,60 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<link rel="stylesheet" href="/nongra/resources/css/aside/sidebar_sobi_main.css">
+	<script defer src="/nongra/resources/js/common/aside/aside_sobi_main.js"></script>
+</head>
+<body>
+	<aside>
+        <div class="aside-item">
+            <div class="side-icon side-user" id="icon-user" style="border-top: none;"></div>
+            <label>회원정보 수정</label>
+            <div class="side-icon2"></div>
+        </div>    
+
+        <div class="aside-item">
+            <div class="side-icon" id="icon-chart"></div>
+            <label>배송지 관리</label>
+            <div class="side-icon2"></div>
+        </div>    
+
+        <div class="aside-item">
+            <div class="side-icon" id="icon-gift"></div>
+            <label>리뷰 관리</label>
+            <div class="side-icon2"></div>
+        </div>    
+
+        <div class="aside-item">
+            <div class="side-icon" id="icon-check"></div>
+            <label>상품문의</label>
+            <div class="side-icon2" onclick="fun01"></div>
+        </div>    
+
+        <div class="aside-item sitem1">
+            <div class="side-icon" id="icon-smile"></div>
+            <label>쪽지 목록</label>
+            <div class="side-icon2"></div>
+        </div>   
+        <div class="menu"><a href="/nongra/seller/note/send">보낸쪽지</a></div>
+        <div class="menu"><a href="/nongra/seller/note/recive">받은쪽지</a></div>
+
+        <div class="aside-item">
+            <div class="side-icon" id="icon-lotate"></div>
+            <label>회원탈퇴</label>
+            <div class="side-icon2"></div>
+        </div>       
+
+        <div class="aside-item aside-last-item">
+            <div>
+                <div><strong>고객센터 문의</strong></div>
+                <div><strong>1566-1234</strong></div>
+            </div>
+        </div>
+    </aside>
+	
+</body>
+</html>
