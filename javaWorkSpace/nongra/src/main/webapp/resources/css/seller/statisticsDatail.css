@@ -1,11 +1,11 @@
 @charset "UTF-8";
 main{
-	position: absolute;
-	top: 72px;
-	left: 231px;
-	width: 100%;
-	height: 100%;
 	background-color: rebeccapurple;
+	display: grid;
+	grid-template-columns: 231px 1fr;
+}
+.cover-area{
+	background-color: blue;
 }
 .title{
     font-weight: 700;

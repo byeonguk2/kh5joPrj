@@ -95,6 +95,7 @@
                         <tr>
                             <td>농라페이</td>
                             <td>24030원</td>
+                            <td><button class="charge-btn">충전하기</button>
                         </tr>
                         <tr>
                             <td>결제 후 잔액</td>
