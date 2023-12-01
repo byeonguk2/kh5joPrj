@@ -15,7 +15,7 @@ a {
 
 /* wrap div css */
 #wrap{
-	width: 1050px;
+	width: 1500px;
 	/* border: 1px solid black; */
 	margin: auto;
 	display: grid;
@@ -92,7 +92,7 @@ nav {
 	grid-column: span 6;
 	background-color: white;
 	display: flex;
-	width: 1050px;
+	width: 1500px;
 	height: 50px;
 	justify-content: space-around;
 	align-items: center;
