@@ -15,7 +15,7 @@
         </div>
         	<div class="nav-area">
 		        <nav class="nav-main" id="nav-main">
-		           <a href="" class="chagePage pix">회원관리</a>
+		           <a href="/nongra/admin/select" class="chagePage pix">회원관리</a>
 	               <a href="" class="chagePage">상품관리</a>
 	               <a href="" class="chagePage">통계관리</a>
 	               <a href="" class="chagePage">게시판관리</a>
