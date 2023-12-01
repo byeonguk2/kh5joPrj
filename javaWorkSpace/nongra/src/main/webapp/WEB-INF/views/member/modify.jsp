@@ -6,13 +6,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
-	href="/nongra/resources/css/modify/member_modify.css">
-<script defer src="/nongra/resources/js/modify/member_modify.js"></script>
+	href="/nongra/resources/css/member/member_modify.css">
+<script defer src="/nongra/resources/js/member/member_modify.js"></script>
 </head>
 <body>
 	<div id="wrap">
 		<%@ include file="/WEB-INF/views/common/header/header_sobi.jsp"%>
-
+		<div id="a">
+		<%@ include file="/WEB-INF/views/common/aside/aside_sobi_main.jsp"%>
 		<form name="form" action="https://www.naver.com/">
 			<div class="main">
 				<h2 class="management">내 정보 관리</h2>
@@ -160,14 +161,15 @@
 				</div>
 				<!-- <a href="https://www.naver.com/" class="button1">확인</a>     -->
 
-
+			
 			</div>
 		</form>
+		</div>
+		</div>
 		<script
 			src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 
-	</div>
 
 </body>
 </html>
