@@ -81,18 +81,34 @@
     color: rgb(51, 51, 51);
     background-color: rgb(255, 255, 255);
     font-weight: 600;
+    font-size: 14px;
+
 }
 .btn_faq_tab {
     position: relative;
     flex: 1 1 0%;
-    height: 60px;
+    height: 50px;
     margin-left: -1px;
     text-align: center;
-    font-size: 15px;
     border-width: 1px;
     border-style: solid;
     border-color: rgb(221, 221, 221) rgb(221, 221, 221) rgb(51, 51, 51);
     border-image: initial;
     background-color: rgb(249, 250, 251);
     color: rgb(102, 102, 102);
+    font-size: 14px;
+}
+.post_q{
+    margin-right: 57px;
+    font-size: 14px;
+    color: #754327;
+}
+.post_title_faq{
+    max-width: 797px;
+    font-size: 14px;
+    line-height: 1.64;
+    color: rgb(17, 17, 17);
+}
+.faq_height{
+    height: 75px;
 }
