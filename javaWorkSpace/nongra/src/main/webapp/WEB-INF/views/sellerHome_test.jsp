@@ -7,8 +7,12 @@
 <title>Insert title here</title>
 <style type="text/css">
 .wrap{
-		
+	height: 100vh;
 }
+main{
+	    height: 92vh;
+}
+
 </style>
 </head>
 <body>
