@@ -17,13 +17,13 @@
         </div>    
 
         <div class="aside-item">
-            <div class="side-icon" id="icon-chart"></div>
+            <div class="side-icon" id="icon-truck"></div>
             <label>배송지 관리</label>
             <div class="side-icon2"></div>
         </div>    
 
         <div class="aside-item">
-            <div class="side-icon" id="icon-gift"></div>
+            <div class="side-icon" id="icon-smile"></div>
             <label>리뷰 관리</label>
             <div class="side-icon2"></div>
         </div>    
@@ -35,7 +35,7 @@
         </div>    
 
         <div class="aside-item sitem1">
-            <div class="side-icon" id="icon-smile"></div>
+            <div class="side-icon" id="icon-mail"></div>
             <label>쪽지 목록</label>
             <div class="side-icon2"></div>
         </div>   
@@ -43,7 +43,7 @@
         <div class="menu"><a href="/nongra/seller/note/recive">받은쪽지</a></div>
 
         <div class="aside-item">
-            <div class="side-icon" id="icon-lotate"></div>
+            <div class="side-icon side-user" id="icon-user" style="border-top: none;"></div>
             <label>회원탈퇴</label>
             <div class="side-icon2"></div>
         </div>       
