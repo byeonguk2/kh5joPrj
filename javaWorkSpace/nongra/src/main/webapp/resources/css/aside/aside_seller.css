@@ -8,9 +8,9 @@
         aside {
             width: 230px;
             border-top: none;
-            margin-left: -400px;
             transition: 0.8s;
             box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.07);
+            background-color: white;
         }
 
         .aside-item {
@@ -78,7 +78,7 @@
             background-image: url(/nongra/resources/img/common/aside/seller/phone-forwarded.svg);
         }
         .delete {
-            margin-left: 0;
+			margin-left: -400px;
             transition: 0.5s;
         }
         .menu{

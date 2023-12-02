@@ -53,7 +53,7 @@
 		align-items: center;
 		border-top: none;
 		border-bottom: 1px solid black;
-		height: 80px;
+		height: 60px;
 	}
 	td {
 		text-align: center;
@@ -81,7 +81,7 @@
         width: 90px;
     }
 	.paging-btn{
-		font-size: 30px;
+		font-size: 17px;
 	}
 	.paging-btn > button{
 		width: 60px;

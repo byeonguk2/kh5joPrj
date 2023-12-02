@@ -69,7 +69,7 @@
         <div class="aside-item sitem11">
             <div class="side-icon" id="icon-phone"></div>
             <label>고객센터</label>
-            <div class="side-icon2"></div>
+            <div class="down_icon"></div>
         </div>     
         <div class="aside-item aside-last-item">
             <div>
