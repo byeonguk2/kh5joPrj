@@ -26,8 +26,17 @@ main{
     color: rgb(158, 158, 158);
 }
 
+/* 테이블 */
+table{
+    font-size: 15px;
+    width: 100%;
+    border-collapse: collapse;
+   	margin-top: 10px;
+}
+
 /* 선택 이미지 */
 .button{
+	margin: auto;
     width: 25px;
     height: 25px;
     display: flex;
@@ -36,6 +45,20 @@ main{
     border-radius: 100%;
     border: 2px solid #754327;
     background-color: white;
+}
+thead{
+	height: 35px;
+	font-size: 20px;
+}
+tbody > tr{
+	margin-top: 5px;
+	background-color: blue;
+}
+tbody > tr > th:nth-child(1){
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: red;
 }
 .img{
     width: 13px;
@@ -55,10 +78,3 @@ main{
     border: none;
 }
 
-/* 테이블 */
-table{
-    font-size: 15px;
-    width: 100%;
-    background-color: aqua;
-    border-collapse: collapse;
-}

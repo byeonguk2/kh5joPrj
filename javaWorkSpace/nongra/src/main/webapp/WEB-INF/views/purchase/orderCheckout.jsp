@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,11 +15,9 @@
             <div class="order-head">주문서</div>
             <div class="order">
                 <span class="head-text">주문상품</span>
-                <button>▽</button>
             </div>
-            <div class="simple-ver">[블랙위크] 인기 국탕찌개 9종 골라담기 (택2)</div>
             <div class="detail-ver">
-                <div class="product-image-area"><img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/cb45c971-b61a-48f2-a521-01d88b793f7e.jpg" alt=""></div>
+                <div class="product-image-area"><img id="detail-img" src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/cb45c971-b61a-48f2-a521-01d88b793f7e.jpg" alt=""></div>
                 <div class="product-name-area">[블랙위크] 인기 국탕찌개 9종 골라담기 (택2)</a></div>
                 <div class="product-cnt-area">1개</div>
                 <div class="product-price">9,800원</div>
@@ -62,7 +61,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><button class="delivery-btn" onclick="showPopup();">변경</button></td>
+                            <td><button class="delivery-btn" onclick="deliveryPopup();">변경</button></td>
                         </tr>
                     </table>
                 </div>
@@ -78,7 +77,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><button class="delivery-btn">수정</button></td>
+                            <td><button class="delivery-btn" onclick="modiftPopup()">수정</button></td>
                         </tr>
                     </table>
                 </div>
@@ -95,7 +94,7 @@
                         <tr>
                             <td>농라페이</td>
                             <td>24030원</td>
-                            <td><button class="charge-btn">충전하기</button>
+                            <td><button class="charge-btn" onclick="/nongra/페이충전페이지">충전하기</button>
                         </tr>
                         <tr>
                             <td>결제 후 잔액</td>
