@@ -42,7 +42,7 @@
                     <div class="css-1og0zk92">
                     	<p class="css-3y93rl"></p>
                     	<div class="rowletter-area">
-                        	<span id="idMsg">아이디는 4자 이상, 16자 이하로 입력해주세요.</span>
+                        	<span id="idMsg">아이디는 4자 이상, 16자 이하로 입력해주세요.  특수문자x</span>
                         	<span id="result">x아이디 중복확인</span>
                     	</div>
                     </div>
@@ -196,7 +196,6 @@
 </html>
 <script type="text/javascript">
 	<% if(alertMsg != null){ %>
-		alert("<%= alertMsg %>");
+		alert('<%= alertMsg %>');
 	<%} %>
-	
 </script>

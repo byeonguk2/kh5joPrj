@@ -78,7 +78,7 @@
             background-image: url(/nongra/resources/img/common/aside/seller/phone-forwarded.svg);
         }
         .delete {
-			margin-left: -400px;
+			margin-left: -230px;
             transition: 0.5s;
         }
         .menu{
@@ -99,6 +99,9 @@
             text-decoration: none;
             color: black;
         }
+        .plus-menu > a:hover{
+			color: #754327;
+		}
         .rotate{
             transform: rotate( -90deg );
         }

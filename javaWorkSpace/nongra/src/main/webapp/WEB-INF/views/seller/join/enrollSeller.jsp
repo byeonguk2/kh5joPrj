@@ -50,11 +50,11 @@
                     <p class="p-letter">사업형태</p>
                     <div class="radio-area">
                         <label>
-                            <input type="radio" name="business_form" id="bu-check" value="법인사업자" onclick="checkNoaml2(event);"  class="join-radio" checked="true">
+                            <input type="radio" name="business_form" id="bu-check" value="법인사업자" onclick="checkNoaml2(event);" checked="true"  class="join-radio" />
                             법인사업자
                         </label>
                         <label>
-                            <input type="radio" name="business_form" value="일반사업자" class="join-radio" onclick="checkNoaml(event)">
+                            <input type="radio" name="business_form" value="일반사업자" class="join-radio" onclick="checkNoaml(event)" />
                             일반사업자
                         </label>
                     </div>
@@ -71,7 +71,7 @@
                  </div>
                  <div class="business-join">
                     <p class="p-letter">사업장 전화번호</p>
-                    <input type="text" placeholder="사업장 전화번호를 입력해주세요." name="business_phone">
+                    <input type="number" placeholder="사업장 전화번호를 입력해주세요." name="business_phone">
                 </div>
                 <div class="css-1og0zk92">
                     	<p class="css-3y93rl"></p>
@@ -86,7 +86,7 @@
                 <div class="css-1og0zk92">
                     	<p class="css-3y93rl"></p>
                     	<div class="rowletter-area">
-                        	<span id="passMsg_re">법인사업자 번호 입력</span>
+                        	<span id="passMsg_re">상호(법인명) 입력</span>
                     </div>
                  </div>
                 <div class="business-join">

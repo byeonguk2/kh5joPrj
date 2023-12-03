@@ -12,32 +12,13 @@ const idCheck = document.querySelectorAll(".css-16yppgg");
 
 // 입력시 중복체크 버튼 활성화
 idInput[0].addEventListener("keyup",()=>{
-    const x = idInput[0].value.length;
-    if(x !== 0){
+   const x = idInput[0].value.length;
+   if(x !== 0){
 		idCheck[0].disabled = false;
 		return;
 	}
 	idCheck[0].disabled = true;
 })
-
-// idInput[1].addEventListener("keyup",()=>{
-//     console.log(idInput[1].value.length);
-//     const x = idInput[1].value.length;
-//     if(x !== 0){
-// 		idCheck[1].disabled = false;
-// 		return;
-// 	}
-// 	idCheck[1].disabled = true;
-// })
-// idInput[4].addEventListener("keyup",()=>{
-//     console.log(idInput[4].value.length);
-//     const x = idInput[4].value.length;
-//     if(x !== 0){
-// 		idCheck[2].disabled = false;
-// 		return;
-// 	}
-// 	idCheck[2].disabled = true;
-// })
 
 // 회원가입 유효성 검사
 
@@ -52,7 +33,7 @@ function join(){
 	// //비밀번호와 비밀번호 확인 값이 같은지 확인
 	var regExp = /^[a-z0-9]{4,12}$/;
 	if(!regExp.test(form.id.value)){
-		alert("아이디에 특수문자를 사용할 수 없습니다.");
+		alert("아이디에 형식이 맞지 않습니다");
 		form.id.focus();
 		return false;
 	}
@@ -120,11 +101,11 @@ function join(){
 		form.password.focus();
 		return false;
 	}
-     //\s 는 스페이스바임.
+    //\s 는 스페이스바임.
 	
-    if(form.password.value != form.password_re.value){
+   if(form.password.value != form.password_re.value){
 		alert("비밀번호를 확인해주세요.");
-		form.password.focus();
+		form.password_re.focus();
 		return false;
 	}
 
@@ -152,9 +133,9 @@ function join(){
 	for(var i=0; i<=allCkbox.length; i++){
 	if(allCkbox[i].checked == false){
 		alert("약간동의에 체크를 해주세요.");
-    	return false;
-        // break;
-    }
+   	return false;
+       // break;
+   }
 }
 	
 	form.submit();
@@ -245,4 +226,3 @@ function checkMsg4(){
 		return false;
 	}
 }
-// form.passMsg.innerHTML = "비밀번호는 8자리 이상이어야 하며, 대문자/소문자/숫자/특수문자 모두 포함해야 합니다.";
