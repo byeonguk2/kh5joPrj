@@ -1,0 +1,89 @@
+.notification_qna {
+    border-top: black solid 2.2px;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-left: 40px;
+    display: flex;
+    flex-direction: row;
+}
+.notification_qna :nth-child(1) {
+    width: 20px;
+}
+.notification_qna :nth-child(2) {
+    padding-left: 20px;
+}
+.qna_form {
+    margin-bottom: 60px;
+    padding: 35px 0 2px;
+    border-top: 2px solid #222;
+    border-bottom: 1px solid #222;
+}
+.qna_table th { 
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 125px;
+    padding-left: 11px;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+}
+.qna_table td { 
+    padding: 8px;
+    height: 46px;
+    vertical-align: top;
+}
+.qna_drop_wrap :nth-child(1){
+    margin-left: 0;
+}
+select {
+    font-size: 12px;
+}
+.qna_drop_opt {
+    position: relative;
+    height: 46px;
+
+}
+.qna_drop_select {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    height: 44px;
+    padding: 0 60px 0 25px;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    color: #222;
+    line-height: 44px;
+    cursor: pointer;
+}
+.qna_txt{
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.sel_arrow {
+    display: none;
+    position: absolute;
+    top: 18px;
+    right: 25px;
+    width: 15px;
+    height: 9px;
+    background-position: -36px 0;
+}
+.sel_arrow::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    right: 22px;
+    background-image: url(data:image/svg+xml;charset=utf8,%3csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.9999 15.9515L4.62416 8.57573L3.77563 9.42426L11.9999 17.6485L20.2242 9.42426L19.3756 8.57573L11.9999 15.9515Z' fill='rgb%280%2C0%2C0%29'%3e%3c/path%3e %3c/svg%3e);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    width: 20px;
+    height: 20px;
+}
