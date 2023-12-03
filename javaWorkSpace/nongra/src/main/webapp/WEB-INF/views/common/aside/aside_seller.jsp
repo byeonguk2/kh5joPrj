@@ -15,8 +15,8 @@
             <label>판매자 정보</label>
             <div class="down_icon"></div>
         </div>      
-        <div class="menu"><a href="">내 정보조회</a></div>
-        <div class="menu"><a href="">회원탈퇴</a></div>
+        <div class="menu"><a href="/nongra/seller/select">내 정보조회</a></div>
+        <div class="menu"><a href="/nongra/seller/quit">회원탈퇴</a></div>
         <div class="aside-item sitem2">
             <div class="side-icon" id="icon-chart"></div>
             <label>통계조회</label>

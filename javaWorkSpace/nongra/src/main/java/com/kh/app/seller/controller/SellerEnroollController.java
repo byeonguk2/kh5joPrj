@@ -38,10 +38,12 @@ public class SellerEnroollController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		try {
-			req.setCharacterEncoding("UTF-8");
+			
+			// 회원가입 정보 가져오기
 			SellerVo joinVo = (SellerVo)session.getAttribute("joinVo");
 			session.removeAttribute("joinVo");
 			
+			// 사업자 정보 받아오기
 			String business_no = req.getParameter("business_no");
 			String business_form = req.getParameter("business_form");
 			String business_name = req.getParameter("business_name");
@@ -59,9 +61,7 @@ public class SellerEnroollController extends HttpServlet {
 			String depositor = req.getParameter("depositor");
 			String account = req.getParameter("account");
 			
-			// 첨부파일 전부 받아오기 
-			Collection<Part> parts = req.getParts();
-			
+			// 첨부파일 전부 받아오기 	
 			Part f = req.getPart("f");
 			System.out.println(f);
 			System.out.println(f.getSubmittedFileName());
@@ -72,11 +72,22 @@ public class SellerEnroollController extends HttpServlet {
 			
 			InputStream in = null;
 			InputStream in2 = null;
-			// 읽기
-			if(f2.getSubmittedFileName() != null && f.getSubmittedFileName() != null) {
-			in = f.getInputStream();
-			in2 = f2.getInputStream();
+			
+			// 읽기 (만약 파일경로가 안들어오면 에러 발생)
+			if(f2.getSubmittedFileName() != null && !f2.getSubmittedFileName().equals("")) {
+				System.out.println("들어옴");
+				in = f.getInputStream();
 			}else {
+				System.out.println("들어옴2");
+				throw new Exception("사진 첨부를 안함..");
+			}
+			
+			// 읽기 (만약 파일경로가 안들어오면 에러 발생)
+			if(f.getSubmittedFileName() != null && !f.getSubmittedFileName().equals("")) {
+				System.out.println("들어옴");
+				in2 = f2.getInputStream();
+			}else {
+				System.out.println("들어옴2");
 				throw new Exception("사진 첨부를 안함..");
 			}
 			
@@ -109,6 +120,8 @@ public class SellerEnroollController extends HttpServlet {
 			
 			in.close();
 			out.close();
+			in2.close();
+			out2.close();
 			
 			String[] strArr = new String[2];
 			strArr[0] = path+sep+fileName;
@@ -140,9 +153,9 @@ public class SellerEnroollController extends HttpServlet {
 			resp.sendRedirect("/nongra/seller/login");
 			
 		}catch (Exception e) {
+			System.out.println(e.getMessage());
 			System.out.println("[ERROR-S001] 회원가입중 예외발생..");
 			e.printStackTrace();
-			System.out.println(e.getMessage());
 			session.setAttribute("alertMsg", "회원가입 실패");
 			resp.sendRedirect("/nongra/seller/join");
 		}
