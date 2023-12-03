@@ -1,0 +1,162 @@
+.member_drop{
+    height: 18px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    padding: 1px 0 1px 22px;
+    letter-spacing: -1px;
+    font-size: 20px;
+    line-height: 18px;
+    color: #2f56ae;
+    font-weight: bold;
+    background: url(	https://res.afreecatv.com/img/member/info_10_1.gif) no-repeat left -6px;
+    margin-left: 400px;
+}
+
+.drop01{
+    margin: 15px 0 0 400px;
+    padding: 0;
+    width: 100%;
+    float: left;
+    font-size: 16px;
+    height: 30px;
+  
+}
+#box{
+    width: 745px;
+    height: 300.75px;
+    position: relative;
+    padding: 20px 0;
+    float: left;
+    border: 1px solid #d1d1d1; ;
+    border-radius: 20px 20px 20px 20px;
+    margin-left: 400px;
+}
+
+.text{
+    padding: 0 0 15px 20px;
+    margin: 0;
+    float: left;
+    width: 690px;
+    
+}
+#box dt{
+    font-size: 12px !important;
+    font-weight: bold
+    
+}
+#box dd{
+    font-size: 12px !important;
+    padding: 3px 0 0 20px;
+    margin: 0;
+    line-height: 17px;
+    width: 690px;
+}
+#box dd span{
+    color: red;
+}
+.check1{
+    color: #797979;
+    padding: 0 0 0 20px;
+    margin: 0;
+    float: left;
+    width: 720px;
+    font-size: 12px !important;
+}
+.drop02{
+    width: 100%;
+    float: left;
+    font-size: 16px;
+    height: 30px;
+    margin: 25px 0px 0px 400px;
+    padding: 0px;
+}
+#box2{
+    width: 745px;
+    height: 222.75px;
+    position: relative;
+    padding: 20px 0;
+    float: left;
+    border: 1px solid #d1d1d1; ;
+    border-radius: 20px 20px 20px 20px;
+    font-size: 12px;
+    margin-left: 400px;
+}
+.cash{
+    border-top: 2px solid #dadada;
+    border-bottom: 2px solid #dadada;
+    height: 27px;
+    float: left;
+    width: 703px;
+    margin: 0 15px 17px 18px;
+}
+.cash dt{
+    width: 120px;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 8px;
+    float: left;
+    background: #f1f1f1;
+    height: 19px;
+    font-size: 12px;
+}
+.cash dd{
+    padding: 8px 0 0 16px;
+    float: left;
+    margin: 0;
+    font-size: 12px;
+}
+.text2{
+    padding: 0 0 15px 20px;
+    margin: 0;
+    float: left;
+    width: 700px;
+}
+.text2 dt{
+    padding-left: 7px;
+    text-align: left;
+    width: 700px;
+    font-weight: bold;
+}
+.text2 dd{
+    padding: 3px 0 0 20px;
+    margin: 0;
+    line-height: 17px;
+    width: 690px;
+}
+.way{
+    margin-top: 20px;
+}
+.btn{
+    float: left;
+    text-align: center;
+    width: 743px;
+    height: 37.93px;
+    padding-top: 10px;
+    margin-top: 50px;
+    font-size: 11px;
+    color: #7F7F7F;
+    margin-left: 400px;
+}
+.button1{
+    display: inline-block;
+    margin: 0 3px;
+    font-size: 13px;
+    padding: 6px 15px 5px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #2e6afd;
+    border: 1px solid #2e6afd;
+}
+.button2{
+    color: #000;
+    background-color: #fff;
+    display: inline-block;
+    margin: 0 3px;
+    font-size: 13px;
+    padding: 6px 15px 5px;
+    font-weight: bold;
+    border: 1px solid #999;
+}
+.main{
+    height: 800px;
+}
