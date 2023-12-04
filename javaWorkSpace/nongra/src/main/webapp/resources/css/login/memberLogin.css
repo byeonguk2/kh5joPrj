@@ -1,0 +1,99 @@
+@charset "UTF-8";
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+* {
+    letter-spacing: -0.27px;
+}
+body {
+    font-family: NotoSansKR, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+body {
+    line-height: 1;
+}
+:root {
+    --width: 750;
+    --deviceWidth: 323px;
+}
+.css-auhedv {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    background: rgb(247, 247, 247);
+}
+.css-auhedv > h1 {
+    font-size: 28px;
+    font-weight: 400;
+}
+.css-auhedv > div {
+    margin-top: 30px;
+    padding: 20px 30px 60px;
+    display: flex;
+    flex-direction: column;
+    background: white;
+}
+.css-auhedv > div > form {
+    display: flex;
+    flex-direction: column;
+}
+.css-18jns9z {
+    box-sizing: border-box;
+    padding: 0px 20px;
+    border: 1px solid rgb(204, 204, 204);
+    font-size: 16px;
+    height: 54px;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+.css-q5u0mo {
+    box-sizing: border-box;
+    padding: 0px 20px;
+    border: 1px solid rgb(204, 204, 204);
+    font-size: 16px;
+    height: 54px;
+    border-radius: 3px;
+    -webkit-text-security: disc;
+}
+.css-auhedv > div > div {
+    display: flex;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.css-auhedv > div > div > a {
+    width: 33%;
+    color: rgb(51, 51, 51);
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+}
+.css-auhedv > div > div > span {
+    font-size: 14px;
+    color: rgb(216, 216, 216);
+}
+.css-auhedv > p {
+    margin-top: 20px;
+    color: rgb(153, 153, 153);
+    font-size: 13px;
+    line-height: 20px;
+}
+.css-auhedv > div > form > button {
+    width: 340px;
+    height: 56px;
+    border-radius: 3px;
+    font-size: 16px;
+    margin: 30px 0px 10px;
+    background: #754327;
+    color: rgb(255, 255, 255);
+}
