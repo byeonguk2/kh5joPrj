@@ -15,11 +15,11 @@ a {
 
 /* wrap div css */
 #wrap{
-	width: 1500px;
+	width: 1050px;
 	/* border: 1px solid black; */
 	margin: auto;
 	display: grid;
-	grid-template-rows: 175px 1500px 300px;
+	grid-template-rows: 175px; /*500px 300px;*/
 	grid-template-columns: 1fr;
 }
 
@@ -92,7 +92,7 @@ nav {
 	grid-column: span 6;
 	background-color: white;
 	display: flex;
-	width: 1500px;
+	width: 1050px;
 	height: 50px;
 	justify-content: space-around;
 	align-items: center;
@@ -116,7 +116,19 @@ nav > a:nth-child(1) {
 	filter: invert(33%) sepia(1%) saturate(2082%) hue-rotate(314deg) brightness(107%) contrast(96%);
 }
 
+#coin-icon-area{
+	display: flex;
+	justify-content: center;
+	align-items: end;
+	margin: 10px;
+}
 
+#cart-icon-area{
+	display: flex;
+	justify-content: start;
+	align-items: end;
+	margin: 10px;
+}
 
 .nav-down{
 	position: fixed;
