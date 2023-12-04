@@ -129,8 +129,8 @@
 								<option value="아무거나">아무거나</option>
 							</select>
 							<button type="button" name="category1" value="category1" onclick="openPopUp();">카테고리1</button>
-							<select name="">
-								<option value="아무거나">아무거나</option>
+							<select name="category2">
+								<option>아무거나</option>
 							</select>
 							<button type="button" name="category2" value="category2" onclick="openPopUp2();">카테고리2</button>
 						</div>

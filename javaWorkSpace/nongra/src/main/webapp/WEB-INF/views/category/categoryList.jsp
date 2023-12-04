@@ -20,7 +20,7 @@
 	<h1>카테고리</h1>
 	<% for(CategoryVo voList : categoryList){ %>	
 	<div>
-		<%=voList.getCategory() %>
+		<%=voList.getCategory()%>
 	</div>
 	<% } %>
 	
