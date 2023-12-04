@@ -30,19 +30,24 @@ public class SellerService {
 
 	public int join(SellerVo joinVo, String[] strArr) throws Exception {
 		
+		// connection
 		Connection conn = JDBCTemplate.getConnection();
 		
+		// dao 호출 
 		SellerDao dao = new SellerDao();
 		int result = dao.join(joinVo,conn,strArr);
 		
+		// result가 4면 커밋 아니면 롤백 
 		if(result == 4) {
 			JDBCTemplate.commit(conn);
 		}else {
 			JDBCTemplate.rollback(conn);
 		}
-				
+			
+		// connection close 
 		JDBCTemplate.close(conn);
 		
+		// result return
 		return result;
 	}
 

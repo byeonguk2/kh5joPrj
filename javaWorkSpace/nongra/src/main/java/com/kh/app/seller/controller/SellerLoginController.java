@@ -40,6 +40,7 @@ public class SellerLoginController extends HttpServlet {
 				throw new Exception();
 			}
 			
+			System.out.println(loginSeller.getPermitYn());
 			session.setAttribute("alertMsg", "로그인성공");
 			session.setAttribute("loginSeller", loginSeller);
 			

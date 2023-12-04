@@ -44,10 +44,13 @@ public class SellerDao {
 	// 판매자 회원가입 
 	public int join(SellerVo joinVo, Connection conn, String[] strArr) throws Exception {
 		
+		// sql 쿼리문 
 		String sql = "INSERT ALL INTO MEMBER ( MEMBER_NO ,ID ,NICK ,PWD ,EMAIL ,NAME ,PHONE ) VALUES (SEQ_MEMBER.NEXTVAL,?,?,?,?,?,?) INTO SELLER ( SELLER_NO ,MEMBER_NO ,BUSINESS_NO ,BUSINESS_FORM ,BUSINESS_NAME ,BUSINESS_PHONE ,CORPORATION_NAME ,UPTAE ,UPJONG ,BUSINEES_ZIPCODE ,BUSINESS_ADDRESS ,DETAILED_ADR ,REPORT_NUMBER ,BANK ,DEPOSITOR ,ACCOUNT ) VALUES (SEQ_SELLER.NEXTVAL,SEQ_MEMBER.CURRVAL,?,?,?,?, ?,?,?,?,?,?, ?,?,?,?) INTO BUSINESS_FILE ( FILE_NO,SELLER_NO,FILE_SRC ) VALUES ( SEQ_BUSINESS_FILE.NEXTVAL,SEQ_SELLER.CURRVAL,?) INTO BUSINESS_FILE ( FILE_NO,SELLER_NO,FILE_SRC ) VALUES ((SELECT GET_ITEM_SEQ()FROM DUAL),SEQ_SELLER.CURRVAL,?) SELECT * FROM DUAL";
 		
+		// pstmt 생성 
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
+		// 인서트문에 값 넣기 
 		pstmt.setString(1, joinVo.getId());
 		pstmt.setString(2, joinVo.getNick());
 		pstmt.setString(3, joinVo.getPassword());
@@ -73,12 +76,13 @@ public class SellerDao {
 		pstmt.setString(21, strArr[0]);
 		pstmt.setString(22, strArr[1]);
 		
+		// result로 업데이트된 행 수 가져오기 
 		int result = pstmt.executeUpdate();
 		
-		System.out.println(result);
-		
+		// pstmt close
 		JDBCTemplate.close(pstmt);
 		
+		// result return
 		return result;
 	}
 	
@@ -124,6 +128,8 @@ public class SellerDao {
 			String bank = rs.getString("BANK");
 			String depositor = rs.getString("DEPOSITOR");
 			String account = rs.getString("ACCOUNT");
+			String permitYn = rs.getString("PERMIT_YN");
+			String joinDate = rs.getString("JOIN_DATE");
 			
 			loginSeller = new SellerVo();
 			
@@ -152,7 +158,9 @@ public class SellerDao {
 			loginSeller.setBank(bank);
 			loginSeller.setDepositor(depositor);
 			loginSeller.setAccount(account);
-			System.out.println(loginSeller);
+			loginSeller.setPermitYn(permitYn);
+			loginSeller.setJoinDate(joinDate);;
+			
 		}
 		System.out.println("들어옴");
 		System.out.println(loginSeller);

@@ -1,6 +1,14 @@
+<%@page import="com.kh.app.seller.vo.SellerVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<%		
+		SellerVo loginSeller = (SellerVo)session.getAttribute("loginSeller");
+    	String alertMsg = (String)session.getAttribute("alertMsg"); 
+    	session.removeAttribute("alertMsg");
+    %>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -12,7 +20,9 @@
 	<header>
         <div class="header-left-area">
             <div class="hamburger"></div>
-            <div class="header-logo"></div>
+            <a href="/nongra/seller/home">
+            	<div class="header-logo"></div>
+            </a>
         </div>
         
         <div class="header-right-area">
@@ -29,5 +39,22 @@
 			</div>
         </div>
     </header>
+    <script type="text/javascript">
+		<%if(alertMsg != null && !loginSeller.getPermitYn().equals("N")) {%>
+		
+			alert("<%= alertMsg %>");
+			
+		<% }else { %>
+			
+			<%if(loginSeller.getPermitYn().equals("N")){
+				session.removeAttribute("loginSeller");
+				session.removeAttribute("alertMsg");
+			%>
+				alert('사업자 권한요청이 수락되면 로그인 가능합니다.');
+				location.href="/nongra/seller/login";
+			<% } %>
+			
+		 <%} %>
+	</script>
 </body>
 </html>
