@@ -13,10 +13,22 @@
     padding-left: 20px;
 }
 .qna_form {
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     padding: 35px 0 2px;
-    border-top: 2px solid #222;
     border-bottom: 1px solid #222;
+}
+.qna_table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
 }
 .qna_table th { 
     padding-top: 8px;
@@ -31,6 +43,14 @@
     padding: 8px;
     height: 46px;
     vertical-align: top;
+    display: table-cell;
+}
+.qna_drop_group {
+    display: block;
+}
+.qna_drop_wrap {
+    float: left;
+    width: 50%;
 }
 .qna_drop_wrap :nth-child(1){
     margin-left: 0;
@@ -63,27 +83,162 @@ select {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
-.sel_arrow {
-    display: none;
+.sel_arrow{
     position: absolute;
-    top: 18px;
-    right: 25px;
-    width: 15px;
-    height: 9px;
-    background-position: -36px 0;
-}
-.sel_arrow::after {
-    content: "";
-    position: absolute;
-    top: 12px;
-    right: 22px;
-    background-image: url(data:image/svg+xml;charset=utf8,%3csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.9999 15.9515L4.62416 8.57573L3.77563 9.42426L11.9999 17.6485L20.2242 9.42426L19.3756 8.57573L11.9999 15.9515Z' fill='rgb%280%2C0%2C0%29'%3e%3c/path%3e %3c/svg%3e);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
+    display: inline-block;
     width: 20px;
-    height: 20px;
+    top: -10px;
+    right: 22px;
+}
+
+.qna_drop_opt.on .qna_drop_scroll {
+    display: block;
+}
+.qna_drop_scroll {
+    display: none;
+    overflow-y: auto;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 100%;
+    max-height: 180px;
+    margin-top: -1px;
+    border: 1px solid #e1e1e1;
+    background: #fff;
+}
+#qna_dropdown {
+    display: none;
+}
+/* option {
+    font-weight: normal;
+    display: block;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+    white-space: nowrap;
+} */
+.qna_btn_wrap {
+    display: flex;
+}
+.ccs_btn_line {
+    display: block;
+    position: relative;
+    height: 46px;
+    padding: 0 60px 0 25px;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    line-height: 46px;
+    box-sizing: border-box;
+}
+.qna_btn_wrap .ccs_btn_line {
+    float: left;
+    width: 50%;
+}
+.btnOrdItemList {
+    background-color: transparent;
+}
+.inp_txt_wrap {
+    display: inline-block;
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    vertical-align: top;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.inp_txt_wrap input[type=text] {
+    width: 100%;
+    height: 44px;
+    padding: 0 24px;
+    border: 0;
+    line-height: 44px;
+    box-sizing: border-box;
+}
+.buyselect {
+    position: relative;
+    border: 1px solid #e0e0e0;
+}
+.buyselect textarea {
+    overflow: auto;
+    width: 100%;
+    height: 350px;
+    padding: 20px 20px 30px;
+    border: none;
+    line-height: 18px;
+    resize: none;
+    box-sizing: border-box;
+    cursor: auto;
+}
+.qna_attach_lst {
+    overflow: hidden;
+    display: block;
+    margin: -15px 0 0 -15px;
+}
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.qna_attach_lst li {
+    float: left;
+    margin: 25px 0 0 15px;
+}
+.qna_btn_upload {
+    display: inline-block;
+    position: relative;
+    width: 70px;
+    height: 70px;
+    background: #ccc;
+}
+.qna_atch_icon {
+    display: block;
+    position: relative;
+    width: 66px;
+    height: 66px;
+    margin: 2px;
+    background: #ccc url('/nongra/resources/img/common/icon/btn_Img_upload.png') no-repeat 50%;
+}
+.qna_atchBox button {
+    overflow: visible;
+    border: 0 none;
+    border-radius: 0;
+    cursor: pointer;
+}
+.qna_atch_txt {
+    margin: 10px 0;
+    font-size: 12px;
+    color: #969696;
+}
+.qna_submit_btn_area {
+    text-align: center;
+}
+.qna_submit_btn_area ul {
+    display: inline-block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+.qna_submit_btn_area li {
+    float: left;
+    margin: 0 5px;
+}
+.qna_submit_btn_area button {
+    height: 46px;
+    width: 220px;
+    padding: 0;
+    font-size: 16px;
+    line-height: 48px;
+    border: #d9d9d9 solid 2px;
+}
+#cancelBtn {
+    background: #ffffff;
+
+}
+.qna_sbmt {
+    background-color: #754327;
+    color: #fff;
+    border: #754327 solid 1px;
 }
