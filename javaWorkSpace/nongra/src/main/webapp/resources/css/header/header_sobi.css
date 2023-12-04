@@ -116,11 +116,13 @@ nav > a:nth-child(1) {
 	filter: invert(33%) sepia(1%) saturate(2082%) hue-rotate(314deg) brightness(107%) contrast(96%);
 }
 
+
 #coin-icon-area{
 	display: flex;
 	justify-content: center;
 	align-items: end;
 	margin: 10px;
+	filter: invert(24%) sepia(47%) saturate(741%) hue-rotate(338deg) brightness(99%) contrast(85%);
 }
 
 #cart-icon-area{
@@ -128,11 +130,12 @@ nav > a:nth-child(1) {
 	justify-content: start;
 	align-items: end;
 	margin: 10px;
+	filter: invert(24%) sepia(47%) saturate(741%) hue-rotate(338deg) brightness(99%) contrast(85%);
 }
 
 .nav-down{
 	position: fixed;
-	height: 30px;
+	height: 50px;
 	/* animation: nav-down 0.1s ease; */
 }
 

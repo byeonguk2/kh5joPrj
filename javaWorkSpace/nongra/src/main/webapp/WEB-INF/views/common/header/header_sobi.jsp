@@ -15,13 +15,13 @@
                 <div></div>
                 <div></div>
                 <div class="top-menu">
-                    <a href="">회원가입</a>
+                    <a href="/nongra/member/join">회원가입</a>
                 </div>
                 <div class="top-menu">
-                    <a href="">로그인</a>
+                    <a href="/nongra/member/login">로그인</a>
                 </div>
                 <div class="top-menu">
-                    <a href="">고객센터</a>
+                    <a href="/nongra/contact/faq">고객센터</a>
                 </div>
                 <div></div>
                 <a class="logo" href="/nongra/home">

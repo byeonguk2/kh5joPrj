@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>home</h1>
+	<div id="wrap">
+	<%@	include file="/WEB-INF/views/common/header/header_sobi.jsp" %>
+	<main>
+		<h1>메인</h1>
+	</main>	
+	</div>
 </body>
 </html>
