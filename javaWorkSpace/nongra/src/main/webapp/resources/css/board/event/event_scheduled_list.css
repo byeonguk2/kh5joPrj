@@ -1,0 +1,34 @@
+.event_ul :nth-child(odd){
+    margin-right: 27px;
+
+}
+.event_li {
+    width: 380px;
+    display: inline-block;
+    position: relative;
+    margin-bottom: 40px;
+
+}
+.img_event_box .img_event {
+    width: 390px;
+}
+.p_event {
+    margin: 10px 0 8px 0;
+    font-size: 24px;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.event_ul {
+    border-top: black solid 1px;
+    border-bottom: black solid 1px;
+}
+.page_wrap_event {
+    padding-top: 30px;
+    border-top: 1px solid #EDEDED;
+    margin-top: 30px;
+}
+.page_list_event {
+    text-align: center;
+}
