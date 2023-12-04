@@ -16,4 +16,11 @@ public class sellerModifyController extends HttpServlet{
 		req.getRequestDispatcher("/WEB-INF/views/seller/sellerInfo/sellerModify.jsp").forward(req, resp);
 	}
 	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		System.out.println("요청받음");
+		
+	}
+	
 }

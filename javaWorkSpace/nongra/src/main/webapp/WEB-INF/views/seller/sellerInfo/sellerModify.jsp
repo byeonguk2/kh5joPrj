@@ -23,7 +23,7 @@ main{
 .content-area{
 	background-color: rgba(0,0,0,0);
 	display: grid;
-	grid-template-rows: 60px  45px  790px;
+	grid-template-rows: 60px 45px 780px;
 	width: 100%;
 	padding-top: 20px;
 }
@@ -64,7 +64,7 @@ form{
 	border: 1px solid #e3e7ee;
 	background-color: #ffffff;
 	display: grid;
-	grid-template-rows: 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 form > div {
@@ -83,6 +83,7 @@ form > div > label {
 form > div > input {
 	border: none;
 	padding: 25.25px 0px 25.25px 0px;
+	width: 800px;
 }
 
 #modify-btn{
@@ -103,6 +104,16 @@ form > div > input {
 	color: #754327;
 	line-height: 109px;
 }
+
+input[name="id"] , input[name="password"] , input[name="password_re"]
+,input[name="nick"]{
+	width: 200px
+}
+
+.guide{
+	color: red;
+}
+
 /* outline 테두리 없애기 */
 input:focus {outline: none;} 
 </style>
@@ -123,37 +134,34 @@ input:focus {outline: none;}
 						<a href="/nongra/seller/businessInfo">사업자 정보</a>
 					</div>
 				</div>
-				<form action="" method="post">
+				<form id="form" action="/nongra/seller/modify" method="post">
 					<div>
-						<label id="title">판매자 개인정보 수정</label>
-					</div>
-					<div>
-						<label>아이디</label>
-						<input type="text" name="id" value="quddnr13213"/>
+						<label id="title">판매자 개인정보</label>
 					</div>
 					<div>
 						<label>패스워드</label>
-						<input type="password" name="id" value="quddnr13213"/>
+						<input type="password" name="password" value="<%= loginSeller.getPassword() %>"/>
+					</div>
+					<div>
+						<label>패스워드 확인</label>
+						<input type="password" name="password_re" value=""/>
+						<label class='guide'></label>
 					</div>
 					<div>
 						<label>닉네임</label>
-						<input type="text" name="id" value="킹병욱"/>
+						<input type="text" name="nick" value="<%= loginSeller.getNick() %>"/>
 					</div>
 					<div>
 						<label>이름</label>
-						<input type="text" name="id" value="박병욱"/>
+						<input type="text" name="name" value="<%= loginSeller.getName() %>"/>
 					</div>
 					<div>
 						<label>전화번호</label>
-						<input type="text" name="id" value="010-6706-2232"/>
+						<input type="text" name="phone" value="<%= loginSeller.getPhone() %>"/>
 					</div>
 					<div>
 						<label>이메일</label>
-						<input type="text" name="id" value="quddnr3688@naver.com"/>
-					</div>
-					<div>
-						<label>가입일시</label>
-						<input type="text" name="id" value="2023/12/23"/>
+						<input type="text" name="email" value="<%= loginSeller.getEmail() %>"/>
 					</div>
 					<div id="modify-btn">
 						<button>수정완료</button>
@@ -162,5 +170,14 @@ input:focus {outline: none;}
 			</div>
 		</main>
 	</div>
+	<script>
+		function checkPwd(){
+			const from = document.querySelector("#form");
+			const pwdValue = form.password.value;
+			const pwd_Value = form.password_re.value;
+			console.log(pwdValue);
+			console.log(pwd_Value);
+		}
+	</script>
 </body>
 </html>

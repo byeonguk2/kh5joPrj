@@ -25,11 +25,14 @@ public class SellerLoginController extends HttpServlet {
 		HttpSession session = req.getSession();
 		try {
 			
+			// 데이터 받아오기
 			String id = req.getParameter("id");
 			String pwd = req.getParameter("pwd");
 			
+			// vo생성 
 			SellerVo vo = new SellerVo();
 			
+			// vo
 			vo.setId(id);
 			vo.setPassword(pwd);
 			
@@ -40,7 +43,6 @@ public class SellerLoginController extends HttpServlet {
 				throw new Exception();
 			}
 			
-			System.out.println(loginSeller.getPermitYn());
 			session.setAttribute("alertMsg", "로그인성공");
 			session.setAttribute("loginSeller", loginSeller);
 			

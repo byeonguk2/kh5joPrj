@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<%		
+	<%		
 		SellerVo loginSeller = (SellerVo)session.getAttribute("loginSeller");
     	String alertMsg = (String)session.getAttribute("alertMsg"); 
     	session.removeAttribute("alertMsg");
@@ -40,21 +40,9 @@
         </div>
     </header>
     <script type="text/javascript">
-		<%if(alertMsg != null && !loginSeller.getPermitYn().equals("N")) {%>
-		
+		<%if(alertMsg != null) {%>
 			alert("<%= alertMsg %>");
-			
-		<% }else { %>
-			
-			<%if(loginSeller.getPermitYn().equals("N")){
-				session.removeAttribute("loginSeller");
-				session.removeAttribute("alertMsg");
-			%>
-				alert('사업자 권한요청이 수락되면 로그인 가능합니다.');
-				location.href="/nongra/seller/login";
-			<% } %>
-			
-		 <%} %>
+		<% } %>
 	</script>
 </body>
 </html>

@@ -81,6 +81,7 @@ form > div > label {
 form > div > input {
 	border: none;
 	padding: 25.25px 0px 25.25px 0px;
+	width: 800px;
 }
 
 #modify-btn{
@@ -127,58 +128,55 @@ input:focus {outline: none;}
 					</div>
 					<div>
 						<label>사업자번호</label>
-						<input type="text" name="id" value="quddnr13213" />
+						<input type="text" name="id" value="<%= loginSeller.getBusinessNo() %>" />
 					</div>
 					<div>
 						<label>사업형태</label>
-						<input type="text" name="id" value="quddnr13213" />
+						<input type="text" name="id" value="<%= loginSeller.getBusinessForm() %>" />
 					</div>
 					<div>
 						<label>사업장명</label>
-						<input type="text" name="id" value="킹병욱" />
+						<input type="text" name="id" value="<%= loginSeller.getBusineesName() %>" />
 					</div>
 					<div>
 						<label>사업자 전화번호</label>
-						<input type="text" name="id" value="박병욱" />
+						<input type="text" name="id" value="<%= loginSeller.getBusineesPhone() %>" />
 					</div>
 					<div>
 						<label>우편번호</label>
-						<input type="text" name="id" value="010-6706-2232" />
+						<input type="text" name="id" value="<%= loginSeller.getBusineesZipCode() %>" />
 					</div>
 					<div>
 						<label>사업장 주소</label>
-						<input type="text" name="id" value="quddnr3688@naver.com" />
+						<input type="text" name="id" value="<%= loginSeller.getBusineesAdr() %>" />
 					</div>
 					<div>
 						<label>업태</label>
-						<input type="text" name="id" value="2023/12/23" />
+						<input type="text" name="id" value="<%= loginSeller.getUptae() %>" />
 					</div>
 					<div>
 						<label>업종</label>
-						<input type="text" name="id" value="2023/12/23" />
+						<input type="text" name="id" value="<%= loginSeller.getUpjong() %>" />
 					</div>
 					<div>
 						<label>통신판매업신고번호</label>
-						<input type="text" name="id" value="2023/12/23" />
+						<input type="text" name="id" value="<%= loginSeller.getReportNumber() %>" />
 					</div>
 					<div>
 						<label>허가여부</label>
-						<input type="text" name="id" value="2023/12/23" />
+						<input type="text" name="id" value="<%= loginSeller.getPermitYn() %>" />
 					</div>
 					<div>
 						<label>은행</label>
-						<input type="text" name="id" value="2023/12/23" />
+						<input type="text" name="id" value="<%= loginSeller.getBank() %>" />
 					</div>
 					<div>
 						<label>입금자명</label>
-						<input type="text" name="id" value="2023/12/23" />
+						<input type="text" name="id" value="<%= loginSeller.getDepositor() %>" />
 					</div>
 					<div>
 						<label>입금계좌</label>
-						<input type="text" name="id" value="2023/12/23" />
-					</div>
-					<div id="modify-btn">
-						<button>내 정보 수정요청</button>
+						<input type="text" name="id" value="<%= loginSeller.getAccount() %>" />
 					</div>
 				</form>
 			</div>

@@ -2,10 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
-	<%
-		SellerVo sellerLogin = (SellerVo)request.getAttribute("sellerLogin");
-	%>
-	
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,6 +83,7 @@ main{
 .content > div > input {
 	border: none;
 	padding: 25.25px 0px 25.25px 0px;
+	width: 800px;
 }
 
 #modify-btn{
@@ -113,7 +110,7 @@ input:focus {outline: none;}
 </head>
 <body>
 	<div class = "wrap">
-		<%@ include file="/WEB-INF/views/common/header/header_seller.jsp" %>
+		<%@ include file="/WEB-INF/views/common/header/header_seller.jsp"  %>
 		<main>
 			<%@ include file="/WEB-INF/views/common/aside/aside_seller.jsp" %>
 			<div class = "content-area">
@@ -133,31 +130,31 @@ input:focus {outline: none;}
 					</div>
 					<div>
 						<label>아이디</label>
-						<input type="text" name="id" value="<% sellerLogin.getId(); %>" readonly/>
+						<input type="text" name="id" value="<%= loginSeller.getId() %>" readonly/>
 					</div>
 					<div>
 						<label>패스워드</label>
-						<input type="password" name="password" value="<% sellerLogin.getPassword(); %>" readonly/>
+						<input type="password" name="password" value="<%= loginSeller.getPassword() %>" readonly/>
 					</div>
 					<div>
 						<label>닉네임</label>
-						<input type="text" name="nick" value="<% sellerLogin.getNick(); %>" readonly/>
+						<input type="text" name="nick" value="<%= loginSeller.getNick() %>" readonly/>
 					</div>
 					<div>
 						<label>이름</label>
-						<input type="text" name="name" value="<% sellerLogin.getName(); %>" readonly/>
+						<input type="text" name="name" value="<%= loginSeller.getName() %>" readonly/>
 					</div>
 					<div>
 						<label>전화번호</label>
-						<input type="text" name="phone" value="<% sellerLogin.getPhone(); %>" readonly/>
+						<input type="text" name="phone" value="<%= loginSeller.getPhone() %>" readonly/>
 					</div>
 					<div>
 						<label>이메일</label>
-						<input type="text" name="email" value="<% sellerLogin.getEmail(); %>" readonly/>
+						<input type="text" name="email" value="<%= loginSeller.getEmail() %>" readonly/>
 					</div>
 					<div>
 						<label>가입일시</label>
-						<input type="text" name="joinDate" value="<% sellerLogin.getJoinDate(); %>" readonly/>
+						<input type="text" name="joinDate" value="<%= loginSeller.getJoinDate() %>" readonly/>
 					</div>
 					<div id="modify-btn">
 						<button onclick="location.href='/nongra/seller/modify'">내 정보 수정하기</button>
