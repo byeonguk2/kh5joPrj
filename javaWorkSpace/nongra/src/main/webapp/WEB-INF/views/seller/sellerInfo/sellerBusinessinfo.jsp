@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,6 +82,7 @@ main{
 .content > div > input {
 	border: none;
 	padding: 25.25px 0px 25.25px 0px;
+	width: 800px;
 }
 
 #modify-btn{
@@ -127,55 +129,59 @@ input:focus {outline: none;}
 					</div>
 					<div>
 						<label>사업자번호</label>
-						<input type="text" name="id" value="quddnr13213" readonly/>
+						<input type="text" name="id" value="<%= loginSeller.getBusinessNo() %>" readonly/>
 					</div>
 					<div>
 						<label>사업형태</label>
-						<input type="text" name="id" value="quddnr13213" readonly/>
+						<input type="text" name="id" value="<%= loginSeller.getBusinessForm() %>" readonly/>
 					</div>
 					<div>
 						<label>사업장명</label>
-						<input type="text" name="id" value="킹병욱" readonly/>
+						<input type="text" name="id" value="<%= loginSeller.getBusineesName() %>" readonly/>
 					</div>
 					<div>
 						<label>사업자 전화번호</label>
-						<input type="text" name="id" value="박병욱" readonly/>
+						<input type="text" name="id" value="<%= loginSeller.getBusineesPhone() %>" readonly/>
 					</div>
 					<div>
 						<label>우편번호</label>
-						<input type="text" name="id" value="010-6706-2232" readonly/>
+						<input type="text" name="id" value="<%= loginSeller.getBusineesZipCode() %>" readonly/>
 					</div>
 					<div>
 						<label>사업장 주소</label>
-						<input type="text" name="id" value="quddnr3688@naver.com" readonly/>
+						<input type="text" name="id" value="<%= loginSeller.getBusineesAdr() %>" readonly/>
 					</div>
 					<div>
 						<label>업태</label>
-						<input type="text" name="id" value="2023/12/23" readonly/>
+						<input type="text" name="id" value="<%= loginSeller.getUptae() %>" readonly/>
 					</div>
 					<div>
 						<label>업종</label>
-						<input type="text" name="id" value="2023/12/23" readonly/>
+						<input type="text" name="id" value="<%= loginSeller.getUpjong() %>" readonly/>
 					</div>
 					<div>
 						<label>통신판매업신고번호</label>
-						<input type="text" name="id" value="2023/12/23" readonly/>
-					</div>
-					<div>
-						<label>허가여부</label>
-						<input type="text" name="id" value="2023/12/23" readonly/>
+						<input type="text" name="id" value="<%= loginSeller.getReportNumber() %>" readonly/>
 					</div>
 					<div>
 						<label>은행</label>
-						<input type="text" name="id" value="2023/12/23" readonly/>
+						<input type="text" name="id" value="<%= loginSeller.getBank() %>" readonly/>
 					</div>
 					<div>
 						<label>입금자명</label>
-						<input type="text" name="id" value="2023/12/23" readonly/>
+						<input type="text" name="id" value="<%= loginSeller.getDepositor() %>" readonly/>
 					</div>
 					<div>
 						<label>입금계좌</label>
-						<input type="text" name="id" value="2023/12/23" readonly/>
+						<input type="text" name="id" value="<%= loginSeller.getAccount() %>" readonly/>
+					</div>
+					<div>
+						<label>법인명</label>
+						<input type="text" name="id" value="<% if(loginSeller.getCorporationName() == null){ %>없음
+						<% }else{ %>
+							<%= loginSeller.getCorporationName() %>
+						<% } %>
+						" readonly/>
 					</div>
 					<div id="modify-btn">
 						<button onclick="location.href='/nongra/seller/modifyBusiness'">내 정보 수정하기</button>

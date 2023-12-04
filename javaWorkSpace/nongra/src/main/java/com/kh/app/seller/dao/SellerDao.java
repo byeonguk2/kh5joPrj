@@ -89,7 +89,7 @@ public class SellerDao {
 	// 판매자 로그인
 	public SellerVo login(SellerVo vo, Connection conn) throws Exception {
 		
-		String sql = "SELECT * FROM SELLER S JOIN MEMBER M ON (S.MEMBER_NO = M.MEMBER_NO) WHERE M.ID = ? AND M.PWD = ?";
+		String sql = "SELECT * FROM SELLER S JOIN MEMBER M ON (S.MEMBER_NO = M.MEMBER_NO) WHERE QUIT_YN ='N' AND M.ID = ? AND M.PWD = ?";
 		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, vo.getId());
@@ -162,8 +162,6 @@ public class SellerDao {
 			loginSeller.setJoinDate(joinDate);;
 			
 		}
-		System.out.println("들어옴");
-		System.out.println(loginSeller);
 		JDBCTemplate.close(pstmt);
 		JDBCTemplate.close(rs);
 		
