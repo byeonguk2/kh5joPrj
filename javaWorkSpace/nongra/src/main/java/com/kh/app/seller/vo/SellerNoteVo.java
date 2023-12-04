@@ -4,8 +4,9 @@ public class SellerNoteVo {
 	
 	private String noteNo;
 	private String toNo;
-	private String toNick;
+	private String toId;
 	private String fromNo;
+	private String fromId;
 	private String fromNick;
 	private String title;
 	private String content;
@@ -15,13 +16,14 @@ public class SellerNoteVo {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public SellerNoteVo(String noteNo, String toNo, String toNick, String fromNo, String fromNick, String title,
-			String content, String sendDate, String checkDate) {
+	public SellerNoteVo(String noteNo, String toNo, String toId, String fromNo, String fromId, String fromNick,
+			String title, String content, String sendDate, String checkDate) {
 		super();
 		this.noteNo = noteNo;
 		this.toNo = toNo;
-		this.toNick = toNick;
+		this.toId = toId;
 		this.fromNo = fromNo;
+		this.fromId = fromId;
 		this.fromNick = fromNick;
 		this.title = title;
 		this.content = content;
@@ -40,17 +42,23 @@ public class SellerNoteVo {
 	public void setToNo(String toNo) {
 		this.toNo = toNo;
 	}
-	public String getToNick() {
-		return toNick;
+	public String getToId() {
+		return toId;
 	}
-	public void setToNick(String toNick) {
-		this.toNick = toNick;
+	public void setToId(String toId) {
+		this.toId = toId;
 	}
 	public String getFromNo() {
 		return fromNo;
 	}
 	public void setFromNo(String fromNo) {
 		this.fromNo = fromNo;
+	}
+	public String getFromId() {
+		return fromId;
+	}
+	public void setFromId(String fromId) {
+		this.fromId = fromId;
 	}
 	public String getFromNick() {
 		return fromNick;
@@ -84,11 +92,9 @@ public class SellerNoteVo {
 	}
 	@Override
 	public String toString() {
-		return "SellerNoteVo [noteNo=" + noteNo + ", toNo=" + toNo + ", toNick=" + toNick + ", fromNo=" + fromNo
-				+ ", fromNick=" + fromNick + ", title=" + title + ", content=" + content + ", sendDate=" + sendDate
-				+ ", checkDate=" + checkDate + "]";
+		return "SellerNoteVo [noteNo=" + noteNo + ", toNo=" + toNo + ", toId=" + toId + ", fromNo=" + fromNo
+				+ ", fromId=" + fromId + ", fromNick=" + fromNick + ", title=" + title + ", content=" + content
+				+ ", sendDate=" + sendDate + ", checkDate=" + checkDate + "]";
 	}
-	
-	
 	
 }

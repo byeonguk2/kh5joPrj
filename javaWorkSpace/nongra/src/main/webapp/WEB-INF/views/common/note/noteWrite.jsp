@@ -1,5 +1,11 @@
+<%@page import="com.kh.app.seller.vo.SellerVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+    	SellerVo loginSeller = (SellerVo) session.getAttribute("loginSeller"); 
+    %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,6 +68,10 @@
     }
     
 </style>
+
+
+
+
 <body>
 	
 	<div class="wrap">
@@ -69,15 +79,17 @@
             <img width="150px" height="120px" src="\nongra\resources\img\common\logo.png" alt="농라로고">
             <h1>쪽지작성</h1>
         </header>
-        <form action="/nongra/seller/note/write" method="post">
+        <form id="noteForm" action="/nongra/seller/note/write" method="post">
             <main>
                 <div class=main-left>
+                	<span>작성자</span>
                     <span>받는 사람</span>
                     <span>제목</span>
                     <span>내용</span>
                 </div>
                 <div class="main-right">
-                    <input type="text" name="toNick" placeholder="아이디를 입력해주세요">
+                	<div><%= loginSeller.getId() %></div>
+                    <input type="text" name="toId" placeholder="아이디를 입력해주세요">
                     <input type="text" name="title" placeholder="제목을 입력해주세요">
                     <textarea name="content" placeholder="내용을 입력해주세요"></textarea>
                 </div>
@@ -88,5 +100,7 @@
             </footer>
         </form>
     </div>
+
 </body>
+   
 </html>
