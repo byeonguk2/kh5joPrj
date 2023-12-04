@@ -1,13 +1,14 @@
 package com.kh.app.seller.vo;
 
 public class SellerVo {
+
 	
 
 	public SellerVo(String memberNo, String sellerNo, String nick, String id, String password, String password_re,
 			String email, String name, String phone, String businessNo, String businessForm, String busineesName,
 			String busineesPhone, String corporationName, String uptae, String upjong, String busineesZipCode,
 			String busineesAdr, String detailedAdr, String reportNumber, String bank, String depositor, String account,
-			String fileNo, String fileSrc) {
+			String permitYn, String joinDate, String fileNo, String fileSrc) {
 		super();
 		this.memberNo = memberNo;
 		this.sellerNo = sellerNo;
@@ -32,6 +33,8 @@ public class SellerVo {
 		this.bank = bank;
 		this.depositor = depositor;
 		this.account = account;
+		this.permitYn = permitYn;
+		this.joinDate = joinDate;
 		this.fileNo = fileNo;
 		this.fileSrc = fileSrc;
 	}
@@ -68,9 +71,30 @@ public class SellerVo {
 	private String depositor;
 	private String account;
 	
+	private String permitYn; 
+	private String joinDate; 
+	
 	private String fileNo;
 	private String fileSrc;
 	
+	
+	
+	public String getJoinDate() {
+		return joinDate;
+	}
+
+	public void setJoinDate(String joinDate) {
+		this.joinDate = joinDate;
+	}
+
+	public String getPermitYn() {
+		return permitYn;
+	}
+
+	public void setPermitYn(String permitYn) {
+		this.permitYn = permitYn;
+	}
+
 	public String getFileNo() {
 		return fileNo;
 	}
@@ -279,8 +303,8 @@ public class SellerVo {
 				+ ", busineesName=" + busineesName + ", busineesPhone=" + busineesPhone + ", corporationName="
 				+ corporationName + ", uptae=" + uptae + ", upjong=" + upjong + ", busineesZipCode=" + busineesZipCode
 				+ ", busineesAdr=" + busineesAdr + ", detailedAdr=" + detailedAdr + ", reportNumber=" + reportNumber
-				+ ", bank=" + bank + ", depositor=" + depositor + ", account=" + account + ", fileNo=" + fileNo
-				+ ", fileSrc=" + fileSrc + "]";
+				+ ", bank=" + bank + ", depositor=" + depositor + ", account=" + account + ", permitYn=" + permitYn
+				+ ", joinDate=" + joinDate + ", fileNo=" + fileNo + ", fileSrc=" + fileSrc + "]";
 	}
 
 

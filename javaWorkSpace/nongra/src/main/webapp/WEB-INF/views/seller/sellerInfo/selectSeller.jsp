@@ -1,5 +1,11 @@
+<%@page import="com.kh.app.seller.controller.SellerLoginController"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+	<%
+		SellerVo sellerLogin = (SellerVo)request.getAttribute("sellerLogin");
+	%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,31 +133,31 @@ input:focus {outline: none;}
 					</div>
 					<div>
 						<label>아이디</label>
-						<input type="text" name="id" value="quddnr13213" readonly/>
+						<input type="text" name="id" value="<% sellerLogin.getId(); %>" readonly/>
 					</div>
 					<div>
 						<label>패스워드</label>
-						<input type="password" name="id" value="quddnr13213" readonly/>
+						<input type="password" name="password" value="<% sellerLogin.getPassword(); %>" readonly/>
 					</div>
 					<div>
 						<label>닉네임</label>
-						<input type="text" name="id" value="킹병욱" readonly/>
+						<input type="text" name="nick" value="<% sellerLogin.getNick(); %>" readonly/>
 					</div>
 					<div>
 						<label>이름</label>
-						<input type="text" name="id" value="박병욱" readonly/>
+						<input type="text" name="name" value="<% sellerLogin.getName(); %>" readonly/>
 					</div>
 					<div>
 						<label>전화번호</label>
-						<input type="text" name="id" value="010-6706-2232" readonly/>
+						<input type="text" name="phone" value="<% sellerLogin.getPhone(); %>" readonly/>
 					</div>
 					<div>
 						<label>이메일</label>
-						<input type="text" name="id" value="quddnr3688@naver.com" readonly/>
+						<input type="text" name="email" value="<% sellerLogin.getEmail(); %>" readonly/>
 					</div>
 					<div>
 						<label>가입일시</label>
-						<input type="text" name="id" value="2023/12/23" readonly/>
+						<input type="text" name="joinDate" value="<% sellerLogin.getJoinDate(); %>" readonly/>
 					</div>
 					<div id="modify-btn">
 						<button onclick="location.href='/nongra/seller/modify'">내 정보 수정하기</button>
