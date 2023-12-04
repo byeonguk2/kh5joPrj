@@ -64,9 +64,9 @@
                 <div class="product-price">9,800원</div>
                 <button class="cancel-btn">X</button>
             </div>
-            <div class="order-area">
+            <a class="order-area" href="/nongra/order/checkout">
                 <button class="order-btn">주문하기</button>
-            </div>
+            </a>
 		</main>
 		
 	</div>

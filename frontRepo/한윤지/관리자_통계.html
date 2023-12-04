@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrap{
+            width: 1500px;
+            background-color: aqua;
+        }
+        #side{
+            background-color: red;
+        }
+        main{
+            display: grid;
+            grid-template-columns: 230px 100%;
+            height: 900px;
+        }
+        #title-area{
+            font-size: 40px;
+            font-weight: 700;
+            padding: 20px;
+        }
+        #cover-area{
+            width: 95%;
+            height: 95%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 100px 1fr 1fr;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <main>
+            <div id="side">사이드</div>
+            <div id="main-area">
+                <div id="cover-area">
+                    <div id="title-area">통계</div>
+                    <div></div>
+                    <div class="statistics-area">
+                        <canvas id="memberCntChart" width="600" height="300"></canvas>
+                    </div>
+                    <div class="statistics-area">판매금액</div>
+                    <div class="statistics-area">충전금액</div>
+                    <div class="statistics-area">d</div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+</body>
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script>
+    const memberCC = document.getElementById('memberCntChart').getContext('2d');
+    const memberCntChart = new Chart(memberCC, {
+        type: 'line',
+        data: {
+            // x축
+            labels: ['7월', '8월', '9월', '10월', '11월', '12월'],
+            // 차트 데이터들
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 15, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            legend:{ display:false},
+            title:{
+                display: true,
+                text:'월별 회원수'
+            },
+            responsive: false, //그래프 크기 맞추는거 설정
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    </script>

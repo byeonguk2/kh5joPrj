@@ -15,16 +15,16 @@
                 <div></div>
                 <div></div>
                 <div class="top-menu">
-                    <a href="">회원가입</a>
+                    <a href="/nongra/member/join">회원가입</a>
                 </div>
                 <div class="top-menu">
-                    <a href="">로그인</a>
+                    <a href="/nongra/member/login">로그인</a>
                 </div>
                 <div class="top-menu">
-                    <a href="">고객센터</a>
+                    <a href="/nongra/contact/faq">고객센터</a>
                 </div>
                 <div></div>
-                <a class="logo" href="">
+                <a class="logo" href="/nongra/home">
                     <img width="120px" height="100px" src="/nongra/resources/img/common/logo.png" alt="로고 이미지">
                 </a>
                 <div id="serach-area">
@@ -36,17 +36,25 @@
                     </div>
                 </div>
                 <div></div>
-                <div></div>
-                <div></div>
+                <div id="coin-icon-area">
+                    <a href="/nongra/member/point">
+                        <img id="icon-coin" width="27px" height="27px" src="/nongra/resources/img/common/header/icon-coin.png" alt="동전">
+                    </a>
+                </div>
+                <div id="cart-icon-area">
+                    <a href="/nongra/cart">
+                        <img id="icon-cart" width="27px" height="27px" src="/nongra/resources/img/common/header/icon-shopping-cart.png" alt="카트">
+                    </a>
+                </div>
                 <nav  style="z-index: 2;">
                     <a href="">
-                        <img id="img02" width="16px" height="18px" src="https://www.flaticon.com/svg/vstatic/svg/3917/3917065.svg?token=exp=1700476763~hmac=1fb752030c60129c49e751ef77933e27" alt="카테고리 아이콘">
+                        <img id="img02" width="16px" height="18px" src="/nongra/resources/img/common/header/menu-icon.svg" alt="카테고리 아이콘">
                         <div>카테고리</div>
                     </a>
                     <a href="">신상품</a>
                     <a href="">베스트</a>
-                    <a href="">구매팁</a>
-                    <a href="">이벤트</a>
+                    <a href="/nongra/tip/main">구매팁</a>
+                    <a href="/nongra/event/main">이벤트</a>
                     <a href="">배송안내</a>
                     
     
