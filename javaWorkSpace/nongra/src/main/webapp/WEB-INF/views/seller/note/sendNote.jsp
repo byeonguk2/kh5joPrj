@@ -63,20 +63,17 @@
 	}
 	.table{
 		grid-column: span 3;
+		display: flex;
+		flex-direction: column;
 	}
-	.table thead{
-		border-bottom: 1px solid black;
-		height: 20px;
+	.table tr {
+		display: grid;
+		grid-template-columns: 50px 3fr 3fr 1fr 1fr;
+		text-align: center;
+		border-bottom: 1px solid gray;
+		margin-bottom: 10px;
 	}
 
-	.table thead tr td:nth-child(1){
-		width: 50px;
-	}
-
-	.table thead tr th:nth-child(4),
-	.table thead tr th:nth-child(5) {
-  		width: 150px;
-	}
 	.send-bottom-area{
 		grid-column: span 3;
 		display: flex;
@@ -138,18 +135,57 @@
 						</div>	
 						<table class="table">
 							<thead>
-								<td><input onclick="checkAll();" name="checkbox" type="checkbox" ></td>
-								<th><span>제목</span></th>
-								<th><span>내용</span></th>
-								<th><span>보낸사람</span></th>
-								<th><span>보낸일시</span></th>
+								<tr>
+									<td><input onclick="checkAll();" name="checkbox" type="checkbox" ></td>
+									<th><span>제목</span></th>
+									<th><span>내용</span></th>
+									<th><span>보낸사람</span></th>
+									<th><span>보낸일시</span></th>
+								</tr>
 							</thead>
 							<tbody>
-								<td><input name="checkbox" type="checkbox"></td>
-								<td><span>1</span></td>
-								<td><span>2</span></td>
-								<td><span>3</span></td>
-								<td><span>4</span></td>
+								<tr>
+									<td><input name="checkbox" type="checkbox"></td>
+									<td><span>1</span></td>
+									<td><span>2</span></td>
+									<td><span>3</span></td>
+									<td><span>4</span></td>
+								</tr>
+								<tr>
+									<td><input name="checkbox" type="checkbox"></td>
+									<td><span>1</span></td>
+									<td><span>2</span></td>
+									<td><span>3</span></td>
+									<td><span>4</span></td>
+								</tr>
+								<tr>
+									<td><input name="checkbox" type="checkbox"></td>
+									<td><span>1</span></td>
+									<td><span>2</span></td>
+									<td><span>3</span></td>
+									<td><span>4</span></td>
+								</tr>
+								<tr>
+									<td><input name="checkbox" type="checkbox"></td>
+									<td><span>1</span></td>
+									<td><span>2</span></td>
+									<td><span>3</span></td>
+									<td><span>4</span></td>
+								</tr>
+								<tr>
+									<td><input name="checkbox" type="checkbox"></td>
+									<td><span>1</span></td>
+									<td><span>2</span></td>
+									<td><span>3</span></td>
+									<td><span>4</span></td>
+								</tr>
+								<tr>
+									<td><input name="checkbox" type="checkbox"></td>
+									<td><span>1</span></td>
+									<td><span>2</span></td>
+									<td><span>3</span></td>
+									<td><span>4</span></td>
+								</tr>
 							</tbody>
 						</table>
 						<div class="send-bottom-area">
