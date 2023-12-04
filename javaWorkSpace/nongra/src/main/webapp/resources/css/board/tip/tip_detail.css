@@ -1,0 +1,23 @@
+.tip_title {
+    border-top: black solid 1.5px;
+    padding: 30px 40px 30px 40px;
+    line-height: 23px;
+    font-size: 18px;
+}
+.tip_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 15px;
+    padding-bottom: 50px;
+    border-bottom: black solid 1.5px;
+}
+.tip_content p img {
+    padding: 20px 0px 40px;
+    text-align: center;
+    border: 0px solid rgb(0, 0, 0);
+    width: 500px;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+

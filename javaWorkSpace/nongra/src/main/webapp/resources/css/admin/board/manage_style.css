@@ -1,0 +1,133 @@
+/* 병욱님꺼 토대로 수정 */
+#main-area{
+    display: grid;
+    grid-template-columns: 230px 8fr;
+    padding-top: 145px;
+}
+form{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+thead > tr {
+    height: 50px;
+}
+.form_above{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.select_search_area{
+    padding: 50px;
+}
+.select_div{
+    display: grid;
+    width: 350px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 10px 0px 10px 0px;
+}
+.search_div{
+    display: grid;
+    width: 375px;
+    grid-template-columns: 1fr 1fr 1.5fr 0.5fr; 
+    margin: 10px 0px 10px 0px;
+} 
+select {
+    margin-right: 20px;
+}
+.table-area-noti {
+    display: flex;
+    justify-content: center;
+}
+table{
+    width: 90%;
+}
+tr{
+    display: grid;
+    grid-template-columns: 0.7fr 1fr 1fr 5fr 1fr 0.7fr 2.1fr 2.1fr 0.7fr;
+    align-items: center;
+    border-top: none;
+    border-bottom: 1px solid black;
+    height: 60px;
+}
+td {
+    text-align: center;
+    line-height: 40px;
+}
+thead > tr {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.noti-btn{
+    width: 100%;
+    font-size: 16px;
+    padding: 4px;
+}
+.paging-btn-area{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+.paging-btn{
+    display: flex;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.ben-btn{
+    width: 90px;
+}
+.paging-btn{
+    font-size: 17px;
+}
+.paging-btn > button{
+    width: 60px;
+    height: 30px;
+}
+.btn_area {
+    padding-right: 60px;
+    display: grid;
+    grid-template-rows: 6fr 1.2fr 0.5fr;
+    grid-template-columns: 4fr 1fr 1fr;
+}
+.btn_area a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: 500;
+    height: 100%;
+}
+.a_write_btn {
+    border: #754327;
+    background-color: #754327;
+}
+.admin_menu_name {
+    padding: 50px;
+}
+.write_select_box {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+    font-size: 16px;
+}
+.write_select_box select {
+    font-size: 16px;
+    width: 120px;
+    height: 30px;
+    margin-left: 10px;
+}
+.write_select_box input[name=top_display] {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+.qna_table tbody tr {
+    border-bottom: none
+}
+.atchFile_noti td{
+    text-align: left;
+}
+.admin_content_area {
+    padding: 30px;
+}

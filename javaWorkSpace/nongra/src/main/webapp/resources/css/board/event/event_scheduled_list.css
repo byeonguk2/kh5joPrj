@@ -32,3 +32,29 @@
 .page_list_event {
     text-align: center;
 }
+.page_num_event {
+    display: inline-block;
+}
+.page_num_event a.on, .page_num_event a:hover {
+    background: #754327;
+    color: #fff;
+    border: 1px solid #754327;
+}
+.page_num_event a {
+    display: inline-block;
+    min-width: 32px;
+    height: 32px;
+    border-radius: 32px;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 4px;
+    color: #999;
+    border: 1px solid #fff;
+}
+a {
+    text-decoration: none;
+    outline: none;
+}
+.page_num_event a+a {
+    margin-left: 5px;
+}
