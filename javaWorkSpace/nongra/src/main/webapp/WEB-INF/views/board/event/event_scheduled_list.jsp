@@ -120,7 +120,11 @@
 
 				<div class="page_wrap_event">
 					<div class="page_list_event">
-
+						<div class="page_num_event">
+							<a href="" class="page_on">1</a>
+							<a href="">2</a>
+							<a href="">3</a>
+						</div>
 					</div>
 				</div>
 
