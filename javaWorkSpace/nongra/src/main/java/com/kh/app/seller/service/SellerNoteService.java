@@ -53,6 +53,18 @@ public class SellerNoteService {
 		return cnt;
 		
 	}
+	// 쪽지 상세보기
+	public SellerNoteVo noteDetail(String noteNo) throws Exception{
+		Connection conn = JDBCTemplate.getConnection();
+		
+		SellerNoteDao dao = new SellerNoteDao();
+		SellerNoteVo noteVo =dao.noteDetail(noteNo, conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return noteVo;
+		
+	}
 	
 	
 }
