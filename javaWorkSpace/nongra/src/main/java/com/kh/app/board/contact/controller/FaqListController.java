@@ -1,4 +1,4 @@
-package com.kh.app.board.contact;
+package com.kh.app.board.contact.controller;
 
 import java.io.IOException;
 

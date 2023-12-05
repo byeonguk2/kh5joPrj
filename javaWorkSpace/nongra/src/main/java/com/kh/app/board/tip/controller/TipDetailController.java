@@ -1,4 +1,4 @@
-package com.kh.app.board.tip;
+package com.kh.app.board.tip.controller;
 
 import java.io.IOException;
 

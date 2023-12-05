@@ -1,4 +1,4 @@
-package com.kh.app.admin.board.contact;
+package com.kh.app.board.contact.controller;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/admin/notice/write")
-public class AdminNoticeWriteController extends HttpServlet {
+public class NoticeWriteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getRequestDispatcher("/WEB-INF/views/admin/board/contact/notice/notice_write.jsp").forward(req, resp);
