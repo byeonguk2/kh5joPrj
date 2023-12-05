@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kh.app.page.vo.PageVo;
 import com.kh.app.seller.service.SellerNoteService;
 import com.kh.app.seller.vo.SellerNoteVo;
 import com.kh.app.seller.vo.SellerVo;
@@ -22,17 +23,28 @@ public class SellerNoteSendController extends HttpServlet{
 		
 		HttpSession session = req.getSession();
 		try {
+			SellerNoteService sns = new SellerNoteService();
+			
+			int listCount = sns.selectNoteCount();
+			String currentPage_ = req.getParameter("pno");
+			if(currentPage_ == null) {
+				currentPage_ = "1";
+			}
+			int currentPage = Integer.parseInt(currentPage_);
+			int pageLimit = 10;
+			int boardLimit = 10;
+			PageVo pvo = new PageVo(listCount, currentPage,pageLimit, boardLimit);
 			SellerVo sv = (SellerVo)session.getAttribute("loginSeller");
 			String sellerNo = sv.getSellerNo();
 			
-			SellerNoteService sns = new SellerNoteService();
-			List<SellerNoteVo> sendNoteList = sns.sendNoteSelectList(sellerNo);
+			List<SellerNoteVo> sendNoteList = sns.sendNoteSelectList(sellerNo , pvo);
 			
 			if(sendNoteList == null) {
 				throw new Exception("리스트 불러오는 중에 오류");
 			}
 			
-			session.setAttribute("sendNoteList", sendNoteList);
+			req.setAttribute("sendNoteList", sendNoteList);
+			req.setAttribute("pvo", pvo);
 			req.getRequestDispatcher("/WEB-INF/views/seller/note/sendNote.jsp").forward(req, resp);
 		}catch(Exception e) {
 			e.printStackTrace();

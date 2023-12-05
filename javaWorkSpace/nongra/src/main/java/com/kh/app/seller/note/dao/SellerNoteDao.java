@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kh.app.page.vo.PageVo;
 import com.kh.app.seller.vo.SellerNoteVo;
 import com.kh.app.util.db.JDBCTemplate;
 
@@ -30,11 +31,13 @@ public class SellerNoteDao {
 		
 	}
 	//보낸 쪽지 목록 
-	public List<SellerNoteVo> sendNoteSelectList(String sellerNo, Connection conn) throws Exception{
+	public List<SellerNoteVo> sendNoteSelectList(String sellerNo, PageVo pvo, Connection conn) throws Exception{
 		
-		String sql = "SELECT N.FROM_NO ,N.TO_NO ,N.TITLE ,N.CONTENT ,TO_CHAR(N.SEND_DATE , 'YY-MM-DD HH24:MI') AS SEND_DATE ,N.CHECK_YN ,M.ID AS TO_ID FROM NOTE N JOIN MEMBER M ON N.TO_NO = M.MEMBER_NO WHERE N.FROM_NO = ? AND N.FROM_DEL_YN = 'N' ORDER BY N.SEND_DATE DESC";
+		String sql = "SELECT * FROM (SELECT ROWNUM RNUM, T.* FROM ( SELECT N.FROM_NO ,N.TO_NO ,N.TITLE ,N.CONTENT ,TO_CHAR(N.SEND_DATE , 'YY-MM-DD HH24-MI') AS SEND_DATE ,N.CHECK_YN ,M.ID AS TO_ID FROM NOTE N JOIN MEMBER M ON N.TO_NO = M.MEMBER_NO WHERE N.FROM_NO = ? AND N.FROM_DEL_YN = 'N' ORDER BY N.SEND_DATE DESC )T) WHERE RNUM BETWEEN ? AND ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, sellerNo);
+		pstmt.setInt(2, pvo.getStartRow());
+		pstmt.setInt(3, pvo.getLastRow());
 		ResultSet rs = pstmt.executeQuery();
 		
 		
@@ -64,6 +67,25 @@ public class SellerNoteDao {
 		JDBCTemplate.close(pstmt);
 		
 		return sendNoteList;
+	}
+	
+	//전체 쪽지 갯수 조회
+	public int selectNoteCount(Connection conn) throws Exception{
+		
+		String sql = "SELECT COUNT(*) AS CNT FROM NOTE WHERE FROM_DEL_YN = 'N'";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		int cnt = 0;
+		if(rs.next()) {
+			cnt = rs.getInt(1);
+		}
+		
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		
+		return cnt;
 	}
 
 }

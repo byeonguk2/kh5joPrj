@@ -1,10 +1,11 @@
+<%@page import="com.kh.app.page.vo.PageVo"%>
 <%@page import="com.kh.app.seller.vo.SellerNoteVo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-    	List<SellerNoteVo>sendNoteList = (List<SellerNoteVo>)session.getAttribute("sendNoteList");
-    
+    	List<SellerNoteVo>sendNoteList = (List<SellerNoteVo>)request.getAttribute("sendNoteList");
+    	PageVo pvo = (PageVo)request.getAttribute("pvo");
     %>
 <!DOCTYPE html>
 <html>
@@ -90,20 +91,28 @@
 	.send-bottom-area > button {
 		margin-left: 20px;
 	}
+	.send-bottom-area > div {
+		width: 80%;
+		display: flex;
+		justify-content: center;
+	}
 
-	.send-bottom-area button:nth-child(1){
+	.send-bottom-area > button:nth-child(2){
 		width: 80px;
 		height: 40px;
 		font-weight: bolder;
 		border-radius: 6px;
 	}
 	
-	.send-bottom-area button:nth-child(2){
+	.send-bottom-area > button:nth-child(3){
 		width: 60px;
 		height: 40px;
 		background-color: dimgray;
 		border-radius: 6px;
 		font-weight: bolder;
+	}
+	.page-area *{
+		margin-left : 10px;
 	}
 
 	
@@ -162,6 +171,26 @@
 							</tbody>
 						</table>
 						<div class="send-bottom-area">
+							<div class="page-area">
+								
+								<% if(pvo.getStartPage() != 1){ %>
+									<a href="/nongra//seller/note/send?pno=<%= pvo.getStartPage() - 1%>">이전</a>
+								<%} %>
+								
+								<% for(int i = pvo.getStartPage(); i< pvo.getEndPage(); i++){%>
+									
+									<%if(i == pvo.getCurrentPage()){ %>
+										<span><%= i %></span>	
+									<%}else{ %>
+										<a href="/nongra/seller/note/send?pno=<%= i %>"><%= i %></a>
+									<%} %>
+									
+								<%} %>
+								
+								<% if(pvo.getEndPage() != pvo.getMaxPage()){ %>
+									<a href="/nongra/seller/note/send?pno=<%= pvo.getEndPage() + 1%>">다음</a>
+								<%} %>
+							</div>
 							<button onclick="openPopup();">작성하기</button>
 							<button>삭제</button>
 						</div>
@@ -200,6 +229,11 @@
             newWindow = null; // 창이 닫혔으므로 참조 제거
         });
     }
+
+
+	
+
+	
 </script>
 </body>
 </html>
