@@ -1,4 +1,4 @@
-package com.kh.app.seller.controller;
+package com.kh.app.purchase.controller;
 
 import java.io.IOException;
 
@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/seller/statistics/detail")
-public class SellerStatisticsDetail extends HttpServlet{
+@WebServlet("/order/complete")
+public class PurchaseOrderCompleteController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/WEB-INF/views/seller/statistics/statisticsDetail.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/purchase/orderComplete.jsp").forward(req, resp);
 	}
 }

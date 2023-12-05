@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>판매내역</title>
+    <link rel="stylesheet" href="/css/cssReset.css">
+    <style>
+
+       
+
+        .ul, li{
+            list-style: none;
+        }
+        .user-order-section{
+            width: 1010px;
+           
+        }
+        .user-order-ul1{
+            display: list-item;
+            text-align: -webkit-match-parent;
+            color: #999;
+            padding-bottom: 40px;
+        }
+
+        .order-table-div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 20px;
+            padding: 40px;
+            font-size: 24px;
+            font-weight: 500;
+            color: #333;
+                  
+        }
+        .thead-order{
+            height: 58px;
+            border-top:1px solid rgb(51, 51, 51) ;
+            border-bottom: 1px solid rgb(51, 51, 51);
+        }
+
+        .thead-order > tr > th    {      vertical-align: middle;
+            font-weight: 1000;
+            letter-spacing: -0.5px;
+            color: rgb(51, 51, 51);}
+        .tbody-order > tr td{
+            padding: 5px;
+        }
+
+        .tbody-order-box {
+            display: flex;
+        }
+
+        .tbody-order-box > a > img {
+            display: inline-block;
+            width: 96px;
+            height: 96px;
+        }
+
+        .tbody-order-box >ul {
+            display: flex;
+            flex-direction: column;
+            margin: 0px;
+            gap: 10px;
+            padding-inline-start: 10px;
+            justify-content: center;
+            
+        }
+        .order-store-name >a{
+            text-decoration: none;
+            font-size: 14px;
+            color:  #999;
+           
+
+        }
+        .order-item-name > a{
+            text-decoration: none;
+            font-size: 14px;
+            color: #333333
+
+        }
+        .order-date-td {
+            height: 70px;
+            padding: 10px;
+            box-sizing: border-box;
+           
+            text-align: center;
+            vertical-align: middle;
+            word-break: break-all;
+            font-size: 14px;
+            color: #333333
+        }
+
+        .order-number-td{
+            height: 70px;
+            padding: 10px;
+            box-sizing: border-box;
+           
+            text-align: center;
+            vertical-align: middle;
+            word-break: break-all;
+            font-size: 14px;
+            color: #333333
+        }
+        .oredr-tr{
+            border-bottom: 1px solid#999;
+        }
+
+        .order-price-td {
+            height: 70px;
+            padding: 10px;
+            box-sizing: border-box;
+           
+            text-align: center;
+            vertical-align: middle;
+            word-break: break-all;
+            font-size: 14px;
+            
+            color: #333333
+        }
+        .order-price-td > span {
+            margin: 10px;
+            color: #999;
+            line-height: 1.5;
+        }
+        
+        .order-btn-td{
+            text-align: center;
+            vertical-align: middle;
+        }
+        .order-buy-sure-before {
+            display: inline-block;
+            margin: 2px;
+            border: none;
+            padding: 10px;
+            width: 120px;
+            background-color: rgba(136, 84, 28, 0.928);
+            color: #ffffff;
+        }
+        
+        .order-review-before{
+            display: inline-block;
+            margin: 2px;
+            border: none;
+            padding: 10px;
+            width: 120px;
+            background-color: rgba(136, 84, 28, 0.928);
+            color: #ffffff;
+        }
+
+        .order-buy-sure-before:hover{background-color: rgb(43, 226, 183);}
+
+        .order-review-before:hover{background-color: rgb(43, 226, 183)}
+
+
+
+        
+        
+        .order-buy-sure-after{
+            display: inline-block;
+            margin: 2px;
+            border: none;
+            padding: 10px;
+            width: 120px;
+            
+            color : 333333
+        }
+
+        .order-review-after{
+            display: inline-block;
+            margin: 2px;
+            border: none;
+            padding: 10px;
+            width: 120px;
+           
+            color: 333333;
+        }
+
+        .inquery-paging-area{
+            position: relative;
+            width: 100%;
+            height: 44px;
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .inquery-paging-area > div button:nth-child(1){
+            width: 44px;
+            height: 44px;
+            padding: 0px;
+            margin: 0px;
+            border: 0px;
+            cursor: pointer;
+            background-color: transparent;
+            background-image: url(/images/inqeury/paging-prev-activated.svg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+
+
+        .inquery-paging-area > div button:nth-child(2){
+            width: 44px;
+            height: 44px;
+            padding: 0px;
+            margin: 0px;
+            border: 0px;
+            cursor: pointer;
+            background-color: transparent;
+            background-image: url(/images/inqeury/paging-next-activated.svg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+       
+
+       
+       
+       
+        
+        
+
+
+
+
+        
+
+    </style>
+</head>
+<body>
+  <section class="user-order-section">  
+   <div class="order-table-div">
+        <h1>판매 내역 </h1>
+   </div>
+
+   <ol class="user-order-ul1">
+    <li >-동일한 주문번호라도 2개 이상의 브랜드에서 주문하신 경우 출고지 주소가 달라 각각 출고됩니다.(택배 박스를 2개 이상 수령 가능)</li>
+    <li >-출고 완료 직후 교환 / 환불 요청을 하더라도 상품을 수령하신 후 택배 업체를 통해 보내주셔야 처리 가능합니다.</li>
+</ol>
+    
+    <div>
+        <table>
+            <colgroup>
+                <col style="width:400px">
+                <col style="width:150px">
+                <col style="width:150px">
+                <col style="width:200px">
+                <col style="width:200px">
+            </colgroup>
+            <thead class="thead-order">
+            <tr>
+                <th scope="col">상품정보</th>
+                <th scope="col">주문일자</th>
+                <th scope="col">주문번호</th>
+                <th scope="col">판매금액</th>
+                <th scope="col">환불 여부</th>
+            </tr>
+            </thead>
+            <tbody class="tbody-order" >
+                <tr class="oredr-tr">
+                    <td>
+                        <div class="tbody-order-box">
+                            <a href=""><img src="" alt="하이" ></a>
+                            
+                            <ul>
+                                <li class="order-item-name"><a href="">상품이름 상품이름 상품이름 상품이름</a>   </li>
+                            </ul>
+                        </div>
+                           
+                    </td>
+                    
+                    <td class="order-date-td">
+                        2023.11.25
+                    </td>
+                    <td class="order-number-td">
+                        <a href="">20231125/01</a>    
+                    </td>
+                    <td class="order-price-td">
+                        27,793원
+                        <br>
+                        <span>1개</span>
+                    </td>
+                    <td class="order-btn-td">
+                       <button class="order-buy-sure-before">구매확정</button><button class="order-review-before">후기작성</button> 
+                    </td>
+                </tr>
+
+                <tr class="oredr-tr">
+                    <td>
+                        <div class="tbody-order-box">
+                            <a href=""><img src="" alt="하이" ></a>
+                            
+                            <ul>
+                                <li class="order-store-name"><a href="">상점이름</a></li>
+                                <li class="order-item-name"><a href="">상품이름 상품이름 상품이름 상품이름</a>   </li>
+                            </ul>
+                        </div>
+                           
+                    </td>
+                    
+                    <td class="order-date-td">
+                        2023.11.25
+                    </td>
+                    <td class="order-number-td">
+                        <a href="">20231125/01</a>    
+                    </td>
+                    <td class="order-price-td">
+                        27,793원
+                        <br>
+                        <span>1개</span>
+                    </td>
+                    <td class="order-btn-td">
+                       <button class="order-buy-sure-after">구매 확정 완료</button><button class="order-review-before">후기작성</button> 
+                    </td>
+                </tr>
+
+                <tr class="oredr-tr">
+                    <td>
+                        <div class="tbody-order-box">
+                            <a href=""><img src="" alt="하이" ></a>
+                            
+                            <ul>
+                                <li class="order-store-name"><a href="">상점이름</a></li>
+                                <li class="order-item-name"><a href="">상품이름 상품이름 상품이름 상품이름</a>   </li>
+                            </ul>
+                        </div>
+                           
+                    </td>
+                    
+                    <td class="order-date-td">
+                        2023.11.25
+                    </td>
+                    <td class="order-number-td">
+                        <a href="">20231125/01</a>    
+                    </td>
+                    <td class="order-price-td">
+                        -27,793원
+                        <br>
+                        <span>1개</span>
+                    </td>
+                    <td class="order-btn-td">
+                       <button class="order-buy-sure-after">답글 작성 완료</button><button class="order-review-after">환불 </button> 
+                    </td>
+                </tr>
+
+                <tr class="oredr-tr">
+                    <td>
+                        <div class="tbody-order-box">
+                            <a href=""><img src="" alt="하이" ></a>
+                            
+                            <ul>
+                                <li class="order-store-name"><a href="">상점이름</a></li>
+                                <li class="order-item-name"><a href="">상품이름 상품이름 상품이름 상품이름</a>   </li>
+                            </ul>
+                        </div>
+                           
+                    </td>
+                    
+                    <td class="order-date-td">
+                        2023.11.25
+                    </td>
+                    <td class="order-number-td">
+                        <a href="">20231125/01</a>    
+                    </td>
+                    <td class="order-price-td">
+                        27,793원
+                        <br>
+                        <span>1개</span>
+                    </td>
+                    <td class="order-btn-td">
+                       <button class="order-buy-sure-before">구매확정</button><button class="order-review-before">후기작성</button> 
+                    </td>
+                </tr>
+
+                <tr class="oredr-tr">
+                    <td>
+                        <div class="tbody-order-box">
+                            <a href=""><img src="" alt="하이" ></a>
+                            
+                            <ul>
+                                <li class="order-store-name"><a href="">상점이름</a></li>
+                                <li class="order-item-name"><a href="">상품이름 상품이름 상품이름 상품이름</a>   </li>
+                            </ul>
+                        </div>
+                           
+                    </td>
+                    
+                    <td class="order-date-td">
+                        2023.11.25
+                    </td>
+                    <td class="order-number-td">
+                        <a href="">20231125/01</a>    
+                    </td>
+                    <td class="order-price-td">
+                        27,793원
+                        <br>
+                        <span>1개</span>
+                    </td>
+                    <td class="order-btn-td">
+                       <button class="order-buy-sure-after">구매 확정 완료</button><button class="order-review-before">후기작성</button> 
+                    </td>
+                </tr>
+
+                <tr class="oredr-tr">
+                    <td>
+                        <div class="tbody-order-box">
+                            <a href=""><img src="" alt="하이" ></a>
+                            
+                            <ul>
+                                <li class="order-store-name"><a href="">상점이름</a></li>
+                                <li class="order-item-name"><a href="">상품이름 상품이름 상품이름 상품이름</a>   </li>
+                            </ul>
+                        </div>
+                           
+                    </td>
+                    
+                    <td class="order-date-td">
+                        2023.11.25
+                    </td>
+                    <td class="order-number-td">
+                        <a href="">20231125/01</a>    
+                    </td>
+                    <td class="order-price-td">
+                        27,793원
+                        <br>
+                        <span>1개</span>
+                    </td>
+                    <td class="order-btn-td">
+                       <button class="order-buy-sure-before">구매 확정 완료</button><button class="order-review-after">후기 작성 완료</button> 
+                    </td>
+                </tr>
+
+                <tr class="oredr-tr">
+                    <td>
+                        <div class="tbody-order-box">
+                            <a href=""><img src="" alt="하이" ></a>
+                            
+                            <ul>
+                                <li class="order-store-name"><a href="">상점이름</a></li>
+                                <li class="order-item-name"><a href="">상품이름 상품이름 상품이름 상품이름</a>   </li>
+                            </ul>
+                        </div>
+                           
+                    </td>
+                    
+                    <td class="order-date-td">
+                        2023.11.25
+                    </td>
+                    <td class="order-number-td">
+                        <a href="">20231125/01</a>    
+                    </td>
+                    <td class="order-price-td">
+                        27,793원
+                        <br>
+                        <span>1개</span>
+                    </td>
+                    <td class="order-btn-td">
+                       <button class="order-buy-sure-before">구매확정</button><button class="order-review-before">후기작성</button> 
+                    </td>
+                </tr>
+
+                <tr class="oredr-tr">
+                    <td>
+                        <div class="tbody-order-box">
+                            <a href=""><img src="" alt="하이" ></a>
+                            
+                            <ul>
+                                <li class="order-store-name"><a href="">상점이름</a></li>
+                                <li class="order-item-name"><a href="">상품이름 상품이름 상품이름 상품이름</a>   </li>
+                            </ul>
+                        </div>
+                           
+                    </td>
+                    
+                    <td class="order-date-td">
+                        2023.11.25
+                    </td>
+                    <td class="order-number-td">
+                        <a href="">20231125/01</a>    
+                    </td>
+                    <td class="order-price-td">
+                        27,793원
+                        <br>
+                        <span>1개</span>
+                    </td>
+                    <td class="order-btn-td">
+                       <button class="order-buy-sure-after">구매 확정 완료</button><button class="order-review-before">후기작성</button> 
+                    </td>
+                </tr>
+
+                <tr class="oredr-tr">
+                    <td>
+                        <div class="tbody-order-box">
+                            <a href=""><img src="" alt="하이" ></a>
+                            
+                            <ul>
+                                <li class="order-store-name"><a href="">상점이름</a></li>
+                                <li class="order-item-name"><a href="">상품이름 상품이름 상품이름 상품이름</a>   </li>
+                            </ul>
+                        </div>
+                           
+                    </td>
+                    
+                    <td class="order-date-td">
+                        2023.11.25
+                    </td>
+                    <td class="order-number-td">
+                        <a href="">20231125/01</a>    
+                    </td>
+                    <td class="order-price-td">
+                        27,793원
+                        <br>
+                        <span>1개</span>
+                    </td>
+                    <td class="order-btn-td">
+                       <button class="order-buy-sure-before">구매 확정 완료</button><button class="order-review-after">후기 작성 완료</button> 
+                    </td>
+                </tr>
+            </tbody>  
+        </table>    
+    </div> 
+
+    <div class="inquery-paging-area">
+        <div class="inquery-pageing-btn-area" >
+            <button ></button>
+            <button></button>
+        </div>
+    </div>
+
+    
+</section>
+   
+      
+</body>
+</html>
