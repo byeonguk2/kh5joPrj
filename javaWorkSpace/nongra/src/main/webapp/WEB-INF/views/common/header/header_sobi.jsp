@@ -1,6 +1,12 @@
+<%@page import="com.kh.app.member.vo.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	<!DOCTYPE html>
+	<%		
+		MemberVo loginSeller = (MemberVo)session.getAttribute("loginMember");
+    	String alertMsg = (String)session.getAttribute("alertMsg"); 
+    	session.removeAttribute("alertMsg");
+    %>
 	<html lang="ko">
 	<head>
 		<meta charset="UTF-8">
@@ -64,3 +70,9 @@
             </header>
 	</body>
 	</html>
+	
+	<script type="text/javascript">
+		<%if(alertMsg != null) {%>
+			alert("<%= alertMsg %>");
+		<% } %>
+	</script>
