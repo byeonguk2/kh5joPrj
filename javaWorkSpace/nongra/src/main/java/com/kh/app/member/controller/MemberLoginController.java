@@ -41,7 +41,7 @@ public class MemberLoginController extends HttpServlet {
 				throw new Exception("로그인을 실패하였습니다.");
 			}
 			session.setAttribute("loginMember",loginMember );
-			resp.sendRedirect("/nongra/seller/home");
+			resp.sendRedirect("/nongra/member/point");
 			
 		} catch (Exception e) {
 			System.out.println("[ERROR-M004]로그인중 문제 발생.");

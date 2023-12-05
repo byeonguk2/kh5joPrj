@@ -1,5 +1,9 @@
+<%@page import="com.kh.app.member.vo.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    	MemberVo loginMember= (MemberVo)session.getAttribute("loginMember");
+    %>
 	<!DOCTYPE html>
 	<html lang="ko">
 	<head>
@@ -10,7 +14,7 @@
 		<script defer src="/nongra/resources/js/common/header_sobi.js"></script>
 	</head>
 	<body>
-
+		<div id="wrap1">
             <header>
                 <div></div>
                 <div></div>
@@ -62,5 +66,6 @@
     
     
             </header>
+            </div>
 	</body>
 	</html>

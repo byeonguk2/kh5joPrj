@@ -17,12 +17,9 @@ public class MemberDao {
 		pstmt.setString(1, vo.getMemberId());
 		pstmt.setString(2, vo.getMemberPwd());
 		ResultSet rs=pstmt.executeQuery();
-		System.out.println("next확인");
-		System.out.println("next확인2");
 		//rs
 		MemberVo loginMember = null;
 		if(rs.next()) {
-			System.out.println("next확인");
 			
 			String no=rs.getString("MEMBER_NO");
 			String id=rs.getString("ID");
