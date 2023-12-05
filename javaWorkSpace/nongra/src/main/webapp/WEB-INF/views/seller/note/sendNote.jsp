@@ -1,5 +1,12 @@
+<%@page import="com.kh.app.page.vo.PageVo"%>
+<%@page import="com.kh.app.seller.vo.SellerNoteVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    	List<SellerNoteVo>sendNoteList = (List<SellerNoteVo>)request.getAttribute("sendNoteList");
+    	PageVo pvo = (PageVo)request.getAttribute("pvo");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,20 +91,28 @@
 	.send-bottom-area > button {
 		margin-left: 20px;
 	}
+	.send-bottom-area > div {
+		width: 80%;
+		display: flex;
+		justify-content: center;
+	}
 
-	.send-bottom-area button:nth-child(1){
+	.send-bottom-area > button:nth-child(2){
 		width: 80px;
 		height: 40px;
 		font-weight: bolder;
 		border-radius: 6px;
 	}
 	
-	.send-bottom-area button:nth-child(2){
+	.send-bottom-area > button:nth-child(3){
 		width: 60px;
 		height: 40px;
 		background-color: dimgray;
 		border-radius: 6px;
 		font-weight: bolder;
+	}
+	.page-area *{
+		margin-left : 10px;
 	}
 
 	
@@ -139,56 +154,43 @@
 									<td><input onclick="checkAll();" name="checkbox" type="checkbox" ></td>
 									<th><span>제목</span></th>
 									<th><span>내용</span></th>
-									<th><span>보낸사람</span></th>
+									<th><span>받는사람</span></th>
 									<th><span>보낸일시</span></th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td><input name="checkbox" type="checkbox"></td>
-									<td><span>1</span></td>
-									<td><span>2</span></td>
-									<td><span>3</span></td>
-									<td><span>4</span></td>
-								</tr>
-								<tr>
-									<td><input name="checkbox" type="checkbox"></td>
-									<td><span>1</span></td>
-									<td><span>2</span></td>
-									<td><span>3</span></td>
-									<td><span>4</span></td>
-								</tr>
-								<tr>
-									<td><input name="checkbox" type="checkbox"></td>
-									<td><span>1</span></td>
-									<td><span>2</span></td>
-									<td><span>3</span></td>
-									<td><span>4</span></td>
-								</tr>
-								<tr>
-									<td><input name="checkbox" type="checkbox"></td>
-									<td><span>1</span></td>
-									<td><span>2</span></td>
-									<td><span>3</span></td>
-									<td><span>4</span></td>
-								</tr>
-								<tr>
-									<td><input name="checkbox" type="checkbox"></td>
-									<td><span>1</span></td>
-									<td><span>2</span></td>
-									<td><span>3</span></td>
-									<td><span>4</span></td>
-								</tr>
-								<tr>
-									<td><input name="checkbox" type="checkbox"></td>
-									<td><span>1</span></td>
-									<td><span>2</span></td>
-									<td><span>3</span></td>
-									<td><span>4</span></td>
-								</tr>
+								<% for (SellerNoteVo sellerNote : sendNoteList) { %>
+								    <tr>
+								        <td><input name="checkbox" type="checkbox"></td>
+								        <td><span><%= sellerNote.getTitle().length() > 20 ? sellerNote.getTitle().substring(0, 20) + "..." : sellerNote.getTitle() %></span></td>
+								        <td><span><%= sellerNote.getContent().length() > 20 ? sellerNote.getContent().substring(0, 20) + "..." : sellerNote.getContent() %></span></td>
+								        <td><span><%= sellerNote.getToId().length() > 20 ? sellerNote.getToId().substring(0, 20) + "..." : sellerNote.getToId() %></span></td>
+								        <td><span><%= sellerNote.getSendDate() %></span></td>
+								    </tr>
+								<% } %>
 							</tbody>
 						</table>
 						<div class="send-bottom-area">
+							<div class="page-area">
+								
+								<% if(pvo.getStartPage() != 1){ %>
+									<a href="/nongra//seller/note/send?pno=<%= pvo.getStartPage() - 1%>">이전</a>
+								<%} %>
+								
+								<% for(int i = pvo.getStartPage(); i< pvo.getEndPage(); i++){%>
+									
+									<%if(i == pvo.getCurrentPage()){ %>
+										<span><%= i %></span>	
+									<%}else{ %>
+										<a href="/nongra/seller/note/send?pno=<%= i %>"><%= i %></a>
+									<%} %>
+									
+								<%} %>
+								
+								<% if(pvo.getEndPage() != pvo.getMaxPage()){ %>
+									<a href="/nongra/seller/note/send?pno=<%= pvo.getEndPage() + 1%>">다음</a>
+								<%} %>
+							</div>
 							<button onclick="openPopup();">작성하기</button>
 							<button>삭제</button>
 						</div>
@@ -198,25 +200,40 @@
 		</main>
 	</div>
 
-	<script>
-		function checkAll(){
-			const checkAll = document.querySelectorAll("input[name=checkbox]");
-			if(checkAll[0].checked === true){
-				for(let i = 0; i<checkAll.length; ++i){
-					checkAll[i].checked = true;
-				}
-			}else{
-				for(let i = 0; i<checkAll.length; ++i){
-					checkAll[i].checked = false;
-				}
-			}
-		}
+<script>
+    let newWindow; // 전역 변수로 창을 선언
 
-		function openPopup(){
-			let options = "toolbar=no,scrollbars=no,resizable=yes,status=no,menubar=no,width=800, height=800, top=0,left=0";
-			window.open("/nongra/seller/note/write","쪽지작성", options);
-		}
+    function checkAll() {
+        const checkAll = document.querySelectorAll("input[name=checkbox]");
+        if (checkAll[0].checked === true) {
+            for (let i = 0; i < checkAll.length; ++i) {
+                checkAll[i].checked = true;
+            }
+        } else {
+            for (let i = 0; i < checkAll.length; ++i) {
+                checkAll[i].checked = false;
+            }
+        }
+    }
 
-	</script>
+    function openPopup() {
+        let options = "toolbar=no,scrollbars=no,resizable=yes,status=no,menubar=no,width=800,height=800,top=0,left=0";
+
+        if (newWindow && !newWindow.closed) {
+            newWindow.close();
+        }
+
+        newWindow = window.open("/nongra/seller/note/write", "쪽지작성", options);
+
+        newWindow.addEventListener('beforeunload', function () {
+            newWindow = null; // 창이 닫혔으므로 참조 제거
+        });
+    }
+
+
+	
+
+	
+</script>
 </body>
 </html>
