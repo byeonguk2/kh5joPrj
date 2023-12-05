@@ -14,8 +14,8 @@ a {
 }
 
 /* wrap div css */
-#wrap{
-	width: 1050px;
+#wrap1{
+	width: 1500px;
 	/* border: 1px solid black; */
 	margin: auto;
 	display: grid;
