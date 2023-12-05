@@ -1,4 +1,4 @@
-package com.kh.app.board.tip;
+package com.kh.app.board.contact.controller;
 
 import java.io.IOException;
 
@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/tip/main")
-public class TipListController extends HttpServlet{
+@WebServlet("/admin/faq/manage")
+public class FaqManageController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/WEB-INF/views/board/tip/tip_list.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/admin/board/contact/faq/faq_manage.jsp").forward(req, resp);
 	}
 }

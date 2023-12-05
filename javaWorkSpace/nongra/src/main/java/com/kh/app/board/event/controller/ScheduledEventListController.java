@@ -1,4 +1,4 @@
-package com.kh.app.board.event;
+package com.kh.app.board.event.controller;
 
 import java.io.IOException;
 
