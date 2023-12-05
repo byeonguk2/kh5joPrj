@@ -159,7 +159,7 @@ public class SellerDao {
 			loginSeller.setDepositor(depositor);
 			loginSeller.setAccount(account);
 			loginSeller.setPermitYn(permitYn);
-			loginSeller.setJoinDate(joinDate);;
+			loginSeller.setJoinDate(joinDate);
 			
 		}
 		JDBCTemplate.close(pstmt);
