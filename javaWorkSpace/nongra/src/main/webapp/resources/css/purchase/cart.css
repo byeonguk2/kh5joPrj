@@ -10,6 +10,8 @@ main{
     padding: 0;
     margin-top: 10px;
 }
+
+/* 상품 전체 선택 & 선택 삭제 버튼 */
 button{
     background-color: white;
     border: none;
@@ -20,83 +22,104 @@ button{
 #selectAll-area{
     border-bottom: 1px solid rgb(121, 121, 121);
     height: 23px;
+    margin-top:20px ;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
 }
-.seller-area{
-    margin-top: 15px;
-    height: 23px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-}
-.seller-area > span{
-    margin-left: 5px;
-}
-.seller-area > button{
-    float: right;
-    margin-right: 5px;
-}
-.product-area{
-    height: 150px;
-    display: grid;
-    grid-template-columns: 1fr 3fr 14fr 5fr 5fr 1fr;
-    border-bottom: 1px solid rgb(184, 184, 184);
-}
-.product-image-area{
-    display: flex;
-    place-content: center center;
-}
-.product-area > div > img{
-    height: 150px;
-    width: 100px;
-    object-fit: contain;
-}
-.product-name-area{
-    display: flex;
-    align-items: center;
-    margin-left: 5px;
-}
-a{
-    color: black;
-    text-decoration: none;
-}
-.product-cnt-area{
-    display: flex;
-    border-radius: 3px;
-    place-self: center center;
-    border: 1px solid rgb(160, 160, 160);
-}
-.product-cnt{
-    width: 25px;
-    height: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.product-cnt-area > button{
-    width: 15px;
-    font-size: 20px;
-}
-.product-price{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.detail{
-    font-size: 14px;
-}
-.cancel-btn{
-    color: rgb(175, 175, 175);
-}
-input[type=checkbox]{
-    width: 20px;
 
+/* 상품 테이블 */
+table{
+    width: 100%;
 }
-.order-area{
+tr{
+    padding: 10px;
+    height: 150px;
+}
+tbody>tr>td:nth-child(1){
+    height: 100%;
+    width: 3%;
+}
+.checkboxArea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+tbody>tr>td:nth-child(2){
+    width: 11%;
+}
+tbody>tr>td:nth-child(3){
+    width: 50%;
+}
+.goodsTitleArea{
+    height: 140px;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 2fr 3fr;
+}
+.seller{
+    font-weight: 900;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+.goodsName{
+    margin-left: 20px;
+    font-weight: 700;
+    font-size: 16px;
+}
+tbody>tr>td:nth-child(4){
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.upDownBtnArea{
+    border: 2px solid #9c5b3563;
+    height: 30px;
+    width: 70px;
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+    font-size: 20px;
+    border-radius: 5px;
+}
+.upDownNo{
+    display: flex;
+    justify-content: center;
+}
+.DownBtn > img{
+    height: 30px;
+    width: 20px;
+    object-fit: scale-down
+    
+}
+.upBtn > img{
+    height: 30px;
+    width: 20px;
+    object-fit: scale-down
+}
+.priceArea > div{
+    display: flex;
+    justify-content: center;
+}
+.removeBtnArea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.removeBtnArea > button > img{
+    height: 15px;
+    width: 15px;
+    object-fit: scale-down
+}
+
+
+/* 주문하기 버튼 */
+.orderBtnArea{
     margin-top: 30px;
     float: right;
 }
-.order-btn{
+.orderBtn{
     width: 200px;
     height: 50px;
     background-color: #754327;

@@ -1,4 +1,4 @@
-	console.log(1);
+
 
     const down = document.querySelector('.product-cnt-down');
     down.addEventListener('click',()=>{

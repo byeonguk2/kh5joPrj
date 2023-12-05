@@ -1,10 +1,15 @@
+<%@page import="com.kh.app.purchase.vo.PurchaseCartVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    	List<PurchaseCartVo> PurchaseCartVoList = (List<PurchaseCartVo>) request.getAttribute("PurchaseCartVoList");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>농라</title>
 <link rel="stylesheet" href="/nongra/resources/css/purchase/cart.css">
 </head>
 <body>
@@ -18,54 +23,53 @@
                 <span>|</span>
                 <button id="selectAll-btn">선택 삭제</button>
             </div>
-            <div class="seller-area">
-                <span>판매자</span>
-                <button class="seller-btn">▼</button>
-            </div>
-            <div class="product-area">
-                <input type="checkbox" id="product">
-                <div class="product-image-area"><img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/cb45c971-b61a-48f2-a521-01d88b793f7e.jpg" alt=""></div>
-                <div class="product-name-area"><a href="해당상품판매페이지로이동">[블랙위크] 인기 국탕찌개 9종 골라담기 (택2)</a></div>
-                <div class="product-cnt-area">
-                    <button class="product-cnt-down">-</button>
-                    <div class="product-cnt">0</div>
-                    <button class="product-cnt-up">+</button>
-                </div>
-                <div class="product-price">9,800원</div>
-                <button class="cancel-btn">X</button>
-            </div>
-            <div class="product-area">
-                <input type="checkbox" id="product">
-                <div class="product-image-area"><img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/cb45c971-b61a-48f2-a521-01d88b793f7e.jpg" alt=""></div>
-                <div class="product-name-area"><a href="해당상품판매페이지로이동">[블랙위크] 인기 국탕찌개 9종 골라담기 (택2)</a></div>
-                <div class="product-cnt-area">
-                    <button class="product-cnt-down">-</button>
-                    <div class="product-cnt">0</div>
-                    <button class="product-cnt-up">+</button>
-                </div>
-                <div class="product-price">9,800원</div>
-                <button class="cancel-btn">X</button>
-            </div>
+            
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="checkboxArea">
+                                <input type="checkbox" class="checkBtn">
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <img src="" alt="상품이미지">
+                            </div>
+                        </td>
+                        <td>
+                        	<div class="goodsTitleArea">
+	                            <div class="seller">판매점</div>
+	                            <div class="goodsName">상품명</div>
+                        	</div>
+                        </td>
+                        <td>
+                            <div class="upDownBtnArea">
+                                <span class="DownBtn"><img src="/nongra/resources/img/purchase/icon-minus.png" alt="-"></span>
+                                <span class="upDownNo">0</span>
+                                <span class="upBtn"><img src="/nongra/resources/img/purchase/icon-plus.png" alt="+"></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="priceArea">
+                                <div class="price">000원</div>
+                                <div class="optionPrice">000원</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="removeBtnArea">
+                                <button><img src="/nongra/resources/img/purchase/icon-cross.png" alt="X">
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
             
             
-            <div class="seller-area">
-                <span>판매자</span>
-                <button class="seller-btn">▼</button>
-            </div>
-            <div class="product-area">
-                <input type="checkbox" id="product">
-                <div class="product-image-area"><img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/cb45c971-b61a-48f2-a521-01d88b793f7e.jpg" alt=""></div>
-                <div class="product-name-area"><a href="해당상품판매페이지로이동">[블랙위크] 인기 국탕찌개 9종 골라담기 (택2)</a></div>
-                <div class="product-cnt-area">
-                    <button class="product-cnt-down">-</button>
-                    <div class="product-cnt">0</div>
-                    <button class="product-cnt-up">+</button>
-                </div>
-                <div class="product-price">9,800원</div>
-                <button class="cancel-btn">X</button>
-            </div>
-            <a class="order-area" href="/nongra/order/checkout">
-                <button class="order-btn">주문하기</button>
+            <a class="orderBtnArea" href="/nongra/order/checkout">
+                <button class="orderBtn">주문하기</button>
             </a>
 		</main>
 		
