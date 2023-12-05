@@ -4,7 +4,16 @@ body, button, input, select, textarea {
 }
 body{
     margin: 0;
-    width: 1050px;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+#wrap_board {
+    max-width: 1050px;
+    margin: 0 auto;
 }
 main{
     position: relative;

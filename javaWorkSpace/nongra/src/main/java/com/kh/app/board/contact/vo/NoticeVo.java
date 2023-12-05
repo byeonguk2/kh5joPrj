@@ -11,8 +11,7 @@ public class NoticeVo {
 	private String readPermission;
 	private String topDisplay;
 	public NoticeVo() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	public NoticeVo(String noticeNo, String writerNo, String title, String content, String enrollDate,
 			String modifyDate, String openYn, String readPermission, String topDisplay) {

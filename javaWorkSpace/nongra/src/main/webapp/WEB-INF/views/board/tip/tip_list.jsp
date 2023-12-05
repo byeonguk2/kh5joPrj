@@ -30,7 +30,7 @@
 			</div>
 			
 			<div class="content_area">
-				<div class="board_name">구매팁</div>
+				<div class="board_name">신선한 상품 고르는 팁</div>
 				<ul class="event_ul">
 					<li class="event_li">
 						<a class="card_event">
