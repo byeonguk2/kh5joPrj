@@ -5,6 +5,11 @@
     	MemberVo loginMember= (MemberVo)session.getAttribute("loginMember");
     %>
 	<!DOCTYPE html>
+	<%		
+		MemberVo loginSeller = (MemberVo)session.getAttribute("loginMember");
+    	String alertMsg = (String)session.getAttribute("alertMsg"); 
+    	session.removeAttribute("alertMsg");
+    %>
 	<html lang="ko">
 	<head>
 		<meta charset="UTF-8">
@@ -69,3 +74,9 @@
             </div>
 	</body>
 	</html>
+	
+	<script type="text/javascript">
+		<%if(alertMsg != null) {%>
+			alert("<%= alertMsg %>");
+		<% } %>
+	</script>
