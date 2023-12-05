@@ -144,6 +144,7 @@ function join(){
 document.querySelector('input[name=id]').addEventListener("click", function(){
 	form.id.readOnly = false;
 })
+
 function checkId(){
 	var xhr = new XMLHttpRequest();
 	let hangleCheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/

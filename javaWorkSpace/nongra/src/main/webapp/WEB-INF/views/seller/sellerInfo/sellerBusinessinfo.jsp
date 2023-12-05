@@ -177,11 +177,12 @@ input:focus {outline: none;}
 					</div>
 					<div>
 						<label>법인명</label>
-						<input type="text" name="id" value="<% if(loginSeller.getCorporationName() == null){ %>없음
+						<input type="text" name="id" <% if(loginSeller.getCorporationName() == null){ %>
+							value="없음"
 						<% }else{ %>
-							<%= loginSeller.getCorporationName() %>
+							value="<%= loginSeller.getCorporationName() %>""
 						<% } %>
-						" readonly/>
+						 readonly/>
 					</div>
 					<div id="modify-btn">
 						<button onclick="location.href='/nongra/seller/modifyBusiness'">내 정보 수정하기</button>

@@ -168,4 +168,81 @@ public class SellerDao {
 		return loginSeller;
 	}
 
+	public int nickCheck(Connection conn, String nick) throws Exception {
+		// sql문 (WHERE문을 이용해 ID를 조회후 COUNT가 성공하면 1 실패하면 0 반환 )
+		String sql = "SELECT COUNT(NICK) FROM MEMBER WHERE NICK = ?";
+		
+		// pstmt
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		// 회원가입시 받은 아이디 
+		pstmt.setString(1,nick);
+		
+		//rs 
+		ResultSet rs = pstmt.executeQuery();
+		
+		// 0상태로 초기화
+		int num = 0;
+		
+		//만약에 rs.next가 존재한다면 1으로 반환 
+		if(rs.next()) {
+			num = rs.getInt(1);
+		}
+		
+		//close
+		JDBCTemplate.close(pstmt);
+		JDBCTemplate.close(rs);
+				
+		// return 
+		return num;
+	}
+
+	public int modify(SellerVo vo, Connection conn) throws Exception {
+		
+		String sql = "UPDATE MEMBER SET PWD = ?, NICK = ?, NAME = ?, PHONE = ?, EMAIL = ?, MODIFY_DATE = SYSDATE WHERE MEMBER_NO = ?";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, vo.getPassword());
+		pstmt.setString(2, vo.getNick());
+		pstmt.setString(3, vo.getName());
+		pstmt.setString(4, vo.getPhone());
+		pstmt.setString(5, vo.getEmail());
+		pstmt.setString(6, vo.getMemberNo());
+		
+		int result = pstmt.executeUpdate();
+		
+		//close
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
+
+	public int businessInfo(SellerVo vo, Connection conn) throws Exception {
+		
+		String sql = "UPDATE SELLER SET BUSINESS_FORM = ?, BUSINESS_NAME = ?, BUSINESS_PHONE = ?, BUSINEES_ZIPCODE = ?, BUSINESS_ADDRESS = ?, UPTAE = ?, UPJONG = ?, BANK = ?, DEPOSITOR = ?, ACCOUNT = ?, CORPORATION_NAME = ? WHERE SELLER_NO = ?";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, vo.getBusinessForm());
+		pstmt.setString(2, vo.getBusineesName());
+		pstmt.setString(3, vo.getBusineesPhone());
+		pstmt.setString(4, vo.getBusineesZipCode());
+		pstmt.setString(5, vo.getBusineesAdr());
+
+		pstmt.setString(6, vo.getUptae());
+		pstmt.setString(7, vo.getUpjong());
+		pstmt.setString(8, vo.getBank());
+		pstmt.setString(9, vo.getDepositor());
+		
+		pstmt.setString(10, vo.getAccount());
+		pstmt.setString(11, vo.getCorporationName());
+		pstmt.setString(12, vo.getSellerNo());
+		
+		int result = pstmt.executeUpdate();
+		
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
+
 }
