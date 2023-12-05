@@ -62,7 +62,7 @@ form{
 	border: 1px solid #e3e7ee;
 	background-color: #ffffff;
 	display: grid;
-	grid-template-rows: 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 form > div {
@@ -122,61 +122,61 @@ input:focus {outline: none;}
 						<a href="/nongra/seller/businessInfo">사업자 정보</a>
 					</div>
 				</div>
-				<form action="" method="post">
+				<form action="/nongra/seller/modifyBusiness" method="post">
 					<div>
 						<label id="title">사업자 정보 수정</label>
 					</div>
 					<div>
-						<label>사업자번호</label>
-						<input type="text" name="id" value="<%= loginSeller.getBusinessNo() %>" />
-					</div>
-					<div>
 						<label>사업형태</label>
-						<input type="text" name="id" value="<%= loginSeller.getBusinessForm() %>" />
+						<input type="text" name="business_form" value="<%= loginSeller.getBusinessForm() %>" />
 					</div>
 					<div>
 						<label>사업장명</label>
-						<input type="text" name="id" value="<%= loginSeller.getBusineesName() %>" />
+						<input type="text" name="business_name" value="<%= loginSeller.getBusineesName() %>" />
 					</div>
 					<div>
 						<label>사업자 전화번호</label>
-						<input type="text" name="id" value="<%= loginSeller.getBusineesPhone() %>" />
+						<input type="text" name="business_phone" value="<%= loginSeller.getBusineesPhone() %>" />
 					</div>
 					<div>
 						<label>우편번호</label>
-						<input type="text" name="id" value="<%= loginSeller.getBusineesZipCode() %>" />
+						<input type="text" name="businees_zipcode" value="<%= loginSeller.getBusineesZipCode() %>" />
 					</div>
 					<div>
 						<label>사업장 주소</label>
-						<input type="text" name="id" value="<%= loginSeller.getBusineesAdr() %>" />
+						<input type="text" name="business_address" value="<%= loginSeller.getBusineesAdr() %>" />
 					</div>
 					<div>
 						<label>업태</label>
-						<input type="text" name="id" value="<%= loginSeller.getUptae() %>" />
+						<input type="text" name="uptae" value="<%= loginSeller.getUptae() %>" />
 					</div>
 					<div>
 						<label>업종</label>
-						<input type="text" name="id" value="<%= loginSeller.getUpjong() %>" />
-					</div>
-					<div>
-						<label>통신판매업신고번호</label>
-						<input type="text" name="id" value="<%= loginSeller.getReportNumber() %>" />
-					</div>
-					<div>
-						<label>허가여부</label>
-						<input type="text" name="id" value="<%= loginSeller.getPermitYn() %>" />
+						<input type="text" name="upjong" value="<%= loginSeller.getUpjong() %>" />
 					</div>
 					<div>
 						<label>은행</label>
-						<input type="text" name="id" value="<%= loginSeller.getBank() %>" />
+						<input type="text" name="bank" value="<%= loginSeller.getBank() %>" />
 					</div>
 					<div>
 						<label>입금자명</label>
-						<input type="text" name="id" value="<%= loginSeller.getDepositor() %>" />
+						<input type="text" name="depositor" value="<%= loginSeller.getDepositor() %>" />
 					</div>
 					<div>
 						<label>입금계좌</label>
-						<input type="text" name="id" value="<%= loginSeller.getAccount() %>" />
+						<input type="text" name="account" value="<%= loginSeller.getAccount() %>" />
+					</div>
+					<div>
+						<label>법인명</label>
+						<input type="text" name="corporation_name" <% if(loginSeller.getCorporationName() == null){ %>
+							value="없음"
+						<% }else{ %>
+							value="<%= loginSeller.getCorporationName() %>""
+						<% } %>
+						 readonly/>
+					</div>
+					<div id="modify-btn">
+						<button onclick="location.href='/nongra/seller/modifyBusiness'">수정완료</button>
 					</div>
 				</form>
 			</div>

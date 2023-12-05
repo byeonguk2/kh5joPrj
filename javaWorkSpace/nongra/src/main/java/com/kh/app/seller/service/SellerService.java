@@ -65,4 +65,63 @@ public class SellerService {
 		return loginSeller;
 	}
 
+	public int nickCheck(String nick) throws Exception {
+		// conn 가져오기 
+		Connection conn = JDBCTemplate.getConnection();
+				
+		// dao 선언  호출 
+		SellerDao dao = new SellerDao();
+				
+		// 디비 조회후 받아온 값 저장 
+		int num = dao.nickCheck(conn, nick);
+				
+		// close
+		JDBCTemplate.close(conn);
+				
+		//return
+		return num;
+	}
+
+	public int modify(SellerVo vo) throws Exception {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao 호출 
+		SellerDao dao = new SellerDao();
+		int result = dao.modify(vo,conn);
+
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+			
+		// connection close 
+		JDBCTemplate.close(conn);
+		
+		// result return
+		return result;
+	}
+
+	
+	public int businessInfo(SellerVo vo) throws Exception {
+		
+Connection conn = JDBCTemplate.getConnection();
+		
+		// dao 호출 
+		SellerDao dao = new SellerDao();
+		int result = dao.businessInfo(vo,conn);
+
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+			
+		// connection close 
+		JDBCTemplate.close(conn);
+		
+		// result return
+		return result;
+	}
+
 }

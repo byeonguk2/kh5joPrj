@@ -144,12 +144,13 @@ input:focus {outline: none;}
 					</div>
 					<div>
 						<label>패스워드 확인</label>
-						<input type="password" name="password_re" value=""/>
-						<label class='guide'></label>
+						<input onkeyup="checkPwd();" type="password" name="password_re" value=""/>
+						<label id="passMsg_re" class='guide'></label>
 					</div>
 					<div>
 						<label>닉네임</label>
-						<input type="text" name="nick" value="<%= loginSeller.getNick() %>"/>
+						<input onblur="checkNick();" type="text" name="nick" value="<%= loginSeller.getNick() %>"/>
+						<label id="nick_re" class='guide'></label>
 					</div>
 					<div>
 						<label>이름</label>
@@ -171,12 +172,42 @@ input:focus {outline: none;}
 		</main>
 	</div>
 	<script>
+		// 비밀번호 체크 
 		function checkPwd(){
 			const from = document.querySelector("#form");
-			const pwdValue = form.password.value;
-			const pwd_Value = form.password_re.value;
-			console.log(pwdValue);
-			console.log(pwd_Value);
+			if(form.password.value === form.password_re.value && form.password.value.length > 7){
+				document.getElementById("passMsg_re").innerHTML = "비밀번호를 일치합니다.";
+				return false;
+			}else{
+				document.getElementById("passMsg_re").innerHTML = "비밀번호가 일치하지 않습니다.";
+				return false;
+			}
+		}
+		
+		// 닉네임 체크
+		function checkNick(){
+			var xhr = new XMLHttpRequest();
+			const from = document.querySelector("#form");
+			
+			if(from.nick.value.length < 1){
+				document.querySelector("#nick_re").innerHTML = '닉네임이 짧습니다.';
+				return false;
+			}
+			
+			xhr.open("GET", "/nongra/seller/nickCheck?nick="+document.querySelector("input[name=nick]").value, true);
+			// 요청을 보내줌
+			xhr.send();
+			
+			console.log(from.nick.value);
+			//요청에 대한 응답이오면 실행되는 함수
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200){
+					xhr.responseText.trim()
+					console.log(xhr.responseText);
+
+					document.getElementById("nick_re").innerHTML = xhr.responseText.trim();
+				}
+			}
 		}
 	</script>
 </body>
