@@ -1,5 +1,14 @@
+<%@page import="com.kh.app.page.vo.PageVo"%>
+<%@page import="com.kh.app.seller.vo.SellerVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <% 
+    	List<SellerVo> voList = (List<SellerVo>)request.getAttribute("voList"); 
+    	PageVo pvo = (PageVo)request.getAttribute("pvo");
+    %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,7 +58,7 @@
 	}
 	tr{
 		display: grid;
-		grid-template-columns: 1fr 1fr 2fr 2fr 2fr 2fr 3fr 4fr;
+		grid-template-columns: 1fr 1fr 2fr  2fr 2fr 3fr 4fr;
 		align-items: center;
 		border-top: none;
 		border-bottom: 1px solid black;
@@ -88,6 +97,61 @@
 		width: 60px;
 		height: 30px;
 	}
+	
+	
+	/* 모달창 */
+	/* 여기다가 display none 주시면 됩니다 */
+	.modal {
+		display: none;
+		position:fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background: rgba(0,0,0,0.3);
+ 		z-index: 2; 
+	}
+	/* 여기안에서 작업하면되고 */
+	.dialog {
+		width: 80vw;
+		height: 80vh;
+		border-radius: 1em;
+		background: white;
+		overflow:auto;
+		margin: auto;
+	}
+	.modal_up{
+		display: flex;
+	}
+	.modal_area{
+		display: grid;
+		grid-template-rows: 60px 80px 800px;
+	}.modal_down{
+		display: grid;
+		grid-template-columns: 1fr 30px;
+		padding: 20px 20px 0px 20px;
+	}
+	.modal_down_btn{
+		border: none;
+    	background-color: white;
+		font-size: 30px;
+		cursor: pointer;
+	}
+	.modal_table{
+		display: grid;
+		grid-template-rows: 60px 60px 60px 60px 60px 60px;
+		width: 800px;
+		margin: auto;
+	}
+	.modal-table-area{
+		display: flex;
+	}
+	.modal-table-title{
+		width: 100px;
+	}
+	.modal-table-cotent{
+		width: 100%;
+	}
 </style>
 </head>
 <body>
@@ -122,149 +186,123 @@
 								<th>아이디</th>
 								<th>닉네임</th>
 								<th>회원종류</th>
-								<th>회원상태</th>
 								<th>가입일시</th>
-								<th>정보수정</th>
+								<th>요청보기</th>
 							</tr>
 						</thead>
 						<tbody>
+						<% for(SellerVo list : voList){ %>
 							<tr>
 								<th></th>
-								<td>1</td>
-								<td>quddnr123</td>
-								<td>킹병욱</td>
-								<td>파트너</td>
-								<td>정상</td>
-								<td>2023.11.23</td>
-								<td><button type="button" class="ben-btn">요청확인</button></td>
+								<td><%= list.getSellerNo() %></td>
+								<td><%= list.getId() %></td>
+								<td><%= list.getNick() %></td>
+								<td>판매자</td>
+								<td><%= list.getJoinDate() %></td>
+								<td><button type="button" class="ben-btn" onclick="getModal()">요청확인</button></td>
+								<input type="hidden" name="crrVo" value="<%= list %>"/>
 							</tr>
-							<tr>
-								<th></th>
-								<td>2</td>
-								<td>king123</td>
-								<td>park병욱</td>
-								<td>파트너</td>
-								<td>정상</td>
-								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">요청확인</button></td>
-							</tr>
-							<tr>
-								<th></th>
-								<td>3</td>
-								<td>king123</td>
-								<td>park병욱</td>
-								<td>파트너</td>
-								<td>정상</td>
-								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">요청확인</button></td>
-							</tr>
-							<tr>
-								<th></th>
-								<td>4</td>
-								<td>king123</td>
-								<td>park병욱</td>
-								<td>파트너</td>
-								<td>정상</td>
-								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">요청확인</button></td>
-							</tr>
-							<tr>
-								<th></th>
-								<td>5</td>
-								<td>king123</td>
-								<td>park병욱</td>
-								<td>파트너</td>
-								<td>정상</td>
-								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">요청확인</button></td>
-							</tr>
-							<tr>
-								<th></th>
-								<td>6</td>
-								<td>king123</td>
-								<td>park병욱</td>
-								<td>파트너</td>
-								<td>정상</td>
-								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">요청확인</button></td>
-							</tr>
-							<tr>
-								<th></th>
-								<td>7</td>
-								<td>king123</td>
-								<td>park병욱</td>
-								<td>파트너</td>
-								<td>정상</td>
-								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">요청확인</button></td>
-							</tr>
-							<tr>
-								<th></th>
-								<td>8</td>
-								<td>king123</td>
-								<td>park병욱</td>
-								<td>일반회원</td>
-								<td>정상</td>
-								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">요청확인</button></td>
-							</tr>
-							<tr>
-								<th></th>
-								<td>9</td>
-								<td>king123</td>
-								<td>park병욱</td>
-								<td>일반회원</td>
-								<td>정상</td>
-								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">요청확인</button></td>
-							</tr>
-							<tr>
-								<th></th>
-								<td>10</td>
-								<td>king123</td>
-								<td>park병욱</td>
-								<td>일반회원</td>
-								<td>정상</td>
-								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">요청확인</button></td>
-							</tr>
+							<% } %>
 						</tbody>
 					</table>
 				</div>
 				<div class="paging-btn-area">
 					<div></div>
 					<div class="paging-btn">
-						<button>이전</button>
-						<a href="">1</a>
-						<a href="">2</a>
-						<a href="">3</a>
-						<a href="">4</a>
-						<a href="">5</a>
-						<button>다음</button>
+						<%if(pvo.getStartPage() != 1){ %>
+				          <a href="/nongra/admin/request?pno=<%= pvo.getStartPage()-1 %>">이전</a>
+				         <% } %>
+						<% for(int i = pvo.getStartPage(); i <= pvo.getEndPage(); i++){ %>
+         	
+				         	<% if(i == pvo.getCurrentPage()){ %>
+				           		<span><%= i %></span>
+				            <% }else{ %>
+			            	
+			             	<a href="/nongra/admin/request?pno=<%= i %>"><%= i %></a>
+			             	
+			            <% } %>
+			            
+			            <% } %>
+			            
+			            <%if(pvo.getEndPage() != pvo.getMaxPage()){ %>
+			            <a href="/nongra/admin/request?pno=<%= pvo.getEndPage()+1 %>">다음</a>
+			        	<% } %>
 					</div>
 					<div></div>
 				</div>
 			</from>
 		</div>
+		<body>
+        <div class="modal">
+            <div class="dialog">
+                <div class="modal_area">
+					<div class="modal_down">
+						<div></div>
+						<button class="modal_down_btn" type="button" onclick="getModal()">x</button>
+					</div>
+					<h1 style="text-align: center;">사업자 정보</h1>
+					<div>
+						<div class="modal_table">
+							<div class="modal-table-area">
+								<div class="modal-table-title">사업자 번호</div>
+								<div class="modal-table-cotent">012331233</div>
+							</div>
+							<div class="modal-table-area">
+								<div class="modal-table-title"></div>
+								<div class="modal-table-cotent"></div>
+							</div>
+							<div class="modal-table-area">
+								<div class="modal-table-title"></div>
+								<div class="modal-table-cotent"></div>
+							</div>
+							<div class="modal-table-area">
+								<div class="modal-table-title"></div>
+								<div class="modal-table-cotent"></div>
+							</div>
+							<div class="modal-table-area">
+								<div class="modal-table-title"></div>
+								<div class="modal-table-cotent"></div>
+							</div>
+							<div class="modal-table-area">
+								<div class="modal-table-title"></div>
+								<div class="modal-table-cotent"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </body>
 		<script></script>
 	</div>
 	<script>
 		function createAsideLetter(){
-		const x = document.querySelector(".aside-item > label");
-		const menu1 = document.querySelector(" aside > :nth-child(2) > a ");
-		const menu2 = document.querySelector(" aside > :nth-child(3) > a ");
-		const menu3 = document.querySelector(" aside > :nth-child(4) > a ");
-		x.innerHTML = "회원관리";
-		menu1.innerHTML = "회원 조회/수정";
-		menu1.href = "/nongra/admin/select";
-		menu2.innerHTML = "회원 정지/해제";
-        menu2.href = "/nongra/admin/memberBen";
-		menu3.innerHTML = "사업자 허가 여부";
-		menu3.href = "/nongra/admin/member/request";
+			const x = document.querySelector(".aside-item > label");
+			const menu1 = document.querySelector(" aside > :nth-child(2) > a ");
+			const menu2 = document.querySelector(" aside > :nth-child(3) > a ");
+			const menu3 = document.querySelector(" aside > :nth-child(4) > a ");
+			x.innerHTML = "회원관리";
+			menu1.innerHTML = "회원 조회/수정";
+			menu1.href = "/nongra/admin/select";
+			menu2.innerHTML = "회원 정지/해제";
+	        menu2.href = "/nongra/admin/memberBen";
+			menu3.innerHTML = "사업자 허가 여부";
+			menu3.href = "/nongra/admin/member/request";
 		}
 		createAsideLetter()
 		
+		function getModal() {
+			const modal = document.querySelector(".modal");
+			modal.classList.toggle("modal_up");
+			const vo = document.querySelector("input[name=crrVo]").value;
+			console.log(vo);
+		}
 		
+		function downModal() {
+			const modal = document.querySelector(".modal");
+			modal.classList.toggle("modal_up");
+		}
+
 	</script>
 </body>
 </html>

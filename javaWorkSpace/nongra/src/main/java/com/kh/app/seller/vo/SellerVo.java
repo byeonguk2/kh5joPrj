@@ -1,15 +1,18 @@
 package com.kh.app.seller.vo;
 
+import java.util.Objects;
+
 public class SellerVo {
 
+	public SellerVo() {
+		
+	}
 	
-
 	public SellerVo(String memberNo, String sellerNo, String nick, String id, String password, String password_re,
 			String email, String name, String phone, String businessNo, String businessForm, String busineesName,
 			String busineesPhone, String corporationName, String uptae, String upjong, String busineesZipCode,
 			String busineesAdr, String detailedAdr, String reportNumber, String bank, String depositor, String account,
-			String permitYn, String joinDate, String fileNo, String fileSrc) {
-		super();
+			String permitYn, String joinDate, String requestYn, String modifyYn, String fileNo, String fileSrc) {
 		this.memberNo = memberNo;
 		this.sellerNo = sellerNo;
 		this.nick = nick;
@@ -35,12 +38,10 @@ public class SellerVo {
 		this.account = account;
 		this.permitYn = permitYn;
 		this.joinDate = joinDate;
+		this.requestYn = requestYn;
+		this.modifyYn = modifyYn;
 		this.fileNo = fileNo;
 		this.fileSrc = fileSrc;
-	}
-
-	public SellerVo() {
-		
 	}
 
 	private String memberNo;
@@ -73,44 +74,11 @@ public class SellerVo {
 	
 	private String permitYn; 
 	private String joinDate; 
+	private String requestYn;
+	private String modifyYn;
 	
 	private String fileNo;
 	private String fileSrc;
-	
-	
-	
-	public String getJoinDate() {
-		return joinDate;
-	}
-
-	public void setJoinDate(String joinDate) {
-		this.joinDate = joinDate;
-	}
-
-	public String getPermitYn() {
-		return permitYn;
-	}
-
-	public void setPermitYn(String permitYn) {
-		this.permitYn = permitYn;
-	}
-
-	public String getFileNo() {
-		return fileNo;
-	}
-
-	public void setFileNo(String fileNo) {
-		this.fileNo = fileNo;
-	}
-
-	public String getFileSrc() {
-		return fileSrc;
-	}
-
-	public void setFileSrc(String fileSrc) {
-		this.fileSrc = fileSrc;
-	}
-
 	public String getMemberNo() {
 		return memberNo;
 	}
@@ -295,6 +263,89 @@ public class SellerVo {
 		this.account = account;
 	}
 
+	public String getPermitYn() {
+		return permitYn;
+	}
+
+	public void setPermitYn(String permitYn) {
+		this.permitYn = permitYn;
+	}
+
+	public String getJoinDate() {
+		return joinDate;
+	}
+
+	public void setJoinDate(String joinDate) {
+		this.joinDate = joinDate;
+	}
+
+	public String getRequestYn() {
+		return requestYn;
+	}
+
+	public void setRequestYn(String requestYn) {
+		this.requestYn = requestYn;
+	}
+
+	public String getModifyYn() {
+		return modifyYn;
+	}
+
+	public void setModifyYn(String modifyYn) {
+		this.modifyYn = modifyYn;
+	}
+
+	public String getFileNo() {
+		return fileNo;
+	}
+
+	public void setFileNo(String fileNo) {
+		this.fileNo = fileNo;
+	}
+
+	public String getFileSrc() {
+		return fileSrc;
+	}
+
+	public void setFileSrc(String fileSrc) {
+		this.fileSrc = fileSrc;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(account, bank, busineesAdr, busineesName, busineesPhone, busineesZipCode, businessForm,
+				businessNo, corporationName, depositor, detailedAdr, email, fileNo, fileSrc, id, joinDate, memberNo,
+				modifyYn, name, nick, password, password_re, permitYn, phone, reportNumber, requestYn, sellerNo, upjong,
+				uptae);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SellerVo other = (SellerVo) obj;
+		return Objects.equals(account, other.account) && Objects.equals(bank, other.bank)
+				&& Objects.equals(busineesAdr, other.busineesAdr) && Objects.equals(busineesName, other.busineesName)
+				&& Objects.equals(busineesPhone, other.busineesPhone)
+				&& Objects.equals(busineesZipCode, other.busineesZipCode)
+				&& Objects.equals(businessForm, other.businessForm) && Objects.equals(businessNo, other.businessNo)
+				&& Objects.equals(corporationName, other.corporationName) && Objects.equals(depositor, other.depositor)
+				&& Objects.equals(detailedAdr, other.detailedAdr) && Objects.equals(email, other.email)
+				&& Objects.equals(fileNo, other.fileNo) && Objects.equals(fileSrc, other.fileSrc)
+				&& Objects.equals(id, other.id) && Objects.equals(joinDate, other.joinDate)
+				&& Objects.equals(memberNo, other.memberNo) && Objects.equals(modifyYn, other.modifyYn)
+				&& Objects.equals(name, other.name) && Objects.equals(nick, other.nick)
+				&& Objects.equals(password, other.password) && Objects.equals(password_re, other.password_re)
+				&& Objects.equals(permitYn, other.permitYn) && Objects.equals(phone, other.phone)
+				&& Objects.equals(reportNumber, other.reportNumber) && Objects.equals(requestYn, other.requestYn)
+				&& Objects.equals(sellerNo, other.sellerNo) && Objects.equals(upjong, other.upjong)
+				&& Objects.equals(uptae, other.uptae);
+	}
+
 	@Override
 	public String toString() {
 		return "SellerVo [memberNo=" + memberNo + ", sellerNo=" + sellerNo + ", nick=" + nick + ", id=" + id
@@ -304,8 +355,10 @@ public class SellerVo {
 				+ corporationName + ", uptae=" + uptae + ", upjong=" + upjong + ", busineesZipCode=" + busineesZipCode
 				+ ", busineesAdr=" + busineesAdr + ", detailedAdr=" + detailedAdr + ", reportNumber=" + reportNumber
 				+ ", bank=" + bank + ", depositor=" + depositor + ", account=" + account + ", permitYn=" + permitYn
-				+ ", joinDate=" + joinDate + ", fileNo=" + fileNo + ", fileSrc=" + fileSrc + "]";
+				+ ", joinDate=" + joinDate + ", requestYn=" + requestYn + ", modifyYn=" + modifyYn + ", fileNo="
+				+ fileNo + ", fileSrc=" + fileSrc + "]";
 	}
-
-
+	
+	
+	
 }
