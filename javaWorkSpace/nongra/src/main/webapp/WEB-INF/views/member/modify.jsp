@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div id="wrap">
-		<%@ include file="/WEB-INF/views/common/header/header_sobi.jsp"%>
+		<%@ include file="/WEB-INF/views/common/header/header_sobi_memberModify.jsp"%>
 		<div id="a">
 		<%@ include file="/WEB-INF/views/common/aside/aside_sobi_main.jsp"%>
 		<form name="form" action="https://www.naver.com/">
