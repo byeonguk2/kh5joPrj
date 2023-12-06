@@ -2,22 +2,23 @@ package com.kh.app.purchase.vo;
 
 public class PurchaseCartVo {
 	private String goodsName;
-	private int goodsPrice;
+	private String goodsPrice;
 	private String optionName;
-	private int optionPrice;
+	private String optionPrice;
 	private String goodsPicture;
-	private int orderNumber;
-	private int ea;
+	private String orderNumber;
+	private String goodsEA;
+	private String seller;
 	public String getGoodsName() {
 		return goodsName;
 	}
 	public void setGoodsName(String goodsName) {
 		this.goodsName = goodsName;
 	}
-	public int getGoodsPrice() {
+	public String getGoodsPrice() {
 		return goodsPrice;
 	}
-	public void setGoodsPrice(int goodsPrice) {
+	public void setGoodsPrice(String goodsPrice) {
 		this.goodsPrice = goodsPrice;
 	}
 	public String getOptionName() {
@@ -26,10 +27,10 @@ public class PurchaseCartVo {
 	public void setOptionName(String optionName) {
 		this.optionName = optionName;
 	}
-	public int getOptionPrice() {
+	public String getOptionPrice() {
 		return optionPrice;
 	}
-	public void setOptionPrice(int optionPrice) {
+	public void setOptionPrice(String optionPrice) {
 		this.optionPrice = optionPrice;
 	}
 	public String getGoodsPicture() {
@@ -38,30 +39,36 @@ public class PurchaseCartVo {
 	public void setGoodsPicture(String goodsPicture) {
 		this.goodsPicture = goodsPicture;
 	}
-	public int getOrderNumber() {
+	public String getOrderNumber() {
 		return orderNumber;
 	}
-	public void setOrderNumber(int orderNumber) {
+	public void setOrderNumber(String orderNumber) {
 		this.orderNumber = orderNumber;
 	}
-	public int getEa() {
-		return ea;
+	public String getGoodsEA() {
+		return goodsEA;
 	}
-	public void setEa(int ea) {
-		this.ea = ea;
+	public void setGoodsEA(String goodsEA) {
+		this.goodsEA = goodsEA;
+	}
+	public String getSeller() {
+		return seller;
+	}
+	public void setSeller(String seller) {
+		this.seller = seller;
 	}
 	@Override
 	public String toString() {
-		return "PurchaseVo [goodsName=" + goodsName + ", goodsPrice=" + goodsPrice + ", optionName=" + optionName
+		return "PurchaseCartVo [goodsName=" + goodsName + ", goodsPrice=" + goodsPrice + ", optionName=" + optionName
 				+ ", optionPrice=" + optionPrice + ", goodsPicture=" + goodsPicture + ", orderNumber=" + orderNumber
-				+ ", ea=" + ea + "]";
+				+ ", goodsEA=" + goodsEA + ", seller=" + seller + "]";
 	}
 	public PurchaseCartVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public PurchaseCartVo(String goodsName, int goodsPrice, String optionName, int optionPrice, String goodsPicture,
-			int orderNumber, int ea) {
+	public PurchaseCartVo(String goodsName, String goodsPrice, String optionName, String optionPrice,
+			String goodsPicture, String orderNumber, String goodsEA, String seller) {
 		super();
 		this.goodsName = goodsName;
 		this.goodsPrice = goodsPrice;
@@ -69,8 +76,9 @@ public class PurchaseCartVo {
 		this.optionPrice = optionPrice;
 		this.goodsPicture = goodsPicture;
 		this.orderNumber = orderNumber;
-		this.ea = ea;
+		this.goodsEA = goodsEA;
+		this.seller = seller;
 	}
-	
+
 	
 }

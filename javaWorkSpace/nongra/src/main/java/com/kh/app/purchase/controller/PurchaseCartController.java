@@ -20,9 +20,9 @@ public class PurchaseCartController extends HttpServlet{
 		try {
 			//data
 			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
-			if(loginMember == null) {
-				throw new Exception("잘못된 접근입니다.(로그인 정보 없음)");
-			}
+//			if(loginMember == null) {
+//				throw new Exception("잘못된 접근입니다.(로그인 정보 없음)");
+//			}
 			
 			//service
 			PurchaseService ps = new PurchaseService();
@@ -34,11 +34,7 @@ public class PurchaseCartController extends HttpServlet{
 			
 		}catch(Exception e) {
 			System.out.println("[ERROR-P001]장바구니 목록 불러오는 중 예외 발생");
+			e.printStackTrace();
 		}
 	}//doGet
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-	}
 }//class
