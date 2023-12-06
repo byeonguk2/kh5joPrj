@@ -43,6 +43,7 @@
                         	<div class="goodsTitleArea">
 	                            <div class="seller"><%=vo.getSeller() %></div>
 	                            <div class="goodsName"><%=vo.getGoodsName() %></div>
+	                            <span class="cartBreakdown">내역번호</span>
                         	</div>
                         </td>
                         <td>
