@@ -125,7 +125,7 @@
 	}
 	.modal_area{
 		display: grid;
-		grid-template-rows: 60px 80px 800px;
+		grid-template-rows: 60px 80px 1000px 500px 500px;
 	}.modal_down{
 		display: grid;
 		grid-template-columns: 1fr 30px;
@@ -142,15 +142,34 @@
 		grid-template-rows: 60px 60px 60px 60px 60px 60px;
 		width: 800px;
 		margin: auto;
+		margin-top: 50px
 	}
 	.modal-table-area{
 		display: flex;
 	}
 	.modal-table-title{
-		width: 100px;
+		width: 200px;
+		border:1px solid black;
+		text-align: center;
+		line-height: 60px
 	}
 	.modal-table-cotent{
 		width: 100%;
+		border:1px solid black;
+		padding-left: 30px;
+		line-height: 60px
+	}
+	.modal-img1{
+		margin: auto;
+		width: 600px;
+		height: 600px;
+		background-size: cover;
+	}
+	.modal-img2{
+		margin: auto;
+		width: 600px;
+		height: 600px;
+		background-size: cover;
 	}
 </style>
 </head>
@@ -199,7 +218,7 @@
 								<td><%= list.getNick() %></td>
 								<td>판매자</td>
 								<td><%= list.getJoinDate() %></td>
-								<td><button type="button" class="ben-btn" onclick="getModal()">요청확인</button></td>
+								<td><button type="button" class="ben-btn" onclick="getModal(<%= list.getSellerNo() %>)">요청확인</button></td>
 								<input type="hidden" name="crrVo" value="<%= list %>"/>
 							</tr>
 							<% } %>
@@ -238,37 +257,71 @@
                 <div class="modal_area">
 					<div class="modal_down">
 						<div></div>
-						<button class="modal_down_btn" type="button" onclick="getModal()">x</button>
-					</div>
+						<button class="modal_down_btn" type="button" onclick="downModal()">x</button>
+					</div>	
 					<h1 style="text-align: center;">사업자 정보</h1>
 					<div>
 						<div class="modal_table">
 							<div class="modal-table-area">
 								<div class="modal-table-title">사업자 번호</div>
+								<div class="modal-table-cotent"><%= 1 %></div>
+							</div>
+							<div class="modal-table-area">
+								<div class="modal-table-title">사업형태</div>
 								<div class="modal-table-cotent">012331233</div>
 							</div>
 							<div class="modal-table-area">
-								<div class="modal-table-title"></div>
-								<div class="modal-table-cotent"></div>
+								<div class="modal-table-title">사업장명</div>
+								<div class="modal-table-cotent">012331233</div>
 							</div>
 							<div class="modal-table-area">
-								<div class="modal-table-title"></div>
-								<div class="modal-table-cotent"></div>
+								<div class="modal-table-title">사업자 전화번호</div>
+								<div class="modal-table-cotent">012331233</div>
 							</div>
 							<div class="modal-table-area">
-								<div class="modal-table-title"></div>
-								<div class="modal-table-cotent"></div>
+								<div class="modal-table-title">우편번호</div>
+								<div class="modal-table-cotent"><%= 1 %></div>
 							</div>
 							<div class="modal-table-area">
-								<div class="modal-table-title"></div>
-								<div class="modal-table-cotent"></div>
+								<div class="modal-table-title">사업장 주소</div>
+								<div class="modal-table-cotent">012331233</div>
 							</div>
 							<div class="modal-table-area">
-								<div class="modal-table-title"></div>
-								<div class="modal-table-cotent"></div>
+								<div class="modal-table-title">상세주소</div>
+								<div class="modal-table-cotent">012331233</div>
+							</div>
+							<div class="modal-table-area">
+								<div class="modal-table-title">법인명</div>
+								<div class="modal-table-cotent">012331233</div>
+							</div>
+							<div class="modal-table-area">
+								<div class="modal-table-title">업태</div>
+								<div class="modal-table-cotent">012331233</div>
+							</div>
+							<div class="modal-table-area">
+								<div class="modal-table-title">업종</div>
+								<div class="modal-table-cotent">012331233</div>
+							</div>
+							<div class="modal-table-area">
+								<div class="modal-table-title">통신판매업신고번호</div>
+								<div class="modal-table-cotent">012331233</div>
+							</div>
+							<div class="modal-table-area">
+								<div class="modal-table-title">은행</div>
+								<div class="modal-table-cotent">012331233</div>
+							</div>
+							<div class="modal-table-area">
+								<div class="modal-table-title">입금자명</div>
+								<div class="modal-table-cotent">012331233</div>
+							</div>
+							<div class="modal-table-area">
+								<div class="modal-table-title">입금계좌</div>
+								<div class="modal-table-cotent">012331233</div>
 							</div>
 						</div>
 					</div>
+					<img class="modal-img1" alt="" src="/nongra/resources/img/common/logo.png">
+					<img class="modal-img2" alt="" src="/nongra/resources/img/common/mark.png">
 				</div>
             </div>
         </div>
@@ -290,18 +343,23 @@
 			menu3.href = "/nongra/admin/member/request";
 		}
 		createAsideLetter()
-		
-		function getModal() {
-			const modal = document.querySelector(".modal");
-			modal.classList.toggle("modal_up");
-			const vo = document.querySelector("input[name=crrVo]").value;
-			console.log(vo);
-		}
-		
-		function downModal() {
-			const modal = document.querySelector(".modal");
-			modal.classList.toggle("modal_up");
-		}
+
+		function getModal(x) {
+				const modal = document.querySelector(".modal");
+				
+				fetch('/nongra/admin/businessFile?'+'no'+x,(response)=>{
+					return response;
+				}).then(()=>{
+
+				});
+				
+				modal.classList.toggle("modal_up");
+			}
+			
+			function downModal() {
+				const modal = document.querySelector(".modal");
+				modal.classList.toggle("modal_up");
+			}
 
 	</script>
 </body>
