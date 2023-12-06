@@ -19,7 +19,7 @@
                 <form action="/nongra/member/login" method="post">
                     <input  type="text" placeholder="아이디를 입력해주세요" name="id" maxlength="16" class="css-18jns9z" value="">
                     <input  type="text" placeholder="비밀번호를 입력해주세요" name="pwd" maxlength="16" class="css-q5u0mo" value="">
-                    <button type="submit">로그인</button>
+                    <button type="submit" style='cursor:pointer' >로그인</button>
                 </form>
                 <div>
                     <a class="" href="/find/id">아이디 찾기</a>

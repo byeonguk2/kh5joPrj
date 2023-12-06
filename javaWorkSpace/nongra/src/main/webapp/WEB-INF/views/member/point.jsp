@@ -14,7 +14,7 @@
 	<%@ include file="/WEB-INF/views/common/aside/aside_sobi_main.jsp"%>
 	<form action="https://www.naver.com/">
         <main>
-            <div class="point">
+            <div id="point">
 		
                 <div id="img_coin">
                     <img src="https://cdn-icons-png.flaticon.com/512/7617/7617037.png" alt="n코인">
