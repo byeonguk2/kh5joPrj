@@ -14,7 +14,7 @@ a {
 }
 
 /* wrap div css */
-#wrap1{
+#wrap{
 	width: 1500px;
 	/* border: 1px solid black; */
 	margin: auto;
@@ -27,11 +27,23 @@ a {
 header{
 	display: grid;
 	grid-template-rows: 1fr 4fr 2fr;
-	grid-template-columns: 3fr 10fr 1fr 1fr 1fr;
+	grid-template-columns: 3fr 4fr 1fr 1fr 1fr;
 	font-size: 12px;
 }
 
 /* 회원가입 로그인 고객센터 css */
+
+header > div:nth-child(5){
+	display: flex;
+	justify-content:left;
+}
+header > div:nth-child(3){
+	display: flex;
+	justify-content:right;
+}
+
+
+
 .top-menu{
 	text-align: center;
 }
@@ -45,8 +57,8 @@ header{
 .logo{
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	margin-left: 35px;
+	justify-content:left;
+	margin-left: 100px;
 }
 
 #serach{
@@ -84,6 +96,8 @@ header{
 #serach-area{
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	
 }
 
 /* 네비게이션바 css */
@@ -92,7 +106,7 @@ nav {
 	grid-column: span 6;
 	background-color: white;
 	display: flex;
-	width: 1050px;
+	width: 1500px;
 	height: 50px;
 	justify-content: space-around;
 	align-items: center;
@@ -120,7 +134,7 @@ nav > a:nth-child(1) {
 #coin-icon-area{
 	display: flex;
 	justify-content: center;
-	align-items: end;
+	align-items: center;
 	margin: 10px;
 	filter: invert(24%) sepia(47%) saturate(741%) hue-rotate(338deg) brightness(99%) contrast(85%);
 }
@@ -128,7 +142,7 @@ nav > a:nth-child(1) {
 #cart-icon-area{
 	display: flex;
 	justify-content: start;
-	align-items: end;
+	align-items: center;
 	margin: 10px;
 	filter: invert(24%) sepia(47%) saturate(741%) hue-rotate(338deg) brightness(99%) contrast(85%);
 }
