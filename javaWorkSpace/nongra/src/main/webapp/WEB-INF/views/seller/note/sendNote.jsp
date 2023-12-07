@@ -96,26 +96,33 @@
 		display: flex;
 		justify-content: center;
 	}
-
-	.send-bottom-area > button:nth-child(2){
-		width: 80px;
-		height: 40px;
-		font-weight: bolder;
-		border-radius: 6px;
-	}
 	
-	.send-bottom-area > button:nth-child(3){
-		width: 60px;
-		height: 40px;
-		background-color: dimgray;
-		border-radius: 6px;
-		font-weight: bolder;
-	}
+	.send-bottom-area > button:nth-child(2){
+        width: 80px;
+        height: 40px;
+        font-weight: bolder;
+        border-radius: 6px;
+    }
+
+    .send-bottom-area > button:nth-child(3){
+        width: 80px;
+        height: 40px;
+        font-weight: bolder;
+        border-radius: 6px;
+    }
+    
+    .send-bottom-area > button:nth-child(4){
+        width: 60px;
+        height: 40px;
+        background-color: dimgray;
+    }
 	.page-area *{
 		margin-left : 10px;
 	}
 
-	
+    .currentPage{
+    	text-decoration: underline;
+    }
 </style>
 </head>
 <body>
@@ -151,7 +158,7 @@
 						<table class="table">
 							<thead>
 								<tr>
-									<td><input onclick="checkAll();" name="checkbox" type="checkbox" ></td>
+									<td></td>
 									<th><span>제목</span></th>
 									<th><span>내용</span></th>
 									<th><span>받는사람</span></th>
@@ -161,7 +168,7 @@
 							<tbody>
 								<% for (SellerNoteVo sellerNote : sendNoteList) { %>
 								    <tr>
-								        <td><input name="checkbox" type="checkbox"></td>
+                                        <td><input name="checkbox" type="radio" value="<%=sellerNote.getNoteNo()%>"></td>
 								        <td><span><%= sellerNote.getTitle().length() > 20 ? sellerNote.getTitle().substring(0, 20) + "..." : sellerNote.getTitle() %></span></td>
 								        <td><span><%= sellerNote.getContent().length() > 20 ? sellerNote.getContent().substring(0, 20) + "..." : sellerNote.getContent() %></span></td>
 								        <td><span><%= sellerNote.getToId().length() > 20 ? sellerNote.getToId().substring(0, 20) + "..." : sellerNote.getToId() %></span></td>
@@ -177,10 +184,10 @@
 									<a href="/nongra//seller/note/send?pno=<%= pvo.getStartPage() - 1%>">이전</a>
 								<%} %>
 								
-								<% for(int i = pvo.getStartPage(); i< pvo.getEndPage(); i++){%>
+								<% for(int i = pvo.getStartPage(); i<= pvo.getEndPage(); i++){%>
 									
 									<%if(i == pvo.getCurrentPage()){ %>
-										<span><%= i %></span>	
+                                        <span class="currentPage"><%= i %></span>
 									<%}else{ %>
 										<a href="/nongra/seller/note/send?pno=<%= i %>"><%= i %></a>
 									<%} %>
@@ -192,6 +199,7 @@
 								<%} %>
 							</div>
 							<button onclick="openPopup();">작성하기</button>
+                            <button onclick="viewDetails();">쪽지보기</button>
 							<button>삭제</button>
 						</div>
 					</div>
@@ -230,7 +238,19 @@
         });
     }
 
+    function viewDetails() {
+        const radioButtons = document.querySelectorAll("input[name=checkbox]:checked");
 
+        if (radioButtons.length === 1) {
+            const noteNo = radioButtons[0].value;
+            // 선택된 쪽지 번호에 기반하여 세부 내용을 보여주는 페이지로 리다이렉트 또는 모달 표시 로직을 구현합니다.
+            window.location.href = "/nongra/seller/note/detail?noteNo=" + noteNo;
+        } else {
+            // 아무 라디오 버튼도 선택되지 않았을 경우 알림이나 메시지를 표시합니다.
+            alert("세부 내용을 보려면 쪽지를 선택하세요.");
+        }
+        
+    }
 	
 
 	

@@ -27,12 +27,12 @@ public class SellerNoteService {
 		
 	}
 	//보낸쪽지 목록
-	public List<SellerNoteVo> sendNoteSelectList(String sellerNo, PageVo pvo) throws Exception{
+	public List<SellerNoteVo> sendNoteSelectList(String memberNo, PageVo pvo) throws Exception{
 		Connection conn = JDBCTemplate.getConnection();
 		
 		SellerNoteDao dao = new SellerNoteDao();
 		
-		List<SellerNoteVo> sendNoteList = dao.sendNoteSelectList(sellerNo , pvo ,conn);
+		List<SellerNoteVo> sendNoteList = dao.sendNoteSelectList(memberNo , pvo ,conn);
 		
 		JDBCTemplate.close(conn);
 		
@@ -53,6 +53,30 @@ public class SellerNoteService {
 		return cnt;
 		
 	}
+	//받은 쪽지 목록
+	public List<SellerNoteVo> reciveNoteSelectList(String memberNo, PageVo pvo) throws Exception{
+		Connection conn = JDBCTemplate.getConnection();
+		
+		SellerNoteDao dao = new SellerNoteDao();
+		
+		List<SellerNoteVo> sendNoteList = dao.reciveNoteSelectList(memberNo , pvo ,conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return sendNoteList;
+	}
+    // 쪽지 상세보기
+    public SellerNoteVo noteDetail(String noteNo) throws Exception{
+        Connection conn = JDBCTemplate.getConnection();
+        
+        SellerNoteDao dao = new SellerNoteDao();
+        SellerNoteVo noteVo =dao.noteDetail(noteNo, conn);
+        
+        JDBCTemplate.close(conn);
+        
+        return noteVo;
+        
+    }
 	
 	
 }

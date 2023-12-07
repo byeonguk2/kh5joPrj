@@ -34,10 +34,10 @@ public class SellerNoteSendController extends HttpServlet{
 			int pageLimit = 10;
 			int boardLimit = 10;
 			PageVo pvo = new PageVo(listCount, currentPage,pageLimit, boardLimit);
-			SellerVo sv = (SellerVo)session.getAttribute("loginSeller");
-			String sellerNo = sv.getSellerNo();
+			SellerVo sv = new SellerVo();
+			sv = (SellerVo)session.getAttribute("loginSeller");
+			List<SellerNoteVo> sendNoteList = sns.sendNoteSelectList(sv.getMemberNo() , pvo);
 			
-			List<SellerNoteVo> sendNoteList = sns.sendNoteSelectList(sellerNo , pvo);
 			
 			if(sendNoteList == null) {
 				throw new Exception("리스트 불러오는 중에 오류");
@@ -49,6 +49,7 @@ public class SellerNoteSendController extends HttpServlet{
 		}catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("보낸 쪽지 목록 불러오는 중에 오류");
+			req.getRequestDispatcher("/WEB-INF/views/seller/note/sendNote.jsp").forward(req, resp);
 		}
 		
 		
