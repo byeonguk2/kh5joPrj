@@ -30,7 +30,7 @@
                             <span id="c2">지금 회원 가입하신 후 농라의 다양한 서비스를 만나보세요.</span>
                         </div>
                         <div id="j1">
-                            <button type="button" id="join1"  style='cursor:pointer;' onclick="location.href='https:www.naver.com'">가입하기</button> 
+                            <button type="button" id="join1"  style='cursor:pointer;' onclick="location.href='/nongra/seller/join'">가입하기</button> 
                         </div>
                         <div id="img1"> </div>
 
@@ -45,7 +45,7 @@
                     <br>
                     "나만의 비즈니스를 시작하세요!"
                 </p>
-                <button type="button" class="seller_bt" style='cursor:pointer;'onclick="location.href='https:www.naver.com'">판매회원 가입하기 </button>
+                <button type="button" class="seller_bt" style='cursor:pointer;'onclick="location.href='/nongra/seller/join'">판매회원 가입하기 </button>
             </div>
         </div> 
     </div>

@@ -32,7 +32,9 @@ public class MemberJoinController extends HttpServlet{
 			String memberBirth=req.getParameter("birth");
 			String memberPhone=req.getParameter("phone");
 			String memberEmail=req.getParameter("email");
-			String memberAddr=req.getParameter("postnum");
+			String memberAddr=req.getParameter("loadnum");
+			String memberAddr2=req.getParameter("detailaddress");
+			
 			
 
 			// 자바 정규식 (유효성 검사)
@@ -69,6 +71,7 @@ public class MemberJoinController extends HttpServlet{
 			vo.setPhone(memberPhone);
 			vo.setEmail(memberEmail);
 			vo.setAddr(memberAddr);
+			vo.setAddr2(memberAddr2);
 			
 			//서비스
 			MemberService ms =new MemberService();
@@ -88,6 +91,7 @@ public class MemberJoinController extends HttpServlet{
 		} catch (Exception e) {
 			// 실패시 다시 회원가입 페이지로 이동후 알람메세지 
 			System.out.println("[ERROR-M001] 회원가입 중 예외 발생");
+			e.printStackTrace();
 			req.setAttribute("alertMsg", "회원가입 실패");
 			resp.sendRedirect("/nongra/member/join");
 		}

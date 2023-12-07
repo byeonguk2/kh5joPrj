@@ -20,7 +20,6 @@ public class MemberDao {
 		//rs
 		MemberVo loginMember = null;
 		if(rs.next()) {
-			
 			String no=rs.getString("MEMBER_NO");
 			String id=rs.getString("ID");
 			String nick=rs.getString("NICK");
@@ -29,6 +28,7 @@ public class MemberDao {
 			String name=rs.getString("NAME");
 			String phone=rs.getString("PHONE");
 			String addr=rs.getString("ADDRESS");
+			String addr2=rs.getString("DETAIL_ADDRESS");
 			String birth=rs.getString("BIRTH_DATE");
 			String joinDate=rs.getString("JOIN_DATE");
 			String modifyDate=rs.getString("MODIFY_DATE");
@@ -45,6 +45,7 @@ public class MemberDao {
 			loginMember.setName(name);
 			loginMember.setPhone(phone);
 			loginMember.setAddr(addr);
+			loginMember.setAddr(addr2);
 			loginMember.setBirth(birth);
 			loginMember.setJoinDate(joinDate);
 			loginMember.setModifyDate(modifyDate);
@@ -59,8 +60,9 @@ public class MemberDao {
 	}
 
 	public int join(Connection conn, MemberVo vo) throws Exception {
+		System.out.println(vo);
 		//sql
-		String sql="INSERT INTO MEMBER (MEMBER_NO ,ID ,NICK ,PWD ,EMAIL ,NAME ,PHONE,ADDRESS,BIRTH_DATE)VALUES (SEQ_MEMBER.NEXTVAL,?,?,?,?,?,?,?,?);";
+		String sql="INSERT INTO MEMBER (MEMBER_NO ,ID ,NICK ,PWD ,EMAIL ,NAME ,PHONE,ADDRESS,DETAIL_ADDRESS,BIRTH_DATE)VALUES (SEQ_MEMBER.NEXTVAL,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement pstmt=conn.prepareStatement(sql);
 		pstmt.setString(1, vo.getMemberId());
 		pstmt.setString(2, vo.getMemberNick());
@@ -69,7 +71,8 @@ public class MemberDao {
 		pstmt.setString(5, vo.getName());
 		pstmt.setString(6, vo.getPhone());
 		pstmt.setString(7, vo.getAddr());
-		pstmt.setString(8, vo.getBirth());
+		pstmt.setString(8, vo.getAddr2());
+		pstmt.setString(9, vo.getBirth());
 		int result=pstmt.executeUpdate();
 		//rs
 		

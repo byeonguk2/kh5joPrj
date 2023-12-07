@@ -24,10 +24,20 @@
                 <div></div>
                 <div></div>
                 <div class="top-menu">
-                    <a href="/nongra/member/join">회원가입</a>
+                    <%if(loginMember==null){%>
+                    		 <a href="/nongra/member/join">회원가입</a>
+                    	<%}else{%>
+                    		<a href="/nongra/member/mypage">마이페이지</a>
+                    	<%}%>
                 </div>
                 <div class="top-menu">
-                    <a href="/nongra/member/login">로그인</a>
+                   
+                    	<%if(loginMember==null){%>
+                    		 <a href="/nongra/member/login">로그인</a>
+                    	<%}else{%>
+                    		<a href="/nongra/member/logout">로그아웃</a>
+                    	<%}%>
+                   
                 </div>
                 <div class="top-menu">
                     <a href="/nongra/contact/faq">고객센터</a>
@@ -46,14 +56,28 @@
                 </div>
                 <div></div>
                 <div id="coin-icon-area">
-                    <a href="/nongra/member/point">
-                        <img id="icon-coin" width="27px" height="27px" src="/nongra/resources/img/common/header/icon-coin.png" alt="동전">
+                    <%if(loginMember==null){%>
+                    		 <a href="/nongra/member/login">
+                    		 	<img id="icon-coin" width="27px" height="27px" src="/nongra/resources/img/common/header/icon-coin.png" alt="동전">
+                    		 </a>
+                    	<%}else{%>
+                    		<a href="/nongra/member/point">
+                    		    <img id="icon-coin" width="27px" height="27px" src="/nongra/resources/img/common/header/icon-coin.png" alt="동전">
+                    		
+                    		</a>
+                    	<%}%>
                     </a>
                 </div>
                 <div id="cart-icon-area">
-                    <a href="/nongra/cart">
+                    <%if(loginMember==null){%>
+                    		<a href="/nongra/member/login">
                         <img id="icon-cart" width="27px" height="27px" src="/nongra/resources/img/common/header/icon-shopping-cart.png" alt="카트">
                     </a>
+                    <%}else{%>
+                    	<a href="/nongra/cart">
+                    	    <img id="icon-cart" width="27px" height="27px" src="/nongra/resources/img/common/header/icon-shopping-cart.png" alt="카트">
+                    	</a>
+                    <%}%>
                 </div>
                 <nav  style="z-index: 2;">
                     <a href="">
