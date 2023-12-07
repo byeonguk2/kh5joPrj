@@ -1,20 +1,3 @@
-/*수량버튼*/
-/*const down = document.querySelector('.downBtn');
-down.addEventListener('click',()=>{
-    let number = document.querySelector('.upDownNo').innerText;
-    if(number == 0){
-        document.querySelector('.upDownNo').innerText = number;
-    }else{
-        document.querySelector('.upDownNo').innerText = number - 1;
-    }
-
-})*/
-const up = document.querySelector('.upBtn');
-up.addEventListener('click',()=>{
-    let number = document.querySelector('.upDownNo').innerText;
-    document.querySelector('.upDownNo').innerText = parseInt(number) + 1;
-})
-
 /*한줄씩 요소 선택*/
 const trArr = document.querySelectorAll("table > tbody > tr");
 
@@ -27,38 +10,61 @@ function removeBtnClick(btn){
 }
 
 
-
-
-
-
-/* 감소 */
-for(let i = 0; i < trArr.length; ++i){
-	/*-버튼 요소*/
-	console.log('for1');
-	console.log(i);
-	console.log('for2');
-	trArr[i].children[3].children[0].children[0].addEventListener('click',down(i))
-
+/* 감소버튼AJAX */
+function ea(event){
+	const cartBreakDownNo = event.currentTarget.parentNode.parentNode.parentNode.children[2].children[0].children[2].innerText;
+	const cartBreakDownEA = event.currentTarget.parentNode.children[1].innerText;
+/*	//서버한테 요청을 보내기
+	fetch("http://127.0.0.1:8888/nongra/cart/AJAX?cartBreakDownNo=" + cartBreakDownNo + "&cartBreakDownEa=" + )
+	.then( (resp) => { return resp.json() } )
+	.then( (x) => { 
+		console.log(x);
+	} );*/
 }
-function down(i){
+
+
+/* 수량 증가,감소 버튼 */
+/* 증가 */
+const plusBtnArr = document.querySelectorAll(".upBtn");
+const minusBtnArr = document.querySelectorAll(".downBtn");
+for(let i = 0; i < plusBtnArr.length; ++i){
+	plusBtnArr[i].addEventListener('click', function(event){
+		const upDownNo = event.currentTarget.parentNode.children[1];
+		upDownNo.innerText = parseInt(upDownNo.innerText) + 1;
+		if(upDownNo.innerText == 2){
+		event.currentTarget.parentNode.children[0].children[0].classList.remove('disabled');
+		}
 	
-	console.log('down1');
-	console.log(i);
-	console.log('down2');
-	let number = trArr[i].children[3].children[0].children[1].innerText;
-	console.log(number);
-	console.log('down3');
-	if(number == 0){
-		trArr[i].children[3].children[0].children[1].innerText = number;
-	}else{
-		trArr[i].children[3].children[0].children[1].innerText = number - 1;
-	}	
-}
+		const cartBreakDownNo = event.currentTarget.parentNode.parentNode.parentNode.children[2].children[0].children[2].innerText;
+		const cartBreakDownEA = event.currentTarget.parentNode.children[1].innerText;	
+		
+		//서버한테 요청을 보내기
+		fetch("http://127.0.0.1:8888/nongra/cart/AJAX?cartBreakDownNo=" + cartBreakDownNo + "&cartBreakDownEa=" + cartBreakDownEA)
+		.then( (resp) => { return resp.json() } )
+		.then( (x) => { 
+			console.log(x);
+		} );
+		
+		
+	});//plusBtnArr이벤트
+	
+	minusBtnArr[i].addEventListener('click', function(event){
+		const upDownNo = event.currentTarget.parentNode.children[1];
+		if(upDownNo.innerText == 1){
+			upDownNo.innerText = upDownNo.innerText; 			
+		}else{
+			upDownNo.innerText = parseInt(upDownNo.innerText) - 1;
+			if(upDownNo.innerText == 1){
+			event.currentTarget.children[0].classList.add('disabled');
+			}
+		}
+	});//minusBtnArr이벤트
+}//for문
 
-for(let i = 0; i < trArr.length; ++i){
-	/*+버튼 요소*/
-	trArr[0].children[3].children[0].children[2]
-}
+
+
+
+
 
 
 

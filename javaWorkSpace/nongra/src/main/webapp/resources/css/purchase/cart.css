@@ -86,6 +86,10 @@ tbody>tr>td:nth-child(4){
     font-size: 18px;
     border-radius: 5px;
 }
+.upDownBtnArea > button{
+    height: 90%;
+    border-radius: 5px;
+}
 .upDownNo{
     display: flex;
     justify-content: center;
@@ -94,12 +98,14 @@ tbody>tr>td:nth-child(4){
     height: 30px;
     width: 20px;
     object-fit: scale-down
-    
 }
 .upBtn > img{
     height: 30px;
     width: 20px;
     object-fit: scale-down
+}
+.disabled{
+	filter: invert(79%) sepia(6%) saturate(31%) hue-rotate(324deg) brightness(101%) contrast(105%);
 }
 .optionArea{
 	padding-left:10px ;

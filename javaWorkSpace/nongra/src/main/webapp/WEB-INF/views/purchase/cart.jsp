@@ -48,9 +48,9 @@
                         </td>
                         <td>
                             <div class="upDownBtnArea">
-                                <span class="downBtn"><img src="/nongra/resources/img/purchase/icon-minus.png" alt="-"></span>
+                                <button class="downBtn"><img src="/nongra/resources/img/purchase/icon-minus.png" alt="-"></button>
                                 <span class="upDownNo"><%=vo.getGoodsEA() %></span>
-                                <span class="upBtn"><img src="/nongra/resources/img/purchase/icon-plus.png" alt="+"></span>
+                                <button class="upBtn"><img src="/nongra/resources/img/purchase/icon-plus.png" alt="+"></button>
                             </div>
                         </td>
                         <td>
