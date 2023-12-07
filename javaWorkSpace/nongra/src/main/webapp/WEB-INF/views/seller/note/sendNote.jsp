@@ -20,8 +20,11 @@
 	
 	.content-area{
 		display: grid;
-		grid-template-rows: 1fr 8fr;
-		background-color: #edf0f5;
+		grid-template-rows: 1fr 9fr;
+		border: 1px solid gray;
+		margin-left: 10px;
+		margin-top: 10px;
+		border-radius: 20px;
 		width: 99%;
 		box-sizing: border-box;
 	}
@@ -33,7 +36,7 @@
 	.send-area{
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
-		grid-template-rows: 1fr 7fr 1fr;
+		grid-template-rows: 2fr 7fr 1fr;
 		width: 80%;
 	}
 	.send-top-area{
@@ -41,10 +44,8 @@
 		grid-column: span 3;
 		border-bottom: 1px solid black;
 		justify-content: space-between;
-		align-items: end;
 		padding-bottom: 5px;
-		
-		height: 100%;
+		margin-bottom: 40px;
 	}
 
 	.h1-area{
@@ -65,16 +66,12 @@
 		grid-column: span 2;
 		align-items: end;
 		justify-content: end;
-		height: 20px;
 		
 	}
-
 	.table{
 		grid-column: span 3;
 		display: flex;
 		flex-direction: column;
-		box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.07);
-		background-color: #edf0f5;
 	}
 	.table tr {
 		display: grid;
@@ -82,8 +79,6 @@
 		text-align: center;
 		border-bottom: 1px solid gray;
 		margin-bottom: 10px;
-		height: 50px;
-		align-items: center;
 	}
 
 	.send-bottom-area{
@@ -101,34 +96,33 @@
 		display: flex;
 		justify-content: center;
 	}
-
-	.send-bottom-area > button:nth-child(2){
-		width: 80px;
-		height: 40px;
-		font-weight: bolder;
-		border-radius: 6px;
-	}
-	.send-bottom-area > button:nth-child(3){
-		width: 80px;
-		height: 40px;
-		font-weight: bolder;
-		border-radius: 6px;
-	}
 	
-	.send-bottom-area > button:nth-child(4){
-		width: 60px;
-		height: 40px;
-		background-color: dimgray;
-		border-radius: 6px;
-		font-weight: bolder;
-	}
+	.send-bottom-area > button:nth-child(2){
+        width: 80px;
+        height: 40px;
+        font-weight: bolder;
+        border-radius: 6px;
+    }
+
+    .send-bottom-area > button:nth-child(3){
+        width: 80px;
+        height: 40px;
+        font-weight: bolder;
+        border-radius: 6px;
+    }
+    
+    .send-bottom-area > button:nth-child(4){
+        width: 60px;
+        height: 40px;
+        background-color: dimgray;
+    }
 	.page-area *{
 		margin-left : 10px;
 	}
-	.currentPage{
-		text-decoration: underline;
-	}
-	
+
+    .currentPage{
+    	text-decoration: underline;
+    }
 </style>
 </head>
 <body>
@@ -144,11 +138,18 @@
 					<div class="send-area">
 						<div class="send-top-area">
 							<div class="send-check-area">
-								<div></div>
+								<select>
+									<option value="">10</option>
+								</select>
+								<span>123</span>
 							</div>
 							<div class="send-search-area">
-								<div></div>
-								<div></div>
+								<select>
+									<option value="">12312321</option>
+								</select>
+								<select>
+									<option value="">23423432</option>
+								</select>
 								<div>
 									<input type="search" placeholder="검색">
 								</div>
@@ -167,7 +168,7 @@
 							<tbody>
 								<% for (SellerNoteVo sellerNote : sendNoteList) { %>
 								    <tr>
-								        <td><input name="checkbox" type="radio" value="<%=sellerNote.getNoteNo()%>"></td>
+                                        <td><input name="checkbox" type="radio" value="<%=sellerNote.getNoteNo()%>"></td>
 								        <td><span><%= sellerNote.getTitle().length() > 20 ? sellerNote.getTitle().substring(0, 20) + "..." : sellerNote.getTitle() %></span></td>
 								        <td><span><%= sellerNote.getContent().length() > 20 ? sellerNote.getContent().substring(0, 20) + "..." : sellerNote.getContent() %></span></td>
 								        <td><span><%= sellerNote.getToId().length() > 20 ? sellerNote.getToId().substring(0, 20) + "..." : sellerNote.getToId() %></span></td>
@@ -184,9 +185,9 @@
 								<%} %>
 								
 								<% for(int i = pvo.getStartPage(); i<= pvo.getEndPage(); i++){%>
-										
+									
 									<%if(i == pvo.getCurrentPage()){ %>
-										<span class="currentPage"><%= i %></span>	
+                                        <span class="currentPage"><%= i %></span>
 									<%}else{ %>
 										<a href="/nongra/seller/note/send?pno=<%= i %>"><%= i %></a>
 									<%} %>
@@ -198,7 +199,7 @@
 								<%} %>
 							</div>
 							<button onclick="openPopup();">작성하기</button>
-							<button onclick="viewDetails();">쪽지보기</button>
+                            <button onclick="viewDetails();">쪽지보기</button>
 							<button>삭제</button>
 						</div>
 					</div>
@@ -237,7 +238,6 @@
         });
     }
 
-
     function viewDetails() {
         const radioButtons = document.querySelectorAll("input[name=checkbox]:checked");
 
@@ -251,6 +251,7 @@
         }
         
     }
+	
 
 	
 </script>
