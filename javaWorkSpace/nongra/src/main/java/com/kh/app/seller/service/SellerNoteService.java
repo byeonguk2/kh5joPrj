@@ -40,19 +40,7 @@ public class SellerNoteService {
 		
 	}
 	
-	// 전체 쪽지 갯수 조회
-	public int selectNoteCount() throws Exception{
-		
-		Connection conn = JDBCTemplate.getConnection();
-		
-		SellerNoteDao dao = new SellerNoteDao();
-		int cnt = dao.selectNoteCount(conn);
-		
-		JDBCTemplate.close(conn);
-		
-		return cnt;
-		
-	}
+
 	//받은 쪽지 목록
 	public List<SellerNoteVo> reciveNoteSelectList(String memberNo, PageVo pvo) throws Exception{
 		Connection conn = JDBCTemplate.getConnection();
@@ -65,7 +53,7 @@ public class SellerNoteService {
 		
 		return sendNoteList;
 	}
-    // 쪽지 상세보기
+    // 보낸쪽지 상세보기
     public SellerNoteVo noteDetail(String noteNo) throws Exception{
         Connection conn = JDBCTemplate.getConnection();
         
@@ -77,6 +65,56 @@ public class SellerNoteService {
         return noteVo;
         
     }
+    
+    // 받은쪽지 상세보기
+    public SellerNoteVo noteReciveDetail(String noteNo) throws Exception{
+        Connection conn = JDBCTemplate.getConnection();
+        
+        SellerNoteDao dao = new SellerNoteDao();
+        int result = dao.noteReciveCheck(noteNo , conn);
+        SellerNoteVo noteVo =dao.noteDetail(noteNo, conn);
+        
+        if(result == 1) {
+        	JDBCTemplate.commit(conn);
+        }else {
+        	JDBCTemplate.rollback(conn);
+        }
+        
+        
+        JDBCTemplate.close(conn);
+        
+        return noteVo;
+        
+    }
+    
+	// 받은 쪽지 갯수 조회
+	public int selectReciveNoteCount(String memberNo) throws Exception{
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		SellerNoteDao dao = new SellerNoteDao();
+		int cnt = dao.selectReciveNoteCount(memberNo , conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return cnt;
+		
+	}
+    
+	// 보낸 쪽지 갯수 조회
+	public int selectSendNoteCount(String memberNo) throws Exception{
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		SellerNoteDao dao = new SellerNoteDao();
+		int cnt = dao.selectSendNoteCount(memberNo , conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return cnt;
+		
+	}
+
 	
 	
 }

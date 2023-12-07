@@ -64,19 +64,21 @@
 			            </div>
 			        </div>
 			        <div class="content-main">
+			        	<span>제목 : </span>
 			            <div><%=noteVo.getTitle() %></div>
+			            <span>내용 : </span>
 						<div><%=noteVo.getContent() %></div>
 			        </div>
 		        	<div></div>
 		        	<div>
 					<%if(noteVo.getCheckDate().equals("N")){ %>
-						<span>ok</span>
-					<%}else{ %>
 						<span>no</span>
+					<%}else{ %>
+						<span>ok</span>
 					<%}%>
 			            <button>X삭제</button>
 			            <button>답장</button>
-			            <span><a href="/nongra/">목록</a></span>
+			            <span><a href="/nongra/seller/note/send">목록</a></span>
 		        	</div>
 			    </div>
 		    </div>

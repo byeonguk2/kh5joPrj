@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.kh.app.seller.service.SellerNoteService;
 import com.kh.app.seller.vo.SellerNoteVo;
 
-@WebServlet("/seller/note/detail")
-public class SellerNoteDetail extends HttpServlet{
+@WebServlet("/seller/note/send/detail")
+public class SellerSendNoteDetailController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,7 +27,7 @@ public class SellerNoteDetail extends HttpServlet{
 			}
 			
 			req.setAttribute("noteVo", noteVo);
-			req.getRequestDispatcher("/WEB-INF/views/seller/note/noteDetail.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/seller/note/sendNoteDetail.jsp").forward(req, resp);
 		}catch(Exception e) {
 			e.printStackTrace();
 			
