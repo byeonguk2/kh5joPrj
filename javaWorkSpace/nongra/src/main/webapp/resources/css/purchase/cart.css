@@ -68,6 +68,9 @@ tbody>tr>td:nth-child(3){
     font-weight: 700;
     font-size: 16px;
 }
+.cartBreakdown{
+	font-size: 0px;
+}
 tbody>tr>td:nth-child(4){
     height: 140px;
     display: flex;

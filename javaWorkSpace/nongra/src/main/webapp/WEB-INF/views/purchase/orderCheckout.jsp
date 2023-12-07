@@ -12,15 +12,22 @@
 	<div id="cover">
 		<%@	include file="/WEB-INF/views/common/header/header_sobi.jsp" %>
 <main>
+    
             <div class="order-head">주문서</div>
             <div class="order">
                 <span class="head-text">주문상품</span>
+                <button class="simpleDetailBtn"><img src="/nongra/resources/img/purchase/icon-angle.png" alt="아래방향각"></button>
             </div>
-            <div class="detail-ver">
-                <div class="product-image-area"><img id="detail-img" src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/cb45c971-b61a-48f2-a521-01d88b793f7e.jpg" alt=""></div>
-                <div class="product-name-area">[블랙위크] 인기 국탕찌개 9종 골라담기 (택2)</a></div>
-                <div class="product-cnt-area">1개</div>
-                <div class="product-price">9,800원</div>
+            <div class="simpleVerArea">
+                <div class="simpleVer">[블랙위크] 인기 국탕찌개 9종 골라담기 (택2)</div>
+            </div>
+            <div class="detailVerArea simpleDetailChange">
+                <div class="detailVer">
+                    <div class="product-image-area"><img id="detail-img" src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/cb45c971-b61a-48f2-a521-01d88b793f7e.jpg" alt=""></div>
+                    <div class="product-name-area">[블랙위크] 인기 국탕찌개 9종 골라담기 (택2)</a></div>
+                    <div class="product-cnt-area">1개</div>
+                    <div class="product-price">9,800원</div>
+                </div>
             </div>
             <div class="orderer-area">
                 <div class="head-text text">주문자 정보</div>
@@ -53,11 +60,7 @@
                     <table>
                         <tr>
                             <td>배송지</td>
-                            <td>기본배송지</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>서울특별시 강남구 테헤란로 130 호산빌딩 6F</td>
+                            <td><span id="address">기본배송지</span>서울특별시 강남구 테헤란로 130 호산빌딩 6F </td>
                         </tr>
                         <tr>
                             <td></td>
@@ -73,7 +76,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td>kh, 010-1234-1234</td>
+                            <td>받는사람, 전화번호</td>
                         </tr>
                         <tr>
                             <td></td>
@@ -94,7 +97,7 @@
                         <tr>
                             <td>농라페이</td>
                             <td>24030원</td>
-                            <td><button class="charge-btn" onclick="/nongra/페이충전페이지">충전하기</button>
+                            <td><button class="charge-btn" onclick="/nongra/member/point">충전하기</button>
                         </tr>
                         <tr>
                             <td>결제 후 잔액</td>

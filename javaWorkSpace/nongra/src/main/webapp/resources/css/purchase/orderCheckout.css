@@ -33,12 +33,29 @@ button{
     padding-bottom: 20px;
     border-bottom: 1px solid rgb(202, 202, 202);
 }
-.simple-ver{
+.simpleDetailBtn{
+    background-color: white;
+}
+.click{
+    transform: rotateX(180deg);
+}
+.simpleDetailChange{
+    display: none;
+}
+
+.simpleDetailBtn > img{
+    height: 25px;
+    width: 25px;
+    object-fit: scale-down;
+    background-color: white;
+    border-bottom: none;
+}
+.simpleVer{
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
-.detail-ver{
+.detailVer{
     margin-top: 20px;
     display: grid;
     grid-template-columns: 1fr 8fr 1fr 2fr;
@@ -50,7 +67,7 @@ button{
     place-content: center center;
     padding-left: 10px;
 }
-.detail-ver > div > img{
+.detailVer > div > img{
     height: 150px;
     width: 100px;
     object-fit: contain;
@@ -97,9 +114,20 @@ td{
     margin-top: 10px;
     padding-bottom: 10px;
 }
+#address{
+    border-radius: 5px;
+    background-color: #75442748;
+    padding: 3px;
+    color: white;
+    font-size: 15px;
+    margin-right: 10px;
+    font-weight: 700;
+}
 .delivery-req{
     margin-top: 10px;
 }
+
+/*배송정보 버튼*/
 .delivery-btn{
     width: 70px;
     height: 30px;
@@ -107,7 +135,13 @@ td{
     font-weight: 600;
     border: 1px solid #754327;
     border-radius: 3px;
+    margin-top: 10px;
 }
+.delivery-btn:hover{
+    background-color: #75442710;
+}
+
+/*충전하기 버튼*/
 .charge-btn{
     width: 70px;
     height: 30px;
@@ -117,6 +151,11 @@ td{
     border-radius: 3px;
     margin-left: 20px;
 }
+.charge-btn:hover{
+    background-color: #75442710;
+    color: #754327;
+}
+
 .pay-btn-area{
     display: flex;
     justify-content: center;
