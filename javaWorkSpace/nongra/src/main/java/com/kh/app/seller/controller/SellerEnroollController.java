@@ -196,8 +196,9 @@ public class SellerEnroollController extends HttpServlet {
 			
 			// 업로드한 파일 경로 디비에 저장
 			String[] strArr = new String[2];
-			strArr[0] = path+sep+fileName;
-			strArr[1] = path+sep+fileName2;
+			strArr[0] = sep+"nongra"+sep+"resources"+sep+"upload"+sep+"img"+fileName;
+			strArr[1] = sep+"nongra"+sep+"resources"+sep+"upload"+sep+"img"+fileName2;
+			System.out.println(strArr);
 			
 			// vo에 값들 전부 할당
 			joinVo.setBusinessNo(business_no);
