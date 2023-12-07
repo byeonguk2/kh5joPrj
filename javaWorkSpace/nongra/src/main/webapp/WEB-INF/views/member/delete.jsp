@@ -9,7 +9,7 @@
 	href="/nongra/resources/css/member/member_delete.css">
 </head>
 <body>
-	
+	<div id="wrap_event">
 	<%@ include file="/WEB-INF/views/common/header/header_sobi.jsp"%>
 	<div class="main">
                 <h2 class="member_drop">
@@ -75,6 +75,7 @@
                     <a href="https://www.google.com/" class="button2">탈퇴취소</a>
 
                 </div>
+            </div>
             </div>
 </body>
 </html>
