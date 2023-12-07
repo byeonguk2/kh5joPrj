@@ -12,7 +12,7 @@
 	<div id="entire-area">
         <div>
             <h1>회원가입</h1>
-            <form action="/nongra/seller/join" method="post" name="joinForm" onsubmit="return join()">
+            <form action="/nongra/member/join" method="post" name="joinForm" onsubmit="return join()">
                 <div class="css-1pfwvb8">
                     <p class="css-1qif6pj">필수입력사항</p>
                     <div class="css-1og0zk9">
@@ -99,8 +99,8 @@
                             <span class="css-1o72o4s">*</span>
                         </p>
                         
-                        <label id="date" for="date" >날짜를 선택하세요:
-                            <input id="date2" type="date"
+                        <label  id="date" for="date" >날짜를 선택하세요:
+                            <input name="birth" id="date2" type="date"
                                    id="date"
                                    max="2023-11-27"
                                    min="1940-06-05"

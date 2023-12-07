@@ -21,4 +21,25 @@ public class MemberService {
 		return loginMember;
 	}
 	
+	//회원가입
+	public int join(MemberVo vo) throws Exception {
+		//conn
+		Connection conn=JDBCTemplate.getConnection();
+		
+		//dao
+		MemberDao dao=new MemberDao();
+		int result=dao.join(conn,vo);
+		
+		//tx
+		if(result==1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		//close
+		JDBCTemplate.close(conn);
+		return result;
+	}
+	
 }
