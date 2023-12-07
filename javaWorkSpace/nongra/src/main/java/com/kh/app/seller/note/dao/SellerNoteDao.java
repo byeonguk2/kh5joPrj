@@ -15,13 +15,12 @@ public class SellerNoteDao {
 	//쪽지작성
 	public int noteWrite(SellerNoteVo snv, Connection conn) throws Exception{
 		
-		String sql = "INSERT INTO NOTE(NOTE_NO, FROM_NO, TO_NO, TITLE, CONTENT)VALUES (SEQ_NOTE_NO.NEXTVAL, ?, (SELECT MEMBER_NO FROM MEMBER WHERE ID = ? AND NOT ID = ?), ? ,?)";
+		String sql = "INSERT INTO NOTE(NOTE_NO, FROM_NO, TO_NO, TITLE, CONTENT)VALUES (SEQ_NOTE_NO.NEXTVAL, ?, (SELECT MEMBER_NO FROM MEMBER WHERE ID = ?), ? ,?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, snv.getFromNo());
 		pstmt.setString(2, snv.getToId());
-		pstmt.setString(3, snv.getFromId());
-		pstmt.setString(4, snv.getTitle());
-		pstmt.setString(5, snv.getContent());
+		pstmt.setString(3, snv.getTitle());
+		pstmt.setString(4, snv.getContent());
 		
 		int result = pstmt.executeUpdate();
 		
@@ -72,11 +71,31 @@ public class SellerNoteDao {
 		return sendNoteList;
 	}
 	
-	//전체 쪽지 갯수 조회
-	public int selectNoteCount(Connection conn) throws Exception{
+	//받은 쪽지 갯수 조회
+	public int selectReciveNoteCount(String memberNo, Connection conn) throws Exception{
 		
-		String sql = "SELECT COUNT(*) AS CNT FROM NOTE WHERE FROM_DEL_YN = 'N'";
+		String sql = "SELECT COUNT(*) AS CNT FROM NOTE WHERE TO_NO = ? AND FROM_DEL_YN = 'N'";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, memberNo);
+		ResultSet rs = pstmt.executeQuery();
+		
+		int cnt = 0;
+		if(rs.next()) {
+			cnt = rs.getInt(1);
+		}
+		
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		
+		return cnt;
+	}
+	
+	//받은 쪽지 갯수 조회
+	public int selectSendNoteCount(String memberNo, Connection conn) throws Exception{
+		
+		String sql = "SELECT COUNT(*) AS CNT FROM NOTE WHERE FROM_NO = ? AND FROM_DEL_YN = 'N'";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, memberNo);
 		
 		ResultSet rs = pstmt.executeQuery();
 		
@@ -90,9 +109,12 @@ public class SellerNoteDao {
 		
 		return cnt;
 	}
+	
+	
+	
 	// 받은 쪽지 목록 
 	public List<SellerNoteVo> reciveNoteSelectList(String memberNo, PageVo pvo, Connection conn) throws Exception{
-        String sql = "SELECT * FROM (SELECT ROWNUM RNUM, T.* FROM ( SELECT N.NOTE_NO ,N.FROM_NO ,N.TO_NO ,N.TITLE ,N.CONTENT ,TO_CHAR(N.SEND_DATE , 'YY-MM-DD HH24-MI') AS SEND_DATE ,N.CHECK_YN ,M.ID AS TO_ID FROM NOTE N JOIN MEMBER M ON N.TO_NO = M.MEMBER_NO WHERE N.TO_NO = ? AND N.FROM_DEL_YN = 'N' ORDER BY N.SEND_DATE DESC )T) WHERE RNUM BETWEEN ? AND ?";
+        String sql = "SELECT * FROM (SELECT ROWNUM RNUM, T.* FROM ( SELECT N.NOTE_NO ,N.FROM_NO ,N.TO_NO ,N.TITLE ,N.CONTENT ,TO_CHAR(N.SEND_DATE , 'YY-MM-DD HH24-MI') AS SEND_DATE ,N.CHECK_YN ,M.ID AS TO_ID FROM NOTE N JOIN MEMBER M ON N.TO_NO = M.MEMBER_NO WHERE N.TO_NO = ? AND N.TO_DEL_YN = 'N' ORDER BY N.SEND_DATE DESC )T) WHERE RNUM BETWEEN ? AND ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, memberNo);
 		pstmt.setInt(2, pvo.getStartRow());
@@ -102,6 +124,7 @@ public class SellerNoteDao {
 		
 		List<SellerNoteVo> sendNoteList = new ArrayList<SellerNoteVo>();
 		while(rs.next()) {
+			String noteNo = rs.getString("NOTE_NO");
 			String fromNo = rs.getString("FROM_NO");
 			String toId = rs.getString("TO_ID");
 			String title = rs.getString("TITLE");
@@ -111,6 +134,7 @@ public class SellerNoteDao {
 			String toNo = rs.getString("TO_NO");
 			
 			SellerNoteVo snv = new SellerNoteVo();
+			snv.setNoteNo(noteNo);
 			snv.setFromNo(fromNo);
 			snv.setToId(toId);
 			snv.setTitle(title);
@@ -161,5 +185,16 @@ public class SellerNoteDao {
         
         return noteVo;
     }
+    // 받은 쪽지 확인
+	public int noteReciveCheck(String noteNo, Connection conn) throws Exception{
+		String sql = "UPDATE NOTE SET CHECK_YN = 'Y' , CHECK_DATE = SYSDATE WHERE NOTE_NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, noteNo);
+		int result = pstmt.executeUpdate();
+		
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
 
 }

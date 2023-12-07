@@ -138,21 +138,17 @@
 					<div class="send-area">
 						<div class="send-top-area">
 							<div class="send-check-area">
-								<select>
-									<option value="">10</option>
-								</select>
-								<span>123</span>
+								<span>전체 <%= pvo.getListCount() %></span>
 							</div>
 							<div class="send-search-area">
-								<select>
-									<option value="">12312321</option>
-								</select>
-								<select>
-									<option value="">23423432</option>
+								<select name="search">
+									<option name="search" value="title">제목</option>
+									<option name="search" value="content">내용</option>
 								</select>
 								<div>
-									<input type="search" placeholder="검색">
+									<input name="searchName" type="search" placeholder="검색">
 								</div>
+								<button onclick="search();">검색</button>
 							</div>
 						</div>	
 						<table class="table">
@@ -244,14 +240,19 @@
         if (radioButtons.length === 1) {
             const noteNo = radioButtons[0].value;
             // 선택된 쪽지 번호에 기반하여 세부 내용을 보여주는 페이지로 리다이렉트 또는 모달 표시 로직을 구현합니다.
-            window.location.href = "/nongra/seller/note/detail?noteNo=" + noteNo;
+            window.location.href = "/nongra/seller/note/send/detail?noteNo=" + noteNo;
         } else {
             // 아무 라디오 버튼도 선택되지 않았을 경우 알림이나 메시지를 표시합니다.
             alert("세부 내용을 보려면 쪽지를 선택하세요.");
         }
         
     }
-	
+	function search(){
+		
+		const searchName = document.querySelector('input[name=searchName]').value;
+		const searchValue = document.querySelector('select[name=search]').value;
+		window.location.href = '/nongra/seller/note/send/search?search='+ searchValue + '&searchName='+ searchName;
+	}
 
 	
 </script>

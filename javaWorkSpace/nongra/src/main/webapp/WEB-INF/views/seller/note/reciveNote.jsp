@@ -132,24 +132,15 @@
 			<%@ include file="/WEB-INF/views/common/aside/aside_seller.jsp" %>
 			<div class="content-area">
 				<div class="h1-area">
-					<h1>보낸쪽지</h1>
+					<h1>받은쪽지</h1>
 				</div>
 				<div class="send">
 					<div class="send-area">
 						<div class="send-top-area">
 							<div class="send-check-area">
-								<select>
-									<option value="">10</option>
-								</select>
-								<span>123</span>
+								<span>전체 <%= pvo.getListCount() %></span>
 							</div>
 							<div class="send-search-area">
-								<select>
-									<option value="">12312321</option>
-								</select>
-								<select>
-									<option value="">23423432</option>
-								</select>
 								<div>
 									<input type="search" placeholder="검색">
 								</div>
@@ -181,7 +172,7 @@
 							<div class="page-area">
 								
 								<% if(pvo.getStartPage() != 1){ %>
-									<a href="/nongra//seller/note/send?pno=<%= pvo.getStartPage() - 1%>">이전</a>
+									<a href="/nongra/seller/note/recive?pno=<%= pvo.getStartPage() - 1%>">이전</a>
 								<%} %>
 								
 								<% for(int i = pvo.getStartPage(); i<= pvo.getEndPage(); i++){%>
@@ -189,13 +180,13 @@
 									<%if(i == pvo.getCurrentPage()){ %>
                                         <span class="currentPage"><%= i %></span>
 									<%}else{ %>
-										<a href="/nongra/seller/note/send?pno=<%= i %>"><%= i %></a>
+										<a href="/nongra/seller/note/recive?pno=<%= i %>"><%= i %></a>
 									<%} %>
 									
 								<%} %>
 								
 								<% if(pvo.getEndPage() != pvo.getMaxPage()){ %>
-									<a href="/nongra/seller/note/send?pno=<%= pvo.getEndPage() + 1%>">다음</a>
+									<a href="/nongra/seller/note/recive?pno=<%= pvo.getEndPage() + 1%>">다음</a>
 								<%} %>
 							</div>
 							<button onclick="openPopup();">작성하기</button>
@@ -243,7 +234,7 @@
 
         if (radioButtons.length === 1) {
             const noteNo = radioButtons[0].value;
-            window.location.href = "/nongra/seller/note/detail?noteNo=" + noteNo;
+            window.location.href = "/nongra/seller/recive/note/detail?noteNo=" + noteNo;
         } else {
             alert("세부 내용을 보려면 쪽지를 선택하세요.");
         }

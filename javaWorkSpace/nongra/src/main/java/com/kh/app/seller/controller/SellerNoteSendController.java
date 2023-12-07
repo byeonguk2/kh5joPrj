@@ -24,8 +24,9 @@ public class SellerNoteSendController extends HttpServlet{
 		HttpSession session = req.getSession();
 		try {
 			SellerNoteService sns = new SellerNoteService();
+			SellerVo sv = (SellerVo)session.getAttribute("loginSeller");
 			
-			int listCount = sns.selectNoteCount();
+			int listCount = sns.selectSendNoteCount(sv.getMemberNo());
 			String currentPage_ = req.getParameter("pno");
 			if(currentPage_ == null) {
 				currentPage_ = "1";
@@ -34,8 +35,6 @@ public class SellerNoteSendController extends HttpServlet{
 			int pageLimit = 10;
 			int boardLimit = 10;
 			PageVo pvo = new PageVo(listCount, currentPage,pageLimit, boardLimit);
-			SellerVo sv = new SellerVo();
-			sv = (SellerVo)session.getAttribute("loginSeller");
 			List<SellerNoteVo> sendNoteList = sns.sendNoteSelectList(sv.getMemberNo() , pvo);
 			
 			
