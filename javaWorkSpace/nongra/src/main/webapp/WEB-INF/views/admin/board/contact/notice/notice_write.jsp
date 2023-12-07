@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/nongra/resources/css/board/contact/qna/qna_own_write.css">
 </head>
 <body>
-	<div id="wrap">
+	<div id="wrap_board">
 		<%@ include file="/WEB-INF/views/common/header/header_admin.jsp" %>
 		<div id = "main-area">
 			<%@ include file="/WEB-INF/views/common/aside/aside_admin.jsp" %>
