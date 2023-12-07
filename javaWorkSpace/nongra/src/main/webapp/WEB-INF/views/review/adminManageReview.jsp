@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,9 +19,7 @@
 	.headerer{
 		display: flex;
         justify-content: center;
-        align-items: center;
-		
-		
+        align-items: center;		
 	}
 	
 </style>
@@ -40,35 +39,43 @@
                <!--체크박스로 ajax 처리-->
                
              <div class="seller-review-div-checkbox">
-                 <span>답변 미작성 목록 <input type="checkbox"></span>   
+                <!--  <span>답변 미작성 목록 <input type="checkbox"></span>  -->  
              </div>
              
-         	
+           
              <!--리뷰 -->
+            <c:forEach items="${ReviewVoList}" var="vo">
              <div class="review" >
                  <div class="review-user-nick">
-                     <figure class="user-photo" style="background-image: url(/images/nongra.png) ;"></figure> <span>닉네임</span>
+                     <figure class="user-photo" style="background-image: url("${vo.profile}")></figure> <span>"${vo.nick}"</span>
                  </div>
          
                  <div class="review-content-box">
-                     <div class="review-item-name">상품명</div>
+                     <div class="review-item-name">"${vo.itemTitle}"</div>
                      <p class="review-content">
-                         안녕하세요 리뷰내용입니다 여기는 리뷰내용이 들어갈거에요
-                         안녕하세요 리뷰내용입니다 여기는 리뷰내용이 들어갈거에요
-                         안녕하세요 리뷰내용입니다 여기는 리뷰내용이 들어갈거에요
-                         안녕하세요 리뷰내용입니다 여기는 리뷰내용이 들어갈거에요
-                         안녕하세요 리뷰내용입니다 여기는 리뷰내용이 들어갈거에요
-                         안녕하세요 리뷰내용입니다 여기는 리뷰내용이 들어갈거에요
-                         안녕하세요 리뷰내용입니다 여기는 리뷰내용이 들어갈거에요
-                         안녕하세요 리뷰내용입니다 여기는 리뷰내용이 들어갈거에요
-                         안녕하세요 리뷰내용입니다 여기는 리뷰내용이 들어갈거에요
+                         "${vo.content}"
                      </p>
-                     <div class="reivew-picture-box"><img src="/images/review/nongra.png" alt="리뷰사진" class="review0"></div>
+                     
+                     <div class="reivew-picture-box">
+                     <c:forEach items="${vo.fileSrc}" var="str">
+                     <img src="${str}" alt="리뷰사진" class="review0">
+                     </c:forEach>
+                     </div>
+                     
                      <footer class="review-date-box">
-                         <span class="review-date">2023.07.10</span>
+                        <c:choose>
+						   <c:when test="${empty vo.updateDate }">
+						      <span class="review-date">${vo.writeDate}</span>
+						   </c:when>
+						
+						   <c:otherwise>
+						       <span class="review-date">${vo.updateDate}</span>
+						   </c:otherwise>
+						</c:choose>
+                        
                          <button class="review-recommend-btn">
                              <span class="review-b"></span>
-                             <span class="review-like">도움돼요 99</span>
+                             <span class="review-like">도움돼요 ${vo.likeCnt}</span>
                          </button>
                      </footer>
                      <div class="owner-replay-box">
@@ -80,29 +87,20 @@
              <div class="owner-reply-box2 owner-reply-box3" > 
          
                  <div class="owner-reply-box2-title">
-                     <span>[멋쟁이 토마토 마켓]</span>
+                     <span>[${vo.corporationName}]</span>
                  </div>
          
                  <div class="owner-reply-box2-content">
                      <p class="review-content">
-                         안녕하세요 리뷰내용입니다 여기는 리뷰내용이 들어갈거에요
-                         안녕하세요 리뷰내용입니다 여기는 리뷰내용이 들어갈거에요
-                         안녕하세요 리뷰내용입니다 여기는 리뷰내용이 들어갈거에요
-                         안녕하세요 리뷰내용입니다 여기는 리뷰내용이 들어갈거에요
-                         안녕하세요 리뷰내용입니다 여기는 리뷰내용이 들어갈거에요
-                         안녕하세요 리뷰내용입니다 여기는 리뷰내용이 들어갈거에요
-                         안녕하세요 리뷰내용입니다 여기는 리뷰내용이 들어갈거에요
-                         안녕하세요 리뷰내용입니다 여기는 리뷰내용이 들어갈거에요
-                         안녕하세요 리뷰내용입니다 여기는 리뷰내용이 들어갈거에요
+                     	  ${vo.replyContent}    
                      </p>
          
                      <div class="owner-reply-box2-date-btn">
-                         <span>2023.07.01</span> 
-                        
+                         <span>${vo.replyDate}</span> 
                      </div> 
                  </div>       
              </div>
-         
+        </c:forEach>
          
              
          

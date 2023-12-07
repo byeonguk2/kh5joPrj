@@ -14,14 +14,19 @@ private String	replyDate;
 private String	replyDelYn;
 private String	replyContent;
 private String	ItemTitle	;		//상품 제목
-private String	corporationName;
+// BUSINESS_NAME 이거 비지니스 네임
+private String	corporationName;   
 private String	nick;
 private String	likeCnt;
 private String src;
+private String profile;
 private List<String> fileSrc;
+
+
+
 public ReviewVo(String reviewNo, String consumerNo, String cartBreakdownNo, String content, String writeDate,
 		String updateDate, String replyDate, String replyDelYn, String replyContent, String itemTitle,
-		String corporationName, String nick, String likeCnt, String src, List<String> fileSrc) {
+		String corporationName, String nick, String likeCnt, String src, String profile, List<String> fileSrc) {
 	super();
 	this.reviewNo = reviewNo;
 	this.consumerNo = consumerNo;
@@ -37,11 +42,8 @@ public ReviewVo(String reviewNo, String consumerNo, String cartBreakdownNo, Stri
 	this.nick = nick;
 	this.likeCnt = likeCnt;
 	this.src = src;
+	this.profile = profile;
 	this.fileSrc = fileSrc;
-}
-public ReviewVo() {
-	super();
-	// TODO Auto-generated constructor stub
 }
 public String getReviewNo() {
 	return reviewNo;
@@ -132,11 +134,21 @@ public String getSrc() {
 public void setSrc(String src) {
 	this.src = src;
 }
+public String getProfile() {
+	return profile;
+}
+public void setProfile(String profile) {
+	this.profile = profile;
+}
 public List<String> getFileSrc() {
 	return fileSrc;
 }
 public void setFileSrc(List<String> fileSrc) {
 	this.fileSrc = fileSrc;
+}
+public ReviewVo() {
+	super();
+	// TODO Auto-generated constructor stub
 }
 @Override
 public String toString() {
@@ -144,8 +156,10 @@ public String toString() {
 			+ ", content=" + content + ", WriteDate=" + WriteDate + ", updateDate=" + updateDate + ", replyDate="
 			+ replyDate + ", replyDelYn=" + replyDelYn + ", replyContent=" + replyContent + ", ItemTitle=" + ItemTitle
 			+ ", corporationName=" + corporationName + ", nick=" + nick + ", likeCnt=" + likeCnt + ", src=" + src
-			+ ", fileSrc=" + fileSrc + "]";
+			+ ", profile=" + profile + ", fileSrc=" + fileSrc + "]";
 }
+
+
 
 
 
