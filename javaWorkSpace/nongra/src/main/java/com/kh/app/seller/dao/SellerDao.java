@@ -3,6 +3,7 @@ package com.kh.app.seller.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Map;
 
 import com.kh.app.seller.vo.SellerVo;
 import com.kh.app.util.db.JDBCTemplate;

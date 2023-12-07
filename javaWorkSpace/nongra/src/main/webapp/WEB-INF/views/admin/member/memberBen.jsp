@@ -1,5 +1,14 @@
+<%@page import="com.kh.app.page.vo.PageVo"%>
+<%@page import="java.util.Map"%>
+<%@page import="com.kh.app.seller.vo.SellerVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% 
+    	List<SellerVo> voList = (List<SellerVo>)request.getAttribute("voList"); 
+    	PageVo pvo = (PageVo)request.getAttribute("pvo");
+    	Map<String,Object> map = (Map<String,Object>)request.getAttribute("map");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,14 +20,14 @@
 		grid-template-columns: 230px 8fr;
 		padding-top: 145px;
 	}
-	form{
+	main{
 		display: grid;
 		grid-template-columns: 1fr;
 	}
 	thead > tr {
 		height: 50px;
 	}
-	.form_above{
+	form{
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 	}
@@ -49,7 +58,7 @@
 	}
 	tr{
 		display: grid;
-		grid-template-columns: 1fr 1fr 2fr 2fr 2fr 2fr 3fr 4fr;
+		grid-template-columns: 1fr 1fr 2fr 2fr 2fr 3fr 4fr;
 		align-items: center;
 		border-top: none;
 		border-bottom: 1px solid black;
@@ -94,29 +103,29 @@
 		<%@ include file="/WEB-INF/views/common/header/header_admin.jsp" %>
 		<div id = "main-area">
 			<%@ include file="/WEB-INF/views/common/aside/aside_admin.jsp" %>
-			<form action="" method="post">
-				<div class="form_above">
+			<main>
+				<form action="/nongra/admin/searchMember">
 					<div class="select_search_area">
 						<h2>회원정지/해제</h2>
 						<div class="select_div">
 							<span>• 회원조회</span>
-								<div><input name="a" type="radio" value="판매자" checked="true">판매자</div>
-								<div><input name="a" type="radio" value="판매자">소비자</div>
+								<div><input name="memberType" type="radio" value="판매자" checked="true">판매자</div>
+								<div><input name="memberType" type="radio" value="판매자">소비자</div>
 						</div>
 						<div class="search_div">
 							<span>• 회원검색</span>
-							<select name="" id="">
+							<select name="option">
 								<option name="option" value="name">이름</option>
 								<option name="option" value="no">번호</option>
 								<option name="option" value="nick">닉네임</option>
 								<option name="option" value="id">아이디</option>
-								<input type="text">
+								<input type="text" name="searchValue">
 								<button>검색</button>
 							</select>
 						</div>
 					</div>
 					<div></div>
-				</div>
+				</form>
 				<div class="table-area">
 					<table>
 						<thead>
@@ -126,129 +135,50 @@
 								<th>아이디</th>
 								<th>닉네임</th>
 								<th>회원종류</th>
-								<th>회원상태</th>
 								<th>가입일시</th>
 								<th>정보수정</th>
 							</tr>
 						</thead>
 						<tbody>
+							<% for(SellerVo list : voList){ %>
 							<tr>
 								<th></th>
-								<td>1</td>
-								<td>quddnr123</td>
-								<td>킹병욱</td>
-								<td>파트너</td>
-								<td>정상</td>
-								<td>2023.11.23</td>
-								<td><button type="button" class="ben-btn" onclick="open.window()">회원정지</button></td>
+								<td><%= list.getMemberNo() %></td>
+								<td><%= list.getId() %></td>
+								<td><%= list.getNick() %></td>
+								<td>판매자</td>
+								<td><%= list.getJoinDate() %></td>
+								<td><button type="button">정지하기</button></td>
 							</tr>
-							<tr>
-								<th></th>
-								<td>2</td>
-								<td>king123</td>
-								<td>park병욱</td>
-								<td>파트너</td>
-								<td>정상</td>
-								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">정지해제</button></td>
-							</tr>
-							<tr>
-								<th></th>
-								<td>3</td>
-								<td>king123</td>
-								<td>park병욱</td>
-								<td>파트너</td>
-								<td>정상</td>
-								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">회원정지</button></td>
-							</tr>
-							<tr>
-								<th></th>
-								<td>4</td>
-								<td>king123</td>
-								<td>park병욱</td>
-								<td>파트너</td>
-								<td>정상</td>
-								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">회원정지</button></td>
-							</tr>
-							<tr>
-								<th></th>
-								<td>5</td>
-								<td>king123</td>
-								<td>park병욱</td>
-								<td>파트너</td>
-								<td>정상</td>
-								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">정지해제</button></td>
-							</tr>
-							<tr>
-								<th></th>
-								<td>6</td>
-								<td>king123</td>
-								<td>park병욱</td>
-								<td>파트너</td>
-								<td>정상</td>
-								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">정지해제</button></td>
-							</tr>
-							<tr>
-								<th></th>
-								<td>7</td>
-								<td>king123</td>
-								<td>park병욱</td>
-								<td>파트너</td>
-								<td>정상</td>
-								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">정지해제</button></td>
-							</tr>
-							<tr>
-								<th></th>
-								<td>8</td>
-								<td>king123</td>
-								<td>park병욱</td>
-								<td>일반회원</td>
-								<td>정상</td>
-								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">정지해제</button></td>
-							</tr>
-							<tr>
-								<th></th>
-								<td>9</td>
-								<td>king123</td>
-								<td>park병욱</td>
-								<td>일반회원</td>
-								<td>정상</td>
-								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">회원정지</button></td>
-							</tr>
-							<tr>
-								<th></th>
-								<td>10</td>
-								<td>king123</td>
-								<td>park병욱</td>
-								<td>일반회원</td>
-								<td>정상</td>
-								<td>2023.9.23</td>
-								<td><button type="button" class="ben-btn">정지해제</button></td>
-							</tr>
+							<% } %>
 						</tbody>
 					</table>
 				</div>
 				<div class="paging-btn-area">
 					<div></div>
 					<div class="paging-btn">
-						<button>이전</button>
-						<a href="">1</a>
-						<a href="">2</a>
-						<a href="">3</a>
-						<a href="">4</a>
-						<a href="">5</a>
-						<button>다음</button>
+						<%if(pvo.getStartPage() != 1){ %>
+				          <a href="/nongra/admin/memberBen?pno=<%= pvo.getStartPage()-1 %>">이전</a>
+				         <% } %>
+						<% for(int i = pvo.getStartPage(); i <= pvo.getEndPage(); i++){ %>
+         	
+				         	<% if(i == pvo.getCurrentPage()){ %>
+				           		<span><%= i %></span>
+				            <% }else{ %>
+			            	
+			             	<a href="/nongra/admin/memberBen?pno=<%= i %>"><%= i %></a>
+			             	
+			            <% } %>
+			            
+			            <% } %>
+			            
+			            <%if(pvo.getEndPage() != pvo.getMaxPage()){ %>
+			            <a href="/nongra/admin/memberBen?pno=<%= pvo.getEndPage()+1 %>">다음</a>
+			        	<% } %>
 					</div>
 					<div></div>
 				</div>
-			</from>
+			</main>
 		</div>
 		<script></script>
 	</div>

@@ -1,3 +1,4 @@
+<%@page import="java.util.Map"%>
 <%@page import="com.kh.app.page.vo.PageVo"%>
 <%@page import="com.kh.app.seller.vo.SellerVo"%>
 <%@page import="java.util.List"%>
@@ -7,6 +8,7 @@
     <% 
     	List<SellerVo> voList = (List<SellerVo>)request.getAttribute("voList"); 
     	PageVo pvo = (PageVo)request.getAttribute("pvo");
+    	Map<String,Object> map = (Map<String,Object>)request.getAttribute("map");
     %>
     
 <!DOCTYPE html>
@@ -344,7 +346,7 @@
 			menu2.innerHTML = "회원 정지/해제";
 	        menu2.href = "/nongra/admin/memberBen";
 			menu3.innerHTML = "사업자 허가 여부";
-			menu3.href = "/nongra/admin/member/request";
+			menu3.href = "/nongra/admin/reques";
 		}
 		createAsideLetter()
 
