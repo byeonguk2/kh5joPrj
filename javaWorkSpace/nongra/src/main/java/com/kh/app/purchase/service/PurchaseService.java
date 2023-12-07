@@ -25,4 +25,26 @@ public class PurchaseService {
 		return purchaseCartVoList;
 	}
 
+	//장바구니 상품 수량 변경
+	public int cartEAUpdate(String cartBreakDownNo, String cartBreakDownEa) throws Exception {
+		//conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//dao
+		PurchaseDao pd = new PurchaseDao();
+		int result = pd.cartEAUpdate(conn, cartBreakDownNo, cartBreakDownEa);
+		
+		//tx
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		//close
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
 }
