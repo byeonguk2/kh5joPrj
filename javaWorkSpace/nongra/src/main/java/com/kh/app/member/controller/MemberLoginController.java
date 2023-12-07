@@ -38,6 +38,7 @@ public class MemberLoginController extends HttpServlet {
 			
 			//결과
 			if(loginMember==null) {
+				
 				throw new Exception("로그인을 실패하였습니다.");
 			}
 			session.setAttribute("loginMember",loginMember );

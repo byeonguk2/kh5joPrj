@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="/nongra/resources/css/common/memberOrSeller.css">
 </head>
 <body>
 	<div id="join_wrap">
