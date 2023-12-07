@@ -20,7 +20,7 @@
 		grid-template-columns: 230px 8fr;
 		padding-top: 145px;
 	}
-	form{
+	.main{
 		display: grid;
 		grid-template-columns: 1fr;
 	}
@@ -125,7 +125,7 @@
 	}
 	.modal_area{
 		display: grid;
-		grid-template-rows: 60px 80px 1000px 500px 500px;
+		grid-template-rows: 60px 80px 1000px 800px 800px 100px;
 	}.modal_down{
 		display: grid;
 		grid-template-columns: 1fr 30px;
@@ -178,20 +178,20 @@
 		<%@ include file="/WEB-INF/views/common/header/header_admin.jsp" %>
 		<div id = "main-area">
 			<%@ include file="/WEB-INF/views/common/aside/aside_admin.jsp" %>
-			<form action="" method="post">
+			<div class="main">
 				<div class="form_above">
 					<div class="select_search_area">
 						<h2>요청허가/조회</h2>
 						<div class="search_div">
 							<span>• 회원검색</span>
-							<select name="" id="">
-								<option name="option" value="name">이름</option>
-								<option name="option" value="no">번호</option>
-								<option name="option" value="nick">닉네임</option>
-								<option name="option" value="id">아이디</option>
-								<input type="text">
-								<button>검색</button>
-							</select>
+							<form action="/nongra/admin/search">
+								<select name="option">
+									<option name="option" value="nick">닉네임</option>
+									<option name="option" value="id">아이디</option>
+									<input type="text" name="searchValue">
+									<input type="submit" value="검색하기">
+								</select>
+							</form>
 						</div>
 					</div>
 					<div></div>
@@ -249,82 +249,86 @@
 					</div>
 					<div></div>
 				</div>
-			</from>
+			</div>
 		</div>
 		<body>
-        <div class="modal">
-            <div class="dialog">
-                <div class="modal_area">
-					<div class="modal_down">
-						<div></div>
-						<button class="modal_down_btn" type="button" onclick="downModal()">x</button>
-					</div>	
-					<h1 style="text-align: center;">사업자 정보</h1>
-					<div>
-						<div class="modal_table">
-							<div class="modal-table-area">
-								<div class="modal-table-title">사업자 번호</div>
-								<div class="modal-table-cotent"><%= 1 %></div>
-							</div>
-							<div class="modal-table-area">
-								<div class="modal-table-title">사업형태</div>
-								<div class="modal-table-cotent">012331233</div>
-							</div>
-							<div class="modal-table-area">
-								<div class="modal-table-title">사업장명</div>
-								<div class="modal-table-cotent">012331233</div>
-							</div>
-							<div class="modal-table-area">
-								<div class="modal-table-title">사업자 전화번호</div>
-								<div class="modal-table-cotent">012331233</div>
-							</div>
-							<div class="modal-table-area">
-								<div class="modal-table-title">우편번호</div>
-								<div class="modal-table-cotent"><%= 1 %></div>
-							</div>
-							<div class="modal-table-area">
-								<div class="modal-table-title">사업장 주소</div>
-								<div class="modal-table-cotent">012331233</div>
-							</div>
-							<div class="modal-table-area">
-								<div class="modal-table-title">상세주소</div>
-								<div class="modal-table-cotent">012331233</div>
-							</div>
-							<div class="modal-table-area">
-								<div class="modal-table-title">법인명</div>
-								<div class="modal-table-cotent">012331233</div>
-							</div>
-							<div class="modal-table-area">
-								<div class="modal-table-title">업태</div>
-								<div class="modal-table-cotent">012331233</div>
-							</div>
-							<div class="modal-table-area">
-								<div class="modal-table-title">업종</div>
-								<div class="modal-table-cotent">012331233</div>
-							</div>
-							<div class="modal-table-area">
-								<div class="modal-table-title">통신판매업신고번호</div>
-								<div class="modal-table-cotent">012331233</div>
-							</div>
-							<div class="modal-table-area">
-								<div class="modal-table-title">은행</div>
-								<div class="modal-table-cotent">012331233</div>
-							</div>
-							<div class="modal-table-area">
-								<div class="modal-table-title">입금자명</div>
-								<div class="modal-table-cotent">012331233</div>
-							</div>
-							<div class="modal-table-area">
-								<div class="modal-table-title">입금계좌</div>
-								<div class="modal-table-cotent">012331233</div>
+			<div class="modal">
+				<div class="dialog">
+					<div class="modal_area">
+						<div class="modal_down">
+							<div></div>
+							<button class="modal_down_btn" type="button" onclick="downModal()">x</button>
+						</div>	
+						<h1 style="text-align: center;">사업자 정보</h1>
+						<div>
+							<div class="modal_table">
+								<div class="modal-table-area">
+									<input type="hidden" value="">
+									<div class="modal-table-title">사업자 번호</div>
+									<div class="modal-table-cotent mtc1"></div>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">사업형태</div>
+									<div class="modal-table-cotent mtc2"></div>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">사업장명</div>
+									<div class="modal-table-cotent mtc3"></div>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">사업자 전화번호</div>
+									<div class="modal-table-cotent mtc4"></div>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">우편번호</div>
+									<div class="modal-table-cotent mtc5"></div>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">사업장 주소</div>
+									<div class="modal-table-cotent mtc6"></div>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">상세주소</div>
+									<div class="modal-table-cotent mtc7"></div>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">법인명</div>
+									<div class="modal-table-cotent mtc8"></div>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">업태</div>
+									<div class="modal-table-cotent mtc9"></div>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">업종</div>
+									<div class="modal-table-cotent mtc10"></div>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">통신판매업신고번호</div>
+									<div class="modal-table-cotent mtc11"></div>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">은행</div>
+									<div class="modal-table-cotent mtc12"></div>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">입금자명</div>
+									<div class="modal-table-cotent mtc13"></div>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">입금계좌</div>
+									<div class="modal-table-cotent mtc14"></div>
+								</div>
 							</div>
 						</div>
+						<img class="modal-img1" alt="통장사본" src="">
+						<img class="modal-img2" alt="사업자등록증" src="">
+						<div class="modal-table-area">
+							<button type="button" onclick="request_ok()">요청허가</button>
+						</div>
 					</div>
-					<img class="modal-img1" alt="" src="/nongra/resources/img/common/logo.png">
-					<img class="modal-img2" alt="" src="/nongra/resources/img/common/mark.png">
 				</div>
-            </div>
-        </div>
+			</div>
     </body>
 		<script></script>
 	</div>
@@ -346,11 +350,32 @@
 
 		function getModal(x) {
 				const modal = document.querySelector(".modal");
-				
-				fetch('/nongra/admin/businessFile?'+'no'+x,(response)=>{
-					return response;
-				}).then(()=>{
-
+				console.log(x);
+				fetch('/nongra/admin/businessFile?no='+x)
+				.then((response)=>{
+					return response.json();
+				}).then((data)=>{
+					document.querySelector("input[type=hidden]").value = data.vo.sellerNo;
+					document.querySelector(".mtc1").innerHTML = data.vo.businessNo;
+					document.querySelector(".mtc2").innerHTML = data.vo.businessForm;
+					document.querySelector(".mtc3").innerHTML = data.vo.busineesName;
+					document.querySelector(".mtc4").innerHTML = data.vo.busineesPhone;
+					document.querySelector(".mtc5").innerHTML = data.vo.busineesZipCode;
+					document.querySelector(".mtc6").innerHTML = data.vo.busineesAdr;
+					document.querySelector(".mtc7").innerHTML = data.vo.detailedAdr;
+					document.querySelector(".mtc8").innerHTML = data.vo.corporationName;
+					document.querySelector(".mtc9").innerHTML = data.vo.uptae;
+					document.querySelector(".mtc10").innerHTML = data.vo.upjong;
+					document.querySelector(".mtc11").innerHTML = data.vo.reportNumber;
+					document.querySelector(".mtc12").innerHTML = data.vo.bank;
+					document.querySelector(".mtc13").innerHTML = data.vo.depositor;
+					document.querySelector(".mtc14").innerHTML = data.vo.account;
+					console.log(data.fileList);
+					console.log(data.fileList2);
+					document.querySelector(".modal-img1").src = data.fileList;
+					document.querySelector(".modal-img2").src = data.fileList2;
+					console.log(document.querySelector(".modal-img2").src);
+					
 				});
 				
 				modal.classList.toggle("modal_up");
@@ -361,6 +386,24 @@
 				modal.classList.toggle("modal_up");
 			}
 
+			function request_ok(){
+				const no = document.querySelector("input[type=hidden]").value
+				console.log(no);
+				fetch("/nongra/admin/requestOk?no="+no)
+				.then((response)=>{
+					console.log(response);
+					return response.json();
+				}).then((data)=>{
+					console.log(data.result);
+					alert(data.result);
+
+				}).catch(()=>{
+					alert("권한요청 수락 실패..");
+				});
+				const modal = document.querySelector(".modal");
+				modal.classList.toggle("modal_up");
+				window.location.reload() 
+			}
 	</script>
 </body>
 </html>

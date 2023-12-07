@@ -1,7 +1,5 @@
 package com.kh.app.seller.vo;
 
-import java.util.Objects;
-
 public class SellerVo {
 
 	public SellerVo() {
@@ -309,41 +307,6 @@ public class SellerVo {
 
 	public void setFileSrc(String fileSrc) {
 		this.fileSrc = fileSrc;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(account, bank, busineesAdr, busineesName, busineesPhone, busineesZipCode, businessForm,
-				businessNo, corporationName, depositor, detailedAdr, email, fileNo, fileSrc, id, joinDate, memberNo,
-				modifyYn, name, nick, password, password_re, permitYn, phone, reportNumber, requestYn, sellerNo, upjong,
-				uptae);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		SellerVo other = (SellerVo) obj;
-		return Objects.equals(account, other.account) && Objects.equals(bank, other.bank)
-				&& Objects.equals(busineesAdr, other.busineesAdr) && Objects.equals(busineesName, other.busineesName)
-				&& Objects.equals(busineesPhone, other.busineesPhone)
-				&& Objects.equals(busineesZipCode, other.busineesZipCode)
-				&& Objects.equals(businessForm, other.businessForm) && Objects.equals(businessNo, other.businessNo)
-				&& Objects.equals(corporationName, other.corporationName) && Objects.equals(depositor, other.depositor)
-				&& Objects.equals(detailedAdr, other.detailedAdr) && Objects.equals(email, other.email)
-				&& Objects.equals(fileNo, other.fileNo) && Objects.equals(fileSrc, other.fileSrc)
-				&& Objects.equals(id, other.id) && Objects.equals(joinDate, other.joinDate)
-				&& Objects.equals(memberNo, other.memberNo) && Objects.equals(modifyYn, other.modifyYn)
-				&& Objects.equals(name, other.name) && Objects.equals(nick, other.nick)
-				&& Objects.equals(password, other.password) && Objects.equals(password_re, other.password_re)
-				&& Objects.equals(permitYn, other.permitYn) && Objects.equals(phone, other.phone)
-				&& Objects.equals(reportNumber, other.reportNumber) && Objects.equals(requestYn, other.requestYn)
-				&& Objects.equals(sellerNo, other.sellerNo) && Objects.equals(upjong, other.upjong)
-				&& Objects.equals(uptae, other.uptae);
 	}
 
 	@Override
