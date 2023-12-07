@@ -29,6 +29,8 @@ public class AdminManageReviewController extends HttpServlet {
 			
 			List<ReviewVo> ReviewVoList = rs.manageReviewLookUp();
 			
+			System.out.println(ReviewVoList);
+			
 			if(ReviewVoList.size()==0) {
 				throw new Exception();
 			}
