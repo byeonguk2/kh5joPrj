@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.kh.app.admin.dao.AdminDao;
-import com.kh.app.board.dao.BoardDao;
 import com.kh.app.page.vo.PageVo;
 import com.kh.app.seller.dao.SellerDao;
 import com.kh.app.seller.vo.SellerVo;
@@ -94,6 +93,57 @@ public class AdminService {
 		
 		return listCount;
 	
+	}
+
+	public List<SellerVo> search(Map<String, String> map, PageVo pvo) throws Exception {
+		
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+				
+		// DAO
+		AdminDao dao = new AdminDao();
+		List<SellerVo> sellerVoList = dao.search(conn , map, pvo);
+				
+		//close
+		JDBCTemplate.close(conn);
+				
+		return sellerVoList;
+		
+	}
+
+	public List<SellerVo> memberBen(PageVo pvo) throws Exception{
+		Connection conn = JDBCTemplate.getConnection();
+		
+		AdminDao as = new AdminDao();
+		List<SellerVo> voList = as.memberBen(conn,pvo);
+		
+		JDBCTemplate.close(conn);
+		
+		return voList;
+	}
+
+	public int selectMemberSellerCount()throws Exception {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		AdminDao dao = new AdminDao();
+		int listCount = dao.selectMemberSellerCount(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return listCount;
+		
+	}
+
+	public int selectMemberSearchCount(Map<String, String> map)throws Exception  {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		AdminDao dao = new AdminDao();
+		int listCount = dao.selectMemberSearchCount(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return listCount;
 	}
 	
 }

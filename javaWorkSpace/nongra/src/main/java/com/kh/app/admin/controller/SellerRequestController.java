@@ -34,7 +34,10 @@ public class SellerRequestController extends HttpServlet{
 			int boardLimit = 10; // (우리가 정함) 한페이지당 게시물이 10개씩 나오게 할거다
 			
 			
+			
 			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
+			
+			System.out.println("start"+pvo.getStartPage());
 			
 			List<SellerVo> voList = as.request(pvo);
 			

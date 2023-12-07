@@ -15,26 +15,31 @@ import com.kh.app.admin.service.AdminService;
 import com.kh.app.page.vo.PageVo;
 import com.kh.app.seller.vo.SellerVo;
 
-@WebServlet("/admin/search")
-public class SellerSearchController extends HttpServlet {
+@WebServlet("/admin/searchMember")
+public class MemberSearchListController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		
 		try {
 			AdminService as = new AdminService();
 			// data
+			System.out.println("들어옴");
+			
+			String memberType = req.getParameter("memberType");
 			String option = req.getParameter("option");
 			String searchValue = req.getParameter("searchValue");
-			
+			System.out.println(memberType);
 			System.out.println(option);
 			System.out.println(searchValue);
 			
 			Map<String,String> map = new HashMap<String,String>();
 			map.put("option", option);
+			map.put("memberType", memberType);
 			map.put("searchValue", searchValue);
 			
-			int listCount = as.selectSearchSellerCount(map);
+			int listCount = as.selectMemberSearchCount(map);
 			
 			int currentPage = 1;
 			if(req.getParameter("pno") != null) {

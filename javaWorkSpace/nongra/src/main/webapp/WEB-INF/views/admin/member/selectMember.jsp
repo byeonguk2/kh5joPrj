@@ -265,7 +265,7 @@
 		menu2.innerHTML = "회원 정지/해제";
 		menu2.href = "/nongra/admin/memberBen";
 		menu3.innerHTML = "사업자 허가 여부";
-		menu3.href = "/nongra/admin/member/request";
+		menu3.href = "/nongra/admin/reques";
 		}
 		createAsideLetter()
 		
