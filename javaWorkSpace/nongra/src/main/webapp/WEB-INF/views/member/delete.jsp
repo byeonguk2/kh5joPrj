@@ -11,6 +11,7 @@
 <body>
 	<div id="wrap_event">
 	<%@ include file="/WEB-INF/views/common/header/header_sobi.jsp"%>
+	<form id="form" action="/nongra/member/delete" method="post">
 	<div class="main">
                 <h2 class="member_drop">
                     <span>회원탈퇴</span>
@@ -71,11 +72,12 @@
                     </div>
                 </div>
                 <div class="btn">
-                    <a href="https://www.naver.com/" class="button1">탈퇴</a>
-                    <a href="https://www.google.com/" class="button2">탈퇴취소</a>
+                    <a href="/nongra/home" class="button1">탈퇴</a>
+                    <a href="" class="button2">탈퇴취소</a>
 
                 </div>
             </div>
+            </form>
             </div>
 </body>
 </html>

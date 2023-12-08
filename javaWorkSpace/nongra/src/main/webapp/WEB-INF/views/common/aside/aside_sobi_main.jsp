@@ -12,13 +12,13 @@
 	<aside>
         <div class="aside-item">
             <div class="side-icon side-user" id="icon-user" style="border-top: none;"></div>
-            <label>회원정보 수정</label>
+            <a href="/nongra/member/modify" >회원정보 수정</a>
             <div class="side-icon2"></div>
         </div>    
 
         <div class="aside-item">
             <div class="side-icon" id="icon-truck"></div>
-            <label>배송지 관리</label>
+            <label >배송지 관리</label>
             <div class="side-icon2"></div>
         </div>    
 
@@ -44,7 +44,7 @@
 
         <div class="aside-item">
             <div class="side-icon side-user" id="icon-user" style="border-top: none;"></div>
-            <label>회원탈퇴</label>
+            <a href="/nongra/member/delete" >회원탈퇴</a>
             <div class="side-icon2"></div>
         </div>       
 
