@@ -69,7 +69,7 @@
                         </td>
                         <td>
                             <div class="removeBtnArea">
-                                <button><img class="disabled" src="/nongra/resources/img/purchase/icon-cross.png" alt="X">
+                                <button class="removeBtn"><img class="disabled" src="/nongra/resources/img/purchase/icon-cross.png" alt="X">
                                 </button>
                             </div>
                         </td>
@@ -82,7 +82,7 @@
             
             <a class="orderBtnArea" href="/nongra/order/checkout">
                 <button class="orderBtn">
-                    <span id="totalPrice">0</span><span>원</span>
+                    <span id="totalPrice">00</span><span>원</span>
                     주문하기
                 </button>
             </a>
