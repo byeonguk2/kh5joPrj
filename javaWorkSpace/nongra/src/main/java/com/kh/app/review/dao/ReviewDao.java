@@ -84,9 +84,7 @@ public class ReviewDao {
 		for (ReviewVo reviewVo : list) {
 			tempmap.put(reviewVo.getReviewNo(), reviewVo );
 		}
-//		키값은 중복이 
 				
-	
 		for (ReviewVo reviewVo : list) {
 				ReviewVo targetVo = (ReviewVo) tempmap.get(reviewVo.getReviewNo());
 				targetVo.getFileSrc().add(reviewVo.getSrc());
@@ -94,7 +92,6 @@ public class ReviewDao {
 		
 			
 		ArrayList<ReviewVo> reviewVoList = new ArrayList<ReviewVo>(tempmap.values());
-		
 		
 			
 		//close
@@ -105,6 +102,21 @@ public class ReviewDao {
 		return reviewVoList;
 		
 		
+	}
+	  //번호 받아서 리뷰 삭제 (관리자)
+	public int adminManagerReviewDelete(Connection conn, String deleteNo) throws Exception {
+
+		// sql
+		String sql = "UPDATE REVIEW SET REVIEW_DEL_YN ='Y' , UPDATE_DATE =SYSDATE WHERE REVIEW_NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, deleteNo);
+		
+		int result = pstmt.executeUpdate();
+		
+		//close
+		JDBCTemplate.close(pstmt);
+		
+		return result;
 	}
 
 }

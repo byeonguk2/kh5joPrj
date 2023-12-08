@@ -14,6 +14,8 @@ public class ReviewService {
 	//	관리자 모든 리뷰 페이지 조회 + 관리창
 	public List<ReviewVo> manageReviewLookUp() throws Exception {
 		
+		
+		
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
 		
@@ -26,6 +28,30 @@ public class ReviewService {
 		
 		return list; 
 		
+	}
+	// 번호 받아서 리뷰 삭제 (관리자)
+	public int adminManagerReviewDelete(String deleteNo) throws Exception {
+
+
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+				
+		// dao
+		ReviewDao dao = new ReviewDao();
+		int result = dao.adminManagerReviewDelete(conn,deleteNo);
+		
+		if(result ==1 ) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		// close 
+		
+		JDBCTemplate.close(conn);
+		
+		return result; 
+
 	}
 
 

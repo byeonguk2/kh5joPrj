@@ -23,13 +23,17 @@ public class AdminManageReviewController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			HttpSession session = req.getSession();
+			if(req.getAttribute("DeleteYn") !=null) {
+				req.setAttribute("DeleteYn",req.getAttribute("DeleteYn") );
+				
+				System.out.println(req.getAttribute("DeleteYn"));
+			}
 		try {
 			ReviewService rs = new ReviewService();
 			
 			
 			List<ReviewVo> ReviewVoList = rs.manageReviewLookUp();
 			
-			System.out.println(ReviewVoList);
 			
 			if(ReviewVoList.size()==0) {
 				throw new Exception();
