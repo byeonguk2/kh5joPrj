@@ -6,11 +6,14 @@ public class SellerVo {
 		
 	}
 	
+
 	public SellerVo(String memberNo, String sellerNo, String nick, String id, String password, String password_re,
 			String email, String name, String phone, String businessNo, String businessForm, String busineesName,
 			String busineesPhone, String corporationName, String uptae, String upjong, String busineesZipCode,
 			String busineesAdr, String detailedAdr, String reportNumber, String bank, String depositor, String account,
-			String permitYn, String joinDate, String requestYn, String modifyYn, String fileNo, String fileSrc) {
+			String permitYn, String joinDate, String requestYn, String modifyYn, String fileSrc, String freezeYn,
+			String sellerYn) {
+		super();
 		this.memberNo = memberNo;
 		this.sellerNo = sellerNo;
 		this.nick = nick;
@@ -38,9 +41,11 @@ public class SellerVo {
 		this.joinDate = joinDate;
 		this.requestYn = requestYn;
 		this.modifyYn = modifyYn;
-		this.fileNo = fileNo;
 		this.fileSrc = fileSrc;
+		this.freezeYn = freezeYn;
+		this.sellerYn = sellerYn;
 	}
+
 
 	private String memberNo;
 	private String sellerNo;
@@ -75,8 +80,9 @@ public class SellerVo {
 	private String requestYn;
 	private String modifyYn;
 	
-	private String fileNo;
 	private String fileSrc;
+	private String freezeYn;
+	private String sellerYn;
 	public String getMemberNo() {
 		return memberNo;
 	}
@@ -293,20 +299,28 @@ public class SellerVo {
 		this.modifyYn = modifyYn;
 	}
 
-	public String getFileNo() {
-		return fileNo;
-	}
-
-	public void setFileNo(String fileNo) {
-		this.fileNo = fileNo;
-	}
-
 	public String getFileSrc() {
 		return fileSrc;
 	}
 
 	public void setFileSrc(String fileSrc) {
 		this.fileSrc = fileSrc;
+	}
+
+	public String getFreezeYn() {
+		return freezeYn;
+	}
+
+	public void setFreezeYn(String freezeYn) {
+		this.freezeYn = freezeYn;
+	}
+
+	public String getSellerYn() {
+		return sellerYn;
+	}
+
+	public void setSellerYn(String sellerYn) {
+		this.sellerYn = sellerYn;
 	}
 
 	@Override
@@ -318,10 +332,8 @@ public class SellerVo {
 				+ corporationName + ", uptae=" + uptae + ", upjong=" + upjong + ", busineesZipCode=" + busineesZipCode
 				+ ", busineesAdr=" + busineesAdr + ", detailedAdr=" + detailedAdr + ", reportNumber=" + reportNumber
 				+ ", bank=" + bank + ", depositor=" + depositor + ", account=" + account + ", permitYn=" + permitYn
-				+ ", joinDate=" + joinDate + ", requestYn=" + requestYn + ", modifyYn=" + modifyYn + ", fileNo="
-				+ fileNo + ", fileSrc=" + fileSrc + "]";
+				+ ", joinDate=" + joinDate + ", requestYn=" + requestYn + ", modifyYn=" + modifyYn + ", fileSrc="
+				+ fileSrc + ", freezeYn=" + freezeYn + ", sellerYn=" + sellerYn + "]";
 	}
-	
-	
 	
 }

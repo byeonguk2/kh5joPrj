@@ -34,7 +34,7 @@ public class SellerSearchController extends HttpServlet {
 			map.put("option", option);
 			map.put("searchValue", searchValue);
 			
-			int listCount = as.selectSearchSellerCount(map);
+			int listCount = as.selectMemberSearchCount(map);
 			
 			int currentPage = 1;
 			if(req.getParameter("pno") != null) {

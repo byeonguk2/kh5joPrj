@@ -379,6 +379,8 @@ public class AdminDao {
 				String phone = rs.getString("PHONE");
 				String email = rs.getString("EMAIL");
 				String joinDate = rs.getString("JOIN_DATE");
+				String freezeYn = rs.getString("FREEZE_YN");
+				String sellerYn = rs.getString("SELLER_YN");
 				
 				SellerVo vo = new SellerVo();
 				
@@ -391,7 +393,9 @@ public class AdminDao {
 				vo.setPhone(phone);
 				vo.setEmail(email);
 				vo.setJoinDate(joinDate);
-				
+				vo.setFreezeYn(freezeYn);
+				vo.setSellerYn(sellerYn);
+	
 				voList.add(vo);
 				
 		}
@@ -422,16 +426,17 @@ public class AdminDao {
 		
 	}
 
-	public int selectMemberSearchCount(Connection conn) {
+	public int selectMemberSearchCount(Connection conn,Map<String, String> map) throws Exception {
 		
-String sql = "SELECT COUNT(*) FROM MEMBER WHERE QUIT_YN = 'N'";
+		String sql = "SELECT COUNT(*) FROM MEMBER WHERE QUIT_YN = 'N' AND SELLER_YN = ? AND "+map.get("option")+" LIKE '%'|| ? ||'%'";
 		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, map.get("memberType"));
+		pstmt.setString(2,map.get("searchValue") );
 		ResultSet rs = pstmt.executeQuery();
 		
 		int listCount = 0;
-		
-		if(rs.next()) {
+		while(rs.next()) {
 			listCount = rs.getInt(1);
 		}
 		
@@ -441,5 +446,87 @@ String sql = "SELECT COUNT(*) FROM MEMBER WHERE QUIT_YN = 'N'";
 		return listCount;
 		
 	}
+
+	// 모든 멤버 검색
+	public List<SellerVo> searchMember(Connection conn, Map<String, String> map, PageVo pvo) throws Exception {
 	
+		// 쿼리문 
+				String searchType = map.get("option");
+				
+				String sql = "SELECT * FROM ( SELECT ROWNUM RNUM , A.* FROM ( SELECT * FROM MEMBER WHERE QUIT_YN = 'N' AND SELLER_YN = ? AND "+searchType+" LIKE '%' || ?|| '%' ORDER BY MEMBER_NO ) A ) WHERE RNUM BETWEEN ? AND ?";
+						
+				// pstmt 
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, map.get("memberType"));
+				pstmt.setString(2, map.get("searchValue"));
+				pstmt.setInt(3, pvo.getStartRow());
+				pstmt.setInt(4, pvo.getLastRow());
+						
+				// rs
+				ResultSet rs = pstmt.executeQuery();
+						
+				// 판매자 리스트 
+				List<SellerVo> voList = new ArrayList<SellerVo>();
+
+				// rs반복
+				while(rs.next()) {
+								
+					// member 테이블 값 
+					String memberNo = rs.getString("MEMBER_NO");
+					String id = rs.getString("ID");
+					String pwd = rs.getString("PWD");
+					String nick = rs.getString("NICK");
+					String name = rs.getString("NAME");
+					String phone = rs.getString("PHONE");
+					String email = rs.getString("EMAIL");
+					String joinDate = rs.getString("JOIN_DATE");
+					String freezeYn = rs.getString("FREEZE_YN");
+					String sellerYn = rs.getString("SELLER_YN");
+					
+					SellerVo vo = new SellerVo();
+					
+					vo.setMemberNo(memberNo);
+					vo.setId(id);
+					vo.setPassword(pwd);
+					vo.setNick(nick);
+					vo.setName(name);
+					vo.setPhone(phone);
+					vo.setEmail(email);
+					vo.setJoinDate(joinDate);
+					vo.setFreezeYn(freezeYn);
+					vo.setSellerYn(sellerYn);
+					
+					voList.add(vo);
+					
+			}
+						
+					JDBCTemplate.close(pstmt);
+					JDBCTemplate.close(rs);
+					
+				return voList;
+		
+	}
+
+	public int freezeMember(String no, Connection conn, String yn) throws Exception {
+		
+		if(yn.equals("Y")) {
+			yn = "N";
+		}else if(yn.equals("N")) {
+			yn = "Y";
+		}
+		System.out.println(yn);
+		String sql = "UPDATE MEMBER SET FREEZE_YN = ? WHERE MEMBER_NO = ?";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, yn);
+		pstmt.setString(2, no);
+		
+		int result = pstmt.executeUpdate();
+		
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+		
+	}	
 }
