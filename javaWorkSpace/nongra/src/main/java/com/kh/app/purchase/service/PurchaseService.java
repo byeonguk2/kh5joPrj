@@ -47,4 +47,26 @@ public class PurchaseService {
 		return result;
 	}
 
+	//장바구니 목록 삭제
+	public int cartListRemove(String cartBreakDownNo) throws Exception {
+		//conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//dao
+		PurchaseDao pd = new PurchaseDao();
+		int result = pd.cartListRemove(conn, cartBreakDownNo);
+		
+		//tx
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		//close
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
 }

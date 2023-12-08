@@ -71,4 +71,18 @@ public class PurchaseDao {
 		return result;
 	}
 
+	//장바구니 목록 삭제
+	public int cartListRemove(Connection conn, String cartBreakDownNo) throws Exception {
+		//sql
+		String sql = "DELETE FROM CART_BREAKDOWN WHERE NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, cartBreakDownNo);
+		int result = pstmt.executeUpdate();
+		
+		//close
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
+
 }

@@ -144,6 +144,10 @@ tbody>tr>td:nth-child(7){
     justify-content: center;
     align-items: center;
 }
+.removeBtnArea > button{
+	height: 15px;
+	width: 15px;
+}
 .removeBtnArea > button > img{
     height: 15px;
     width: 15px;

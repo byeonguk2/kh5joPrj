@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.app.purchase.service.PurchaseService;
 
-@WebServlet("/cart/AJAX")
-public class PurchaseCartAJAXServlet extends HttpServlet{
+@WebServlet("/cart/AJAX/update")
+public class PurchaseCartAJAXUpdateServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
