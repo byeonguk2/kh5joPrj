@@ -28,13 +28,13 @@
 					</dt>
 					<dd>
 						<div class="block">
-							<input onblur="checkNick();" type="text" name="nick" id="user_nick"
+							<input type="text" name="nick" id="user_nick"
 								class="txt placeholder" placeholder="닉네임" maxlength="12"
 								value="<%= loginMember.getMemberNick() %>"
 								onkeypress="if(event.keyCode== 40 || event.keyCode == 41) event.returnValue = false;"
 								onkeydown="chkLength(this, 12, 'nick');" onpaste="return false">
-							<button class="btn1" style='cursor: pointer;'
-								onclick="return checkNickName();">중복확인</button>
+							<button type="button" class="btn1" style='cursor: pointer;'
+								onclick="checkNick();">중복확인</button>
 							<button class="btn2" style='cursor: pointer;' id="change_nick">닉네임
 								변경</button>
 						</div>
@@ -183,7 +183,7 @@ function checkNick() {
 			xhr.responseText.trim()
 			console.log(xhr.responseText);
 
-			document.getElementById("nick_re").innerHTML = xhr.responseText.trim();
+			document.querySelector(".txt").innerHTML = xhr.responseText.trim();
 		}
 	}
 }	
