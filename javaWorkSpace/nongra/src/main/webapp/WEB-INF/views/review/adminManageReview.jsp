@@ -45,6 +45,7 @@
            
              <!--리뷰 -->
             <c:forEach items="${ReviewVoList}" var="vo">
+        		<div class ="reviewNO" style="display : none">${vo.reviewNo}</div>
              <div class="review" >
                  <div class="review-user-nick">
                      <figure class="user-photo" style="background-image: url("${vo.profile}")></figure> <span>"${vo.nick}"</span>
@@ -91,9 +92,27 @@
                  </div>
          
                  <div class="owner-reply-box2-content">
-                     <p class="review-content">
-                     	  ${vo.replyContent}    
-                     </p>
+                 	 
+                   
+                   
+                    <c:choose>
+					    <c:when test="${vo.replyDelYn eq 'Y'}">
+					         <p class="review-content">
+                     	 		삭제 된 답변 입니다. 
+                    		 </p>
+					    </c:when>
+					    <c:when test="${empty vo.replyContent}">
+					        	<p class="review-content" >
+                     	 		답변 대기 중
+                    		 	</p>
+					    </c:when>
+					    <c:otherwise>
+					        	<p class="review-content">
+                     	 		${vo.replyContent}
+                    		 	</p>
+					    </c:otherwise>
+					</c:choose>
+                     
          
                      <div class="owner-reply-box2-date-btn">
                          <span>${vo.replyDate}</span> 
@@ -192,8 +211,8 @@
 
     modalSureButton.addEventListener('click', () => {
     modal.classList.add('modal-sure-hiddnen');
-        alert("리뷰 삭제가 완료되었습니다")
-
+        alert("리뷰 삭제가 완료되었습니다");
+	
     });
    
    //병욱 펑션
@@ -206,6 +225,28 @@
 	menu1.innerHTML = "원하는값";
 	menu2.innerHTML = "원하는값";
    
+	
+	const reviewNo =document.querySelectorAll(".reviewNO")
+    
+    const deleteBtn = document.querySelectorAll(".reply-delete-btn")
+
+    const deleteSure = document.querySelector(".btn-sure")
+
+    
+
+    for(let i=0; i<deleteBtn.length; i++) {
+        deleteBtn[i].addEventListener('click', () => {
+            window.x = reviewNo[i].innerHTML;
+            console.log('xxx ' , window.x , 'zzz');
+    });
+
+    }
+    deleteSure.addEventListener('click',()=> {
+        console.log("del ::: " , window.x);
+    });
+
+
+
    
     </script>
     

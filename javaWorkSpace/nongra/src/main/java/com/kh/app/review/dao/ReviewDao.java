@@ -23,7 +23,7 @@ public class ReviewDao {
 	public List<ReviewVo> manageReviewLookUp(Connection conn) throws Exception {
 
 		//sql
-		String sql ="SELECT R.REVIEW_NO ,R.CONSUMER_NO ,R.CART_BREAKDOWN_NO ,R.CONTENT ,R.WRITE_DATE ,R.UPDATE_DATE ,R.REPLY_DATE ,R.REPLY_DEL_YN ,R.REPLY_CONTENT ,SR.TITLE AS ITEM_TITLE ,S.BUSINESS_NAME ,M.NICK ,M.PROFILE ,T.LIKE_CNT ,RF.FILE_SRC FROM REVIEW R JOIN CART_BREAKDOWN CB ON R.CART_BREAKDOWN_NO = CB.NO JOIN SALES_REGISTR SR ON CB.SALES_NO = SR.SALES_NO JOIN SELLER S ON SR.SELLER_NO = S.SELLER_NO JOIN MEMBER M ON R.CONSUMER_NO = M.MEMBER_NO LEFT JOIN ( SELECT R.REVIEW_NO ,COUNT(*) AS LIKE_CNT FROM REVIEW R JOIN REVIEW_LIKE RL ON R.REVIEW_NO = RL.REVIEW_NO GROUP BY R.REVIEW_NO ORDER BY R.REVIEW_NO ) T ON T.REVIEW_NO = R.REVIEW_NO FULL JOIN REVIEW_FILE RF ON R.REVIEW_NO = RF.REVIEW_NO WHERE REVIEW_DEL_YN = 'N' ORDER BY R.REVIEW_NO";
+		String sql ="SELECT R.REVIEW_NO ,R.CONSUMER_NO ,R.CART_BREAKDOWN_NO ,R.CONTENT ,R.WRITE_DATE ,R.UPDATE_DATE ,R.REPLY_DATE ,R.REPLY_DEL_YN ,R.REPLY_CONTENT ,SR.TITLE AS ITEM_TITLE ,S.BUSINESS_NAME ,M.NICK ,M.PROFILE ,T.LIKE_CNT ,RF.FILE_SRC FROM REVIEW R JOIN CART_BREAKDOWN CB ON R.CART_BREAKDOWN_NO = CB.NO JOIN SALES_REGISTR SR ON CB.SALES_NO = SR.SALES_NO JOIN SELLER S ON SR.SELLER_NO = S.SELLER_NO JOIN MEMBER M ON R.CONSUMER_NO = M.MEMBER_NO LEFT JOIN ( SELECT R.REVIEW_NO ,COUNT(*) AS LIKE_CNT FROM REVIEW R JOIN REVIEW_LIKE RL ON R.REVIEW_NO = RL.REVIEW_NO GROUP BY R.REVIEW_NO ORDER BY R.REVIEW_NO ) T ON T.REVIEW_NO = R.REVIEW_NO FULL JOIN REVIEW_FILE RF ON R.REVIEW_NO = RF.REVIEW_NO WHERE REVIEW_DEL_YN = 'N' ORDER BY R.REVIEW_NO DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
 		
@@ -80,40 +80,23 @@ public class ReviewDao {
 		
 		
 		
-		
-	
-		
-		
-		
-		
 		Map tempmap = new HashMap<String, ReviewVo >();
 		for (ReviewVo reviewVo : list) {
 			tempmap.put(reviewVo.getReviewNo(), reviewVo );
 		}
 //		키값은 중복이 
-		
-		
-		
-		
-	
-		
+				
 	
 		for (ReviewVo reviewVo : list) {
 				ReviewVo targetVo = (ReviewVo) tempmap.get(reviewVo.getReviewNo());
 				targetVo.getFileSrc().add(reviewVo.getSrc());
 		}
 		
-		
-	
-		
-		
-		
+			
 		ArrayList<ReviewVo> reviewVoList = new ArrayList<ReviewVo>(tempmap.values());
 		
 		
-		
-		 
-		
+			
 		//close
 		JDBCTemplate.close(rs);
 		JDBCTemplate.close(pstmt);
