@@ -6,7 +6,7 @@
     %>
 	<!DOCTYPE html>
 	<%		
-		MemberVo loginSeller = (MemberVo)session.getAttribute("loginMember");
+		
     	String alertMsg = (String)session.getAttribute("alertMsg"); 
     	session.removeAttribute("alertMsg");
     %>
