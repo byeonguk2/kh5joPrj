@@ -30,6 +30,7 @@ button{
 /* 상품 테이블 */
 table{
     width: 100%;
+    border-bottom: 1px solid black;
 }
 tr{
     padding: 10px;
@@ -73,6 +74,7 @@ tbody>tr>td:nth-child(3){
 }
 tbody>tr>td:nth-child(4){
     height: 140px;
+    width: 110px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,7 +89,7 @@ tbody>tr>td:nth-child(4){
     border-radius: 5px;
 }
 .upDownBtnArea > button{
-    height: 90%;
+    height: 85%;
     border-radius: 5px;
 }
 .upDownNo{
@@ -107,13 +109,35 @@ tbody>tr>td:nth-child(4){
 .disabled{
 	filter: invert(79%) sepia(6%) saturate(31%) hue-rotate(324deg) brightness(101%) contrast(105%);
 }
+tbody>tr>td:nth-child(5){
+    width: 115px;
+}
 .optionArea{
 	padding-left:10px ;
+	font-size: 13px;
 	color: grey;
+}
+tbody>tr>td:nth-child(6){
+    width: 125px;
 }
 .priceArea > div{
     display: flex;
     justify-content: center;
+}
+.onePrice{
+	font-size: 0px;
+}
+.price{
+    font-size: 15px;
+    text-decoration: line-through;
+    color: rgb(126, 126, 126);
+}
+.oneTotalprice{
+    font-size: 19px;
+    font-weight: 500;
+}
+tbody>tr>td:nth-child(7){
+    width: 20px;
 }
 .removeBtnArea{
     display: flex;
@@ -124,6 +148,9 @@ tbody>tr>td:nth-child(4){
     height: 15px;
     width: 15px;
     object-fit: scale-down
+}
+.removeBtnArea > button > img:hover{
+	filter: invert(0%) sepia(7%) saturate(7470%) hue-rotate(83deg) brightness(106%) contrast(106%);
 }
 
 

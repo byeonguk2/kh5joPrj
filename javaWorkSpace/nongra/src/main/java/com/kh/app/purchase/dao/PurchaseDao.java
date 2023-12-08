@@ -3,6 +3,7 @@ package com.kh.app.purchase.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class PurchaseDao {
 	//장바구니 목록
 	public List<PurchaseCartVo> cart(Connection conn, MemberVo loginMember) throws Exception {
 		//sql
-		String sql = "SELECT SR.TITLE AS \"상품명\", SR.PRICE AS \"상품가격\", SO.OPTION_NAME AS \"상품옵션명\", SO.OPTION_PRICE AS \"옵션가격\", SF.FILE_NAME AS \"상품사진주소\", CB.EA AS \"상품수량\" , S.BUSINESS_NAME AS \"판매점\" FROM MEMBER M JOIN CART C ON C.MEMBER_NO = M.MEMBER_NO JOIN CART_BREAKDOWN CB ON CB.CART_NO = C.NO JOIN SALES_REGISTR SR ON SR.SALES_NO = CB.SALES_NO JOIN SALES_OPTION SO ON SO.SALES_NO = SR.SALES_NO JOIN SALES_FILE SF ON SF.SALES_NO = SR.SALES_NO JOIN SELLER S ON S.SELLER_NO = SR.SELLER_NO WHERE M.MEMBER_NO = ?";
+		String sql = "SELECT SR.TITLE AS \"상품명\" , SR.PRICE AS \"상품가격\" , SO.OPTION_NAME AS \"상품옵션명\" , SO.OPTION_PRICE AS \"옵션가격\" , SF.FILE_NAME AS \"상품사진주소\" , CB.EA AS \"상품수량\" , S.BUSINESS_NAME AS \"판매점\" , CB.NO AS \"내역번호\" FROM MEMBER M JOIN CART C ON C.MEMBER_NO = M.MEMBER_NO JOIN CART_BREAKDOWN CB ON CB.CART_NO = C.NO JOIN SALES_REGISTR SR ON SR.SALES_NO = CB.SALES_NO JOIN SALES_OPTION SO ON SO.SALES_NO = SR.SALES_NO JOIN SALES_FILE SF ON SF.SALES_NO = SR.SALES_NO JOIN SELLER S ON S.SELLER_NO = SR.SELLER_NO WHERE M.MEMBER_NO = ? ORDER BY CB.NO DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, "1");
 		ResultSet rs = pstmt.executeQuery();
@@ -32,6 +33,7 @@ public class PurchaseDao {
 			String goodsPicture = rs.getString("상품사진주소");
 			String goodsEA = rs.getString("상품수량");
 			String seller = rs.getString("판매점");
+			String orderNumber = rs.getString("내역번호");
 			
 			PurchaseCartVo vo = new PurchaseCartVo();
 			
@@ -42,6 +44,7 @@ public class PurchaseDao {
 			vo.setGoodsPicture(goodsPicture);
 			vo.setGoodsEA(goodsEA);
 			vo.setSeller(seller);
+			vo.setOrderNumber(orderNumber);
 			
 			PurchaseCartVoList.add(vo);
 		}
@@ -51,6 +54,21 @@ public class PurchaseDao {
 		JDBCTemplate.close(pstmt);
 		
 		return PurchaseCartVoList;
+	}
+
+	//장바구니 상품 수량 변경
+	public int cartEAUpdate(Connection conn, String cartBreakDownNo, String cartBreakDownEa) throws Exception {
+		//sql
+		String sql = "UPDATE CART_BREAKDOWN SET EA = ? WHERE NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, cartBreakDownEa);
+		pstmt.setString(2, cartBreakDownNo);
+		int result = pstmt.executeUpdate();
+				
+		//close
+		JDBCTemplate.close(pstmt);
+		
+		return result;
 	}
 
 }

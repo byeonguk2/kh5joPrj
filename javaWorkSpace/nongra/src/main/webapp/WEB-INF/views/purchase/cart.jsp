@@ -1,4 +1,5 @@
 <%@page import="com.kh.app.purchase.vo.PurchaseCartVo"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -43,7 +44,7 @@
                         	<div class="goodsTitleArea">
 	                            <div class="seller"><%=vo.getSeller() %></div>
 	                            <div class="goodsName"><%=vo.getGoodsName() %></div>
-	                            <span class="cartBreakdown">내역번호</span>
+	                            <span class="cartBreakdown"><%=vo.getOrderNumber() %></span>
                         	</div>
                         </td>
                         <td>
@@ -55,19 +56,20 @@
                         </td>
                         <td>
                         	<div class="optionArea">
-                        		<div class="option"><%=vo.getOptionName() %></div>
-                                <div class="optionPrice"><%=vo.getOptionPrice() %>원</div>
+                        		<div class="option"><c:if test="${!vo.optionName}"><%=vo.getOptionName() %></c:if></div>
+                                <span class="optionPrice"><c:if test="${!vo.optionName}"><%=vo.getOptionPrice() %></c:if></span><span>원</span>
                         	</div>
                         </td>
                         <td>
                             <div class="priceArea">
-                                <div class="price"><%=vo.getGoodsPrice() %></div>
-                                <div class="totalprice">(옵션+상품가격)*갯수</div>
+                                <div class="onePrice"><%=vo.getGoodsPrice() %></div>
+                                <div class="price">한개당가격*갯수</div>
+                                <div class="oneTotalprice"><c:if test="${!vo.optionName}">(옵션+상품가격)*갯수</c:if></div>
                             </div>
                         </td>
                         <td>
                             <div class="removeBtnArea">
-                                <button><img src="/nongra/resources/img/purchase/icon-cross.png" alt="X">
+                                <button><img class="disabled" src="/nongra/resources/img/purchase/icon-cross.png" alt="X">
                                 </button>
                             </div>
                         </td>
@@ -79,7 +81,10 @@
             
             
             <a class="orderBtnArea" href="/nongra/order/checkout">
-                <button class="orderBtn">주문하기</button>
+                <button class="orderBtn">
+                    <span id="totalPrice">0</span><span>원</span>
+                    주문하기
+                </button>
             </a>
 		</main>
 		
