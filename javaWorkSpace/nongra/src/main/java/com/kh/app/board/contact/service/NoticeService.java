@@ -11,7 +11,7 @@ import com.kh.app.util.db.JDBCTemplate;
 public class NoticeService {
 	public int selectNoticeCount(String readPermissionNo) throws Exception {
 		Connection conn = JDBCTemplate.getConnection();
-		NoticeDao dao = new NoticeDao();
+		NoticeDao dao = new NoticeDao();  // 나중에 밖으로 빼도 되나? 
 		int totalNoticeCnt = dao.selectNoticeCount(conn, readPermissionNo);
 		JDBCTemplate.close(conn);
 		return totalNoticeCnt;

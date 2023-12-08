@@ -180,6 +180,7 @@ a {
     height: 14;
 }
 .post_detail{
+    display: none;
     box-sizing: border-box;
     padding: 25px 34px;
     background-color: rgb(250, 250, 250);

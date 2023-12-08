@@ -29,16 +29,17 @@ public class NoticeListController extends HttpServlet {
 			if(req.getSession().getAttribute("loginSeller") != null) {
 				readPermissionNo = "2";
 			}
+			NoticeService ns = new NoticeService();
+
+			int totalNoticeCnt = ns.selectNoticeCount(readPermissionNo); 
+			int initialPostCnt = 10;
+			int additionalPostCnt = 5;
 			int requestedPageCnt = 0;
+			
 			if(req.getAttribute("requestedPageCnt") !=  null) {              // 먼가 조건식 구린데 함 생각 더 해보기 
 				requestedPageCnt = (int) req.getAttribute("requestedPageCnt"); //타입 int로 받는거 확정 ㅇㅇ??
 			}
 			
-			NoticeService ns = new NoticeService();
-			
-			int totalNoticeCnt = ns.selectNoticeCount(readPermissionNo); 
-			int initialPostCnt = 10;
-			int additionalPostCnt = 5;
 			PageVoTest pvo = new PageVoTest(totalNoticeCnt, initialPostCnt, additionalPostCnt, requestedPageCnt);
 
 			List<NoticeVo> noticeVoList = ns.selectNoticeList(readPermissionNo, pvo);
@@ -53,3 +54,4 @@ public class NoticeListController extends HttpServlet {
 		}
 	}
 }
+

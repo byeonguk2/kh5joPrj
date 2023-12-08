@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.kh.app.board.contact.vo.NoticeVo;
@@ -26,9 +27,41 @@ public class NoticeDao {
 		return totalNoticeCnt;
 	}
 
-	public List<NoticeVo> selectNoticeList(Connection conn, String readPermissionNo, PageVoTest pvo) {
-		
-		return null;
+	public List<NoticeVo> selectNoticeList(Connection conn, String readPermissionNo, PageVoTest pvo) throws Exception {
+		String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, T.* FROM ( SELECT * FROM NOTICE WHERE OPEN_YN = 'Y' AND READ_PERMISSION = ? ORDER BY CASE TOP_DISPLAY WHEN 'Y' THEN 0 WHEN 'N' THEN 1 END , ENROLL_DATE DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, readPermissionNo);
+		pstmt.setInt(2, pvo.getStartRow());
+		pstmt.setInt(3, pvo.getLastRow());
+		ResultSet rs = pstmt.executeQuery();
+		List<NoticeVo> noticeVoList = new ArrayList<NoticeVo>();
+		while(rs.next()) {
+			String noticeNo = rs.getString("NOTICE_NO");
+			String writerNo = rs.getString("WRITER_NO");
+			String title = rs.getString("TITLE");
+			String content = rs.getString("CONTENT");
+			String enrollDate = rs.getString("ENROLL_DATE");
+			String modifyDate = rs.getString("MODIFY_DATE");
+			String openYn = rs.getString("OPEN_YN");
+			String readPermission = rs.getString("READ_PERMISSION");
+			String topDisplay = rs.getString("TOP_DISPLAY");
+			
+			NoticeVo nvo = new NoticeVo();
+			nvo.setNoticeNo(noticeNo);
+			nvo.setWriterNo(writerNo);
+			nvo.setTitle(title);
+			nvo.setContent(content);
+			nvo.setEnrollDate(enrollDate);
+			nvo.setModifyDate(modifyDate);
+			nvo.setOpenYn(openYn);
+			nvo.setReadPermission(readPermission);
+			nvo.setTopDisplay(topDisplay);
+			
+			noticeVoList.add(nvo);
+		}
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		return noticeVoList;
 	}
 
 

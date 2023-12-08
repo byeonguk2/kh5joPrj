@@ -4,12 +4,12 @@
     <%
     	MemberVo loginMember= (MemberVo)session.getAttribute("loginMember");
     %>
-	<!DOCTYPE html>
 	<%		
-		MemberVo loginSeller = (MemberVo)session.getAttribute("loginMember");
-    	String alertMsg = (String)session.getAttribute("alertMsg"); 
-    	session.removeAttribute("alertMsg");
+    
+    String alertMsg = (String)session.getAttribute("alertMsg"); 
+    session.removeAttribute("alertMsg");
     %>
+	<!DOCTYPE html>
 	<html lang="ko">
 	<head>
 		<meta charset="UTF-8">
@@ -87,7 +87,7 @@
                     <a href="">신상품</a>
                     <a href="">베스트</a>
                     <a href="/nongra/tip/main">구매팁</a>
-                    <a href="/nongra/event/main">이벤트</a>
+                    <a href="/nongra/event/list">이벤트</a>
                     <a href="">배송안내</a>
                     
     
