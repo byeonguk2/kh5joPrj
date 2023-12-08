@@ -20,6 +20,7 @@ public class MemberDao {
 		//rs
 		MemberVo loginMember = null;
 		if(rs.next()) {
+			
 			String no=rs.getString("MEMBER_NO");
 			String id=rs.getString("ID");
 			String nick=rs.getString("NICK");
@@ -34,6 +35,7 @@ public class MemberDao {
 			String modifyDate=rs.getString("MODIFY_DATE");
 			String point=rs.getString("POINT");
 			String profile=rs.getString("PROFILE");
+			String sellerYn=rs.getString("SELLER_YN");
 			
 			
 			loginMember= new MemberVo();
@@ -45,12 +47,13 @@ public class MemberDao {
 			loginMember.setName(name);
 			loginMember.setPhone(phone);
 			loginMember.setAddr(addr);
-			loginMember.setAddr(addr2);
+			loginMember.setAddr2(addr2);
 			loginMember.setBirth(birth);
 			loginMember.setJoinDate(joinDate);
 			loginMember.setModifyDate(modifyDate);
 			loginMember.setPoint(point);
 			loginMember.setProfile(profile);
+			loginMember.setSellerYn(sellerYn);
 		}
 		
 		//close

@@ -14,7 +14,7 @@
 		<%@ include file="/WEB-INF/views/common/header/header_sobi_memberModify.jsp"%>
 		<div id="a">
 		<%@ include file="/WEB-INF/views/common/aside/aside_sobi_main.jsp"%>
-		<form name="form" action="https://www.naver.com/">
+		<form id="form" action="/nongra/member/modify" method="post">
 			<div class="main">
 				<h2 class="management">내 정보 관리</h2>
 				<div id="box">내 정보 변경</div>
@@ -28,9 +28,9 @@
 					</dt>
 					<dd>
 						<div class="block">
-							<input type="text" name="user_nick" id="user_nick"
+							<input onblur="checkNick();" type="text" name="nick" id="user_nick"
 								class="txt placeholder" placeholder="닉네임" maxlength="12"
-								value=""
+								value="<%= loginMember.getMemberNick() %>"
 								onkeypress="if(event.keyCode== 40 || event.keyCode == 41) event.returnValue = false;"
 								onkeydown="chkLength(this, 12, 'nick');" onpaste="return false">
 							<button class="btn1" style='cursor: pointer;'
@@ -95,11 +95,11 @@
                                     </div> -->
 						<div class="block">
 							<input type="text" class="txt_length01" placeholder="도로명 주소"
-								name="road_address" id="road_address" value="" readonly="">
+								name="road_address" id="road_address" value="<%= loginMember.getAddr() %>" readonly="">
 						</div>
 						<div class="block_last1">
 							<input type="text" class="txt_length01" placeholder="상세 주소"
-								name="detail_address" id="detail_address" value="">
+								name="detail_address" id="detail_address" value="<%= loginMember.getAddr2() %>">
 						</div>
 						<!-- <p id="address" class="addr_num" style="">지번주소: 서울특별시 용산구 이촌동 300-11 왕궁아파트 왕궁아파트</p> -->
 
@@ -110,8 +110,8 @@
 					<dd class="line">
 						<div class="block_last">
 							<input type="text" name="mobile" class="phonetxt"
-								placeholder="휴대폰 번호" value=""> <span
-								class="ierror">ex) 010-0000-0000</span>
+								placeholder="휴대폰 번호" value="<%= loginMember.getPhone() %>"> <span
+								class="ierror">ex) 01000000000</span>
 							<p id="sns_phone_msg" style="display: none">
 								인증하신 휴대폰 번호가 변경되신 경우 <a
 									href="https://help.afreecatv.com/atv.php?type=exMailQuestion"
@@ -126,17 +126,8 @@
 					<dd class="line">
 						<div class="block_last2">
 							<input type="text" name="email1" class="txt length02"
-								placeholder="메일주소" value=""> <span class="at">@</span>
-							<input type="text" name="email2" class="txt length02"
-								placeholder="메일주소" value=""> <select
-								onclick="selectMail()" name="select_email" id="select_email">
-								<option>메일주소선택</option>
-								<option name="mailoption" value="naver.com">naver.com</option>
-								<option name="mailoption" value="nate.com">nate.com</option>
-								<option name="mailoption" value="gmail.com">gmail.com</option>
-								<option name="mailoption" value="hanmail.net">hanmail.net</option>
-								<option name="mailoption" value="self">직접입력</option>
-							</select> <input type="hidden" name="org_email" value="jay6266@naver.com">
+								placeholder="메일주소" value="<%= loginMember.getEmail() %>"> 
+							
 						</div>
 					</dd>
 
@@ -167,9 +158,36 @@
 		</div>
 		</div>
 		<script
-			src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+			src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js">
+		
+		
+		
+		// 닉네임 체크
+function checkNick() {
+	var xhr = new XMLHttpRequest();
+	const from = document.querySelector("#form");
 
+	if (from.nick.value.length < 1) {
+		document.querySelector("#nick_re").innerHTML = '닉네임이 짧습니다.';
+		return false;
+	}
 
+	xhr.open("GET", "/nongra/seller/nickCheck?nick=" + document.querySelector("input[name=nick]").value, true);
+	// 요청을 보내줌
+	xhr.send();
+
+	console.log(from.nick.value);
+	//요청에 대한 응답이오면 실행되는 함수
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+			xhr.responseText.trim()
+			console.log(xhr.responseText);
+
+			document.getElementById("nick_re").innerHTML = xhr.responseText.trim();
+		}
+	}
+}	
+</script>
 
 </body>
 </html>
