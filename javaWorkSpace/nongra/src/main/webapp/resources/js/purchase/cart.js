@@ -13,6 +13,7 @@ for(let i = 0; i < removeBtn.length; ++i){
 		.then( (x) => { 
 			const cartBreakDownNo = x.cartBreakDownNo;
 			console.log(i);
+			window.location.reload();
 		} );
 		
 		
