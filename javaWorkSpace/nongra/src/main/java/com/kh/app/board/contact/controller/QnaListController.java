@@ -25,19 +25,15 @@ public class QnaListController extends HttpServlet {
 				req.setAttribute("alertMsg", "로그인 후 사용가능합니다.");
 				resp.sendRedirect("/nongra/member/login");
 			}			
-			String userNo = req.getParameter(loginMember.getNo());
+			String userNo = loginMember.getNo();
 			QnaService qs = new QnaService();
-			/*
-			//if문 추가 
 			if(loginMember.getSellerYn().equals("Y")) {
-			*/
-			List<QnaMemberVo> QnaVoList = qs.getQnaList(userNo);
-			/*
+				List<QnaSellerVo> qnaVoList = qs.getQnaSellerList(userNo);
+				req.setAttribute("qnaVoList", qnaVoList);
 			} else {
-			List<QnaSellerVo> QnaVoList = qs.getQnaList(userNo);
+				List<QnaMemberVo> qnaVoList = qs.getQnaMemberList(userNo);
+				req.setAttribute("qnaVoList", qnaVoList);
 			}
-			*/
-			req.setAttribute("QnaVoList", QnaVoList);
 			req.getRequestDispatcher("/WEB-INF/views/board/contact/qna/qna_list.jsp").forward(req, resp);
 			
 		}catch (Exception e) {
