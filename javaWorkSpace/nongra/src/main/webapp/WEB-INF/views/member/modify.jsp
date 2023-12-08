@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet"
 	href="/nongra/resources/css/member/member_modify.css">
-<script defer src="/nongra/resources/js/member/member_modify.js"></script>
+<script defer src="/nongra/resources/js/common/header/header_sobi.js"></script>
 </head>
 <body>
 	<div id="wrap">
@@ -33,12 +33,10 @@
 								value="<%= loginMember.getMemberNick() %>"
 								onkeypress="if(event.keyCode== 40 || event.keyCode == 41) event.returnValue = false;"
 								onkeydown="chkLength(this, 12, 'nick');" onpaste="return false">
-							<button type="button" class="btn1" style='cursor: pointer;'
-								onclick="checkNick();">중복확인</button>
-							<button class="btn2" style='cursor: pointer;' id="change_nick">닉네임
-								변경</button>
+							<button type="button" class="btn1" style='cursor: pointer;'onclick="checkNick()">중복확인</button>
+							<button class="btn2" style='cursor: pointer;' id="change_nick">닉네임변경</button>
 						</div>
-						<p class="txt">- 게시물 작성시 보이는 닉네임입니다.(최대 한글 6자 영문 12자)</p>
+						<p id="ssss" class="txt">- 게시물 작성시 보이는 닉네임입니다.(최대 한글 6자 영문 12자)</p>
 						<p class="txt">- 닉네임 변경 시, 24시간 후에 재변경이 가능합니다.</p>
 					</dd>
 				</dl>
@@ -157,37 +155,35 @@
 		</form>
 		</div>
 		</div>
-		<script
-			src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js">
-		
-		
-		
+		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+		<script>
 		// 닉네임 체크
-function checkNick() {
-	var xhr = new XMLHttpRequest();
-	const from = document.querySelector("#form");
+		function checkNick() {
+			var xhr = new XMLHttpRequest();
+			const from = document.querySelector("#form");
 
-	if (from.nick.value.length < 1) {
-		document.querySelector("#nick_re").innerHTML = '닉네임이 짧습니다.';
-		return false;
-	}
+			if (from.nick.value.length < 1) {
+				document.querySelector("#nick_re").innerHTML = '닉네임이 짧습니다.';
+				return false;
+			}
 
-	xhr.open("GET", "/nongra/seller/nickCheck?nick=" + document.querySelector("input[name=nick]").value, true);
-	// 요청을 보내줌
-	xhr.send();
+			xhr.open("GET", "/nongra/seller/nickCheck?nick=" + document.querySelector("input[name=nick]").value, true);
+			// 요청을 보내줌
+			xhr.send();
 
-	console.log(from.nick.value);
-	//요청에 대한 응답이오면 실행되는 함수
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-			xhr.responseText.trim()
-			console.log(xhr.responseText);
-
-			document.querySelector(".txt").innerHTML = xhr.responseText.trim();
+			console.log(from.nick.value);
+			//요청에 대한 응답이오면 실행되는 함수
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+					xhr.responseText.trim()
+					console.log(xhr.responseText);
+					console.log(document.querySelector("#ssss"));
+					document.querySelector("#ssss").innerHTML = xhr.responseText;
+				}
+			}
 		}
-	}
-}	
-</script>
+		</script>
+		
 
 </body>
 </html>
