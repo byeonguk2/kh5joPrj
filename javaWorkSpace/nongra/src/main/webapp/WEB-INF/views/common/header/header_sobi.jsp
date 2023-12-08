@@ -16,7 +16,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Document</title>
 		<link rel="stylesheet" href="/nongra/resources/css/header/header_sobi.css">
-		<script defer src="/nongra/resources/js/common/header_sobi.js"></script>
+		<script defer src="/nongra/resources/js/common/header/header_sobi.js"></script>
 	</head>
 	<body>
 		<div id="wrap1">

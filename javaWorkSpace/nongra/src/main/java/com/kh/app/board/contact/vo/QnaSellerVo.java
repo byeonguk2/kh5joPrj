@@ -14,13 +14,16 @@ public class QnaSellerVo {
 	private String replyContent;
 	private String replyEnrollDate;
 	private String replyModifyDate;
+	private String categoryParentId;
+	private String categoryName;
 	public QnaSellerVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public QnaSellerVo(String sellerQnaNo, String categoryId, String salesNo, String sellerNo, String title,
 			String content, String enrollDate, String modifyDate, String modifyYn, String replyWriterNo,
-			String replyContent, String replyEnrollDate, String replyModifyDate) {
+			String replyContent, String replyEnrollDate, String replyModifyDate, String categoryParentId,
+			String categoryName) {
 		super();
 		this.sellerQnaNo = sellerQnaNo;
 		this.categoryId = categoryId;
@@ -35,6 +38,8 @@ public class QnaSellerVo {
 		this.replyContent = replyContent;
 		this.replyEnrollDate = replyEnrollDate;
 		this.replyModifyDate = replyModifyDate;
+		this.categoryParentId = categoryParentId;
+		this.categoryName = categoryName;
 	}
 	public String getSellerQnaNo() {
 		return sellerQnaNo;
@@ -114,14 +119,28 @@ public class QnaSellerVo {
 	public void setReplyModifyDate(String replyModifyDate) {
 		this.replyModifyDate = replyModifyDate;
 	}
+	public String getCategoryParentId() {
+		return categoryParentId;
+	}
+	public void setCategoryParentId(String categoryParentId) {
+		this.categoryParentId = categoryParentId;
+	}
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
 	@Override
 	public String toString() {
 		return "QnaSellerVo [sellerQnaNo=" + sellerQnaNo + ", categoryId=" + categoryId + ", salesNo=" + salesNo
 				+ ", sellerNo=" + sellerNo + ", title=" + title + ", content=" + content + ", enrollDate=" + enrollDate
 				+ ", modifyDate=" + modifyDate + ", modifyYn=" + modifyYn + ", replyWriterNo=" + replyWriterNo
 				+ ", replyContent=" + replyContent + ", replyEnrollDate=" + replyEnrollDate + ", replyModifyDate="
-				+ replyModifyDate + "]";
+				+ replyModifyDate + ", categoryParentId=" + categoryParentId + ", categoryName=" + categoryName + "]";
 	}
+	
+	
 	
 	
 }   
