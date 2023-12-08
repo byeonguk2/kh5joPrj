@@ -23,16 +23,13 @@ public class MemberSearchListController extends HttpServlet {
 		
 		
 		try {
-			AdminService as = new AdminService();
-			// data
-			System.out.println("들어옴");
 			
+			AdminService as = new AdminService();
+			
+			// data
 			String memberType = req.getParameter("memberType");
 			String option = req.getParameter("option");
 			String searchValue = req.getParameter("searchValue");
-			System.out.println(memberType);
-			System.out.println(option);
-			System.out.println(searchValue);
 			
 			Map<String,String> map = new HashMap<String,String>();
 			map.put("option", option);
@@ -41,6 +38,9 @@ public class MemberSearchListController extends HttpServlet {
 			
 			int listCount = as.selectMemberSearchCount(map);
 			
+			// 여기까지 잘 됨 
+			
+			// paging 처리 
 			int currentPage = 1;
 			if(req.getParameter("pno") != null) {
 				currentPage = Integer.parseInt(req.getParameter("pno"));
@@ -51,12 +51,12 @@ public class MemberSearchListController extends HttpServlet {
 			PageVo pvo = new PageVo(listCount, currentPage,pageLimit,boardLimit);
 			
 			// service 
-			List<SellerVo> SellerVoList = as.search(map,pvo);
+			List<SellerVo> SellerVoList = as.searchMember(map,pvo);
 			
 			req.setAttribute("map", map);
 			req.setAttribute("pvo", pvo);
 			req.setAttribute("voList", SellerVoList);
-			req.getRequestDispatcher("/WEB-INF/views/admin/member/memberRequest.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/admin/member/memberBen.jsp").forward(req, resp);
 		}catch (Exception e) {
 			System.out.println("게시물 검색기능 예외발생..");
 			e.printStackTrace();

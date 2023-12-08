@@ -109,16 +109,15 @@
 						<h2>회원정지/해제</h2>
 						<div class="select_div">
 							<span>• 회원조회</span>
-								<div><input name="memberType" type="radio" value="판매자" checked="true">판매자</div>
-								<div><input name="memberType" type="radio" value="판매자">소비자</div>
+								<div><input name="memberType" type="radio" value="Y" checked="true">판매자</div>
+								<div><input name="memberType" type="radio" value="N">소비자</div>
 						</div>
 						<div class="search_div">
 							<span>• 회원검색</span>
 							<select name="option">
-								<option name="option" value="name">이름</option>
-								<option name="option" value="no">번호</option>
-								<option name="option" value="nick">닉네임</option>
-								<option name="option" value="id">아이디</option>
+								<option name="option" value="MEMBER_NO">번호</option>
+								<option name="option" value="NICK">닉네임</option>
+								<option name="option" value="ID">아이디</option>
 								<input type="text" name="searchValue">
 								<button>검색</button>
 							</select>
@@ -146,9 +145,9 @@
 								<td><%= list.getMemberNo() %></td>
 								<td><%= list.getId() %></td>
 								<td><%= list.getNick() %></td>
-								<td>판매자</td>
+								<td><%if(list.getSellerYn().equals("Y")){ %>판매자<% }else { %>소비자<%}%></td>
 								<td><%= list.getJoinDate() %></td>
-								<td><button type="button">정지하기</button></td>
+								<td><button type="button" onclick="freeze(<%= list.getMemberNo() %>,'<%=list.getFreezeYn()%>')"><%if(list.getFreezeYn().equals("N")){ %>정지하기<% }else { %>정지해제<%}%></button></td>
 							</tr>
 							<% } %>
 						</tbody>
@@ -194,10 +193,23 @@
 		menu2.innerHTML = "회원 정지/해제";
         menu2.href = "/nongra/admin/memberBen";
 		menu3.innerHTML = "사업자 허가 여부";
-		menu3.href = "/nongra/admin/member/request";
+		menu3.href = "/nongra/admin/request";
 		}
 		createAsideLetter()
 		
+		// 정지 시키는 기능
+		function freeze(no,Freeze){
+			console.log(Freeze);
+			fetch("/nongra/admin/freeze?no="+no+"&yn="+Freeze)
+			.then((resp)=>{
+				return resp.json();
+			}).then((data)=>{
+				alert(data.succees);
+			}).catch((x)=>{
+				alert("실패 ..");
+			});
+			window.location.reload();
+		}
 		
 	</script>
 </body>

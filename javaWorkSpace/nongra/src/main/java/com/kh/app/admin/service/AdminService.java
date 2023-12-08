@@ -139,11 +139,52 @@ public class AdminService {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		AdminDao dao = new AdminDao();
-		int listCount = dao.selectMemberSearchCount(conn);
+		int listCount = dao.selectMemberSearchCount(conn,map);
 		
 		JDBCTemplate.close(conn);
 		
 		return listCount;
+	}
+
+	// 회원 검색 / 사업자 소비자 구분해서 검색 가능 /
+	public List<SellerVo> searchMember(Map<String, String> map, PageVo pvo) throws Exception {
+		
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+						
+		// DAO
+		AdminDao dao = new AdminDao();
+		List<SellerVo> sellerVoList = dao.searchMember(conn , map, pvo);
+						
+		//close
+		JDBCTemplate.close(conn);
+						
+		return sellerVoList;
+
+	}
+
+	public int freezeMember(String no, String yn) throws Exception {
+		
+		// connection
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao 호출 
+		AdminDao dao = new AdminDao();
+		int result = dao.freezeMember(no,conn,yn);
+		
+		// result가 4면 커밋 아니면 롤백 
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+			
+		// connection close 
+		JDBCTemplate.close(conn);
+		
+		// result return
+		return result;
+
 	}
 	
 }

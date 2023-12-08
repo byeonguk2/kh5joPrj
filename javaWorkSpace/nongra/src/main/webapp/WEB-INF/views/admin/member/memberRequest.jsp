@@ -190,6 +190,7 @@
 								<select name="option">
 									<option name="option" value="nick">닉네임</option>
 									<option name="option" value="id">아이디</option>
+									<input type="hidden" name="memberType" value="N"/>
 									<input type="text" name="searchValue">
 									<input type="submit" value="검색하기">
 								</select>
@@ -346,7 +347,7 @@
 			menu2.innerHTML = "회원 정지/해제";
 	        menu2.href = "/nongra/admin/memberBen";
 			menu3.innerHTML = "사업자 허가 여부";
-			menu3.href = "/nongra/admin/reques";
+			menu3.href = "/nongra/admin/request";
 		}
 		createAsideLetter()
 
