@@ -124,8 +124,79 @@
 	}
 	.modal_area{
 		display: grid;
-		grid-template-rows: 60px 80px 1000px 800px 800px 100px;
+		grid-template-rows: 60px 80px 1200px 100px;
 	}.modal_down{
+		display: grid;
+		grid-template-columns: 1fr 30px;
+		padding: 20px 20px 0px 20px;
+	}
+	.modal_down_btn{
+		border: none;
+    	background-color: white;
+		font-size: 30px;
+		cursor: pointer;
+	}
+	.modal_table{
+		display: grid;
+		grid-template-rows: 60px 60px 60px 60px 60px 60px;
+		width: 800px;
+		margin: auto;
+		margin-top: 50px
+	}
+	.modal-table-area{
+		display: flex;
+	}
+	.modal-table-title{
+		width: 200px;
+		border:1px solid black;
+		text-align: center;
+		line-height: 60px
+	}
+	.modal-table-cotent{
+		width: 100%;
+		border:1px solid black;
+		padding-left: 30px;
+		line-height: 60px
+	}
+	.modal-img1{
+		margin: auto;
+		width: 600px;
+		height: 600px;
+		background-size: cover;
+	}
+	.modal-img2{
+		margin: auto;
+		width: 600px;
+		height: 600px;
+		background-size: cover;
+	}
+	/*  */
+	.modal2 {
+		display: none;
+		position:fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background: rgba(0,0,0,0.3);
+ 		z-index: 2; 
+	}
+	/* 여기안에서 작업하면되고 */
+	.dialog {
+		width: 80vw;
+		height: 80vh;
+		border-radius: 1em;
+		background: white;
+		overflow:auto;
+		margin: auto;
+	}
+	.modal_up2{
+		display: flex;
+	}
+	.modal_area2{
+		display: grid;
+		grid-template-rows: 60px 80px 800px 100px;
+	}.modal_down2{
 		display: grid;
 		grid-template-columns: 1fr 30px;
 		padding: 20px 20px 0px 20px;
@@ -223,7 +294,7 @@
 								<td><%if(list.getSellerYn().equals("Y")){ %>판매자<% }else { %>소비자<%}%></td>
 								<td><%if(list.getFreezeYn().equals("N")){ %>정상<% }else { %>정지<%}%></td>
 								<td><%= list.getJoinDate() %></td>
-								<td><button type="button" onclick="getModal()">정보수정</button></td>
+								<td><button type="button" onclick="getModal(<%= list.getMemberNo() %>,'<%= list.getSellerYn() %>')">정보수정</button></td>
 							</tr>
 							<% } %>
 						</tbody>
@@ -270,64 +341,115 @@
 								<div class="modal-table-area">
 									<input type="hidden" value="">
 									<div class="modal-table-title">사업자 번호</div>
-									<div class="modal-table-cotent mtc1"></div>
+									<input class="modal-table-cotent mtc1" />
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">사업형태</div>
-									<div class="modal-table-cotent mtc2"></div>
+									<input class="modal-table-cotent mtc2"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">사업장명</div>
-									<div class="modal-table-cotent mtc3"></div>
+									<input class="modal-table-cotent mtc3"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">사업자 전화번호</div>
-									<div class="modal-table-cotent mtc4"></div>
+									<input class="modal-table-cotent mtc4"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">우편번호</div>
-									<div class="modal-table-cotent mtc5"></div>
+									<input class="modal-table-cotent mtc5"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">사업장 주소</div>
-									<div class="modal-table-cotent mtc6"></div>
+									<input class="modal-table-cotent mtc6"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">상세주소</div>
-									<div class="modal-table-cotent mtc7"></div>
+									<input class="modal-table-cotent mtc7"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">법인명</div>
-									<div class="modal-table-cotent mtc8"></div>
+									<input class="modal-table-cotent mtc8"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">업태</div>
-									<div class="modal-table-cotent mtc9"></div>
+									<input class="modal-table-cotent mtc9"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">업종</div>
-									<div class="modal-table-cotent mtc10"></div>
+									<input class="modal-table-cotent mtc10"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">통신판매업신고번호</div>
-									<div class="modal-table-cotent mtc11"></div>
+									<input class="modal-table-cotent mtc11"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">은행</div>
-									<div class="modal-table-cotent mtc12"></div>
+									<input class="modal-table-cotent mtc12"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">입금자명</div>
-									<div class="modal-table-cotent mtc13"></div>
+									<input class="modal-table-cotent mtc13"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">입금계좌</div>
-									<div class="modal-table-cotent mtc14"></div>
+									<input class="modal-table-cotent mtc14"/>
+								</div>
+								<div class="modal-table-area">
+									<input type="hidden" value="">
+									<div class="modal-table-title">아이디</div>
+									<input class="modal-table-cotent mtc15" />
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">패스워드</div>
+									<input class="modal-table-cotent mtc16"/>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">닉네임</div>
+									<input class="modal-table-cotent mtc17"/>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">이메일 </div>
+									<input class="modal-table-cotent mtc18"/>
 								</div>
 							</div>
 						</div>
-						<img class="modal-img1" alt="통장사본" src="">
-						<img class="modal-img2" alt="사업자등록증" src="">
+						<div class="modal-table-area">
+							<button type="button" onclick="request_ok()">요청허가</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal2">
+				<div class="dialog">
+					<div class="modal_area">
+						<div class="modal_down">
+							<div></div>
+							<button class="modal_down_btn" type="button" onclick="downModal2()">x</button>
+						</div>	
+						<h1 style="text-align: center;">사업자 정보</h1>
+						<div>
+							<div class="modal_table">
+								<div class="modal-table-area">
+									<input type="hidden" value="">
+									<div class="modal-table-title">아이디</div>
+									<input class="modal-table-cotent mtc1" />
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">패스워드</div>
+									<input class="modal-table-cotent mtc2"/>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">닉네임</div>
+									<input class="modal-table-cotent mtc3"/>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">이메일 </div>
+									<input class="modal-table-cotent mtc4"/>
+								</div>
+								</div>
+							</div>
+						</div>
 						<div class="modal-table-area">
 							<button type="button" onclick="request_ok()">요청허가</button>
 						</div>
@@ -350,61 +472,50 @@
 		}
 		createAsideLetter()
 		
-		function getModal(x) {
+		function getModal(x,yn) {
+			console.log(yn);
 				const modal = document.querySelector(".modal");
+				const modal2 = document.querySelector(".modal2");
 				console.log(x);
-				fetch('/nongra/admin/businessFile?no='+x)
+				fetch('/nongra/admin/checkAllMembers?no='+x)
 				.then((response)=>{
 					return response.json();
 				}).then((data)=>{
-					document.querySelector("input[type=hidden]").value = data.vo.sellerNo;
-					document.querySelector(".mtc1").innerHTML = data.vo.businessNo;
-					document.querySelector(".mtc2").innerHTML = data.vo.businessForm;
-					document.querySelector(".mtc3").innerHTML = data.vo.busineesName;
-					document.querySelector(".mtc4").innerHTML = data.vo.busineesPhone;
-					document.querySelector(".mtc5").innerHTML = data.vo.busineesZipCode;
-					document.querySelector(".mtc6").innerHTML = data.vo.busineesAdr;
-					document.querySelector(".mtc7").innerHTML = data.vo.detailedAdr;
-					document.querySelector(".mtc8").innerHTML = data.vo.corporationName;
-					document.querySelector(".mtc9").innerHTML = data.vo.uptae;
-					document.querySelector(".mtc10").innerHTML = data.vo.upjong;
-					document.querySelector(".mtc11").innerHTML = data.vo.reportNumber;
-					document.querySelector(".mtc12").innerHTML = data.vo.bank;
-					document.querySelector(".mtc13").innerHTML = data.vo.depositor;
-					document.querySelector(".mtc14").innerHTML = data.vo.account;
-					console.log(data.fileList);
-					console.log(data.fileList2);
-					document.querySelector(".modal-img1").src = data.fileList;
-					document.querySelector(".modal-img2").src = data.fileList2;
-					console.log(document.querySelector(".modal-img2").src);
-					
+					console.log(data);
+					if(yn == 'Y'){
+						modal.classList.toggle("modal_up");
+						document.querySelector(".mtc1").value = data.businessNo;
+						document.querySelector(".mtc2").value = data.businessForm;
+						document.querySelector(".mtc3").value = data.busineesName;
+						document.querySelector(".mtc4").value = data.busineesPhone;
+						document.querySelector(".mtc5").value = data.busineesZipCode;
+						document.querySelector(".mtc6").value = data.busineesAdr;
+						document.querySelector(".mtc7").value = data.detailedAdr;
+						document.querySelector(".mtc8").value = data.corporationName;
+						document.querySelector(".mtc9").value = data.uptae;
+						document.querySelector(".mtc10").value = data.upjong;
+						document.querySelector(".mtc11").value = data.reportNumber;
+						document.querySelector(".mtc12").value = data.bank;
+						document.querySelector(".mtc13").value = data.depositor;
+						document.querySelector(".mtc14").value = data.account;
+						document.querySelector(".mtc15").value = data.id;
+						document.querySelector(".mtc16").value = data.password;
+						document.querySelector(".mtc17").value = data.nick;
+						document.querySelector(".mtc18").value = data.email;
+					}else{
+						modal2.classList.toggle("modal_up2");
+					}
 				});
 				
-				modal.classList.toggle("modal_up");
-			}
+		}
 			
 			function downModal() {
 				const modal = document.querySelector(".modal");
 				modal.classList.toggle("modal_up");
 			}
-
-			function request_ok(){
-				const no = document.querySelector("input[type=hidden]").value
-				console.log(no);
-				fetch("/nongra/admin/requestOk?no="+no)
-				.then((response)=>{
-					console.log(response);
-					return response.json();
-				}).then((data)=>{
-					console.log(data.result);
-					alert(data.result);
-
-				}).catch(()=>{
-					alert("권한요청 수락 실패..");
-				});
-				const modal = document.querySelector(".modal");
-				modal.classList.toggle("modal_up");
-				window.location.reload() 
+			function downModal2() {
+				const modal = document.querySelector(".modal2");
+				modal.classList.toggle("modal_up2");
 			}
 	</script>
 </body>

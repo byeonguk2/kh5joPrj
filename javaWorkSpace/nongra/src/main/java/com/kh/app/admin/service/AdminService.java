@@ -187,4 +187,21 @@ public class AdminService {
 
 	}
 	
+	// 회원 검색 / 사업자 소비자 구분해서 검색 가능 /
+		public SellerVo checkAllMembers(String no) throws Exception {
+			
+			// conn
+			Connection conn = JDBCTemplate.getConnection();
+							
+			// DAO
+			AdminDao dao = new AdminDao();
+			SellerVo sellerVo = dao.checkAllMembers(conn , no);
+							
+			//close
+			JDBCTemplate.close(conn);
+							
+			return sellerVo;
+			
+		}
+	
 }
