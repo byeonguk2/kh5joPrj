@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.kh.app.member.vo.MemberVo;
 import com.kh.app.page.vo.PageVo;
 import com.kh.app.seller.vo.SellerVo;
 import com.kh.app.util.db.JDBCTemplate;
@@ -527,6 +528,97 @@ public class AdminDao {
 		JDBCTemplate.close(pstmt);
 		
 		return result;
+		
+	}	
+	
+	public SellerVo checkAllMembers(Connection conn, String no) throws Exception {
+		
+		
+		String sql = "SELECT * FROM MEMBER M LEFT JOIN SELLER S ON (M.MEMBER_NO = S.MEMBER_NO) WHERE M.MEMBER_NO = ?";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+
+		pstmt.setString(1, no);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		SellerVo vo = null;
+		if(rs.next()) {
+			
+			// member 테이블 값 
+			String memberNo = rs.getString("MEMBER_NO");
+			String id = rs.getString("ID");
+			String pwd = rs.getString("PWD");
+			String nick = rs.getString("NICK");
+			String name = rs.getString("NAME");
+			String phone = rs.getString("PHONE");
+			String email = rs.getString("EMAIL");
+			
+			// 여기부터 사업자정보 
+			String sellerNo  = rs.getString("SELLER_NO");
+			String businessNo = rs.getString("BUSINESS_NO");
+			String businessForm = rs.getString("BUSINESS_FORM");
+			String businessName = rs.getString("BUSINESS_NAME");
+			String businessPhone = rs.getString("BUSINESS_PHONE");
+			
+			String businessZipcode = rs.getString("BUSINEES_ZIPCODE");
+			String businessAdr = rs.getString("BUSINESS_ADDRESS");
+			String detailedAdr = rs.getString("DETAILED_ADR");
+			String copporationName = rs.getString("CORPORATION_NAME");
+			String uptae = rs.getString("UPTAE");
+			
+			String upjong = rs.getString("UPJONG");
+			String reportNumber = rs.getString("REPORT_NUMBER");
+			String bank = rs.getString("BANK");
+			String depositor = rs.getString("DEPOSITOR");
+			String account = rs.getString("ACCOUNT");
+			
+			String joinDate = rs.getString("JOIN_DATE");
+			String permitYn = rs.getString("PERMIT_YN");
+			String requestYn = rs.getString("REQUEST_QUIT_YN");
+			String modifyYn = rs.getString("MODIFY_YN");
+			
+			// 파일 정보 가져오기
+			vo = new SellerVo();
+			
+			vo.setMemberNo(memberNo);
+			vo.setId(id);
+			vo.setPassword(pwd);
+			vo.setNick(nick);
+			vo.setName(name);
+			
+			vo.setPhone(phone);
+			vo.setEmail(email);
+			vo.setSellerNo(sellerNo);
+			vo.setBusinessNo(businessNo);
+			vo.setBusinessForm(businessForm);
+			
+			vo.setBusineesName(businessName);
+			vo.setBusineesPhone(businessPhone);
+			vo.setBusineesZipCode(businessZipcode);
+			vo.setBusineesAdr(businessAdr);
+			vo.setDetailedAdr(detailedAdr);
+			
+			vo.setCorporationName(copporationName);
+			vo.setUptae(uptae);
+			vo.setUpjong(upjong);
+			vo.setReportNumber(reportNumber);
+			vo.setBank(bank);
+			
+			vo.setDepositor(depositor);
+			vo.setAccount(account);
+			vo.setPermitYn(permitYn);
+			vo.setJoinDate(joinDate);
+			vo.setRequestYn(requestYn);
+			
+			vo.setModifyYn(modifyYn);
+
+		}
+		
+		JDBCTemplate.close(pstmt);
+		JDBCTemplate.close(rs);
+		
+		return vo;
 		
 	}	
 }
