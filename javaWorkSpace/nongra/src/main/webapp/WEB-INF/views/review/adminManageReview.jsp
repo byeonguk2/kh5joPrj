@@ -1,6 +1,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    
+    <%
+    // JSP에서 Java 코드로 DeleteYn 값을 가져옴
+    String deleteYn = (String) request.getAttribute("DeleteYn");
+%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -168,7 +175,10 @@
         </div>
     </div>
 </div>
+
 </html>
+
+
 
     <script>
 
@@ -186,12 +196,16 @@
 
 
      // 모달 구매확정 버튼
+    
+     //리뷰넘버
+     const reviewNo =document.querySelectorAll(".reviewNO")
 
      //삭제 버튼
      const modalOpenButton = document.querySelectorAll(".reply-delete-btn")
     
      const modalCloseButton = document.querySelector("#modal-close")
     
+     //확정 버튼
      const modalSureButton = document.querySelector(".btn-sure")
     
      const modal = document.querySelector(".modal-sure")
@@ -200,9 +214,13 @@
     for(let i=0; i<modalOpenButton.length; i++){
         modalOpenButton[i].addEventListener('click', () => {
     modal.classList.remove('modal-sure-hiddnen');
+    window.x = reviewNo[i].innerHTML;
+  
     });
 
     }
+
+   
 
     
     modalCloseButton.addEventListener('click', () => {
@@ -211,39 +229,37 @@
 
     modalSureButton.addEventListener('click', () => {
     modal.classList.add('modal-sure-hiddnen');
-        alert("리뷰 삭제가 완료되었습니다");
-	
+    
+    location.href='/nongra/admin/reviewDelete?DeleteNo=' + window.x
     });
+	
+  
+    
+    
+    
    
    //병욱 펑션
 	const c = document.querySelector(".aside-item > label");
 	const menu = document.querySelector(" aside > :nth-child(2) ");
-	console.log(menu);
+	
 	const menu1 = document.querySelector(" aside > :nth-child(2) > a ");
 	const menu2 = document.querySelector(" aside > :nth-child(3) > a ");
 	c.innerHTML = "원 하 는 값";
 	menu1.innerHTML = "원하는값";
 	menu2.innerHTML = "원하는값";
-   
+		
 	
-	const reviewNo =document.querySelectorAll(".reviewNO")
+	
+	var deleteYnValue = "<%=deleteYn %>";
+   
     
-    const deleteBtn = document.querySelectorAll(".reply-delete-btn")
-
-    const deleteSure = document.querySelector(".btn-sure")
-
-    
-
-    for(let i=0; i<deleteBtn.length; i++) {
-        deleteBtn[i].addEventListener('click', () => {
-            window.x = reviewNo[i].innerHTML;
-            console.log('xxx ' , window.x , 'zzz');
-    });
-
+    if(deleteYnValue == '실패'){
+    	alert('리뷰 삭제' +deleteYnValue);
     }
-    deleteSure.addEventListener('click',()=> {
-        console.log("del ::: " , window.x);
-    });
+
+  
+
+
 
 
 
