@@ -42,4 +42,26 @@ public class MemberService {
 		return result;
 	}
 	
+	//회원탈퇴
+	public int delete(String no) throws Exception {
+		//conn
+		Connection conn=JDBCTemplate.getConnection();
+		
+		//dao
+		MemberDao dao=new MemberDao();
+		int result=dao.delete(conn,no);
+		
+		//tx
+		if(result==1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		
+		//close
+		JDBCTemplate.close(conn);
+		return result;
+	}
+	
 }

@@ -24,7 +24,7 @@
 
         <div class="aside-item">
             <div class="side-icon" id="icon-smile"></div>
-            <a href="/nongra/mypage/address">리뷰 관리</a>
+            <a href="/nongra/member/reviewmanage">리뷰 관리</a>
             <div class="side-icon2"></div>
         </div>    
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
 <body>
 	<div id="wrap_event">
 	<%@ include file="/WEB-INF/views/common/header/header_sobi.jsp"%>
-	<form id="form" action="/nongra/member/delete" method="post">
+	<form  action="/nongra/member/delete" method="post">
 	<div class="main">
                 <h2 class="member_drop">
                     <span>회원탈퇴</span>
@@ -72,10 +73,11 @@
                     </div>
                 </div>
                 <div class="btn">
-                    <a href="/nongra/home" class="button1">탈퇴</a>
-                    <a href="" class="button2">탈퇴취소</a>
+                    <button type="submit" style='cursor:pointer' class="button1">탈퇴</button>
+                    <a href="/nongra/home" class="button2">탈퇴취소</a>
 
                 </div>
+            <input type=hidden name="no" value="<%=loginMember.getNo()%>">
             </div>
             </form>
             </div>
