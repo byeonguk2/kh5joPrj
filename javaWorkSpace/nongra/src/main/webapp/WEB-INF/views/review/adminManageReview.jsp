@@ -65,7 +65,7 @@
                  <div class="review-content-box">
                      <div class="review-item-name">"${vo.itemTitle}"</div>
                      <p class="review-content">
-                         "${vo.content}"
+                         ${vo.content}
                      </p>
                      
                      <div class="reivew-picture-box">
@@ -119,7 +119,7 @@
 					    </c:when>
 					    <c:otherwise>
 					        	<p class="review-content">
-                     	 		${vo.replyContent}
+                     	 		${vo.replyContent} 
                     		 	</p>
 					    </c:otherwise>
 					</c:choose>
@@ -163,10 +163,10 @@
          
          <div class="review-search-box">
              
-         <form action="/nongra/admin/reviewmanage/search" method="get">
+         <form action="/nongra/admin/manageReview/search" method="get">
              <select name="searchType">
-            	<option value="CONTENT">내용</option>
-            	<option value="REVIEW_NO">리뷰번호</option>
+            	<option value="R.CONTENT">내용</option>
+            	<option value="R.REVIEW_NO">리뷰번호</option>
             	<option value="NICK">작성자</option>
              </select>
              <input type="text" name="searchValue" placeholder= "검색할 내용을 입력하세요" > <input type="submit" value="검색">
@@ -253,8 +253,6 @@
   
     
     
-    
-   
    //병욱 펑션
 	const c = document.querySelector(".aside-item > label");
 	const menu = document.querySelector(" aside > :nth-child(2) ");
@@ -272,26 +270,75 @@
    
 	var deleteYnValue = "<%=deleteYn %>";
     
-    if(deleteYnValue == '실패'){
+    if(deleteYnValue === '실패'){
+    	alert('리뷰 삭제' +deleteYnValue);
+    }else if(deleteYnValue ==='성공'){
     	alert('리뷰 삭제' +deleteYnValue);
     }	
     
 
-    
- 	
 
-	/*페이징 처리  */
 
-     function pageNext(){
+	<% if(searchMap !=null){  %>
+	
+	 function setSearchArea(){
+  	//옵션태그 세팅
+	 const optionTagArr = document.querySelectorAll(".review-search-box form option");
+  		
+  	
+	 const searchType = "<%= searchMap.get("searchType") %>"; 
+	
+	 for(let i =0; i< optionTagArr.length; ++i){
 		
-		location.href = '/nongra/admin/manageReview?pno=' + <%=pvo.getCurrentPage()+1%>
-      
-    }
+		 if(optionTagArr[i].value === searchType){
+			
+			 optionTagArr[i].selected =true;
+			 
+			 break; 
+		 }
+	 }
+	 var searchValueTag = document.querySelector(".review-search-box form input[name=searchValue]")
+	  searchValueTag.value = "<%= searchMap.get("searchValue") %>"
+	
+	
+			}
+	  setSearchArea();
 
-    function pagePrevious(){
-    	location.href = '/nongra/admin/manageReview?pno=' + <%=pvo.getCurrentPage()-1%>
-    	     
-       }
+	<% } %>
+	
+ 	
+    
+    
+
+	
+	/*페이징 처리  */
+	<% if(searchMap !=null){  %>
+	
+	
+	 function pageNext(){
+		 location.href = '/nongra/admin/manageReview/search?pno=' + <%=pvo.getCurrentPage()+1%> + '&searchType=' + '<%= searchMap.get("searchType") %>' + '&searchValue=' + '<%=searchMap.get("searchValue")%>';
+	 };
+ 	 function pagePrevious(){
+ 		 location.href = '/nongra/admin/manageReview/search?pno=' + <%=pvo.getCurrentPage()-1%> + '&searchType=' + '<%= searchMap.get("searchType") %>' + '&searchValue=' + '<%=searchMap.get("searchValue")%>';  
+ 	 };
+				 
+	 <%} else{%>
+	
+	 function pageNext(){
+		 
+	 
+		 	location.href = '/nongra/admin/manageReview?pno=' + <%=pvo.getCurrentPage()+1%>
+	       
+	    }
+
+	    function pagePrevious(){
+	    	location.href = '/nongra/admin/manageReview?pno=' + <%=pvo.getCurrentPage()-1%>
+	    	     
+	       }
+
+	 <%}%>
+	
+
     
 	
 	 

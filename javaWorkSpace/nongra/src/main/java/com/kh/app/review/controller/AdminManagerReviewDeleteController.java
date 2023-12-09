@@ -13,7 +13,7 @@
   import com.kh.app.admin.controller.requestOkControlle; 
   import com.kh.app.review.service.ReviewService;
   
-  	@WebServlet("/admin/reviewDelete") 
+  	@WebServlet("/admin/manageReview/delete") 
   	public class AdminManagerReviewDeleteController extends HttpServlet{
   //번호 받아서 리뷰 삭제 (관리자)
   @Override 
@@ -32,7 +32,7 @@
 		  if(result !=1) { throw new Exception(); } 
 		  
 		  req.setAttribute("DeleteYn", "성공");
-		  resp.sendRedirect("/nongra/admin/manageReview");
+		  req.getRequestDispatcher("/admin/manageReview").forward(req, resp);
 		    
 		 } catch (Exception e) { 
 		  	
