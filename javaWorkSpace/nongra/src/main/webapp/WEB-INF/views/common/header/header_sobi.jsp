@@ -92,7 +92,35 @@
                     
     
                 </nav>
-    
+    			<div id="category-dropdown">
+                    <ul id="category1-dropdown">카테고리 1
+                        <li> 
+                            <a href="#">소분류 1-1</a>
+                        </li>
+                        <li>
+                            <a href="#">소분류 1-2</a>
+                        </li>
+                        <li>
+                            <a href="#">소분류 1-3</a>
+                        </li>
+                    </ul> 
+                    <ul id="category2-dropdown">카테고리 2
+                        <li>
+                            <a href="#">소분류 2-1</a>
+                        </li>
+                        <li>
+                            <a href="#">소분류 2-2</a>
+                        </li>
+                    </ul> 
+                    <ul id="category3-dropdown">카테고리 3
+                        <li>
+                            <a href="#">소분류 3-1</a>
+                        </li>
+                        <li>
+                            <a href="#">소분류 3-2</a>
+                        </li>
+                    </ul>
+                </div>
     
             </header>
             </div>
@@ -103,4 +131,43 @@
 		<%if(alertMsg != null) {%>
 			alert("<%= alertMsg %>");
 		<% } %>
+		
+		document.addEventListener('DOMContentLoaded', function () {
+	        var menuIcon = document.querySelector('#menu-icon');
+	        var categoryDropdown = document.querySelector('#category-dropdown');
+
+	        menuIcon.addEventListener('click', function () {
+	            if (categoryDropdown.style.display === 'block') {
+	                categoryDropdown.style.display = 'none';
+	            } else {
+	                categoryDropdown.style.display = 'block';
+	            }
+	        });
+
+	        document.querySelector('#category1-dropdown').addEventListener('click', function () {
+	            toggleSubcategories('#category1-dropdown');
+	        });
+
+	        document.querySelector('#category2-dropdown').addEventListener('click', function () {
+	            toggleSubcategories('#category2-dropdown');
+	        });
+
+	        document.querySelector('#category3-dropdown').addEventListener('click', function () {
+	            toggleSubcategories('#category3-dropdown');
+	        });
+
+	    });
+	    function toggleSubcategories(categoryId) {
+	        let selectedCategory = document.querySelectorAll(categoryId + ' li');
+
+	        selectedCategory.forEach(function (item) {
+	            if (item.style.display === 'none' || item.style.display === '') {
+	                item.style.display = 'block';
+	            } else {
+	                item.style.display = 'none';
+	            }
+	        });
+	        
+	    }
+		
 	</script>
