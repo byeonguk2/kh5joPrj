@@ -2,6 +2,7 @@ package com.kh.app.review.service;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Map;
 
 import com.kh.app.page.vo.PageVo;
 import com.kh.app.review.dao.ReviewDao;
@@ -12,7 +13,7 @@ import com.kh.app.util.db.JDBCTemplate;
 public class ReviewService {
 
 	//	관리자 모든 리뷰 페이지 조회 + 관리창
-	public List<ReviewVo> manageReviewLookUp() throws Exception {
+	public List<ReviewVo> manageReviewLookUp(PageVo pvo) throws Exception {
 		
 		
 		
@@ -21,7 +22,7 @@ public class ReviewService {
 		
 		// dao
 		ReviewDao dao = new ReviewDao();
-		List<ReviewVo> list = dao.manageReviewLookUp(conn);
+		List<ReviewVo> list = dao.manageReviewLookUp(conn,pvo);
 		// close 
 		
 		JDBCTemplate.close(conn);
@@ -53,6 +54,55 @@ public class ReviewService {
 		return result; 
 
 	}
+	// 리뷰 페이지 전체 갯수 조회
+	public int selectReviewCount() throws Exception {
+		
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		ReviewDao dao = new ReviewDao();
+		int cnt = dao.selectReviewCount(conn);
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return cnt;
+
+	}
+	// 리뷰 검색 페이지 갯수 조회
+	public int selectSearchBoardCount(Map<String, String> m) throws Exception {
+		
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		ReviewDao dao = new ReviewDao();
+		int cnt = dao.selectReviewCount(conn,m);
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return cnt;
+	}
+	// 리뷰 검색 관리자
+	public List<ReviewVo> adminsearch(Map<String, String> m, PageVo pvo) throws Exception {
+		
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		ReviewDao dao = new ReviewDao();
+		List<ReviewVo> list = dao.adminsearch(conn,m,pvo);
+		// close 
+			
+		JDBCTemplate.close(conn);
+			
+		return list; 
+}
+	
+
+	
 
 
 

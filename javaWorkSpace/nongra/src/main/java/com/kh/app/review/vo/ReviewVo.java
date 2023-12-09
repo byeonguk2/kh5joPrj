@@ -73,19 +73,25 @@ public String getWriteDate() {
 	return WriteDate;
 }
 public void setWriteDate(String writeDate) {
-	WriteDate = writeDate;
+	if(writeDate!=null) {
+	WriteDate = writeDate.substring(0,10);
+	}
 }
 public String getUpdateDate() {
 	return updateDate;
 }
 public void setUpdateDate(String updateDate) {
-	this.updateDate = updateDate;
+	if(updateDate !=null) {
+	this.updateDate =  updateDate.substring(0,10);
+	}
 }
 public String getReplyDate() {
 	return replyDate;
 }
 public void setReplyDate(String replyDate) {
-	this.replyDate = replyDate;
+	if(replyDate !=null) {
+		this.replyDate = replyDate.substring(0,10);
+	}
 }
 public String getReplyDelYn() {
 	return replyDelYn;

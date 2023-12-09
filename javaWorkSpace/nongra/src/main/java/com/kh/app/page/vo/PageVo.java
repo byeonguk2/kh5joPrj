@@ -67,6 +67,10 @@ public class PageVo {
 		return lastRow;
 	}
 	
+	public void setLastRow(int lastRow ) {
+		this.lastRow = lastRow;
+	}
+	
 	
 	
 }

@@ -1,3 +1,5 @@
+<%@page import="java.util.Map"%>
+<%@page import="com.kh.app.page.vo.PageVo"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -6,6 +8,8 @@
     <%
     // JSP에서 Java 코드로 DeleteYn 값을 가져옴
     String deleteYn = (String) request.getAttribute("DeleteYn");
+    PageVo pvo = (PageVo)request.getAttribute("pvo");
+    Map<String, String> searchMap = (Map<String, String>)request.getAttribute("searchMap");
 %>
     
 <!DOCTYPE html>
@@ -136,25 +140,36 @@
                  
          <div class="inquery-paging-area">
              <div class="inquery-pageing-btn-area" >
-                <button ><img src="/nongra/resources/img/review/paging-prev-activated.svg" ></button>
-                <button><img src="/nongra/resources/img/review/paging-next-activated.svg" ></button>
-
-<!-- 구매후기 이전버튼  -->
-            <!--      <button><img src="/nongra/resources/img/review/paging-prev-disabled.svg" ></button>
-                 <button ><img src="/nongra/resources/img/review/paging-next-disabled.svg" ></button>
- -->
+             
+             	<% if(pvo.getCurrentPage() == 1) {%>
+             		<button ><img src="/nongra/resources/img/review/paging-prev-disabled.svg" ></button>
+             	<%}else{   %>
+             		<button class=page-btn-next onclick = 'pagePrevious()' ><img src="/nongra/resources/img/review/paging-prev-activated.svg" ></button>                                            
+                 <%	} %>
+                 	 
+                  <% if(pvo.getCurrentPage() == pvo.getMaxPage()) {%>
+             		<button ><img src="/nongra/resources/img/review/paging-next-disabled.svg" ></button>
+             	<%}else{   %>
+             		<button class=page-btn-previous onclick= 'pageNext()'><img src="/nongra/resources/img/review/paging-next-activated.svg" ></button>                                            
+                 <%	} %>		
+             		
+             		
+             	
+             	
+           
                  
              </div>
          </div>
          
          <div class="review-search-box">
              
-         <form action="">
-             <select name="serachtype">
-                 <option value="user">작성자</option>
-                 <option value="content">내용</option>
+         <form action="/nongra/admin/reviewmanage/search" method="get">
+             <select name="searchType">
+            	<option value="CONTENT">내용</option>
+            	<option value="REVIEW_NO">리뷰번호</option>
+            	<option value="NICK">작성자</option>
              </select>
-             <input type="text" name="?"> <input type="submit" value="검색">
+             <input type="text" name="searchValue" placeholder= "검색할 내용을 입력하세요" > <input type="submit" value="검색">
          </form>
          </div>
              </section>
@@ -190,7 +205,12 @@
     
     for(let i=0; i<x.length; ++i){
         x[i].addEventListener('click',()=>{
-        y[i].classList.toggle("owner-reply-box3")    
+        y[i].classList.toggle("owner-reply-box3")
+        	for(let j=0; j<x.length; ++j){
+        		if(i!=j){
+        			y[j].classList.add("owner-reply-box3")
+        		}
+        	}
     } )      
     }
 
@@ -219,10 +239,7 @@
     });
 
     }
-
-   
-
-    
+  
     modalCloseButton.addEventListener('click', () => {
     modal.classList.add('modal-sure-hiddnen');
     });
@@ -245,20 +262,40 @@
 	const menu1 = document.querySelector(" aside > :nth-child(2) > a ");
 	const menu2 = document.querySelector(" aside > :nth-child(3) > a ");
 	c.innerHTML = "원 하 는 값";
-	menu1.innerHTML = "원하는값";
+
+
 	menu2.innerHTML = "원하는값";
+    menu1.innerHTML = "원하는값";
 		
 	
 	
-	var deleteYnValue = "<%=deleteYn %>";
    
+	var deleteYnValue = "<%=deleteYn %>";
     
     if(deleteYnValue == '실패'){
     	alert('리뷰 삭제' +deleteYnValue);
+    }	
+    
+
+    
+ 	
+
+	/*페이징 처리  */
+
+     function pageNext(){
+		
+		location.href = '/nongra/admin/manageReview?pno=' + <%=pvo.getCurrentPage()+1%>
+      
     }
 
-  
-
+    function pagePrevious(){
+    	location.href = '/nongra/admin/manageReview?pno=' + <%=pvo.getCurrentPage()-1%>
+    	     
+       }
+    
+	
+	 
+	 
 
 
 

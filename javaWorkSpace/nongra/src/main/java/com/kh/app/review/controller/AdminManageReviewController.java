@@ -1,6 +1,7 @@
 package com.kh.app.review.controller;
 
 import java.io.IOException;
+import java.net.http.HttpResponse.BodySubscriber;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -24,50 +25,45 @@ public class AdminManageReviewController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			HttpSession session = req.getSession();
 			if(req.getAttribute("DeleteYn") !=null) {
-				req.setAttribute("DeleteYn",req.getAttribute("DeleteYn") );
-				
-				System.out.println(req.getAttribute("DeleteYn"));
+				req.setAttribute("DeleteYn",req.getAttribute("DeleteYn") );	
 			}
+			
+			
 		try {
+			
 			ReviewService rs = new ReviewService();
-			
-			
-			List<ReviewVo> ReviewVoList = rs.manageReviewLookUp();
-			
-			
-			if(ReviewVoList.size()==0) {
-				throw new Exception();
+			//data 
+			int listCount = rs.selectReviewCount();
+			String currentPage_ =req.getParameter("pno");
+			if(currentPage_ ==null) {
+				currentPage_ ="1";
 			}
+			int currentPage = Integer.parseInt(currentPage_);	//현재 페이지
+			int pageLimit = 1;
+			int boardLimit = 10;
+			PageVo pvo =  new PageVo(listCount, currentPage, pageLimit, boardLimit);
+			System.out.println("시작"+pvo.getStartRow());
+			System.out.println("끝" +pvo.getLastRow());
+			
+			
+		
+			//service
+			List<ReviewVo> ReviewVoList = rs.manageReviewLookUp(pvo);
+			
+			
+			// result (==view)
 			
 			req.setAttribute("ReviewVoList", ReviewVoList);
+			req.setAttribute("pvo", pvo);
 			req.getRequestDispatcher("/WEB-INF/views/review/adminManageReview.jsp").forward(req, resp);
-			
-			
-			
-			
-//			int listCount = rs.selectReviewCount();
-//			
-//			
-//			int currentPage =0;
-//			PageVo pvo = null;
-//			int pageLimit = 1;  // 내가 정함
-//			int boardLimit = 10;  //내가 정함
-//			
-//			if(req.getParameter("pno")!=null) {
-//			 currentPage = Integer.valueOf(req.getParameter("pno")); // 현재 페이지
-//			
-//			}else {
-//				currentPage =1;
-//			}
-//			pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
 			
 			
 			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("쪽지작성에러에러");
-			session.setAttribute("alertMsg", "조회 실패");
+			System.out.println("리뷰 관리자 페이지 에러");
+			session.setAttribute("alertMsg", "리뷰 관리자 페이지 실패");
 			req.getRequestDispatcher("/WEB-INF/views/common/note/result.jsp").forward(req, resp);
 		}
 		
