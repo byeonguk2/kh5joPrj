@@ -71,24 +71,22 @@
             <ul class="board_list">
             	<% for(QnaMemberVo vo : qnaMemberVoList){ %>
 	            	<li class="post_list">
-	                    <a href="">
-	                        <div class="qna_change_cursor">
-	                            <div class="qna_list_box1">
-	                            <% if(vo.getReplyContent() == null){ %>
-	                            답변예정
-	                            <% }else{ %>
-	                            답변완료
-	                            <% } %></div>
-	                            <div class="qna_list_box2"> 부모카테고리명 - <%=vo.getCategoryName() %></div>
-	                            <div class="qna_list_box3">
-                                    <%=vo.getTitle() %>
-	                            </div>
-	                            <div class="qna_list_box4"><%=vo.getEnrollDate() %></div>
-	                            <div class="qna_list_box5">
-	                                <svg class="svg_qna" width="19" height="19" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: rgb(136, 136, 136);"><path fill="#888888" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg>
-	                            </div>
-	                        </div>
-	                    </a>   
+                        <div class="qna_change_cursor">
+                            <div class="qna_list_box1">
+                            <% if(vo.getReplyContent() == null){ %>
+                            답변예정
+                            <% }else{ %>
+                            답변완료
+                            <% } %></div>
+                            <div class="qna_list_box2"> 부모카테고리명 - <%=vo.getCategoryName() %></div>
+                            <div class="qna_list_box3">
+                                <%=vo.getTitle() %>
+                            </div>
+                            <div class="qna_list_box4"><%=vo.getEnrollDate() %></div>
+                            <div class="qna_list_box5">
+                                <svg class="svg_qna" width="19" height="19" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: rgb(136, 136, 136);"><path fill="#888888" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg>
+                            </div>
+                        </div>
                         <div class="qna_detail">
                             <div class="question_area">
                                 <div class="question_box1">문의</div>
@@ -116,15 +114,13 @@
                             <div class="answer_area">
                                 <div class="answer_box1">답변</div>
                                 <div class="answer_box2">
-                                    상품의 파손, 불량, 오배송 등 상품이 표기/광고내용과 다르거나 계약내용과 다른 경우, <br>
-                                    상품을 받으신 날부터 3개월 이내, 또는 사실을 알게된 날(알 수 있었던 날)부터 30일 이내에 교환 및 반품 신청이 가능합니다.  <br>
-                                    주문/배송 조회 통해 직접 접수해주시거나, 접수가 불가한 경우 고객센터로 문의주시면 빠르게 도움드리겠습니다. <br>
+                                    <%=vo.getReplyContent() %>
                                 </div>
                             </div>                          
                         </div>                     
 	                </li>
           		<% } %>
-                
+                                                    
 
                 <li class="post_list">
                     <a href="">
@@ -158,7 +154,7 @@
                         </div>
                     </a>                        
                 </li>
-
+                    
                 
 
 
