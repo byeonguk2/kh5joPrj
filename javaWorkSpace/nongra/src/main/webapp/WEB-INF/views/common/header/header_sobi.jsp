@@ -25,7 +25,7 @@
                 <div></div>
                 <div class="top-menu">
                     <%if(loginMember==null){%>
-                    		 <a href="/nongra/member/join">회원가입</a>
+                    		 <a href="/nongra/choice/join">회원가입</a>
                     	<%}else{%>
                     		<a href="/nongra/member/mypage">마이페이지</a>
                     	<%}%>
