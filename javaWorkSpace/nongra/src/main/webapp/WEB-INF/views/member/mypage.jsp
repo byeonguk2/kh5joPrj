@@ -25,7 +25,7 @@
 		</div>
 
 
-		<h3>최근 본 상품</h3>
+		<h3>최근 구매 상품</h3>
 		<div id="box3">
 			<div id="img_box"><img src="https://dummyimage.com/100x100/000/fff.png&text=sample" alt="썸네일사진원본파일명"></div>
 			<div id="img_box"><img src="https://dummyimage.com/100x100/000/fff.png&text=sample" alt="썸네일사진원본파일명"></div>
