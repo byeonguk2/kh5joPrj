@@ -73,15 +73,13 @@
 	            	<li class="post_list">
                         <div class="qna_change_cursor">
                             <div class="qna_list_box1">
-                            <% if(vo.getReplyContent() == null){ %>
-                            답변예정
-                            <% }else{ %>
-                            답변완료
-                            <% } %></div>
+                                <% if(vo.getReplyContent() == null){ %>
+                                답변예정
+                                <% }else{ %>
+                                답변완료
+                                <% } %></div>
                             <div class="qna_list_box2"> 부모카테고리명 - <%=vo.getCategoryName() %></div>
-                            <div class="qna_list_box3">
-                                <%=vo.getTitle() %>
-                            </div>
+                            <div class="qna_list_box3"><%=vo.getTitle() %></div>
                             <div class="qna_list_box4"><%=vo.getEnrollDate() %></div>
                             <div class="qna_list_box5">
                                 <svg class="svg_qna" width="19" height="19" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: rgb(136, 136, 136);"><path fill="#888888" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg>
@@ -114,50 +112,18 @@
                             <div class="answer_area">
                                 <div class="answer_box1">답변</div>
                                 <div class="answer_box2">
+                                    <% if(vo.getReplyContent() == null){ %>
+                                        답변은 실시간 답변이 아니므로 문의량이 많을 시 답변이 지연될 수 있습니다. <br> 
+                                        답변은 평일 09:00~18:00에 등록되며, 가능한 빨리 답변드릴 수 있도록 노력하겠습니다. 
+                                    <% }else{ %>
                                     <%=vo.getReplyContent() %>
+                                    <% } %>
                                 </div>
                             </div>                          
                         </div>                     
 	                </li>
           		<% } %>
-                                                    
-
-                <li class="post_list">
-                    <a href="">
-                        <div class="qna_change_cursor">
-                            <div class="qna_list_box1">답변완료</div>
-                            <div class="qna_list_box2">배송-배송상태 이의제기</div>
-                            <div class="qna_list_box3">
-                                파손되어 배송되었습니다.
-                            </div>
-                            <div class="qna_list_box4">2023.08.15</div>
-                            <div class="qna_list_box5">
-                                <svg class="svg_qna" width="19" height="19" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: rgb(136, 136, 136);"><path fill="#888888" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg>
-                            </div>
-                        </div>
-                    </a>
-                    
-                </li>
-
-                <li class="post_list">
-                    <a href="">
-                        <div class="qna_change_cursor">
-                            <div class="qna_list_box1">답변완료</div>
-                            <div class="qna_list_box2">배송-배송상태 이의제기</div>
-                            <div class="qna_list_box3">
-                                파손되어 배송되었습니다.
-                            </div>
-                            <div class="qna_list_box4">2023.11.20</div>
-                            <div class="qna_list_box5">
-                                <svg class="svg_qna" width="19" height="19" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: rgb(136, 136, 136);"><path fill="#888888" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg>
-                            </div>
-                        </div>
-                    </a>                        
-                </li>
-                    
-                
-
-
+                         
             </ul>
         </div>
     </main>
