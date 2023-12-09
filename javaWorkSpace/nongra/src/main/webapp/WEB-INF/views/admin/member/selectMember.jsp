@@ -8,6 +8,10 @@
     	List<SellerVo> voList = (List<SellerVo>)request.getAttribute("voList"); 
     	PageVo pvo = (PageVo)request.getAttribute("pvo");
     	Map<String,Object> map = (Map<String,Object>)request.getAttribute("map");
+    	
+    	// 회원 수정시 에러메세지
+    	String alert = (String)session.getAttribute("alert");
+    	session.removeAttribute("alert");
     %>
 <!DOCTYPE html>
 <html>
@@ -20,7 +24,7 @@
 		grid-template-columns: 230px 8fr;
 		padding-top: 145px;
 	}
-	form{
+	form{ß
 		display: grid;
 		grid-template-columns: 1fr;
 	}
@@ -30,7 +34,7 @@
 	.form_above{
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-	}
+	}ß
 	.select_search_area{
 		padding: 50px;
 	}
@@ -209,7 +213,7 @@
 	}
 	.modal_table{
 		display: grid;
-		grid-template-rows: 60px 60px 60px 60px 60px 60px;
+	/* 	grid-template-rows: 60px 60px 60px 60px 60px 60px; */
 		width: 800px;
 		margin: auto;
 		margin-top: 50px
@@ -251,9 +255,10 @@
 			<main>
 				<form action="/nongra/admin/searchMember">
 					<div class="select_search_area">
-						<h2>회원정지/해제</h2>
+						<h2>회원조회/수정</h2>
 						<div class="select_div">
 							<span>• 회원조회</span>
+								<input name="searchPageName" type="hidden" value="select">
 								<div><input name="memberType" type="radio" value="Y" checked="true">판매자</div>
 								<div><input name="memberType" type="radio" value="N">소비자</div>
 						</div>
@@ -304,7 +309,7 @@
 					<div></div>
 					<div class="paging-btn">
 						<%if(pvo.getStartPage() != 1){ %>
-				          <a href="/nongra/admin/memberBen?pno=<%= pvo.getStartPage()-1 %>">이전</a>
+				          <a href="/nongra/admin/select?pno=<%= pvo.getStartPage()-1 %>">이전</a>
 				         <% } %>
 						<% for(int i = pvo.getStartPage(); i <= pvo.getEndPage(); i++){ %>
          	
@@ -312,14 +317,14 @@
 				           		<span><%= i %></span>
 				            <% }else{ %>
 			            	
-			             	<a href="/nongra/admin/memberBen?pno=<%= i %>"><%= i %></a>
+			             	<a href="/nongra/admin/select?pno=<%= i %>"><%= i %></a>
 			             	
 			            <% } %>
 			            
 			            <% } %>
 			            
 			            <%if(pvo.getEndPage() != pvo.getMaxPage()){ %>
-			            <a href="/nongra/admin/memberBen?pno=<%= pvo.getEndPage()+1 %>">다음</a>
+			            <a href="/nongra/admin/selectpno=<%= pvo.getEndPage()+1 %>">다음</a>
 			        	<% } %>
 					</div>
 					<div></div>
@@ -328,6 +333,7 @@
 		</div>
 	</div>
 	</div>
+	<form action="/nongra/admin/modify" method="post"> 
 	<div class="modal">
 				<div class="dialog">
 					<div class="modal_area">
@@ -339,87 +345,90 @@
 						<div>
 							<div class="modal_table">
 								<div class="modal-table-area">
-									<input type="hidden" value="">
+									<input type="hidden" name="sellerYn" class="sellerYn1" value="">
 									<div class="modal-table-title">사업자 번호</div>
-									<input class="modal-table-cotent mtc1" />
+									<input name="businessNo" class="modal-table-cotent mtc1" />
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">사업형태</div>
-									<input class="modal-table-cotent mtc2"/>
+									<input name="businessForm" class="modal-table-cotent mtc2"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">사업장명</div>
-									<input class="modal-table-cotent mtc3"/>
+									<input name="busineesName" class="modal-table-cotent mtc3"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">사업자 전화번호</div>
-									<input class="modal-table-cotent mtc4"/>
+									<input name="phone" class="modal-table-cotent mtc4"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">우편번호</div>
-									<input class="modal-table-cotent mtc5"/>
+									<input name="busineesZipCode" class="modal-table-cotent mtc5"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">사업장 주소</div>
-									<input class="modal-table-cotent mtc6"/>
+									<input name="address" class="modal-table-cotent mtc6"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">상세주소</div>
-									<input class="modal-table-cotent mtc7"/>
+									<input name="detailAddress" class="modal-table-cotent mtc7"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">법인명</div>
-									<input class="modal-table-cotent mtc8"/>
+									<input name="corporationName" class="modal-table-cotent mtc8"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">업태</div>
-									<input class="modal-table-cotent mtc9"/>
+									<input name="uptae" class="modal-table-cotent mtc9"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">업종</div>
-									<input class="modal-table-cotent mtc10"/>
+									<input name="upjong" class="modal-table-cotent mtc10"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">통신판매업신고번호</div>
-									<input class="modal-table-cotent mtc11"/>
+									<input name="reportNumber" class="modal-table-cotent mtc11"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">은행</div>
-									<input class="modal-table-cotent mtc12"/>
+									<input  name="bank"class="modal-table-cotent mtc12"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">입금자명</div>
-									<input class="modal-table-cotent mtc13"/>
+									<input name="depositor" class="modal-table-cotent mtc13"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">입금계좌</div>
-									<input class="modal-table-cotent mtc14"/>
+									<input name="account" class="modal-table-cotent mtc14"/>
 								</div>
 								<div class="modal-table-area">
 									<input type="hidden" value="">
 									<div class="modal-table-title">아이디</div>
-									<input class="modal-table-cotent mtc15" />
+									<input name="id" class="modal-table-cotent mtc15" />
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">패스워드</div>
-									<input class="modal-table-cotent mtc16"/>
+									<input name="password" class="modal-table-cotent mtc16"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">닉네임</div>
-									<input class="modal-table-cotent mtc17"/>
+									<input name="nick" class="modal-table-cotent mtc17"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">이메일 </div>
-									<input class="modal-table-cotent mtc18"/>
+									<input name="email" class="modal-table-cotent mtc18"/>
 								</div>
 							</div>
 						</div>
 						<div class="modal-table-area">
-							<button type="button" onclick="request_ok()">요청허가</button>
+							<button>요청허가</button>
 						</div>
 					</div>
 				</div>
 			</div>
+			</form>
+			
+			<form action="/nongra/admin/modify" method="post">
 			<div class="modal2">
 				<div class="dialog">
 					<div class="modal_area">
@@ -431,31 +440,57 @@
 						<div>
 							<div class="modal_table">
 								<div class="modal-table-area">
-									<input type="hidden" value="">
+									<input type="hidden" class="sellerYn2" name="sellerYn" value="">
 									<div class="modal-table-title">아이디</div>
-									<input class="modal-table-cotent mtc1" />
+									<input name="id" class="modal-table-cotent mtc2-1" />
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">패스워드</div>
-									<input class="modal-table-cotent mtc2"/>
+									<input name="password" class="modal-table-cotent mtc2-2"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">닉네임</div>
-									<input class="modal-table-cotent mtc3"/>
+									<input name="nick" class="modal-table-cotent mtc2-3"/>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">이름 </div>
+									<input name="name" class="modal-table-cotent mtc2-4"/>
 								</div>
 								<div class="modal-table-area">
 									<div class="modal-table-title">이메일 </div>
-									<input class="modal-table-cotent mtc4"/>
+									<input name="email" class="modal-table-cotent mtc2-5"/>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">전화번호 </div>
+									<input name="phone" class="modal-table-cotent mtc2-6"/>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">생년월일 </div>
+									<input name="birthDay" class="modal-table-cotent mtc2-7"/>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">잔액 </div>
+									<input name="point" class="modal-table-cotent mtc2-8"/>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">주소 </div>
+									<input name="address" class="modal-table-cotent mtc2-9"/>
+								</div>
+								<div class="modal-table-area">
+									<div class="modal-table-title">상세주소 </div>
+									<input name="detailAddress" class="modal-table-cotent mtc2-10"/>
 								</div>
 								</div>
 							</div>
 						</div>
 						<div class="modal-table-area">
-							<button type="button" onclick="request_ok()">요청허가</button>
+							<button>요청허가</button>
 						</div>
 					</div>
 				</div>
+				</form>
 			</div>
+			
 	<script>
 		function createAsideLetter(){
 		const x = document.querySelector(".aside-item > label");
@@ -502,8 +537,21 @@
 						document.querySelector(".mtc16").value = data.password;
 						document.querySelector(".mtc17").value = data.nick;
 						document.querySelector(".mtc18").value = data.email;
+						document.querySelector(".sellerYn1").value = yn;
 					}else{
+						console.log(yn);
 						modal2.classList.toggle("modal_up2");
+						document.querySelector(".mtc2-1").value = data.id;
+						document.querySelector(".mtc2-2").value = data.password;
+						document.querySelector(".mtc2-3").value = data.nick;
+						document.querySelector(".mtc2-4").value = data.name;
+						document.querySelector(".mtc2-5").value = data.email;
+						document.querySelector(".mtc2-6").value = data.phone;
+						document.querySelector(".mtc2-7").value = data.birthDay;
+						document.querySelector(".mtc2-8").value = data.point;
+						document.querySelector(".mtc2-9").value = data.memberAddress;
+						document.querySelector(".mtc2-10").value = data.memberDetailAddress;
+						document.querySelector(".sellerYn2").value = yn;
 					}
 				});
 				
@@ -517,6 +565,11 @@
 				const modal = document.querySelector(".modal2");
 				modal.classList.toggle("modal_up2");
 			}
+			
+			<% if(alert != null){ %>
+				alert("<%= alert %>");
+			<% } %>
+			
 	</script>
 </body>
 </html>

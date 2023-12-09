@@ -30,6 +30,7 @@ public class MemberSearchListController extends HttpServlet {
 			String memberType = req.getParameter("memberType");
 			String option = req.getParameter("option");
 			String searchValue = req.getParameter("searchValue");
+			String searchPageName = req.getParameter("searchPageName"); 
 			
 			Map<String,String> map = new HashMap<String,String>();
 			map.put("option", option);
@@ -56,7 +57,13 @@ public class MemberSearchListController extends HttpServlet {
 			req.setAttribute("map", map);
 			req.setAttribute("pvo", pvo);
 			req.setAttribute("voList", SellerVoList);
-			req.getRequestDispatcher("/WEB-INF/views/admin/member/memberBen.jsp").forward(req, resp);
+			
+			if(!searchPageName.equals("select")) {
+				req.getRequestDispatcher("/WEB-INF/views/admin/member/memberBen.jsp").forward(req, resp);
+			}else {
+				req.getRequestDispatcher("/WEB-INF/views/admin/member/selectMember.jsp").forward(req, resp);
+			}
+			
 		}catch (Exception e) {
 			System.out.println("게시물 검색기능 예외발생..");
 			e.printStackTrace();

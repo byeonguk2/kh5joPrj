@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.kh.app.admin.dao.AdminDao;
+import com.kh.app.member.vo.MemberVo;
 import com.kh.app.page.vo.PageVo;
 import com.kh.app.seller.dao.SellerDao;
 import com.kh.app.seller.vo.SellerVo;
@@ -201,6 +202,52 @@ public class AdminService {
 			JDBCTemplate.close(conn);
 							
 			return sellerVo;
+			
+		}
+
+		public int ModifySellerByAdmin(SellerVo vo) throws Exception {
+			
+			// connection
+			Connection conn = JDBCTemplate.getConnection();
+			
+			// dao 호출 
+			AdminDao dao = new AdminDao();
+			int result = dao.ModifySellerByAdmin(vo,conn);
+			
+			// result가 1이면 커밋 아니면 롤백 
+			if(result == 1) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+				
+			// connection close 
+			JDBCTemplate.close(conn);
+			
+			return result;
+			
+		}
+
+		public int ModifyMemberByAdmin(MemberVo vo) throws Exception {
+			
+			// connection
+			Connection conn = JDBCTemplate.getConnection();
+			
+			// dao 호출 
+			AdminDao dao = new AdminDao();
+			int result = dao.ModifyMemberByAdmin(vo,conn);
+			
+			// result가 1이면 커밋 아니면 롤백 
+			if(result == 1) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+				
+			// connection close 
+			JDBCTemplate.close(conn);
+			
+			return result;
 			
 		}
 	

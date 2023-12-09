@@ -20,6 +20,7 @@ public class AdminSelectMemberContriller extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
+			
 			AdminService as = new AdminService();
 			
 			int listCount = as.selectMemberSellerCount(); //(디비가서 조회하기) 전체게시글 갯수

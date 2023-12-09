@@ -21,6 +21,8 @@ public class BenMemberController extends HttpServlet {
 		try {
 			AdminService as = new AdminService();
 			
+			System.out.println("넘어옴");
+			
 			int listCount = as.selectMemberSellerCount(); //(디비가서 조회하기) 전체게시글 갯수
 			System.out.println(listCount);
 			String currentPagr_ = req.getParameter("pno");
