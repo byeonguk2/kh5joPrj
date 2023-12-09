@@ -20,10 +20,8 @@ public class CheckAllMembersController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
-			
+			resp.setCharacterEncoding("UTF-8");
 			String no = req.getParameter("no");
-			
-			System.out.println("번호가 들어옴 :"+no);
 			
 			AdminService service = new AdminService();
 			SellerVo vo = service.checkAllMembers(no);

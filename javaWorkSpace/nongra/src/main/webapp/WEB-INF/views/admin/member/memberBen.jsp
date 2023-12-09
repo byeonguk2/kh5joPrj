@@ -109,6 +109,7 @@
 						<h2>회원정지/해제</h2>
 						<div class="select_div">
 							<span>• 회원조회</span>
+								<input name="searchPageName" type="hidden" value="ben">
 								<div><input name="memberType" type="radio" value="Y" checked="true">판매자</div>
 								<div><input name="memberType" type="radio" value="N">소비자</div>
 						</div>

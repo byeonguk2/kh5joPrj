@@ -560,6 +560,10 @@ public class AdminDao {
 			String businessForm = rs.getString("BUSINESS_FORM");
 			String businessName = rs.getString("BUSINESS_NAME");
 			String businessPhone = rs.getString("BUSINESS_PHONE");
+			String birthDay = rs.getString("BIRTH_DATE");
+			String point = rs.getString("POINT");
+			String address = rs.getString("ADDRESS");
+			String detailAddress = rs.getString("DETAIL_ADDRESS");
 			
 			String businessZipcode = rs.getString("BUSINEES_ZIPCODE");
 			String businessAdr = rs.getString("BUSINESS_ADDRESS");
@@ -586,9 +590,14 @@ public class AdminDao {
 			vo.setPassword(pwd);
 			vo.setNick(nick);
 			vo.setName(name);
-			
 			vo.setPhone(phone);
 			vo.setEmail(email);
+			vo.setBirthDay(birthDay);
+			vo.setPoint(point);
+			vo.setMemberAddress(address);
+			vo.setMemberDetailAddress(detailAddress);
+			
+			
 			vo.setSellerNo(sellerNo);
 			vo.setBusinessNo(businessNo);
 			vo.setBusinessForm(businessForm);
@@ -620,5 +629,35 @@ public class AdminDao {
 		
 		return vo;
 		
+	}
+
+	public int ModifySellerByAdmin(SellerVo vo, Connection conn) throws Exception {
+		
+		String sql = "UPDATE SELLER SET BUSINESS_FORM = ?, BUSINESS_NAME = ?, BUSINESS_PHONE = ?, BUSINEES_ZIPCODE = ?, BUSINESS_ADDRESS = ?, UPTAE = ?, UPJONG = ?, BANK = ?, DEPOSITOR = ?, ACCOUNT = ?, CORPORATION_NAME = ? WHERE SELLER_NO = ?";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, vo.getBusinessForm());
+		pstmt.setString(2, vo.getBusineesName());
+		pstmt.setString(3, vo.getBusineesPhone());
+		pstmt.setString(4, vo.getBusineesZipCode());
+		pstmt.setString(5, vo.getBusineesAdr());
+
+		pstmt.setString(6, vo.getUptae());
+		pstmt.setString(7, vo.getUpjong());
+		pstmt.setString(8, vo.getBank());
+		pstmt.setString(9, vo.getDepositor());
+		
+		pstmt.setString(10, vo.getAccount());
+		pstmt.setString(11, vo.getCorporationName());
+		pstmt.setString(12, vo.getSellerNo());
+		
+		return 0;
+		
+	}
+
+	public int ModifyMemberByAdmin(MemberVo vo, Connection conn) {
+		// TODO Auto-generated method stub
+		return 0;
 	}	
 }
