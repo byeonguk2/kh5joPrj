@@ -47,22 +47,21 @@
             <ul class="board_list">
             	<% for(NoticeVo vo : noticeVoList){ %>
 	                <li class="post_list">
-	                    	<div class="post change_cursor" >
+                        <div class="post change_cursor" >
                             <% if(vo.getTopDisplay().equals("Y")){ %>
-	                     	   <div class="post_title_emphasized"> 
-	                    	<% } else { %>
-	                    		<div class="post_title_normal"> 
-	                    	<% } %>
-	                     	   <%=vo.getTitle() %> </div>
-	                        	<div class="post_date"><%=vo.getEnrollDate() %>
+                            <div class="post_title_emphasized"> 
+                            <% } else { %>
+                            <div class="post_title_normal"> 
+                            <% } %> 
+                                <%=vo.getTitle() %> </div>
+                            <div class="post_date"><%=vo.getEnrollDate() %>
                             </div>
-		                        <span class="open_arrow">
-		                            <svg class="svg1" width="24" height="24" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: rgb(136, 136, 136);"><path fill="#888888" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg>
-		                        </span>
-		                    </div>
-	                        <div class="post_detail"><p><%=vo.getContent() %></p>
-	                        </div>
-	                    </li>
+                            <span class="open_arrow">
+                                <svg class="svg1" width="24" height="24" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: rgb(136, 136, 136);"><path fill="#888888" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg>
+                            </span>
+                        </div>
+                        <div class="post_detail"><p><%=vo.getContent() %></p></div>
+                    </li>
                 <% } %>
                 
                 <%-- <c:forEach items="${noticeVoList}" var="vo">
