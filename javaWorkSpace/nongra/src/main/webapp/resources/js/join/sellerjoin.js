@@ -13,12 +13,25 @@ const idCheck = document.querySelectorAll(".css-16yppgg");
 // 입력시 중복체크 버튼 활성화
 idInput[0].addEventListener("keyup",()=>{
    const x = idInput[0].value.length;
+   console.log(x);
    if(x !== 0){
 		idCheck[0].disabled = false;
 		return;
 	}
 	idCheck[0].disabled = true;
 })
+
+function checkNickBtn(){
+	nickInput = document.querySelector("input[name=nick]").value.length;
+	if(nickInput === 0){
+		console.log("렝스 0");
+		document.querySelector(".nickCheck").disabled = true;
+		return;
+	}else{console.log("렝스 1이상");
+		document.querySelector(".nickCheck").disabled = false;
+		return;
+	}
+}
 
 // 회원가입 유효성 검사
 

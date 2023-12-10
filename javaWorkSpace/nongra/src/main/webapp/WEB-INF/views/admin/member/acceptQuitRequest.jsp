@@ -17,88 +17,151 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>	
 <style type="text/css">
-	#main-area{
-		display: grid;
-		grid-template-columns: 230px 8fr;
-		padding-top: 145px;
-	}
-	.main{
-		display: grid;
-		grid-template-columns: 1fr;
-	}
-	thead > tr {
-		height: 50px;
-	}
-	.form_above{
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-	}
-	.select_search_area{
-		padding: 50px;
-	}
-	.select_div{
-		display: grid;
-		width: 350px;
-		grid-template-columns: 1fr 1fr 1fr 1fr;
-		margin: 10px 0px 10px 0px;
-	}
-	.search_div{
-		display: grid;
-		width: 375px;
-		grid-template-columns: 1fr 1fr 1.5fr 0.5fr; 
-		margin: 10px 0px 10px 0px;
-	} 
-	select {
-		margin-right: 20px;
-	}
+	/* 기본 레이아웃 */
+#main-area{
+	display: grid;
+	grid-template-columns: 230px 8fr;
+	padding-top: 145px;
+}
+
+.select_search_area{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	margin-bottom: 50px;
+}
 	.table-area {
-		display: flex;
-		justify-content: center;
-	}
-	table{
-		width: 90%;
-	}
-	tr{
-		display: grid;
-		grid-template-columns: 1fr 1fr 2fr  2fr 2fr 3fr 4fr;
-		align-items: center;
-		border-top: none;
-		border-bottom: 1px solid black;
-		height: 80px;
-	}
-	td {
-		text-align: center;
-		line-height: 40px;
-	}
-	thead > tr {
-		border-top: 1px solid black;
-		border-bottom: 1px solid black;
-	}
-	.btn-paging{
-		display: flex;
-		justify-content: space-between;
-	}
-    .ben-btn{
-        width: 90px;
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    border: 1px #a39485 solid;
+    font-size: .9em;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    width: 80%;
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+th {
+    text-align: center;
+}
+
+thead {
+    font-weight: bold;
+    color: #fff;
+    background: #73685d;
+}
+
+td, th {
+    padding: 1em .5em;
+    vertical-align: middle;
+}
+
+td {
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    background: #fff;
+    text-align: center;
+}
+
+a {
+    color: #73685d;
+}
+
+@media all and (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
     }
-    .paging-btn-area{
-    	display: grid;
-    	grid-template-columns: 1fr 2fr 1fr;
+
+    th {
+        text-align: right;
     }
-    .paging-btn{
-    	display: flex;
-		height: 80px;
-		align-items: center;
-		justify-content: center;
-		gap: 20px;
+
+    table {
+        position: relative; 
+        padding-bottom: 0;
+        border: none;
+        box-shadow: 0 0 10px rgba(0,0,0,.2);
     }
-	.paging-btn{
-		font-size: 30px;
-	}
-	.paging-btn > button{
-		width: 60px;
-		height: 30px;
-	}
+
+    thead {
+        float: left;
+        white-space: nowrap;
+    }
+
+    tbody {
+        overflow-x: auto;
+        overflow-y: hidden;
+        position: relative;
+        white-space: nowrap;
+    }
+
+    tr {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    th {
+        border-bottom: 1px solid #a39485;
+    }
+
+    td {
+        border-bottom: 1px solid #e5e5e5;
+    }
+}
+.btn-paging {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ben-btn {
+    width: 90px;
+}
+
+.paging-btn-area {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.paging-btn {
+    display: flex;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 30px;
+}
+
+.paging-btn > button {
+    width: 60px;
+    height: 30px;
+}
+
+.ben-btn {
+    width: 90px;
+}
+
+.paging-btn-area {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.paging-btn {
+    display: flex;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 17px;
+}
+
+.paging-btn > button {
+    width: 60px;
+    height: 30px;
+}
 	
 	
 	/* 모달창 */
@@ -183,9 +246,8 @@
 			<div class="main">
 				<div class="form_above">
 					<div class="select_search_area">
-						<h2>요청허가/조회</h2>
+						<h2>탈퇴요청 허가/조회</h2>
 						<div class="search_div">
-							<span>• 회원검색</span>
 							<form action="/nongra/admin/search">
 								<select name="option">
 									<option name="option" value="nick">닉네임</option>
@@ -262,6 +324,7 @@
 			const menu1 = document.querySelector(" aside > :nth-child(2) > a ");
 			const menu2 = document.querySelector(" aside > :nth-child(3) > a ");
 			const menu3 = document.querySelector(" aside > :nth-child(4) > a ");
+			const menu4 = document.querySelector(" aside > :nth-child(5) > a ");
 			x.innerHTML = "회원관리";
 			menu1.innerHTML = "회원 조회/수정";
 			menu1.href = "/nongra/admin/select";
@@ -269,6 +332,8 @@
 	        menu2.href = "/nongra/admin/memberBen";
 			menu3.innerHTML = "사업자 허가 여부";
 			menu3.href = "/nongra/admin/request";
+			menu4.innerHTML = "탈퇴 요청 허가 여부";
+			menu4.href = "/nongra/admin/acceptQuit";
 		}
 		createAsideLetter()
 
@@ -283,13 +348,10 @@
 				}).then((data)=>{
 					console.log(data.result);
 					alert(data.result);
-
+					window.location.reload() 
 				}).catch(()=>{
 					alert("권한요청 수락 실패..");
 				});
-				const modal = document.querySelector(".modal");
-				modal.classList.toggle("modal_up");
-				window.location.reload() 
 			}
 	</script>
 </body>

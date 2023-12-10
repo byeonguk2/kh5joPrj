@@ -52,7 +52,8 @@
                             <span class="css-1o72o4s">*</span>
                         </p>
                         <div class="css-gjavw0">
-                            <input name="nick"placeholder="닉네임을 입력해주세요" class="css-gaqliy">
+                            <input name="nick" onkeyup="checkNickBtn()" placeholder="닉네임을 입력해주세요" class="css-gaqliy">
+                            <button type="button" id="checkbtn" onclick="checkId()" class="css-16yppgg" disabled="">중복확인</button>
                         </div>
                     </div>
                     <div id="nick" class="css-1og0zk92">

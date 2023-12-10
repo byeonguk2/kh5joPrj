@@ -148,7 +148,7 @@
                     <div>
                         <select name="bank">
                         <option name="bank" value="none">=== 선택 ===</option>
-						<option name="bank" value="1">카카오뱅크</option>
+						<option name="bank" value="카카오뱅크">카카오뱅크</option>
                         </select>
                         <input type="text" name="depositor" class="recipient account-name" placeholder="=== 입금자명 ===">
                     </div>

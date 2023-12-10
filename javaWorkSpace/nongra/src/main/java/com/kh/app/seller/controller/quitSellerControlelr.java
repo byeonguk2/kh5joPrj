@@ -51,9 +51,10 @@ public class quitSellerControlelr extends HttpServlet{
 			
 			String completedOrderCnt = req.getParameter("completedOrderCnt");
 			String allRefundCnt = req.getParameter("allRefundCnt");
-			String quitallProductCnt = req.getParameter("quitallProductCnt");
+			String allProductCnt = req.getParameter("allProductCnt");
 			SellerVo loginSeller = (SellerVo)session.getAttribute("loginSeller");
 			
+			System.err.println(loginSeller.getRequestQuitYn());
 			if(loginSeller.getRequestQuitYn().equals("Y")) {
 				alertMsg = "이미 탈퇴요청을 보낸 상태 입니다.";
 				throw new Exception(alertMsg);
@@ -67,7 +68,7 @@ public class quitSellerControlelr extends HttpServlet{
 				alertMsg = "탈퇴조건이 알맞지 않습니다";
 				throw new Exception(alertMsg);
 			}
-			if(!quitallProductCnt.equals("0")) {
+			if(!allProductCnt.equals("0")) {
 				alertMsg = "탈퇴조건이 알맞지 않습니다";
 				throw new Exception(alertMsg);
 			}
@@ -81,6 +82,7 @@ public class quitSellerControlelr extends HttpServlet{
 			}
 			
 			alertMsg = "회원탈퇴 요청이 완료되었습니다.";
+			loginSeller.setRequestQuitYn("Y");
 			session.setAttribute("alertMsg", alertMsg);
 			resp.sendRedirect("/nongra/seller/quit");
 			

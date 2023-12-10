@@ -65,7 +65,7 @@ public class ModifyMemberByAdmin extends HttpServlet {
 				String depositor = req.getParameter("depositor");
 				String account = req.getParameter("account");
 				
-				SellerVo  vo = new SellerVo(memberNo, sellerYn, nick, id, password, password, email, nick, email, memberNo, memberNo, name, phone, businessNo, businessForm, busineesName, phone, corporationName, uptae, upjong, busineesZipCode, address, detailAddress, reportNumber, bank, depositor, account, uptae, upjong, reportNumber, bank, depositor, account, sellerYn,account);
+				SellerVo  vo = new SellerVo(memberNo, sellerYn, nick, id, password, password, email, nick, email, memberNo, memberNo, name, phone, businessNo, businessForm, busineesName, phone, corporationName, uptae, upjong, busineesZipCode, address, detailAddress, reportNumber, bank, depositor, account, uptae, upjong, reportNumber, bank, depositor, account, sellerYn,account,"d");
 				
 				System.out.println("사업자번호 길이"+businessNo.length());
 				

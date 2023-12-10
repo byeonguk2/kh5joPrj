@@ -735,7 +735,7 @@ public class AdminDao {
 	public List<SellerVo> acceptQuitRequest(Connection conn, PageVo pvo) throws Exception {
 		
 		// 쿼리문 
-				String sql = "SELECT * FROM ( SELECT ROWNUM RNUM , A.* FROM ( SELECT * FROM SELLER S JOIN MEMBER M ON (S.MEMBER_NO = M.MEMBER_NO) WHERE REQUEST_QUIT_YN = 'Y' AND PERMIT_YN = 'Y' ORDER BY S.SELLER_NO ) A ) WHERE RNUM BETWEEN ? AND ?";
+				String sql = "SELECT * FROM ( SELECT ROWNUM RNUM , A.* FROM ( SELECT * FROM SELLER S JOIN MEMBER M ON (S.MEMBER_NO = M.MEMBER_NO) WHERE REQUEST_QUIT_YN = 'Y' AND QUIT_YN = 'N' AND PERMIT_YN = 'Y' ORDER BY S.SELLER_NO ) A ) WHERE RNUM BETWEEN ? AND ?";
 				
 				// pstmt 
 				PreparedStatement pstmt = conn.prepareStatement(sql);

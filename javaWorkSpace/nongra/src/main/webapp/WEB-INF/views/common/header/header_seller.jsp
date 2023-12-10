@@ -33,13 +33,12 @@
             <i class="fa fa-bell" style="font-size:24px; color:rgb(52, 65, 252)"></i>
             <label>판매자 님</label>
             <div class="filebox">
-				<a href="">
-					<img class="profile" alt="프로필" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAlKnRIw235I54BxEXhsHilefGS37qaSgl_dnUlU8-1A&s">
-				</a>
+					<img onclick="windowOfChoiceAppears()" class="profile" alt="프로필" src="<%= loginSeller.getProfile() %>">
 			</div>
         </div>
     </header>
     <script type="text/javascript">
+
 		<%if(alertMsg != null) {%>
 			alert("<%= alertMsg %>");
 		<% } %>
