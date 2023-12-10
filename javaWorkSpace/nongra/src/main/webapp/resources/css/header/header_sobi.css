@@ -92,6 +92,8 @@ header{
 
 /* 네비게이션바 css */
 
+
+
 nav {
 	grid-column: span 6;
 	background-color: white;
@@ -151,3 +153,5 @@ nav > a:nth-child(1) {
 		transform: translateY(0px);
 	}
 } */
+
+
