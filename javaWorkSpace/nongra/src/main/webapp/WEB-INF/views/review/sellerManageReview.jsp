@@ -132,26 +132,26 @@
 					        	<p class="review-content" >
                      	 		답변 대기 중
                     		 	</p>
-                    <div class="owner-reply-box2-date-btn">
+                    	<div class="owner-reply-box2-date-btn">
                          <span>${vo.replyDate}</span>
                          
                           <div>
                           <button class="register-btn">답변 등록</button>
                           </div>
-                     </div> 		 	
+                     	</div> 		 	
                     		 	
 					    </c:when>
 					    <c:otherwise>
 					        	<p class="review-content">
                      	 		${vo.replyContent} 
                     		 	</p>
-                    		 	
+                    		 <div class="owner-reply-box2-date-btn">
                     		 	<span>${vo.replyDate}</span>
                          
                          		<div>
                          		 <button class="change-btn" >수정</button><span>|</span><button class="delete-btn">삭제</button>
                           		</div>
-                    		 	
+                    		</div>
 					    </c:otherwise>
 					</c:choose>
                      
@@ -203,13 +203,13 @@
 <div class="review-answer-modal review-answer-modal-hidden">
     <div class="review-answer-dialog">
         <div class="review-answer-dialog-div1">
-            <h1>답변작성</h1> <label for="review-answer-modal-btn-cancel">X</label>
+            <h1>답변작성</h1> <label for="review-answer-modal-btn-cancel2">X</label>
         </div>
      <form class="review-answer-dialog-form" action="">
         <textarea placeholder=" 고객님께 답글을 남겨주세요" name="" id="" cols="30" rows="10"></textarea>
         <div>
-        <button id="review-answer-modal-btn-cancel">취소</button>
-        <button class="review-answer-modal-btn-register" type="button">등록</button>
+        <button id="review-answer-modal-btn-cancel2" type="button">취소</button>
+        <button class="review-answer-modal-btn-register" >등록</button>
         </div>
     </form>
     </div>
@@ -270,14 +270,16 @@
         	}
     } )      
     }
+    
+   
 
 
      
     
     // 답변 등록 버튼 //
-
+	
     const modalReviewOpenButton  = document.querySelectorAll(".register-btn")
-    const modalReviewCloseButton = document.querySelector("#review-answer-modal-btn-cancel")
+    var modalReviewCloseButton = document.querySelector("#review-answer-modal-btn-cancel2")
     const modalReviewRegisterButton  = document.querySelector(".review-answer-modal-btn-register")
     const modalReview = document.querySelector(".review-answer-modal")
 
@@ -286,14 +288,15 @@
     for(let i=0; i<modalReviewOpenButton.length; i++){
         modalReviewOpenButton[i].addEventListener('click', () => {
             modalReview.classList.remove('review-answer-modal-hidden');
+           
     });
 
     }
 
-    //닫기
+     
     modalReviewCloseButton.addEventListener('click', () => {
         modalReview.classList.add('review-answer-modal-hidden');
-    });
+    }); 
 
     //등록
     modalReviewRegisterButton.addEventListener('click', () => {
@@ -306,6 +309,8 @@
      // 답변 수정 버튼 //
 
     const modalReviewChangeButton  = document.querySelectorAll(".change-btn")
+    console.log(modalReviewChangeButton)
+   
     const modalReviewChangeCloseButton = document.querySelector("#review-answer-modal-btn-cancel-1")
     const modalReviewChangeRegisterButton  = document.querySelector(".review-answer-modal-btn-register-1")
     const modalChangeReview = document.querySelector(".review-answer-modal-1")
@@ -314,6 +319,7 @@
     //쓰기
     for(let i=0; i<modalReviewChangeButton.length; i++){
         modalReviewChangeButton[i].addEventListener('click', () => {
+        	
             modalChangeReview.classList.remove('review-answer-modal-hidden-1');
     });
 

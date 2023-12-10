@@ -208,7 +208,7 @@ white-space: normal;
     text-align: center;
     line-height: 32px;
 }
-.reply-delete-btn , .change-btn{
+.reply-delete-btn , .change-btn, .delete-btn{
     border: 1px solid rgb(226, 226, 226);
     border-radius: 20px;
     padding: auto;
@@ -408,9 +408,10 @@ white-space: normal;
 }
 
 
-/* 모달창 답변작성 */
-.modal-review {
+/* 답변 등록 모달창 */
 
+
+.review-answer-modal {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -423,25 +424,24 @@ white-space: normal;
 
 }
 
-.dialog-review {
-  
-	width: 740px;
+.review-answer-dialog {
+	width: 650px;
 	padding: 2em;
 	border-radius: 1em;
 	background: white;
     display: flex;
     flex-direction: column;
-
-    
 }
-.dialog-review-header{
-    font-size: 14;
-    border-radius: 12px;
-    padding: 10px;
+.review-answer-dialog-div1{
     display: flex;
     justify-content: space-between;
+    font-size: 14;
+   
+    padding: 10px;
+    border-bottom: 1px solid black;
 }
-.dialog-review-header >h2{
+
+.review-answer-dialog-div1 > h1 {
     margin: 0px;
     font-family: Roboto, Helvetica, Arial, sans-serif;
     flex: 0 0 auto;
@@ -452,247 +452,45 @@ white-space: normal;
     letter-spacing: -0.5px;
     color: rgb(51, 51, 51);
 }
-.dialog-review-img-box{
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    border-top: 1px solid rgba(97, 92, 92, 0.614);
-    padding: 16px;
-    
-}
-.dialog-review-img-box img{
-   
-    border: 1px solid black;
-    width: 72px;
-    height: 72px;
 
-}
-
-.dialog-review-img-exemple{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px;
-    border-top: 1px solid rgba(97, 92, 92, 0.614);
-}
-
-.dialog-review-img-exemple >h2{
-    font-weight: 600;
-    font-size: 20px;
+.review-answer-dialog-div1 > label{
+    font-weight: 400;
+    font-size: 24px;
     line-height: 30px;
-    text-align: center;
-    color: rgb(51, 51, 51);
 }
 
-.dialog-review-img-exemple > p{
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    text-align: center;
-    color: rgb(128, 128, 128);
-    white-space: pre-line;
-    margin-top: 6px;
-}
-
-.dialog-review-img-exemple-span{
-    color: rgb(216, 183, 100);
-    font-weight: 500;
-}
-
-.dialog-review-img-exemple-picture{
-    display: flex;
-    gap: 30px;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    margin-top: 17px;}
-
-
- .dialog-review-img-exemple-picture-box{
+.review-answer-dialog-form{
     display: flex;
     flex-direction: column;
-
- }   
-
-.dialog-review-img-exemple-img {
     
-    width: 100px;
-    height: 100px;
+
 }
 
-.dialog-review-img-exemple-picture-box p {
-    text-align: center;
-    white-space: pre-line;
-    padding-top: 6px;
-    font-size: 12px;
-    line-height: 16px;
-    color: rgb(153, 153, 153);
-  
+.review-answer-dialog-form textarea{
+    width: 594px;
+    padding: 1rem
 }
-
-.dialog-review-content-box{
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 19px;
-    color: rgb(153, 153, 153);
+.review-answer-dialog-form div {
     display: flex;
-    padding: 16px;
-
-    width: 637px;
-    height: 221px;
-}
-.dialog-review-content-box >div{
-    padding: 14px;
-    width: 70px;
-}
-
-.dialog-review-content-box textarea{
-    width: 640px;
-    height: 170px;
-    padding: 15px 16px;
-    font-size: 16px;
-    line-height: 21px;
-    word-break: break-all;
-    z-index: 1;
-    background: none;
-    border-radius: 4px;
-    color: rgb(51, 51, 51);
-    resize: none;
-    border: 0.5px solid rgb(51, 51, 51);
-    
-}
-.text-area-box span{
-    text-align: center;
-
-}
-
-.dialog-review-content-picture-input-box{
-    display: flex;
-    gap :20px
-}
-
-.dialog-review-content-picture-input-btn{
-    width: 72px;
-    height: 72px; 
-    background-color: white;
-    display: flex;
-    align-items: center;
     justify-content: center;
+    padding: 20px;
+    gap :10px
     
 }
 
-#my-input{
+.review-answer-dialog-form >div button{
+    width: 150px;
+}
+
+.review-answer-modal-hidden{
     display: none;
 }
 
-.dialog-review-caution{
-    display: flex;
-    gap: 20px;
-    padding-top: 16px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 19px;
-    color: rgb(153, 153, 153);
-}
-.dialog-review-caution-label{
-    position: relative;
-    flex-shrink: 0;
-    width: 70px;
-    padding-top: 12px;
-    line-height: 19px;
-    color: rgb(51, 51, 51);
-}
 
-.dialog-review-caution-ul{
-    padding-left: 6px;
-    font-weight: 400;
-    font-size: 14px;
-    color: rgb(153, 153, 153);
-    line-height: 21px;
-    list-style-type: none;
-    display: block;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
-}
+/* 답변수정 모달창 */
 
-.dialog-review-caution-li{
-    font-weight: 400;
-    font-size: 14px;
-    color: rgb(153, 153, 153);
-    line-height: 21px;
-}
-
-.dialog-review-caution-secret{
-    display: flex;
-    gap: 20px;
-    padding-top: 16px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 19px;
-    color: rgb(153, 153, 153);
-    border-bottom: 1px solid  rgb(153, 153, 153);;
-    padding: 1rem;
-}
-
-.dialog-review-button-end-box{
- 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 80px;
-    gap: 10px;
-  
-}
-
-.dialog-review-button-end-box button:nth-child(1){
-    -webkit-appearance: button;
-    cursor: pointer;
-    width: 160px;
-    height: 56px;
-    padding: 0px 10px;
-    text-align: center;
-    letter-spacing: 0px;
-    border-radius: 3px;
-    font-size: 16px;
-    line-height: 20px;
-    font-weight: 500;
-    margin-top: 14px;
-    border: 1px solid rgb(221, 221, 221);
-    background-color: white;
-    color: rgb(0, 0, 0);
-}
-
-
-.dialog-review-button-end-box button:nth-child(2){
-    -webkit-appearance: button;
-    cursor: pointer;
-    width: 160px;
-    height: 56px;
-    padding: 0px 10px;
-    text-align: center;
-    letter-spacing: 0px;
-    border-radius: 3px;
-    font-size: 16px;
-    line-height: 20px;
-    font-weight: 500;
-    margin-top: 14px;
-    color: rgb(255, 255, 255);
-    background-color: rgb(221, 221, 221);
-    border: none;
-}
-
-.modal-review-hidden{
-    display: none;
-}
-
-/* 수정창 */
-.modal-review {
-
+/* 여기다가 display none 주시면 됩니다 */
+.review-answer-modal-1 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -704,26 +502,25 @@ white-space: normal;
 	background: rgba(0,0,0,0.3);
 
 }
-
-.dialog-review {
-  
-	width: 740px;
+/* 여기안에서 작업하면되고 */
+.review-answer-dialog-1 {
+	width: 650px;
 	padding: 2em;
 	border-radius: 1em;
 	background: white;
     display: flex;
     flex-direction: column;
-
-    
 }
-.dialog-review-header{
-    font-size: 14;
-    border-radius: 12px;
-    padding: 10px;
+.review-answer-dialog-div1-1{
     display: flex;
     justify-content: space-between;
+    font-size: 14;
+   
+    padding: 10px;
+    border-bottom: 1px solid black;
 }
-.dialog-review-header >h2{
+
+.review-answer-dialog-div1-1 > h1 {
     margin: 0px;
     font-family: Roboto, Helvetica, Arial, sans-serif;
     flex: 0 0 auto;
@@ -734,242 +531,116 @@ white-space: normal;
     letter-spacing: -0.5px;
     color: rgb(51, 51, 51);
 }
-.dialog-review-img-box{
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    border-top: 1px solid rgba(97, 92, 92, 0.614);
-    padding: 16px;
-    
-}
-.dialog-review-img-box img{
-   
-    border: 1px solid black;
-    width: 72px;
-    height: 72px;
 
-}
-
-.dialog-review-img-exemple{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px;
-    border-top: 1px solid rgba(97, 92, 92, 0.614);
-}
-
-.dialog-review-img-exemple >h2{
-    font-weight: 600;
-    font-size: 20px;
+.review-answer-dialog-div1-1 > label{
+    font-weight: 400;
+    font-size: 24px;
     line-height: 30px;
-    text-align: center;
-    color: rgb(51, 51, 51);
 }
 
-.dialog-review-img-exemple > p{
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    text-align: center;
-    color: rgb(128, 128, 128);
-    white-space: pre-line;
-    margin-top: 6px;
-}
-
-.dialog-review-img-exemple-span{
-    color: rgb(216, 183, 100);
-    font-weight: 500;
-}
-
-.dialog-review-img-exemple-picture{
-    display: flex;
-    gap: 30px;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    margin-top: 17px;}
-
-
- .dialog-review-img-exemple-picture-box{
+.review-answer-dialog-form-1{
     display: flex;
     flex-direction: column;
-
- }   
-
-.dialog-review-img-exemple-img {
     
-    width: 100px;
-    height: 100px;
+
 }
 
-.dialog-review-img-exemple-picture-box p {
-    text-align: center;
-    white-space: pre-line;
-    padding-top: 6px;
-    font-size: 12px;
-    line-height: 16px;
-    color: rgb(153, 153, 153);
-  
+.review-answer-dialog-form-1 textarea{
+    width: 594px;
+    padding: 1rem
 }
-
-.dialog-review-content-box{
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 19px;
-    color: rgb(153, 153, 153);
+.review-answer-dialog-form-1 div {
     display: flex;
-    padding: 16px;
-
-    width: 637px;
-    height: 221px;
-}
-.dialog-review-content-box >div{
-    padding: 14px;
-    width: 70px;
-}
-
-.dialog-review-content-box textarea{
-    width: 640px;
-    height: 170px;
-    padding: 15px 16px;
-    font-size: 16px;
-    line-height: 21px;
-    word-break: break-all;
-    z-index: 1;
-    background: none;
-    border-radius: 4px;
-    color: rgb(51, 51, 51);
-    resize: none;
-    border: 0.5px solid rgb(51, 51, 51);
-    
-}
-.text-area-box span{
-    text-align: center;
-
-}
-
-.dialog-review-content-picture-input-box{
-    display: flex;
-    gap :20px
-}
-
-.dialog-review-content-picture-input-btn{
-    width: 72px;
-    height: 72px; 
-    background-color: white;
-    display: flex;
-    align-items: center;
     justify-content: center;
+    padding: 20px;
+    gap :10px
     
 }
 
-#my-input{
+.review-answer-dialog-form-1 >div button{
+    
+    width: 150px;
+}
+
+.review-answer-modal-hidden-1{
     display: none;
 }
 
-.dialog-review-caution{
+
+/* 모달 삭제창 */
+
+/* 모달창 구매확정 */
+.modal-sure {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position:fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.3);
+}
+
+.modal-sure-hiddnen {
+    display: none;
+}
+
+
+.dialog-sure {
+    min-height: 200px;
+	width: 400px;
+	padding: 2em;
+	border-radius: 1em;
+	background: white;
     display: flex;
-    gap: 20px;
-    padding-top: 16px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 19px;
-    color: rgb(153, 153, 153);
-}
-.dialog-review-caution-label{
-    position: relative;
-    flex-shrink: 0;
-    width: 70px;
-    padding-top: 12px;
-    line-height: 19px;
-    color: rgb(51, 51, 51);
+    flex-direction: column;
+
+    
 }
 
-.dialog-review-caution-ul{
-    padding-left: 6px;
-    font-weight: 400;
-    font-size: 14px;
-    color: rgb(153, 153, 153);
-    line-height: 21px;
-    list-style-type: none;
-    display: block;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
-}
-
-.dialog-review-caution-li{
-    font-weight: 400;
-    font-size: 14px;
-    color: rgb(153, 153, 153);
-    line-height: 21px;
-}
-
-.dialog-review-caution-secret{
+.dialog-sure-btn{
     display: flex;
-    gap: 20px;
-    padding-top: 16px;
-    font-weight: 400;
+    justify-content: flex-end;
+} 
+
+.dialog-sure span:nth-child(2){
     font-size: 14px;
-    line-height: 19px;
-    color: rgb(153, 153, 153);
-    border-bottom: 1px solid  rgb(153, 153, 153);;
+    color : rgb(153, 153, 153)
+}
+
+
+.dialog-sure span:nth-child(3){
+    text-align: center;
+    font-size: 20px;
+    color : black;
     padding: 1rem;
 }
-
-.dialog-review-button-end-box{
- 
+.modal-sure-btn-box{
     display: flex;
-    align-items: center;
     justify-content: center;
-    height: 80px;
-    gap: 10px;
-  
+    height: 50px;
+    align-items: center;
+    gap: 10x
+    
 }
 
-.dialog-review-button-end-box button:nth-child(1){
-    -webkit-appearance: button;
+.btn-sure{
     cursor: pointer;
-    width: 160px;
-    height: 56px;
-    padding: 0px 10px;
-    text-align: center;
-    letter-spacing: 0px;
-    border-radius: 3px;
-    font-size: 16px;
-    line-height: 20px;
-    font-weight: 500;
-    margin-top: 14px;
-    border: 1px solid rgb(221, 221, 221);
-    background-color: white;
-    color: rgb(0, 0, 0);
+    width: 100px;
+    height: 30px;
+    background-color: gray;
+    color: white;
 }
-
-
-.dialog-review-button-end-box button:nth-child(2){
-    -webkit-appearance: button;
+.btn-quit{
     cursor: pointer;
-    width: 160px;
-    height: 56px;
-    padding: 0px 10px;
+    width: 100px;
+    height: 30px;
+    border: 1px solid black;
     text-align: center;
-    letter-spacing: 0px;
-    border-radius: 3px;
-    font-size: 16px;
-    line-height: 20px;
-    font-weight: 500;
-    margin-top: 14px;
-    color: rgb(255, 255, 255);
-    background-color: rgb(221, 221, 221);
-    border: none;
-}
-
-.modal-review-hidden{
-    display: none;
+    line-height: 30px;
+    background-color: gray;
+    color:white;
 }
 
 
