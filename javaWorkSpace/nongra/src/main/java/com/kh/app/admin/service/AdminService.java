@@ -212,15 +212,18 @@ public class AdminService {
 			
 			// dao 호출 
 			AdminDao dao = new AdminDao();
-			int result = dao.ModifySellerByAdmin(vo,conn);
 			
-			// result가 1이면 커밋 아니면 롤백 
-			if(result == 1) {
+			// 오라클은 다중 업데이트 불가능...
+			int result = dao.ModifySeller_businessInfoByAdmin(vo,conn);
+			result += dao.ModifySeller_InfoByAdmin(vo,conn);
+			
+			// result가 2이면 커밋 아니면 롤백 
+			if(result == 2) {
 				JDBCTemplate.commit(conn);
 			}else {
 				JDBCTemplate.rollback(conn);
 			}
-				
+			
 			// connection close 
 			JDBCTemplate.close(conn);
 			
@@ -250,5 +253,55 @@ public class AdminService {
 			return result;
 			
 		}
+		
+		public int acceptQuitRequestCount() throws Exception {
+			
+			Connection conn = JDBCTemplate.getConnection();
+			
+			AdminDao dao = new AdminDao();
+			int listCount = dao.acceptQuitRequestCount(conn);
+			
+			JDBCTemplate.close(conn);
+			
+			return listCount;
+			
+		}
+
+		public List<SellerVo> acceptQuitRequest(PageVo pvo) throws Exception {
+			
+			Connection conn = JDBCTemplate.getConnection();
+			
+			AdminDao as = new AdminDao();
+			List<SellerVo> voList = as.acceptQuitRequest(conn,pvo);
+			
+			JDBCTemplate.close(conn);
+			
+			
+			return voList;
+			
+		}
 	
+		public int QuitRequestOk(String no) throws Exception {
+			
+			// connection
+			Connection conn = JDBCTemplate.getConnection();
+			
+			// dao 호출 
+			AdminDao dao = new AdminDao();
+			int result = dao.QuitRequestOk(no,conn);
+			
+			// result가 1이면 커밋 아니면 롤백 
+			if(result == 1) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+				
+			// connection close 
+			JDBCTemplate.close(conn);
+			
+			return result;
+			
+		}
+		
 }
