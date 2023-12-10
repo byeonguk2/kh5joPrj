@@ -41,6 +41,9 @@ function loadAdditionalData(nextPageNumber) {
     });
 }
 
+
+
+
 // 현재 목록에 데이터를 추가하는 함수
 function appendDataToCurrentList(data) {
     // data를 현재 목록에 추가하는 로직 작성

@@ -10,6 +10,7 @@ import java.util.List;
 import com.kh.app.board.contact.vo.QnaMemberCateVo;
 import com.kh.app.board.contact.vo.QnaMemberVo;
 import com.kh.app.board.contact.vo.QnaSellerVo;
+import com.kh.app.util.db.DateFormat;
 import com.kh.app.util.db.JDBCTemplate;
 
 public class QnaDao {
@@ -42,24 +43,24 @@ public class QnaDao {
 			String categoryParentId = rs.getString("CATEGORY_PARENT_ID");
 			String categoryName = rs.getString("CATEGORY_NAME");
 		    
-			QnaSellerVo qvo = new QnaSellerVo();
-			qvo.setSellerQnaNo(sellerQnaNo);
-			qvo.setCategoryId(categoryId);
-			qvo.setSalesNo(salesNo);
-			qvo.setSellerNo(sellerNo);
-			qvo.setTitle(title);
-			qvo.setContent(replyContent);
-			qvo.setEnrollDate(enrollDate);
-			qvo.setModifyDate(modifyDate);
-			qvo.setModifyYn(modifyYn);
-			qvo.setReplyWriterNo(replyWriterNo);
-			qvo.setReplyContent(replyContent);
-			qvo.setReplyEnrollDate(replyEnrollDate);
-			qvo.setReplyModifyDate(replyModifyDate);
-			qvo.setCategoryParentId(categoryParentId);
-			qvo.setCategoryName(categoryName);
+			QnaSellerVo vo = new QnaSellerVo();
+			vo.setSellerQnaNo(sellerQnaNo);
+			vo.setCategoryId(categoryId);
+			vo.setSalesNo(salesNo);
+			vo.setSellerNo(sellerNo);
+			vo.setTitle(title);
+			vo.setContent(replyContent);
+			vo.setEnrollDate(DateFormat.formattedDate(enrollDate));
+			vo.setModifyDate(DateFormat.formattedDate(modifyDate));
+			vo.setModifyYn(modifyYn);
+			vo.setReplyWriterNo(replyWriterNo);
+			vo.setReplyContent(replyContent);
+			vo.setReplyEnrollDate(DateFormat.formattedDate(replyEnrollDate));
+			vo.setReplyModifyDate(DateFormat.formattedDate(replyModifyDate));
+			vo.setCategoryParentId(categoryParentId);
+			vo.setCategoryName(categoryName);
 			
-			qnaVoList.add(qvo);
+			qnaVoList.add(vo);
 		}
 		JDBCTemplate.close(rs);
 		JDBCTemplate.close(pstmt);
@@ -89,24 +90,24 @@ public class QnaDao {
 			String categoryParentId = rs.getString("CATEGORY_PARENT_ID");
 			String categoryName = rs.getString("CATEGORY_NAME");
 		    
-			QnaMemberVo mvo = new QnaMemberVo();
-			mvo.setMemberQnaNo(memberQnaNo);
-			mvo.setCategoryId(categoryId);
-			mvo.setPayNo(payNo);
-			mvo.setMemberNo(memberNo);
-			mvo.setTitle(title);
-			mvo.setContent(replyContent);
-			mvo.setEnrollDate(enrollDate);
-			mvo.setModifyDate(modifyDate);
-			mvo.setModifyYn(modifyYn);
-			mvo.setReplyWriterNo(replyWriterNo);
-			mvo.setReplyContent(replyContent);
-			mvo.setReplyEnrollDate(replyEnrollDate);
-			mvo.setReplyModifyDate(replyModifyDate);
-			mvo.setCategoryParentId(categoryParentId);
-			mvo.setCategoryName(categoryName);
+			QnaMemberVo vo = new QnaMemberVo();
+			vo.setMemberQnaNo(memberQnaNo);
+			vo.setCategoryId(categoryId);
+			vo.setPayNo(payNo);
+			vo.setMemberNo(memberNo);
+			vo.setTitle(title);
+			vo.setContent(replyContent);
+			vo.setEnrollDate(DateFormat.formattedDate(enrollDate));
+			vo.setModifyDate(DateFormat.formattedDate(modifyDate));
+			vo.setModifyYn(modifyYn);
+			vo.setReplyWriterNo(replyWriterNo);
+			vo.setReplyContent(replyContent);
+			vo.setReplyEnrollDate(DateFormat.formattedDate(replyEnrollDate));
+			vo.setReplyModifyDate(DateFormat.formattedDate(replyModifyDate));
+			vo.setCategoryParentId(categoryParentId);
+			vo.setCategoryName(categoryName);
 			
-			qnaVoList.add(mvo);
+			qnaVoList.add(vo);
 		}
 		JDBCTemplate.close(rs);
 		JDBCTemplate.close(pstmt);

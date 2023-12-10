@@ -38,8 +38,8 @@
             <div class="board_name">1:1문의</div>
                 
             <div class="tab_area">
-                <button type="button" class="on btn_faq_tab" onclick="location.href='/nongra/contact/inquiry'">문의내역확인</button>
-                <button type="button" class="btn_faq_tab" onclick="location.href='/nongra/contact/inquiry/write'">문의하기</button>
+                <button type="button" class="btn_faq_tab" onclick="location.href='/nongra/contact/inquiry'">문의내역확인</button>
+                <button type="button" class="on btn_faq_tab" onclick="location.href='/nongra/contact/inquiry/write'">문의하기</button>
             </div>
             <div class="notification_qna">
                 <div>

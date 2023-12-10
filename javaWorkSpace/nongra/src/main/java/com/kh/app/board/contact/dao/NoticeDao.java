@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.kh.app.board.contact.vo.NoticeVo;
 import com.kh.app.page.vo.PageVoTest;
+import com.kh.app.util.db.DateFormat;
 import com.kh.app.util.db.JDBCTemplate;
 
 public class NoticeDao {
@@ -51,8 +52,8 @@ public class NoticeDao {
 			nvo.setWriterNo(writerNo);
 			nvo.setTitle(title);
 			nvo.setContent(content);
-			nvo.setEnrollDate(enrollDate);
-			nvo.setModifyDate(modifyDate);
+			nvo.setEnrollDate(DateFormat.formattedDate(enrollDate));
+			nvo.setModifyDate(DateFormat.formattedDate(modifyDate));
 			nvo.setOpenYn(openYn);
 			nvo.setReadPermission(readPermission);
 			nvo.setTopDisplay(topDisplay);
