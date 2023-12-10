@@ -15,7 +15,7 @@ import com.kh.app.page.vo.PageVo;
 import com.kh.app.review.service.ReviewService;
 import com.kh.app.review.vo.ReviewVo;
 
-@WebServlet("/admin/reviewmanage/search")
+@WebServlet("/admin/manageReview/search")
 public class AdminMangeReviewSearchController extends HttpServlet {
 
 	
@@ -53,12 +53,13 @@ public class AdminMangeReviewSearchController extends HttpServlet {
 			
 			// service
 			List<ReviewVo> reviewVoList = rs.adminsearch(m , pvo);
+			System.out.println(reviewVoList);
 			
 			// result
 			req.setAttribute("searchMap", m);
-			req.setAttribute("boardVoList", reviewVoList);
+			req.setAttribute("ReviewVoList", reviewVoList);
 			req.setAttribute("pvo", pvo);
-			req.getRequestDispatcher("/WEB-INF/views/board/list.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/review/adminManageReview.jsp").forward(req, resp);
 			
 		}catch(Exception e) {
 			System.out.println("[ERROR-B123] 게시글 검색 중 에러 발생 ...");
