@@ -133,7 +133,7 @@
 							<button type="button" name="category2" onclick="openPopUp2();">카테고리2</button>
 						</div>
 						<button type="button" name="option" onclick="openPopUp3();">상품옵션</button>
-						<input type="file">
+						<input type="file" accept="image/*">
 					
 					</div>
 					<div></div>

@@ -14,7 +14,7 @@ public class salesOptionListController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		req.getRequestDispatcher("/").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/sales/salesOptionList.jsp").forward(req, resp);
 	}
 	
 }
