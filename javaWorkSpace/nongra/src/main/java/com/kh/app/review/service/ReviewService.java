@@ -101,6 +101,42 @@ public class ReviewService {
 		return list; 
 }
 	
+	//리뷰관리 갯수 회원번호 기준 [유저]
+	public int selectReviewCountByMemberNo(String memberNo) throws Exception {
+			
+		
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+				
+		// dao
+		ReviewDao dao = new ReviewDao();
+		int cnt = dao.selectReviewCountByMemberNo(conn,memberNo);
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return cnt;
+	
+	
+	}
+	
+	//리뷰 관리 회원번호로 가져오기 [유저]
+	public List<ReviewVo> memberReviewLookUp(PageVo pvo, String memberNo) throws Exception {
+		
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+				
+		// dao
+		ReviewDao dao = new ReviewDao();
+		List<ReviewVo> list = dao.memberReviewLookUp(conn,pvo,memberNo);
+		// close 
+				
+		JDBCTemplate.close(conn);
+		
+		return list; 
+	
+	}
+	
 
 	
 
