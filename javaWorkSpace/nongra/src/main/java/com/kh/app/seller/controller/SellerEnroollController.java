@@ -168,7 +168,7 @@ public class SellerEnroollController extends HttpServlet {
 			// 경로 설정
 			String path = req.getServletContext().getRealPath(sep+"resources"+sep+"upload"+sep+"img");
 			
-			System.out.println("경로"+path+sep+fileName+"/"+"경로2"+path+sep+fileName2);
+			System.out.println("경로"+path+fileName+"/"+"경로2"+path+sep+fileName2);
 			
 			File target = new File (path+sep+fileName);
 			File target2 = new File (path+sep+fileName2);
