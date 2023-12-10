@@ -1,3 +1,6 @@
+<%@page import="com.kh.app.page.vo.PageVo"%>
+<%@page import="com.kh.app.board.event.vo.EventVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,7 +11,10 @@
 <link rel="stylesheet" href="/nongra/resources/css/board/event/event_list.css">
 <link rel="stylesheet" href="/nongra/resources/css/board/contact/notice/notice_list.css">
 <link rel="stylesheet" href="/nongra/resources/css/board/event/event_scheduled_list.css">
-
+	<% 
+		List<EventVo> eventVoList = (List<EventVo>) request.getAttribute("eventVoList");
+		PageVo pvo = (PageVo) request.getAttribute("pvo");
+	%>
 </head>
 <body>
 	<div class="wrap_event">
@@ -38,92 +44,33 @@
 			<div class="content_area">
 				<div class="board_name">종료된 이벤트</div>
 				<ul class="event_ul">
+				<% for(EventVo vo : eventVoList){ %>
 					<li class="event_li">
 						<a class="card_event">
 							<div class="img_event_box">
-								<img class="img_event" src="/nongra/resources/img/board/event01.png" alt="이벤트01">
+								<img class="img_event" src="/nongra/resources/img/board/event/<%=vo.getFileName() %>.png" alt="<%=vo.getFileName() %>">
 							</div>
-							<p class="p_event">김장하는날</p>
+							<p class="p_event"><%=vo.getTitle() %></p>
 							<span class="date_event">
-								2023.11.01 ~ 2023.11.30
+								<%=vo.getStartDate() %> ~ <%=vo.getEndDate() %>
 							</span>
-							<!-- 디비에서 날짜 나눠서 가져오게 설정? -->
 						</a>
 					</li>
-
-					<li class="event_li">
-						<a class="card_event">
-							<div class="img_event_box">
-								<img class="img_event" src="/nongra/resources/img/board/event01.png" alt="이벤트01">
-							</div>
-							<p class="p_event">김장하는날</p>
-							<span class="date_event">
-								2023.11.01 ~ 2023.11.30
-							</span>
-							<!-- 디비에서 날짜 나눠서 가져오게 설정? -->
-						</a>
-					</li>
-
-					<li class="event_li">
-						<a class="card_event">
-							<div class="img_event_box">
-								<img class="img_event" src="/nongra/resources/img/board/event01.png" alt="이벤트01">
-							</div>
-							<p class="p_event">김장하는날</p>
-							<span class="date_event">
-								2023.11.01 ~ 2023.11.30
-							</span>
-							<!-- 디비에서 날짜 나눠서 가져오게 설정? -->
-						</a>
-					</li>
-
-					<li class="event_li">
-						<a class="card_event">
-							<div class="img_event_box">
-								<img class="img_event" src="/nongra/resources/img/board/event01.png" alt="이벤트01">
-							</div>
-							<p class="p_event">김장하는날</p>
-							<span class="date_event">
-								2023.11.01 ~ 2023.11.30
-							</span>
-							<!-- 디비에서 날짜 나눠서 가져오게 설정? -->
-						</a>
-					</li>
-
-					<li class="event_li">
-						<a class="card_event">
-							<div class="img_event_box">
-								<img class="img_event" src="/nongra/resources/img/board/event01.png" alt="이벤트01">
-							</div>
-							<p class="p_event">김장하는날</p>
-							<span class="date_event">
-								2023.11.01 ~ 2023.11.30
-							</span>
-							<!-- 디비에서 날짜 나눠서 가져오게 설정? -->
-						</a>
-					</li>
-
-					<li class="event_li">
-						<a class="card_event">
-							<div class="img_event_box">
-								<img class="img_event" src="/nongra/resources/img/board/event01.png" alt="이벤트01">
-							</div>
-							<p class="p_event">김장하는날</p>
-							<span class="date_event">
-								2023.11.01 ~ 2023.11.30
-							</span>
-							<!-- 디비에서 날짜 나눠서 가져오게 설정? -->
-						</a>
-					</li>
-					
+					<% } %>
 				</ul>
 
 				<div class="page_wrap_event">
 					<div class="page_list_event">
 						<div class="page_num_event">
-							<a href="" class="page_on">1</a>
-							<a href="">2</a>
-							<a href="">3</a>
+							<% if(pvo.getStartPage() != 1){ %>
+							<a href="/nongra/event/expired?pno=<%=pvo.getStartPage()-1 %>"> < </a>
+							<% } %>
+							<% for(int i = pvo.getStartPage(); i <= pvo.getEndPage(); i++){ %>
+									<a href="/nongra/event/expired?pno=<%=i %>" class="page_on"><%=i %></a>
+							<% } %>
+							<% if(pvo.getEndPage() != pvo.getMaxPage()){ %>
+								<a href="/nongra/event/expired?pno=<%=pvo.getEndPage()+1 %>"> > </a>
+							<% } %>
 						</div>
 					</div>
 				</div>
