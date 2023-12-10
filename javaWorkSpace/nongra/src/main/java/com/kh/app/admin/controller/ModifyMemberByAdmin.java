@@ -65,19 +65,36 @@ public class ModifyMemberByAdmin extends HttpServlet {
 				String depositor = req.getParameter("depositor");
 				String account = req.getParameter("account");
 				
-				SellerVo  vo = new SellerVo(memberNo, sellerYn, nick, id, password, password, email, nick, email, memberNo, memberNo, name, phone, businessNo, businessForm, busineesName, phone, corporationName, uptae, upjong, busineesZipCode, address, detailAddress, reportNumber, bank, depositor, account, uptae, upjong, reportNumber, bank, depositor, account, sellerYn);
+				SellerVo  vo = new SellerVo(memberNo, sellerYn, nick, id, password, password, email, nick, email, memberNo, memberNo, name, phone, businessNo, businessForm, busineesName, phone, corporationName, uptae, upjong, busineesZipCode, address, detailAddress, reportNumber, bank, depositor, account, uptae, upjong, reportNumber, bank, depositor, account, sellerYn,account);
 				
-				System.out.println(vo);
+				System.out.println("사업자번호 길이"+businessNo.length());
+				
+				if(businessNo.length() != 10) {
+					// 수정이 실패했다면 예외 발생
+					checkMemberTypeByMsg = "사업자 번호는 10자리로 입력하세요.";
+					throw new Exception(checkMemberTypeByMsg);
+				}
+				System.out.println(phone.length());
+				if(phone.length() >= 11) {
+					// 수정이 실패했다면 예외 발생
+					checkMemberTypeByMsg = "전화번호는 11자리 미만으로 입력하세요.";
+					throw new Exception(checkMemberTypeByMsg);
+				}
 				
 				// 판매자 정보 수정.
 				int result = adminService.ModifySellerByAdmin(vo);
 				
 				// 수정이 잘 됬는지 체크
-				if(result != 1) {
+				if(result != 2) {
 					// 수정이 실패했다면 예외 발생
 					checkMemberTypeByMsg = "판매자 정보 수정이 실패했습니다.";
 					throw new Exception(checkMemberTypeByMsg);
 				}
+				
+				checkMemberTypeByMsg = "수정이 완료 되었습니다.";
+				
+				session.setAttribute("alert", checkMemberTypeByMsg);
+				resp.sendRedirect("/nongra/admin/select");
 				
 			}else {
 				
@@ -98,6 +115,11 @@ public class ModifyMemberByAdmin extends HttpServlet {
 					checkMemberTypeByMsg = "소비자 정보 수정이 실패했습니다.";
 					throw new Exception(checkMemberTypeByMsg);
 				}
+				
+				checkMemberTypeByMsg = "수정이 완료 되었습니다.";
+				
+				session.setAttribute("alert", checkMemberTypeByMsg);
+				resp.sendRedirect("/nongra/admin/select");
 				
 			}
 			

@@ -345,6 +345,7 @@
 						<div>
 							<div class="modal_table">
 								<div class="modal-table-area">
+									<input type="hidden" class="memberNo" name="memberNo" value="">
 									<input type="hidden" name="sellerYn" class="sellerYn1" value="">
 									<div class="modal-table-title">사업자 번호</div>
 									<input name="businessNo" class="modal-table-cotent mtc1" />
@@ -415,8 +416,12 @@
 									<input name="nick" class="modal-table-cotent mtc17"/>
 								</div>
 								<div class="modal-table-area">
+									<div class="modal-table-title">이름</div>
+									<input name="name" class="modal-table-cotent mtc18"/>
+								</div>
+								<div class="modal-table-area">
 									<div class="modal-table-title">이메일 </div>
-									<input name="email" class="modal-table-cotent mtc18"/>
+									<input name="email" class="modal-table-cotent mtc19"/>
 								</div>
 							</div>
 						</div>
@@ -440,6 +445,7 @@
 						<div>
 							<div class="modal_table">
 								<div class="modal-table-area">
+									<input type="hidden" class="memberNo2" name="memberNo" value="">
 									<input type="hidden" class="sellerYn2" name="sellerYn" value="">
 									<div class="modal-table-title">아이디</div>
 									<input name="id" class="modal-table-cotent mtc2-1" />
@@ -536,8 +542,11 @@
 						document.querySelector(".mtc15").value = data.id;
 						document.querySelector(".mtc16").value = data.password;
 						document.querySelector(".mtc17").value = data.nick;
-						document.querySelector(".mtc18").value = data.email;
+						document.querySelector(".mtc18").value = data.name;
+						document.querySelector(".mtc19").value = data.email;
 						document.querySelector(".sellerYn1").value = yn;
+						document.querySelector(".memberNo").value = data.memberNo;
+						
 					}else{
 						console.log(yn);
 						modal2.classList.toggle("modal_up2");
@@ -552,6 +561,7 @@
 						document.querySelector(".mtc2-9").value = data.memberAddress;
 						document.querySelector(".mtc2-10").value = data.memberDetailAddress;
 						document.querySelector(".sellerYn2").value = yn;
+						document.querySelector(".memberNo2").value = data.memberNo;
 					}
 				});
 				

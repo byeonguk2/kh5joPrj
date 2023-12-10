@@ -3,6 +3,8 @@ package com.kh.app.seller.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 
 import com.kh.app.seller.vo.SellerVo;
@@ -131,6 +133,7 @@ public class SellerDao {
 			String account = rs.getString("ACCOUNT");
 			String permitYn = rs.getString("PERMIT_YN");
 			String joinDate = rs.getString("JOIN_DATE");
+			String requestQuitYn = rs.getString("REQUEST_QUIT_YN");
 			
 			loginSeller = new SellerVo();
 			
@@ -161,6 +164,7 @@ public class SellerDao {
 			loginSeller.setAccount(account);
 			loginSeller.setPermitYn(permitYn);
 			loginSeller.setJoinDate(joinDate);
+			loginSeller.setRequestQuitYn(requestQuitYn);
 			
 		}
 		JDBCTemplate.close(pstmt);
@@ -241,6 +245,58 @@ public class SellerDao {
 		
 		int result = pstmt.executeUpdate();
 		
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
+
+	public Map<String, Object> bringProductRelatedInformation(Connection conn, SellerVo loginSeller)throws Exception {
+		
+		// 모든 상품 관련 모든 정보들을 카운트해서 가져옴 
+		String sql = "SELECT ( SELECT COUNT(REFUND_YN) CNT_REF FROM SALES_REGISTR S JOIN CART_BREAKDOWN CB ON (S.SALES_NO = CB.SALES_NO) JOIN CART C ON (CB.CART_NO = C.NO) JOIN ORDER_HISTORY O ON (C.NO = O.CART_NO) WHERE O.REFUND_YN = 'Y' AND S.SELLER_NO = ? ) ALL_REFUND_CNT, ( SELECT COUNT(DELIVERY_YN) CNT_DEL FROM SALES_REGISTR S JOIN CART_BREAKDOWN CB ON (S.SALES_NO = CB.SALES_NO) JOIN CART C ON (CB.CART_NO = C.NO) JOIN ORDER_HISTORY O ON (C.NO = O.CART_NO) WHERE O.DELIVERY_YN = 'N' AND S.SELLER_NO = ? ) COMPLETED_ORDER, ( SELECT COUNT(*) CNT_REG FROM SALES_REGISTR WHERE SELLER_NO = ? AND DEL_YN = 'N' ) ALL_PRODUCT FROM DUAL";
+		
+		// pstmt 생성
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, loginSeller.getSellerNo());
+		pstmt.setString(2, loginSeller.getSellerNo());
+		pstmt.setString(3, loginSeller.getSellerNo());
+		
+		//rs
+		ResultSet rs = pstmt.executeQuery();
+		Map<String, Object> map = new HashMap<>();
+		while(rs.next()) {
+			
+			// 환불중인 내역 카운트
+			int allRefundCnt = rs.getInt("ALL_REFUND_CNT");
+			
+			// 구매확정이 안됀 내역 카운트
+			int completedOrderCnt = rs.getInt("COMPLETED_ORDER");
+			
+			// 현재 등록된 모든 상품 카운트
+			int allProductCnt = rs.getInt("ALL_PRODUCT");
+			
+			map.put("allRefundCnt", allRefundCnt);
+			map.put("completedOrderCnt", completedOrderCnt);
+			map.put("allProductCnt", allProductCnt);
+			
+		}
+		
+		JDBCTemplate.close(pstmt);
+		JDBCTemplate.close(rs);
+		
+		return map;
+	}
+
+	public int quitSeller(SellerVo loginSeller, Connection conn) throws SQLException {
+		
+		String sql = "UPDATE SELLER SET REQUEST_QUIT_YN = 'Y' WHERE SELLER_NO = ?";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, loginSeller.getSellerNo());
+		
+		int result = pstmt.executeUpdate();
+		
+		//close
 		JDBCTemplate.close(pstmt);
 		
 		return result;

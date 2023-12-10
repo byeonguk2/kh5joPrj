@@ -7,12 +7,15 @@ public class SellerVo {
 	}
 	
 
+	
+
 	public SellerVo(String memberNo, String sellerNo, String nick, String id, String password, String password_re,
 			String email, String birthDay, String point, String memberAddress, String memberDetailAddress, String name,
 			String phone, String businessNo, String businessForm, String busineesName, String busineesPhone,
 			String corporationName, String uptae, String upjong, String busineesZipCode, String busineesAdr,
 			String detailedAdr, String reportNumber, String bank, String depositor, String account, String permitYn,
-			String joinDate, String requestYn, String modifyYn, String fileSrc, String freezeYn, String sellerYn) {
+			String joinDate, String requestYn, String modifyYn, String fileSrc, String freezeYn, String sellerYn,
+			String requestQuitYn) {
 		super();
 		this.memberNo = memberNo;
 		this.sellerNo = sellerNo;
@@ -48,7 +51,10 @@ public class SellerVo {
 		this.fileSrc = fileSrc;
 		this.freezeYn = freezeYn;
 		this.sellerYn = sellerYn;
+		this.requestQuitYn = requestQuitYn;
 	}
+
+
 
 
 	private String memberNo;
@@ -92,6 +98,7 @@ public class SellerVo {
 	private String fileSrc;
 	private String freezeYn;
 	private String sellerYn;
+	private String requestQuitYn;
 	public String getMemberNo() {
 		return memberNo;
 	}
@@ -432,6 +439,16 @@ public class SellerVo {
 	}
 
 
+	public String getRequestQuitYn() {
+		return requestQuitYn;
+	}
+
+
+	public void setRequestQuitYn(String requestQuitYn) {
+		this.requestQuitYn = requestQuitYn;
+	}
+
+
 	@Override
 	public String toString() {
 		return "SellerVo [memberNo=" + memberNo + ", sellerNo=" + sellerNo + ", nick=" + nick + ", id=" + id
@@ -444,7 +461,7 @@ public class SellerVo {
 				+ detailedAdr + ", reportNumber=" + reportNumber + ", bank=" + bank + ", depositor=" + depositor
 				+ ", account=" + account + ", permitYn=" + permitYn + ", joinDate=" + joinDate + ", requestYn="
 				+ requestYn + ", modifyYn=" + modifyYn + ", fileSrc=" + fileSrc + ", freezeYn=" + freezeYn
-				+ ", sellerYn=" + sellerYn + "]";
+				+ ", sellerYn=" + sellerYn + ", requestQuitYn=" + requestQuitYn + "]";
 	}
-	
+		
 }

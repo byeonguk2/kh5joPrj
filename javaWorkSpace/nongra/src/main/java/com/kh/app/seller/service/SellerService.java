@@ -1,6 +1,7 @@
 package com.kh.app.seller.service;
 
 import java.sql.Connection;
+import java.util.Map;
 
 import com.kh.app.seller.dao.SellerDao;
 import com.kh.app.seller.vo.SellerVo;
@@ -105,7 +106,7 @@ public class SellerService {
 	
 	public int businessInfo(SellerVo vo) throws Exception {
 		
-Connection conn = JDBCTemplate.getConnection();
+		Connection conn = JDBCTemplate.getConnection();
 		
 		// dao 호출 
 		SellerDao dao = new SellerDao();
@@ -122,6 +123,45 @@ Connection conn = JDBCTemplate.getConnection();
 		
 		// result return
 		return result;
+	}
+
+	public Map<String, Object> bringProductRelatedInformation(SellerVo loginSeller) throws Exception {
+		
+		// conn 가져오기 
+		Connection conn = JDBCTemplate.getConnection();
+				
+		// dao 선언  호출 
+		SellerDao dao = new SellerDao();
+				
+		// 디비 조회후 받아온 값 저장 
+		Map<String, Object> map = dao.bringProductRelatedInformation(conn, loginSeller);
+				
+		// close
+		JDBCTemplate.close(conn);
+		
+		return map;
+	}
+
+	public int quitSeller(SellerVo loginSeller) throws Exception {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao 호출 
+		SellerDao dao = new SellerDao();
+		int result = dao.quitSeller(loginSeller,conn);
+
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+			
+		// connection close 
+		JDBCTemplate.close(conn);
+		
+		// result return
+		return result;
+		
 	}
 
 }
