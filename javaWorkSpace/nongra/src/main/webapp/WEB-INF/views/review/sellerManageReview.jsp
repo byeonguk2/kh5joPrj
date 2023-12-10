@@ -432,12 +432,12 @@
 	 function pageNext(){
 		 
 	 
-		 	location.href = '/nongra/admin/manageReview?pno=' + <%=pvo.getCurrentPage()+1%>
+		 	location.href = '/nongra/seller/manageReview?pno=' + <%=pvo.getCurrentPage()+1%>
 	       
 	    }
 
 	    function pagePrevious(){
-	    	location.href = '/nongra/admin/manageReview?pno=' + <%=pvo.getCurrentPage()-1%>
+	    	location.href = '/nongra/seller/manageReview?pno=' + <%=pvo.getCurrentPage()-1%>
 	    	     
 	       }
 
