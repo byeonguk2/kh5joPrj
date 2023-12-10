@@ -18,7 +18,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<link rel="stylesheet" href="/nongra/resources/css/common/cssReset.css">
-	<link rel="stylesheet" href="/nongra/resources/css/review/adminManageReview.css">
+	<link rel="stylesheet" href="/nongra/resources/css/review/memberManageReview.css">
 	
 	
 	
@@ -34,11 +34,12 @@
 		display: grid;
 		grid-template-columns: 230px 8fr;
 		}
-		#headerer{
+			#headerer{
 			display: flex;
 			align-items: center;
-			align-content: center;
+			justify-content: center;
 		}
+		
 		
 		
 	</style>
@@ -80,8 +81,11 @@
                      </p>
                      
                      <div class="reivew-picture-box">
-                     <c:forEach items="${vo.fileSrc}" var="str">
-                     <img src="${str}" alt="리뷰사진" class="review0">
+                     <c:forEach items="${vo.reviewFileVolist}" var="vo">
+                     <c:if test="${not empty vo.reviewFielSrc}">
+                     <img src="${vo.reviewFielSrc}" alt="리뷰사진" class="review0">
+                     <div class="div-reviewFileNo" style= "display : none"> "${vo.reviewFileNo}" </div>
+                     </c:if>
                      </c:forEach>
                      </div>
                      
@@ -102,7 +106,11 @@
                          </button>
                      </footer>
                      <div class="owner-replay-box">
-                         <span class="reply-span1">답글보기</span><button class="reply-delete-btn">삭제</button> 
+                         <span class="reply-span1">답글보기</span>
+                         <div>
+                         <button class="change-btn">수정</button>
+                         <button class="reply-delete-btn">삭제</button>
+                         </div> 
                      </div> 
                  </div>
              </div>
@@ -172,17 +180,7 @@
              </div>
          </div>
          
-         <div class="review-search-box">
-             
-         <form action="/nongra/admin/manageReview/search" method="get">
-             <select name="searchType">
-            	<option value="R.CONTENT">내용</option>
-            	<option value="R.REVIEW_NO">리뷰번호</option>
-            	<option value="NICK">작성자</option>
-             </select>
-             <input type="text" name="searchValue" placeholder= "검색할 내용을 입력하세요" > <input type="submit" value="검색">
-         </form>
-         </div>
+         
              </section>
 			
 			</div>
@@ -258,7 +256,7 @@
             </div>
 
             <div class="dialog-review-button-end-box">
-                <button id="review-cancel">취소</button>
+                <button type="button" id="review-cancel">취소</button>
                 <button id="review-regiseter">수정</button>
             </div>
         </form>  
@@ -385,12 +383,12 @@
 	 function pageNext(){
 		 
 	 
-		 	location.href = '/nongra/admin/manageReview?pno=' + <%=pvo.getCurrentPage()+1%>
+		 	location.href = '/nongra/member/manageReview?pno=' + <%=pvo.getCurrentPage()+1%>
 	       
 	    }
 
 	    function pagePrevious(){
-	    	location.href = '/nongra/admin/manageReview?pno=' + <%=pvo.getCurrentPage()-1%>
+	    	location.href = '/nongra/member/manageReview?pno=' + <%=pvo.getCurrentPage()-1%>
 	    	     
 	       }
 
@@ -425,7 +423,7 @@
 
 	   reivewModalSureButton1.addEventListener('click', () => {
 	       reviewModal.classList.add('modal-review-hidden');
-	       alert("리뷰가 수정 되었습니다")
+	    
 
 	   });
 

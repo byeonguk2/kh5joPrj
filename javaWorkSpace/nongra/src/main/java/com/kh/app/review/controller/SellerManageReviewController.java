@@ -21,7 +21,7 @@ public class SellerManageReviewController extends HttpServlet {
    // 판매자 상점 모든 리뷰 페이지 조회 + 관리창[Seller]
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		/*	HttpSession session = req.getSession();
+			HttpSession session = req.getSession();
 			
 			SellerVo sellerVo = (SellerVo)session.getAttribute("loginSeller");
 			
@@ -58,7 +58,7 @@ public class SellerManageReviewController extends HttpServlet {
 			
 			req.setAttribute("ReviewVoList", ReviewVoList);
 			req.setAttribute("pvo", pvo);
-		
+			req.getRequestDispatcher("/WEB-INF/views/review/sellerManageReview.jsp").forward(req, resp);
 			
 			
 			
@@ -68,15 +68,11 @@ public class SellerManageReviewController extends HttpServlet {
 			System.out.println("리뷰 셀러 페이지 에러");
 			session.setAttribute("alertMsg", "리뷰 셀러 페이지 실패");
 			req.getRequestDispatcher("/WEB-INF/views/common/note/result.jsp").forward(req, resp);
-		}
-		
-		
-		
+		}		
 	}
-	*/
-		req.getRequestDispatcher("/WEB-INF/views/review/sellerManageReview.jsp").forward(req, resp);
-	}
-	
-	
-	
+			
 }
+	
+	
+	
+

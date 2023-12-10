@@ -1,5 +1,6 @@
 package com.kh.app.review.vo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewVo {
@@ -20,7 +21,13 @@ private String	nick;
 private String	likeCnt;
 private String src;
 private String profile;
+
+
 private List<String> fileSrc;
+
+
+private ReviewFileVo reviewFileVo = new ReviewFileVo();
+private List<ReviewFileVo> reviewFileVolist = new ArrayList<ReviewFileVo>(); // 리뷰 파일번호까지 가지고 있는 vo
 
 
 
@@ -156,14 +163,35 @@ public ReviewVo() {
 	super();
 	// TODO Auto-generated constructor stub
 }
+public List<ReviewFileVo> getReviewFileVolist() {
+	return reviewFileVolist;
+}
+public void setReviewFileVolist(List<ReviewFileVo> reviewFileVolist) {
+	this.reviewFileVolist = reviewFileVolist;
+}
 @Override
 public String toString() {
 	return "ReviewVo [reviewNo=" + reviewNo + ", consumerNo=" + consumerNo + ", cartBreakdownNo=" + cartBreakdownNo
 			+ ", content=" + content + ", WriteDate=" + WriteDate + ", updateDate=" + updateDate + ", replyDate="
 			+ replyDate + ", replyDelYn=" + replyDelYn + ", replyContent=" + replyContent + ", ItemTitle=" + ItemTitle
 			+ ", corporationName=" + corporationName + ", nick=" + nick + ", likeCnt=" + likeCnt + ", src=" + src
-			+ ", profile=" + profile + ", fileSrc=" + fileSrc + "]";
+			+ ", profile=" + profile + ", fileSrc=" + fileSrc + ", reviewFileVolist=" + reviewFileVolist + "]";
 }
+public ReviewFileVo getReviewFileVo() {
+	return reviewFileVo;
+}
+public void setReviewFileVo(ReviewFileVo reviewFileVo) {
+	this.reviewFileVo = reviewFileVo;
+}
+
+
+
+
+
+
+
+
+
 
 
 

@@ -120,7 +120,7 @@ public class ReviewService {
 	
 	}
 	
-	//리뷰 관리 회원번호로 가져오기 [유저]
+	//리뷰 관리 회원번호로 가져오기 [멤버]
 	public List<ReviewVo> memberReviewLookUp(PageVo pvo, String memberNo) throws Exception {
 		
 		// conn
@@ -135,6 +135,38 @@ public class ReviewService {
 		
 		return list; 
 	
+	}
+	//리뷰 관리 셀러번호로 개수 가져오기 [셀러]
+	public int selectReviewCountBySellerNo(String sellerNo) throws Exception {
+		
+		
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+						
+		// dao
+		ReviewDao dao = new ReviewDao();
+		int cnt = dao.selectReviewCountBySellerNo(conn,sellerNo);
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return cnt;
+
+	}
+	//리뷰 관리 셀러번호로 가져오기 [셀러]
+	public List<ReviewVo> sellerReviewLookUp(PageVo pvo, String sellerNo) throws Exception {
+		
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+				
+		// dao
+		ReviewDao dao = new ReviewDao();
+		List<ReviewVo> list = dao.sellerReviewLookUp(conn,pvo,sellerNo);
+		// close 
+				
+		JDBCTemplate.close(conn);
+		
+		return list; 
 	}
 	
 

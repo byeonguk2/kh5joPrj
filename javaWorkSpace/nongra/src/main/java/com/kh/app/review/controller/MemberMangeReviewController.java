@@ -50,16 +50,22 @@ public class MemberMangeReviewController extends HttpServlet{
 				currentPage_ ="1";
 			}
 			int currentPage = Integer.parseInt(currentPage_);	//현재 페이지
+//			int currentPage = Integer.parseInt("2");
 			int pageLimit = 1;
 			int boardLimit = 10;
 			PageVo pvo =  new PageVo(listCount, currentPage, pageLimit, boardLimit);
-			System.out.println(pvo);
+		
 			
 			
 		
 			//service
 //			List<ReviewVo> ReviewVoList = rs.memberReviewLookUp(pvo,loginMember.getNo());
 			List<ReviewVo> ReviewVoList = rs.memberReviewLookUp(pvo,"1");
+			
+			for (ReviewVo reviewVo : ReviewVoList) {
+				System.out.println(reviewVo.getReviewFileVolist());
+			}
+		
 			
 			
 			// result (==view)

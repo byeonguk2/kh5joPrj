@@ -31,8 +31,7 @@ public class AdminMangeReviewSearchController extends HttpServlet {
 			String searchType = req.getParameter("searchType");
 			String searchValue = req.getParameter("searchValue");
 			
-			System.out.println(searchType);
-			System.out.println(searchValue);
+			
 			
 			
 			
@@ -53,7 +52,7 @@ public class AdminMangeReviewSearchController extends HttpServlet {
 			
 			// service
 			List<ReviewVo> reviewVoList = rs.adminsearch(m , pvo);
-			System.out.println(reviewVoList);
+			
 			
 			// result
 			req.setAttribute("searchMap", m);
