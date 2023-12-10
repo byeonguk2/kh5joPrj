@@ -20,7 +20,7 @@ const postListItems = document.querySelectorAll('.post_list');
                 }
             });
         });
-const eventListItems = document.querySelectorAll(".event_li");
+const eventListItems = document.querySelectorAll(".event_li > a");
 
         eventListItems.forEach(function(item){
             item.addEventListener('click', function(){

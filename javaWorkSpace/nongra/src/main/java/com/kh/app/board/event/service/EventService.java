@@ -72,7 +72,9 @@ public class EventService {
 	}
 
 	//*** 글번호로 글내용 상세조회
-	public Map<String, Object> selectDetailByNo(String no) throws Exception {
+	//	public Map<String, Object> selectDetailByNo(String no) throws Exception {
+	public List<EventVo> selectDetailByNo(String no) throws Exception {
+
 		Connection conn = JDBCTemplate.getConnection();
 		EventDao dao = new EventDao();
 		int result = dao.increaseHit(conn, no);
@@ -86,9 +88,10 @@ public class EventService {
 			JDBCTemplate.rollback(conn);
 		}
 		JDBCTemplate.close(conn);
-		Map<String,Object> map = new HashMap<String, Object>();
-		map.put("vo", voList);
-		return map;
+		//		Map<String,Object> map = new HashMap<String, Object>();
+		//		map.put("vo", voList);
+		//		return map;
+		return voList;
 	}
 
 	//*** 글번호로 댓글 목록 조회

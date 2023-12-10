@@ -3,6 +3,13 @@
 <%@page import="com.kh.app.board.event.vo.EventVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+	<%
+	
+	List<EventVo> voList = (List<EventVo>) request.getAttribute("voList");
+	String currPage =(String) request.getAttribute("currPage");
+	
+	List<EventFileVo> fileVoList = voList.get(0).getFileVoList();
+	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,14 +20,6 @@
 <link rel="stylesheet" href="/nongra/resources/css/board/event/event_scheduled_list.css">
 <link rel="stylesheet" href="/nongra/resources/css/board/contact/qna/qna_own_write.css">
 <link rel="stylesheet" href="/nongra/resources/css/board/event/event_detail.css">
-	<%
-	EventVo vo = (EventVo) request.getAttribute("vo");
-	String currPage =(String) request.getAttribute("currPage");
-	if(currPage == null){
-		currPage = "1";
-	}
-	List<EventFileVo> fileVoList = vo.getFileVoList();
-	%>
 
 </head>
 <body>
@@ -51,21 +50,22 @@
 				<div class="board_name">이벤트</div>
 				<div class="event_detail">
                     <div class="event_title">
-                        <p class="e_title"><%=vo.getTitle() %></p>
-                        <p class="e_date">기간 <%=vo.getStartDate() %> ~ <%=vo.getEndDate() %></p>
+                        <p class="e_title"><%=voList.get(0).getTitle() %></p>
+                        <p class="e_date">기간 <%=voList.get(0).getStartDate() %> ~ <%=voList.get(0).getEndDate() %></p>
                     </div>
 
                     <div class="event_content">
                         <p>
                         <% for(EventFileVo fileVo : fileVoList) { %>
-                            <img src="/nongra/resources/img/board/event/<%=fileVo.getFileName() %>" alt="농할">
+                            <img src="/nongra/resources/img/board/event/<%=fileVo.getFileName() %>" alt="<%=fileVo.getFileName() %>">
+                            <!-- 반복문 추가할것 mainY안뜨게  -->
                         <% } %>
                         </p>
                     </div>
                 </div>
 
                 <div class="event_btn_wrap">
-                    <a href="" class="btn_to_list"><span>이벤트 목록</span></a>
+                    <a href="/nongra/event/list" class="btn_to_list"><span>이벤트 목록</span></a>
                 </div>
 
 			</div>

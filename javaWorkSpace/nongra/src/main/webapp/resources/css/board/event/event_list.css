@@ -38,4 +38,8 @@ ul{
 }
 .card_event {
     text-decoration: none;
+    color: inherit;
+    cursor: auto;
+    font-size: inherit;
+    font-weight: normal;
 }

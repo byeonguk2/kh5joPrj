@@ -1,6 +1,7 @@
 package com.kh.app.board.event.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -19,10 +20,11 @@ public class EventDetailController extends HttpServlet{
 		try {
 			String no = req.getParameter("no");
 			EventService es = new EventService();
-			Map<String, Object> map = es.selectDetailByNo(no);
-			EventVo vo = (EventVo) map.get("vo");
+			List<EventVo> voList = es.selectDetailByNo(no);
+//			EventVo vo = (EventVo) map.get("vo");
 			
-			req.setAttribute("vo", vo);
+//			req.setAttribute("vo", vo);
+			req.setAttribute("voList", voList);
 			req.setAttribute("currPage", req.getParameter("currPage"));
 			req.getRequestDispatcher("/WEB-INF/views/board/event/event_detail.jsp").forward(req, resp);
 		}catch (Exception e) {
