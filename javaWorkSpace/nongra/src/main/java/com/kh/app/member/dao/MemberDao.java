@@ -84,5 +84,20 @@ public class MemberDao {
 		return result;
 		
 	}
+	
+	//회원탈퇴
+	public int delete(Connection conn, String no) throws Exception {
+		//sql
+		String sql="UPDATE MEMBER SET QUIT_YN='Y', MODIFY_DATE= SYSDATE WHERE MEMBER_NO=?";
+		PreparedStatement pstmt=conn.prepareStatement(sql);
+		pstmt.setString(1, no);
+		int result=pstmt.executeUpdate();
+				
+		//rs
+		
+		//close
+		JDBCTemplate.close(pstmt);
+		return result;
+	}
 
 }

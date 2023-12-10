@@ -20,8 +20,8 @@ public class MemberLoginController extends HttpServlet {
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session=req.getSession();
 	
+		HttpSession session=req.getSession();
 		try {
 			req.setCharacterEncoding("UTF-8");
 			String memberId=req.getParameter("id");
@@ -41,14 +41,15 @@ public class MemberLoginController extends HttpServlet {
 				
 				throw new Exception("로그인을 실패하였습니다.");
 			}
+			session.setAttribute("alertMsg", "로그인 성공!!!");
 			session.setAttribute("loginMember",loginMember );
 			resp.sendRedirect("/nongra/home");
 			
 		} catch (Exception e) {
 			System.out.println("[ERROR-M004]로그인중 문제 발생.");
 			e.printStackTrace();
-			session.setAttribute("alertMsg", "로그인 실패.,.");
-			resp.sendRedirect("/nongra/member/login");
+			req.setAttribute("errorMsg", "로그인 실패.,.");
+			req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);
 		}
 		
 	}
