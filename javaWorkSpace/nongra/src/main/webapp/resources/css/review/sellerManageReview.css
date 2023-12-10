@@ -1,0 +1,659 @@
+.review-section{
+    width: 1010px;
+}
+
+.seller-review-div-checkbox{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+
+.my-review{
+    width: 1010px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    font-size: 24px;
+
+}
+ 
+
+body{
+    font-size: 14px;
+    color: #333;
+}
+button{
+    overflow: visible;
+    background-color: transparent;
+}
+
+/* 상품리뷰 */
+.review-section >h2{
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 41px;
+    letter-spacing: -0.5px;
+    color: #333;
+    
+
+}
+.review-section{
+    padding-top: 72px;
+    padding-bottom: 72px;
+    display: flex;
+    flex-direction: column;
+  
+    
+}
+
+.picutre-review{
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    width: 123.63px;
+    height: 124px;
+   padding: 0;
+
+   
+}
+.picutre-review img {
+    
+    min-height: 100%;
+    max-height: 100%;
+}
+
+
+/* 리뷰 */
+.review{
+    display: flex;
+    padding: 30px 0px 19px 20px;
+    border-bottom: 1px solid rgb(244, 244, 244);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19px;
+}
+
+.review-user-nick{
+    display: flex;
+    width: 225px;
+   
+}
+.user-photo{
+    flex-shrink: 0;
+	width: 50px;
+	height: 50px;
+	margin-right: 0.5em;
+	border: 2px solid #333;
+	border-radius: 50%;
+	background-color: gold;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 150%;
+}
+.review-user-nick > span{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+}
+.review-content-box{
+    display: flex;
+    flex-direction: column;
+    width: 765px;
+}
+.review-item-name{
+font-size: 14px;
+font-weight: 400;
+line-height: 19px;
+color: rgb(153, 153, 153);
+overflow: hidden;
+word-break: break-all;
+white-space: normal;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+}
+
+.review-content{
+    padding-top: 12px;
+    padding-right: 20px;
+    word-break: break-word;
+    white-space: pre-wrap;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: rgb(51, 51, 51);
+}
+
+.reivew-picture-box{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 3px;
+    overflow: auto hidden;
+    padding: 15px 0px 2px;
+}
+.review0{
+   width: 93px;
+   height: 93px;
+   object-fit: cover
+}
+.review-date-box{
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    padding-left: 20px;
+    padding-top: 19px;
+    padding-right: 20px;
+}
+.review-date{color: rgb(153, 153, 153);}
+
+.review-recommend-btn{
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    min-width: 88px;
+    height: 32px;
+    padding: 0px 13px 0px 11px;
+    border: 1px solid rgb(226, 226, 226);
+    border-radius: 20px;
+    font-size: 12px;
+    line-height: 20px;
+    color: rgb(153, 153, 153);
+}
+.review-b{
+    width: 15px;
+    height: 15px;
+    margin-right: 4px;
+    background: url(/nongra/resources/img/review/reviewb.svg) center center no-repeat;
+}
+
+.review-like{
+    font-size: 12px;
+    line-height: 20px;
+    color: rgb(153, 153, 153);
+    padding: 0;
+    
+}
+.owner-replay-box{
+    display: flex;
+   	
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+ 
+    padding-right: 20px;
+   
+    width: 765px;
+    height: 51px;
+    font-size: 12px;
+    line-height: 20px;
+    color: rgb(153, 153, 153);
+
+}
+.reply-span1{
+    border: 1px solid rgb(226, 226, 226);
+    border-radius: 20px;
+    padding: auto;
+    width: 110px;
+    height: 32px;
+    display: inline-block;
+    text-align: center;
+    line-height: 32px;
+}
+.reply-delete-btn , .change-btn, .delete-btn{
+    border: 1px solid rgb(226, 226, 226);
+    border-radius: 20px;
+    padding: auto;
+    width: 50px;
+    height: 32px;
+    display: inline-block;
+    text-align: center;
+    line-height: 32px;
+    margin-left: 50p;
+}
+
+.inquery-paging-area{
+    position: relative;
+    width: 100%;
+    height: 44px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.inquery-paging-area > div button:nth-child(1){
+    width: 44px;
+    height: 44px;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: url(/images/inqeury/paging-prev-activated.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+.inquery-paging-area > div button:nth-child(2){
+    width: 44px;
+    height: 44px;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: url(/images/inqeury/paging-next-activated.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.review-search-box{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.review-search-box form select{
+    border: 1px solid rgb(51, 51, 51);
+    border-radius: 20px;
+    padding: 3px;
+}
+
+
+.review-search-box form input[type="text"]{
+    border: 1px solid rgb(51, 51, 51);
+    border-radius: 20px;
+    width: 20rem
+    
+}
+
+.review-search-box form input[type="submit"]{
+    border: 1px solid rgb(51, 51, 51);
+    border-radius: 20px;
+    width: 50px;
+    padding: 5px;
+}
+
+/* 판매자 답글  */
+
+.owner-reply-box2 {
+	background-color: rgb(255, 255, 128);
+    border-top: 1px solid rgb(51, 51, 51) ;
+    border-bottom: 1px solid rgb(51, 51, 51);
+    width: 1010px;
+    display: flex;
+    padding: 30px 0px 19px 20px
+}
+
+.owner-reply-box2-title{
+    width: 255px;
+}
+
+.owner-reply-box2-content{
+    width: 765px;
+   
+}
+
+.owner-reply-box2-content span{
+  
+    color: rgb(153, 153, 153);
+}
+
+.owner-reply-box2-date-btn{
+    display: flex;
+    width: 742px;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+
+
+.owner-reply-box3{
+    display: none;
+}
+
+.owner-reply-btn > button{
+    font-size: 12px;
+    line-height: 20px;
+    color: rgb(153, 153, 153);
+    border :none
+}
+
+
+/* 모달창 구매확정 */
+.modal-sure {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position:fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.3);
+}
+
+.modal-sure-hiddnen {
+    display: none;
+}
+
+
+.dialog-sure {
+    min-height: 200px;
+	width: 400px;
+	padding: 2em;
+	border-radius: 1em;
+	background: white;
+    display: flex;
+    flex-direction: column;
+
+    
+}
+
+.dialog-sure-btn{
+    display: flex;
+    justify-content: flex-end;
+} 
+
+.dialog-sure span:nth-child(2){
+    font-size: 14px;
+    color : rgb(153, 153, 153)
+}
+
+
+.dialog-sure span:nth-child(3){
+    text-align: center;
+    font-size: 20px;
+    color : black;
+    padding: 1rem;
+}
+.modal-sure-btn-box{
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    align-items: center;
+    gap: 10x
+    
+}
+
+.btn-sure{
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    background-color: gray;
+    color: white;
+}
+.btn-quit{
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 30px;
+    background-color: gray;
+    color:white;
+}
+
+
+/* 답변 등록 모달창 */
+
+
+.review-answer-modal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position:fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.3);
+
+}
+
+.review-answer-dialog {
+	width: 650px;
+	padding: 2em;
+	border-radius: 1em;
+	background: white;
+    display: flex;
+    flex-direction: column;
+}
+.review-answer-dialog-div1{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14;
+   
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+
+.review-answer-dialog-div1 > h1 {
+    margin: 0px;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    flex: 0 0 auto;
+    padding: 0px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -0.5px;
+    color: rgb(51, 51, 51);
+}
+
+.review-answer-dialog-div1 > label{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+}
+
+.review-answer-dialog-form{
+    display: flex;
+    flex-direction: column;
+    
+
+}
+
+.review-answer-dialog-form textarea{
+    width: 594px;
+    padding: 1rem
+}
+.review-answer-dialog-form div {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    gap :10px
+    
+}
+
+.review-answer-dialog-form >div button{
+    width: 150px;
+}
+
+.review-answer-modal-hidden{
+    display: none;
+}
+
+
+/* 답변수정 모달창 */
+
+/* 여기다가 display none 주시면 됩니다 */
+.review-answer-modal-1 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position:fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.3);
+
+}
+/* 여기안에서 작업하면되고 */
+.review-answer-dialog-1 {
+	width: 650px;
+	padding: 2em;
+	border-radius: 1em;
+	background: white;
+    display: flex;
+    flex-direction: column;
+}
+.review-answer-dialog-div1-1{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14;
+   
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+
+.review-answer-dialog-div1-1 > h1 {
+    margin: 0px;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    flex: 0 0 auto;
+    padding: 0px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -0.5px;
+    color: rgb(51, 51, 51);
+}
+
+.review-answer-dialog-div1-1 > label{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+}
+
+.review-answer-dialog-form-1{
+    display: flex;
+    flex-direction: column;
+    
+
+}
+
+.review-answer-dialog-form-1 textarea{
+    width: 594px;
+    padding: 1rem
+}
+.review-answer-dialog-form-1 div {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    gap :10px
+    
+}
+
+.review-answer-dialog-form-1 >div button{
+    
+    width: 150px;
+}
+
+.review-answer-modal-hidden-1{
+    display: none;
+}
+
+
+/* 모달 삭제창 */
+
+/* 모달창 구매확정 */
+.modal-sure {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position:fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.3);
+}
+
+.modal-sure-hiddnen {
+    display: none;
+}
+
+
+.dialog-sure {
+    min-height: 200px;
+	width: 400px;
+	padding: 2em;
+	border-radius: 1em;
+	background: white;
+    display: flex;
+    flex-direction: column;
+
+    
+}
+
+.dialog-sure-btn{
+    display: flex;
+    justify-content: flex-end;
+} 
+
+.dialog-sure span:nth-child(2){
+    font-size: 14px;
+    color : rgb(153, 153, 153)
+}
+
+
+.dialog-sure span:nth-child(3){
+    text-align: center;
+    font-size: 20px;
+    color : black;
+    padding: 1rem;
+}
+.modal-sure-btn-box{
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    align-items: center;
+    gap: 10x
+    
+}
+
+.btn-sure{
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    background-color: gray;
+    color: white;
+}
+.btn-quit{
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 30px;
+    background-color: gray;
+    color:white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
