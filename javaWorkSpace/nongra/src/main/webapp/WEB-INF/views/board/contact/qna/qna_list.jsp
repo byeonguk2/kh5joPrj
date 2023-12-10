@@ -5,8 +5,8 @@
     pageEncoding="UTF-8"%>
     <% 
     	MemberVo user = (MemberVo) session.getAttribute("loginMember"); 
-	List<QnaSellerVo> qnaSellerVoList = null;
-	List<QnaMemberVo> qnaMemberVoList = null; 
+        List<QnaSellerVo> qnaSellerVoList = null;
+        List<QnaMemberVo> qnaMemberVoList = null; 
 
     	//duplication issue로 user 사용
     	if(user.getSellerYn().equals("Y")){
@@ -14,7 +14,8 @@
     	}else{
     		qnaMemberVoList = (List<QnaMemberVo>) request.getAttribute("qnaVoList");
     	} 
-    	
+
+        
     %>
     
 <!DOCTYPE html>
@@ -80,7 +81,7 @@
                                 <% } %></div>
                             <div class="qna_list_box2"> 부모카테고리명 - <%=vo.getCategoryName() %></div>
                             <div class="qna_list_box3"><%=vo.getTitle() %></div>
-                            <div class="qna_list_box4"><%=vo.getEnrollDate() %></div>
+                            <div class="qna_list_box4"><%= vo.getEnrollDate() %></div>
                             <div class="qna_list_box5">
                                 <svg class="svg_qna" width="19" height="19" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: rgb(136, 136, 136);"><path fill="#888888" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg>
                             </div>

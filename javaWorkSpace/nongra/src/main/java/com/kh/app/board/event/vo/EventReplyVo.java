@@ -1,6 +1,6 @@
 package com.kh.app.board.event.vo;
 
-public class BoardEventReplyVo {
+public class EventReplyVo {
 	private String replyNo;
 	private String eventNo;
 	private String writerNo;
@@ -8,11 +8,11 @@ public class BoardEventReplyVo {
 	private String enrollDate;
 	private String modifyDate;
 	private String delYn;
-	public BoardEventReplyVo() {
+	public EventReplyVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public BoardEventReplyVo(String replyNo, String eventNo, String writerNo, String content, String enrollDate,
+	public EventReplyVo(String replyNo, String eventNo, String writerNo, String content, String enrollDate,
 			String modifyDate, String delYn) {
 		super();
 		this.replyNo = replyNo;

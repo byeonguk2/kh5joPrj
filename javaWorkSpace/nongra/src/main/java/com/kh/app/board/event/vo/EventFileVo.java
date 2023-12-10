@@ -1,15 +1,15 @@
 package com.kh.app.board.event.vo;
 
-public class BoardEventFileVo {
+public class EventFileVo {
 	private String fileNo;
 	private String boardEventNo;
 	private String fileName;
 	private String mainYn;
-	public BoardEventFileVo() {
+	public EventFileVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public BoardEventFileVo(String fileNo, String boardEventNo, String fileName, String mainYn) {
+	public EventFileVo(String fileNo, String boardEventNo, String fileName, String mainYn) {
 		super();
 		this.fileNo = fileNo;
 		this.boardEventNo = boardEventNo;
