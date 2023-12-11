@@ -36,21 +36,21 @@
                     
                     <button style='cursor:pointer;' type="button" class="btn" onclick="a01();">충전</button>
                     <!-- 여기에 display none -->
-                    <div class="modal modal-none" >
-                    <div class="dialog">
-                    <h3> 농라페이 충전</h3>
-                    <br>
-                    <div id="box2">
-                    <h4>포인트 충전</h4>
-                    <h5>원하시는 상품을 선택하세요</h5>
+                    <div class="modal modal-none" style="z-index: 3;">
+                        <div class="dialog">
+                            <h3> 농라페이 충전</h3>
+                            <br>
+                            <div id="box2">
+                            <h4>포인트 충전</h4>
+                            <h5>원하시는 상품을 선택하세요</h5>
 
-                    <input type="checkbox" id="cb01" name="point"><label for="cb01">5,000p</label><br>
-                    <input type="checkbox" id="cb02" name="point"><label for="cb02">10,000p</label><br>
-                    <input type="checkbox" id="cb03" name="point"><label for="cb03">50,000p</label><br>
-                    <input type="checkbox" id="cb04" name="point"><label for="cb04">100,000p</label><br>
-                    <button style="cursor: pointer;" type="button" id="modal-close" onclick="a02();">충전</button>
-                    </div>
-                    </div>
+                            <input type="radio" id="cb01" name="point" value="5,000"><label for="cb01">5,000p</label><br>
+                            <input type="radio" id="cb02" name="point" value="10,000"><label for="cb02">10,000p</label><br>
+                            <input type="radio" id="cb03" name="point" value="5,000"><label for="cb03">50,000p</label><br>
+                            <input type="radio" id="cb04" name="point"><label for="cb04">100,000p</label><br>
+                            <button style="cursor: pointer;" type="button" id="modal-close" onclick="a02();">충전</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
