@@ -32,6 +32,7 @@
             <label>|</label>
             <i class="fa fa-bell" style="font-size:24px; color:rgb(52, 65, 252)"></i>
             <label><%= loginSeller.getName() %> 님</label>
+            <label><a href="/nongra/seller/logout">로그아웃</a></label>
             <div class="filebox">
 					<img onclick="windowOfChoiceAppears()" class="profile" alt="프로필" src="<%= loginSeller.getProfile() %>">
 			</div>
