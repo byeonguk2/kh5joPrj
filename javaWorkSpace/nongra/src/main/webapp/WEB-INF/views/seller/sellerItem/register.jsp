@@ -125,17 +125,15 @@
 						<input type="text" name="stock">
 						<input type="text" name="origin">
 						<div class="category-area">
-							<select name="category">
-								<option value="아무거나">아무거나</option>
-							</select>
-							<button type="button" name="category1" value="category1" onclick="openPopUp();">카테고리1</button>
-							<select name="category2">
-								<option>아무거나</option>
-							</select>
-							<button type="button" name="category2" value="category2" onclick="openPopUp2();">카테고리2</button>
+							<input type="hidden" name="categoryNo1" />
+   							<span id="categoryLabel1" >카테고리를 선택해주세요</span>
+							<button type="button" name="category1" onclick="openPopUp();">카테고리1</button>
+							<input type="hidden" name="categoryNo2" />
+   							<span id="categoryLabel2" >카테고리를 선택해주세요</span>
+							<button type="button" name="category2" onclick="openPopUp2();">카테고리2</button>
 						</div>
-						<input type="text">
-						<input type="file">
+						<button type="button" name="option" onclick="openPopUp3();">상품옵션</button>
+						<input type="file" accept="image/*">
 					
 					</div>
 					<div></div>
@@ -153,13 +151,50 @@
 		</main>
 	</div>
 <script>
+	window.addEventListener('message', function(event) {
+	    const selectedCategory = event.data.category;
+	    console.log(selectedCategory);
+	    const type = event.data.type;
+	
+	    updateCategory(selectedCategory, type);
+	});
+	
+	function updateCategory(selectedCategory, type) {
+		
+	    if (type === 'category1') {
+	        document.querySelector('input[name=categoryNo1]').value = selectedCategory.categoryNo;
+	        document.querySelector('#categoryLabel1').innerText = selectedCategory.category;
+	    } else if (type === 'category2') {
+	        document.querySelector('input[name=categoryNo2]').value = selectedCategory.categoryNo;
+	        document.querySelector('#categoryLabel2').innerText = selectedCategory.category;
+	    }
+	    
+	    
+	}
+
+
 	function openPopUp() {
 		let options = "toolbar=no,scrollbars=no,resizable=yes,status=no,menubar=no,width=800, height=800, top=0,left=0";
 		window.open("/nongra/seller/register/category","카테고리선택", options);
+		
+		
+		
 	}
 	function openPopUp2(){
+		const categoryNo = document.querySelector('input[name=categoryNo1]').value
 		let options = "toolbar=no,scrollbars=no,resizable=yes,status=no,menubar=no,width=800, height=800, top=0,left=0";
-		window.open("/nongra/seller/register/category2", "카테고리2선택" , options);
+		if(categoryNo.trim() !== ''){
+			window.open("/nongra/seller/register/category2?categoryNo1=" + categoryNo, "카테고리2선택" , options);			
+		}else{
+			alert("카테고리1을 먼저 선택해주세요");
+		}
+		
+		
+	}
+	function openPopUp3(){
+		let options = "toolbar=no,scrollbars=no,resizable=yes,status=no,menubar=no,width=800, height=800, top=0,left=0";
+		window.open("/nongra/sales/optionList", "상품옵션" , options);			
+		
 	}
 
 

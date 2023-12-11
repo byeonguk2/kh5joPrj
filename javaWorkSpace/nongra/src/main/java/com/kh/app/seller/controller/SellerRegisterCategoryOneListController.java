@@ -13,7 +13,7 @@ import com.kh.app.category.service.CategoryService;
 import com.kh.app.category.vo.CategoryVo;
 
 @WebServlet("/seller/register/category")
-public class SellerRegisterCategoryListController extends HttpServlet{
+public class SellerRegisterCategoryOneListController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,7 +30,7 @@ public class SellerRegisterCategoryListController extends HttpServlet{
 			
 			
 			req.setAttribute("categoryList", categoryList);
-			req.getRequestDispatcher("/WEB-INF/views/category/categoryList.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/category/categoryOneList.jsp").forward(req, resp);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

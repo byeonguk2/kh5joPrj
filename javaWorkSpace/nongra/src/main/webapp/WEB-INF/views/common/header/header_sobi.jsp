@@ -17,6 +17,35 @@
 		<title>Document</title>
 		<link rel="stylesheet" href="/nongra/resources/css/header/header_sobi.css">
 		<script defer src="/nongra/resources/js/common/header/header_sobi.js"></script>
+		<style type="text/css">
+			#category-dropdown {
+			    display: none;
+			    position: absolute;
+			    background-color: #fff; /* 원하는 배경색을 설정합니다 */
+			    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* 스타일링을 위한 그림자 효과를 추가합니다 */
+			    z-index: 1;
+			    top: 170px;
+			    width: 200px;
+			}
+			#category-dropdown > ul li{
+			    display: none;
+			    position: relative;
+			    background-color: #fff; /* 원하는 배경색을 설정합니다 */
+			    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* 스타일링을 위한 그림자 효과를 추가합니다 */
+			}
+			
+			#category-dropdown ul {
+			    color: #333; /* 텍스트 색상을 설정합니다 */
+			    padding: 12px;
+			    text-decoration: none;
+			    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+			    display: block;
+			}
+			
+			#category-dropdown a:hover {
+			    background-color: #f2f2f2; /* 호버 시 배경색을 설정합니다 */
+			}
+		</style>
 	</head>
 	<body>
 		<div id="wrap1">
@@ -80,10 +109,11 @@
                     <%}%>
                 </div>
                 <nav  style="z-index: 2;">
-                    <a href="">
+                    <a id="menu-icon">
                         <img id="img02" width="16px" height="18px" src="/nongra/resources/img/common/header/menu-icon.svg" alt="카테고리 아이콘">
                         <div>카테고리</div>
                     </a>
+                    
                     <a href="">신상품</a>
                     <a href="">베스트</a>
                     <a href="/nongra/tip/main">구매팁</a>
@@ -92,7 +122,7 @@
                     
     
                 </nav>
-    			<div id="category-dropdown">
+                <div id="category-dropdown">
                     <ul id="category1-dropdown">카테고리 1
                         <li> 
                             <a href="#">소분류 1-1</a>
@@ -121,9 +151,9 @@
                         </li>
                     </ul>
                 </div>
-    
+                
             </header>
-            </div>
+        </div>
 	</body>
 	</html>
 	
@@ -132,42 +162,42 @@
 			alert("<%= alertMsg %>");
 		<% } %>
 		
-		document.addEventListener('DOMContentLoaded', function () {
-	        var menuIcon = document.querySelector('#menu-icon');
-	        var categoryDropdown = document.querySelector('#category-dropdown');
+        document.addEventListener('DOMContentLoaded', function () {
+            var menuIcon = document.querySelector('#menu-icon');
+            var categoryDropdown = document.querySelector('#category-dropdown');
 
-	        menuIcon.addEventListener('click', function () {
-	            if (categoryDropdown.style.display === 'block') {
-	                categoryDropdown.style.display = 'none';
-	            } else {
-	                categoryDropdown.style.display = 'block';
-	            }
-	        });
+            menuIcon.addEventListener('click', function () {
+                if (categoryDropdown.style.display === 'block') {
+                    categoryDropdown.style.display = 'none';
+                } else {
+                    categoryDropdown.style.display = 'block';
+                }
+            });
 
-	        document.querySelector('#category1-dropdown').addEventListener('click', function () {
-	            toggleSubcategories('#category1-dropdown');
-	        });
+            document.querySelector('#category1-dropdown').addEventListener('click', function () {
+                toggleSubcategories('#category1-dropdown');
+            });
 
-	        document.querySelector('#category2-dropdown').addEventListener('click', function () {
-	            toggleSubcategories('#category2-dropdown');
-	        });
+            document.querySelector('#category2-dropdown').addEventListener('click', function () {
+                toggleSubcategories('#category2-dropdown');
+            });
 
-	        document.querySelector('#category3-dropdown').addEventListener('click', function () {
-	            toggleSubcategories('#category3-dropdown');
-	        });
+            document.querySelector('#category3-dropdown').addEventListener('click', function () {
+                toggleSubcategories('#category3-dropdown');
+            });
+        });
 
-	    });
-	    function toggleSubcategories(categoryId) {
-	        let selectedCategory = document.querySelectorAll(categoryId + ' li');
+        function toggleSubcategories(categoryId) {
+            var selectedCategory = document.querySelectorAll(categoryId + ' li');
 
-	        selectedCategory.forEach(function (item) {
-	            if (item.style.display === 'none' || item.style.display === '') {
-	                item.style.display = 'block';
-	            } else {
-	                item.style.display = 'none';
-	            }
-	        });
-	        
-	    }
+            selectedCategory.forEach(function (item) {
+                if (item.style.display === 'none' || item.style.display === '') {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
 		
 	</script>

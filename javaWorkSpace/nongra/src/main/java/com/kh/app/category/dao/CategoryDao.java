@@ -14,7 +14,7 @@ public class CategoryDao {
 	//카테고리 1조회
 	public List<CategoryVo> categoryOneDao(Connection conn) throws Exception{
 		
-		String sql = "SELECT CATEGORY_NO , CATEGORY FROM CATEGORY";
+		String sql = "SELECT CATEGORY_NO , CATEGORY FROM CATEGORY WHERE CATEGORY_NO2 IS NULL";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
 		
@@ -36,14 +36,15 @@ public class CategoryDao {
 		return categoryList;
 	}
 	//카테고리2 조회
-	public List<CategoryVo> categoryTwoDao(Connection conn) throws Exception{
-		String sql = "SELECT CATEGORY_NO2 , CATEGORY FROM CATEGORY";
+	public List<CategoryVo> categoryTwoDao(Connection conn, String categoryNo1) throws Exception{
+		String sql = "SELECT CATEGORY_NO , CATEGORY FROM CATEGORY WHERE CATEGORY_NO2 = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, categoryNo1);
 		ResultSet rs = pstmt.executeQuery();
 		
 		ArrayList<CategoryVo> categoryList = new ArrayList<CategoryVo>();
 		while(rs.next()) {
-			String categoryNo = rs.getString("CATEGORY_NO2");
+			String categoryNo = rs.getString("CATEGORY_NO");
 			String category = rs.getString("CATEGORY");
 			
 			CategoryVo vo = new CategoryVo();
@@ -52,7 +53,7 @@ public class CategoryDao {
 			
 			categoryList.add(vo);
 		}
-		
+
 		JDBCTemplate.close(rs);
 		JDBCTemplate.close(pstmt);
 		
