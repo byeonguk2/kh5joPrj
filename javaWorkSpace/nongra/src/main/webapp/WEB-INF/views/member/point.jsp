@@ -21,7 +21,7 @@
                 </div>
                 <div id="img_coin2">
                     <span id="balance">35,000P</span>
-                    <span id="balance2">ooo님 의 보유 포인트</span>
+                    <span id="balance2"><%=loginMember.getMemberNick() %>님 의 보유 포인트</span>
                 </div>
                 <div id="box">
                     <div id="img_coin3">
@@ -44,10 +44,10 @@
                             <h4>포인트 충전</h4>
                             <h5>원하시는 상품을 선택하세요</h5>
 
-                            <input type="radio" id="cb01" name="point" value="5,000"><label for="cb01">5,000p</label><br>
-                            <input type="radio" id="cb02" name="point" value="10,000"><label for="cb02">10,000p</label><br>
-                            <input type="radio" id="cb03" name="point" value="5,000"><label for="cb03">50,000p</label><br>
-                            <input type="radio" id="cb04" name="point"><label for="cb04">100,000p</label><br>
+                            <input type="radio" id="cb01" name="point" value="5000"><label for="cb01">5,000p</label><br>
+                            <input type="radio" id="cb02" name="point" value="10000"><label for="cb02">10,000p</label><br>
+                            <input type="radio" id="cb03" name="point" value="50000"><label for="cb03">50,000p</label><br>
+                            <input type="radio" id="cb04" name="point" value="100000"><label for="cb04">100,000p</label><br>
                             <button style="cursor: pointer;" type="button" id="modal-close" onclick="a02();">충전</button>
                             </div>
                         </div>

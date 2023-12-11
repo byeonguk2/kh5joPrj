@@ -8,13 +8,14 @@
 <link rel="stylesheet"
 	href="/nongra/resources/css/member/member_modify.css">
 <script defer src="/nongra/resources/js/common/header/header_sobi.js"></script>
+<script defer src="/nongra/resources/js/member/member_modify.js"></script>
 </head>
 <body>
 	<div id="wrap">
 		<%@ include file="/WEB-INF/views/common/header/header_sobi_memberModify.jsp"%>
 		<div id="a">
 		<%@ include file="/WEB-INF/views/common/aside/aside_sobi_main.jsp"%>
-		<form id="form" action="/nongra/member/modify" method="post">
+		<form onsubmit="return passwordCheck()" id="form" action="/nongra/member/modify" method="post">
 			<div class="main">
 				<h2 class="management">내 정보 관리</h2>
 				<div id="box">내 정보 변경</div>
@@ -48,32 +49,30 @@
 					</dt>
 					<dd>
 						<div id="old_pwd" class="block">
-							<input type="password" name="password" class="txt2"
+							<input type="password" name="oldpassword" class="txt2" value="<%= loginMember.getMemberPwd() %>"
 								placeholder="현재 비밀번호" maxlength="15"
-								onkeypress="return checkData(this, event, 15, 1, 0);"
-								onkeyup="return checkHangleData(this);"> <span
+								> <span
 								class="itxts">영문/숫자/특수문자 조합으로 10~15자, 대소문자 구분</span>
 						</div>
 						<div class="block">
-							<input type="password" name="new_password1" class="txt2"
+							<input type="password" name="password" class="txt2"
 								placeholder="새 비밀번호" maxlength="15"
-								onkeypress="return checkData(this, event, 15, 0, 1);"
-								onkeyup="return checkHangleData(this);" aria-autocomplete="list">
+								 aria-autocomplete="list">
 							<span class="itxts" id="pwd_notice" style="display: none">영문/숫자/특수문자
 								조합으로 10~15자, 대소문자 구분</span> <span class="ierrorifx">10~15자로
 								입력해주세요.</span>
 							<!-- 에러메시지 -->
 						</div>
 						<div class="block">
-							<input type="password" name="new_password2" class="txt2"
+							<input type="password" name="password_re" class="txt2" 
 								placeholder="새 비밀번호 확인" maxlength="15"
-								onkeypress="return checkData(this, event, 15, 0, 1);"
-								onkeyup="return checkHangleData(this);"> <span
+								onkeyup="passwordCheck2()"> <span
 								class="ierrorifx2">10~15자로 입력해주세요.</span>
 							<!-- 에러메시지 -->
 						</div>
-						<p id="session_msg" class="itxt">비밀번호를 변경하면 현재 기기를 제외한 연결된
+						<p id="session_msg" class="itxt ">비밀번호를 변경하면 현재 기기를 제외한 연결된
 							기기에서 로그인 계정이 모두 로그아웃 됩니다.</p>
+							
 					</dd>
 				</dl>
 				<h3 class="privacy">개인정보 수정</h3>
@@ -123,7 +122,7 @@
 					</dt>
 					<dd class="line">
 						<div class="block_last2">
-							<input type="text" name="email1" class="txt length02"
+							<input type="text" name="email" class="txt length02"
 								placeholder="메일주소" value="<%= loginMember.getEmail() %>"> 
 							
 						</div>
@@ -182,7 +181,28 @@
 				}
 			}
 		}
+		
+		function passwordCheck() {
+			const from = document.querySelector("#form");
+			if(from.password.value !== from.password_re.value){
+				alert("패스워드 확인이 일치하지 않습니다.");
+				return false;
+			}
+		}
+		function passwordCheck2(){
+			const form=document.querySelector("#form");
+			 if(form.password.value === form.password_re.value){
+			     document.getElementById("session_msg").innerHTML = "비밀번호를 일치합니다.";
+			     document.getElementById("session_msg").classList.add("red");
+			     return false;
+			 }else{
+			     document.getElementById("session_msg").innerHTML = "비밀번호가 일치하지 않습니다.";
+			     document.getElementById("session_msg").classList.add("red");
+			     return false;
+			 }
+		}
 		</script>
+		
 		
 
 </body>

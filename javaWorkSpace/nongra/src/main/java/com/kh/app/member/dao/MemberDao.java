@@ -99,5 +99,28 @@ public class MemberDao {
 		JDBCTemplate.close(pstmt);
 		return result;
 	}
+	
+	//회원정보 수정
+	public int modify(Connection conn, MemberVo vo) throws Exception {
+		System.out.println(vo);
+		// sql
+		String sql="UPDATE MEMBER SET NICK=?, PWD=?, ADDRESS=?, DETAIL_ADDRESS=?, PHONE=?,EMAIL=?, MODIFY_DATE = SYSDATE WHERE MEMBER_NO=?";
+		PreparedStatement pstmt=conn.prepareStatement(sql);
+		pstmt.setString(1, vo.getMemberNick());
+		pstmt.setString(2, vo.getMemberPwd());
+		pstmt.setString(3, vo.getAddr());
+		pstmt.setString(4, vo.getAddr2());
+		pstmt.setString(5, vo.getPhone());
+		pstmt.setString(6, vo.getEmail());
+		pstmt.setString(7, vo.getNo());
+		int result=pstmt.executeUpdate();
+		
+		//rs
+		
+		
+		//close
+		JDBCTemplate.close(pstmt);
+		return result;
+	}
 
 }
