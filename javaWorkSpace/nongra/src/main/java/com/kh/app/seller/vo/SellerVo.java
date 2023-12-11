@@ -5,9 +5,7 @@ public class SellerVo {
 	public SellerVo() {
 		
 	}
-	
 
-	
 
 	public SellerVo(String memberNo, String sellerNo, String nick, String id, String password, String password_re,
 			String email, String birthDay, String point, String memberAddress, String memberDetailAddress, String name,
@@ -15,7 +13,7 @@ public class SellerVo {
 			String corporationName, String uptae, String upjong, String busineesZipCode, String busineesAdr,
 			String detailedAdr, String reportNumber, String bank, String depositor, String account, String permitYn,
 			String joinDate, String requestYn, String modifyYn, String fileSrc, String freezeYn, String sellerYn,
-			String requestQuitYn) {
+			String requestQuitYn, String profile) {
 		super();
 		this.memberNo = memberNo;
 		this.sellerNo = sellerNo;
@@ -52,9 +50,8 @@ public class SellerVo {
 		this.freezeYn = freezeYn;
 		this.sellerYn = sellerYn;
 		this.requestQuitYn = requestQuitYn;
+		this.profile = profile;
 	}
-
-
 
 
 	private String memberNo;
@@ -99,9 +96,12 @@ public class SellerVo {
 	private String freezeYn;
 	private String sellerYn;
 	private String requestQuitYn;
+	private String profile;
 	public String getMemberNo() {
 		return memberNo;
 	}
+
+
 
 
 	public void setMemberNo(String memberNo) {
@@ -109,9 +109,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getSellerNo() {
 		return sellerNo;
 	}
+
+
 
 
 	public void setSellerNo(String sellerNo) {
@@ -119,9 +123,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getNick() {
 		return nick;
 	}
+
+
 
 
 	public void setNick(String nick) {
@@ -129,9 +137,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getId() {
 		return id;
 	}
+
+
 
 
 	public void setId(String id) {
@@ -139,9 +151,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getPassword() {
 		return password;
 	}
+
+
 
 
 	public void setPassword(String password) {
@@ -149,9 +165,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getPassword_re() {
 		return password_re;
 	}
+
+
 
 
 	public void setPassword_re(String password_re) {
@@ -159,9 +179,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getEmail() {
 		return email;
 	}
+
+
 
 
 	public void setEmail(String email) {
@@ -169,9 +193,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getBirthDay() {
 		return birthDay;
 	}
+
+
 
 
 	public void setBirthDay(String birthDay) {
@@ -179,9 +207,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getPoint() {
 		return point;
 	}
+
+
 
 
 	public void setPoint(String point) {
@@ -189,9 +221,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getMemberAddress() {
 		return memberAddress;
 	}
+
+
 
 
 	public void setMemberAddress(String memberAddress) {
@@ -199,9 +235,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getMemberDetailAddress() {
 		return memberDetailAddress;
 	}
+
+
 
 
 	public void setMemberDetailAddress(String memberDetailAddress) {
@@ -209,9 +249,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getName() {
 		return name;
 	}
+
+
 
 
 	public void setName(String name) {
@@ -219,9 +263,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getPhone() {
 		return phone;
 	}
+
+
 
 
 	public void setPhone(String phone) {
@@ -229,9 +277,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getBusinessNo() {
 		return businessNo;
 	}
+
+
 
 
 	public void setBusinessNo(String businessNo) {
@@ -239,9 +291,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getBusinessForm() {
 		return businessForm;
 	}
+
+
 
 
 	public void setBusinessForm(String businessForm) {
@@ -249,9 +305,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getBusineesName() {
 		return busineesName;
 	}
+
+
 
 
 	public void setBusineesName(String busineesName) {
@@ -259,9 +319,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getBusineesPhone() {
 		return busineesPhone;
 	}
+
+
 
 
 	public void setBusineesPhone(String busineesPhone) {
@@ -269,9 +333,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getCorporationName() {
 		return corporationName;
 	}
+
+
 
 
 	public void setCorporationName(String corporationName) {
@@ -279,9 +347,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getUptae() {
 		return uptae;
 	}
+
+
 
 
 	public void setUptae(String uptae) {
@@ -289,9 +361,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getUpjong() {
 		return upjong;
 	}
+
+
 
 
 	public void setUpjong(String upjong) {
@@ -299,9 +375,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getBusineesZipCode() {
 		return busineesZipCode;
 	}
+
+
 
 
 	public void setBusineesZipCode(String busineesZipCode) {
@@ -309,9 +389,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getBusineesAdr() {
 		return busineesAdr;
 	}
+
+
 
 
 	public void setBusineesAdr(String busineesAdr) {
@@ -319,9 +403,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getDetailedAdr() {
 		return detailedAdr;
 	}
+
+
 
 
 	public void setDetailedAdr(String detailedAdr) {
@@ -329,9 +417,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getReportNumber() {
 		return reportNumber;
 	}
+
+
 
 
 	public void setReportNumber(String reportNumber) {
@@ -339,9 +431,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getBank() {
 		return bank;
 	}
+
+
 
 
 	public void setBank(String bank) {
@@ -349,9 +445,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getDepositor() {
 		return depositor;
 	}
+
+
 
 
 	public void setDepositor(String depositor) {
@@ -359,9 +459,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getAccount() {
 		return account;
 	}
+
+
 
 
 	public void setAccount(String account) {
@@ -369,9 +473,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getPermitYn() {
 		return permitYn;
 	}
+
+
 
 
 	public void setPermitYn(String permitYn) {
@@ -379,9 +487,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getJoinDate() {
 		return joinDate;
 	}
+
+
 
 
 	public void setJoinDate(String joinDate) {
@@ -389,9 +501,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getRequestYn() {
 		return requestYn;
 	}
+
+
 
 
 	public void setRequestYn(String requestYn) {
@@ -399,9 +515,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getModifyYn() {
 		return modifyYn;
 	}
+
+
 
 
 	public void setModifyYn(String modifyYn) {
@@ -409,9 +529,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getFileSrc() {
 		return fileSrc;
 	}
+
+
 
 
 	public void setFileSrc(String fileSrc) {
@@ -419,9 +543,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getFreezeYn() {
 		return freezeYn;
 	}
+
+
 
 
 	public void setFreezeYn(String freezeYn) {
@@ -429,9 +557,13 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getSellerYn() {
 		return sellerYn;
 	}
+
+
 
 
 	public void setSellerYn(String sellerYn) {
@@ -439,14 +571,34 @@ public class SellerVo {
 	}
 
 
+
+
 	public String getRequestQuitYn() {
 		return requestQuitYn;
 	}
 
 
+
+
 	public void setRequestQuitYn(String requestQuitYn) {
 		this.requestQuitYn = requestQuitYn;
 	}
+
+
+
+
+	public String getProfile() {
+		return profile;
+	}
+
+
+
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
+
 
 
 	@Override
@@ -461,7 +613,8 @@ public class SellerVo {
 				+ detailedAdr + ", reportNumber=" + reportNumber + ", bank=" + bank + ", depositor=" + depositor
 				+ ", account=" + account + ", permitYn=" + permitYn + ", joinDate=" + joinDate + ", requestYn="
 				+ requestYn + ", modifyYn=" + modifyYn + ", fileSrc=" + fileSrc + ", freezeYn=" + freezeYn
-				+ ", sellerYn=" + sellerYn + ", requestQuitYn=" + requestQuitYn + "]";
+				+ ", sellerYn=" + sellerYn + ", requestQuitYn=" + requestQuitYn + ", profile=" + profile + "]";
 	}
-		
+	
+			
 }

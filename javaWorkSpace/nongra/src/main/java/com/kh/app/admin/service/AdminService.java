@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.kh.app.admin.dao.AdminDao;
+import com.kh.app.admin.vo.AdminVo;
 import com.kh.app.member.vo.MemberVo;
 import com.kh.app.page.vo.PageVo;
 import com.kh.app.seller.dao.SellerDao;
@@ -301,6 +302,20 @@ public class AdminService {
 			JDBCTemplate.close(conn);
 			
 			return result;
+			
+		}
+
+		public AdminVo login(AdminVo vo) throws Exception {
+			
+			Connection conn = JDBCTemplate.getConnection();
+			
+			AdminDao adminDao = new AdminDao();
+			AdminVo loginAdmin = adminDao.login(conn,vo);
+			
+			JDBCTemplate.close(conn);
+			
+			
+			return loginAdmin;
 			
 		}
 		

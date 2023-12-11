@@ -48,7 +48,7 @@ public class SellerDao {
 	public int join(SellerVo joinVo, Connection conn, String[] strArr) throws Exception {
 		
 		// sql 쿼리문 
-		String sql = "INSERT ALL INTO MEMBER ( MEMBER_NO ,ID ,NICK ,PWD ,EMAIL ,NAME ,PHONE , SELLER_YN) VALUES (SEQ_MEMBER.NEXTVAL,?,?,?,?,?,?,'Y') INTO SELLER ( SELLER_NO ,MEMBER_NO ,BUSINESS_NO ,BUSINESS_FORM ,BUSINESS_NAME ,BUSINESS_PHONE ,CORPORATION_NAME ,UPTAE ,UPJONG ,BUSINEES_ZIPCODE ,BUSINESS_ADDRESS ,DETAILED_ADR ,REPORT_NUMBER ,BANK ,DEPOSITOR ,ACCOUNT ) VALUES (SEQ_SELLER.NEXTVAL,SEQ_MEMBER.CURRVAL,?,?,?,?, ?,?,?,?,?,?, ?,?,?,?) INTO BUSINESS_FILE ( FILE_NO,SELLER_NO,FILE_SRC ) VALUES ( SEQ_BUSINESS_FILE.NEXTVAL,SEQ_SELLER.CURRVAL,?) INTO BUSINESS_FILE ( FILE_NO,SELLER_NO,FILE_SRC ) VALUES ((SELECT GET_ITEM_SEQ()FROM DUAL),SEQ_SELLER.CURRVAL,?) SELECT * FROM DUAL";
+		String sql = "INSERT ALL INTO MEMBER ( MEMBER_NO ,ID ,NICK ,PWD ,EMAIL ,NAME ,PHONE , SELLER_YN , PROFILE) VALUES (SEQ_MEMBER.NEXTVAL,?,?,?,?,?,?,'Y','/nongra/resources/upload/img/default_profile.png') INTO SELLER ( SELLER_NO ,MEMBER_NO ,BUSINESS_NO ,BUSINESS_FORM ,BUSINESS_NAME ,BUSINESS_PHONE ,CORPORATION_NAME ,UPTAE ,UPJONG ,BUSINEES_ZIPCODE ,BUSINESS_ADDRESS ,DETAILED_ADR ,REPORT_NUMBER ,BANK ,DEPOSITOR ,ACCOUNT ) VALUES (SEQ_SELLER.NEXTVAL,SEQ_MEMBER.CURRVAL,?,?,?,?, ?,?,?,?,?,?, ?,?,?,?) INTO BUSINESS_FILE ( FILE_NO,SELLER_NO,FILE_SRC ) VALUES ( SEQ_BUSINESS_FILE.NEXTVAL,SEQ_SELLER.CURRVAL,?) INTO BUSINESS_FILE ( FILE_NO,SELLER_NO,FILE_SRC ) VALUES ((SELECT GET_ITEM_SEQ()FROM DUAL),SEQ_SELLER.CURRVAL,?) SELECT * FROM DUAL";
 		
 		// pstmt 생성 
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -134,6 +134,7 @@ public class SellerDao {
 			String permitYn = rs.getString("PERMIT_YN");
 			String joinDate = rs.getString("JOIN_DATE");
 			String requestQuitYn = rs.getString("REQUEST_QUIT_YN");
+			String profile = rs.getString("PROFILE");
 			
 			loginSeller = new SellerVo();
 			
@@ -165,6 +166,7 @@ public class SellerDao {
 			loginSeller.setPermitYn(permitYn);
 			loginSeller.setJoinDate(joinDate);
 			loginSeller.setRequestQuitYn(requestQuitYn);
+			loginSeller.setProfile(profile);
 			
 		}
 		JDBCTemplate.close(pstmt);
@@ -293,6 +295,22 @@ public class SellerDao {
 		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, loginSeller.getSellerNo());
+		
+		int result = pstmt.executeUpdate();
+		
+		//close
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
+
+	public int ChangeProfile(String profilePath, SellerVo loginSeller, Connection conn) throws Exception {
+		
+		String sql = "UPDATE MEMBER SET PROFILE = ? WHERE MEMBER_NO = ?";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, profilePath);
+		pstmt.setString(2, loginSeller.getMemberNo());
 		
 		int result = pstmt.executeUpdate();
 		

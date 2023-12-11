@@ -17,162 +17,220 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>	
 <style type="text/css">
-	#main-area{
-		display: grid;
-		grid-template-columns: 230px 8fr;
-		padding-top: 145px;
-	}
-	.main{
-		display: grid;
-		grid-template-columns: 1fr;
-	}
-	thead > tr {
-		height: 50px;
-	}
-	.form_above{
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-	}
-	.select_search_area{
-		padding: 50px;
-	}
-	.select_div{
-		display: grid;
-		width: 350px;
-		grid-template-columns: 1fr 1fr 1fr 1fr;
-		margin: 10px 0px 10px 0px;
-	}
-	.search_div{
-		display: grid;
-		width: 375px;
-		grid-template-columns: 1fr 1fr 1.5fr 0.5fr; 
-		margin: 10px 0px 10px 0px;
-	} 
-	select {
-		margin-right: 20px;
-	}
-	.table-area {
-		display: flex;
-		justify-content: center;
-	}
-	table{
-		width: 90%;
-	}
-	tr{
-		display: grid;
-		grid-template-columns: 1fr 1fr 2fr  2fr 2fr 3fr 4fr;
-		align-items: center;
-		border-top: none;
-		border-bottom: 1px solid black;
-		height: 80px;
-	}
-	td {
-		text-align: center;
-		line-height: 40px;
-	}
-	thead > tr {
-		border-top: 1px solid black;
-		border-bottom: 1px solid black;
-	}
-	.btn-paging{
-		display: flex;
-		justify-content: space-between;
-	}
-    .ben-btn{
-        width: 90px;
-    }
-    .paging-btn-area{
-    	display: grid;
-    	grid-template-columns: 1fr 2fr 1fr;
-    }
-    .paging-btn{
-    	display: flex;
-		height: 80px;
-		align-items: center;
-		justify-content: center;
-		gap: 20px;
-    }
-	.paging-btn{
-		font-size: 30px;
-	}
-	.paging-btn > button{
-		width: 60px;
-		height: 30px;
-	}
-	
-	
-	/* 모달창 */
-	/* 여기다가 display none 주시면 됩니다 */
-	.modal {
-		display: none;
-		position:fixed;
-		left: 0;
-		right: 0;
-		top: 0;
-		bottom: 0;
-		background: rgba(0,0,0,0.3);
- 		z-index: 2; 
-	}
-	/* 여기안에서 작업하면되고 */
-	.dialog {
-		width: 80vw;
-		height: 80vh;
-		border-radius: 1em;
-		background: white;
-		overflow:auto;
-		margin: auto;
-	}
-	.modal_up{
-		display: flex;
-	}
-	.modal_area{
-		display: grid;
-		grid-template-rows: 60px 80px 1000px 800px 800px 100px;
-	}.modal_down{
-		display: grid;
-		grid-template-columns: 1fr 30px;
-		padding: 20px 20px 0px 20px;
-	}
-	.modal_down_btn{
-		border: none;
-    	background-color: white;
-		font-size: 30px;
-		cursor: pointer;
-	}
-	.modal_table{
-		display: grid;
-		grid-template-rows: 60px 60px 60px 60px 60px 60px;
-		width: 800px;
-		margin: auto;
-		margin-top: 50px
-	}
-	.modal-table-area{
-		display: flex;
-	}
-	.modal-table-title{
-		width: 200px;
-		border:1px solid black;
-		text-align: center;
-		line-height: 60px
-	}
-	.modal-table-cotent{
-		width: 100%;
-		border:1px solid black;
-		padding-left: 30px;
-		line-height: 60px
-	}
-	.modal-img1{
-		margin: auto;
-		width: 600px;
-		height: 600px;
-		background-size: cover;
-	}
-	.modal-img2{
-		margin: auto;
-		width: 600px;
-		height: 600px;
-		background-size: cover;
-	}
+
+/* 기본 레이아웃 */
+#main-area{
+	display: grid;
+	grid-template-columns: 230px 8fr;
+	padding-top: 145px;
+}
+
+.select_search_area{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	margin-bottom: 50px;
+}
+
+/* 테이블 생성 */
+.table-area{
+	display: flex;
+	justify-content: center;
+}
+table {
+  border: 1px #a39485 solid;
+  font-size: .9em;
+  box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  width: 80%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+  margin:auto;
+}
+
+th {
+  text-align: center;
+  
+}
+  
+thead {
+  font-weight: bold;
+  color: #fff;
+  background: #73685d;
+}
+  
+ td, th {
+  padding: 1em .5em;
+  vertical-align: middle;
+}
+  
+ td {
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  background: #fff;
+  text-align: center;
+}
+
+a {
+  color: #73685d;
+}
+  
+ @media all and (max-width: 768px) {
+    
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  
+  th {
+    text-align: right;
+  }
+  
+  table {
+   	margin: auto;
+    position: relative; 
+    padding-bottom: 0;
+    border: none;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+  }
+  
+  thead {
+    float: left;
+    white-space: nowrap;
+  }
+  
+  tbody {
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    white-space: nowrap;
+  }
+  
+  tr {
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  th {
+    border-bottom: 1px solid #a39485;
+  }
+  
+  td {
+    border-bottom: 1px solid #e5e5e5;
+  }
+  
+  
+  }
+
+.btn-paging {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ben-btn {
+    width: 90px;
+}
+
+.paging-btn-area {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.paging-btn {
+    display: flex;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 30px;
+}
+
+.paging-btn > button {
+    width: 60px;
+    height: 30px;
+}
+
+.ben-btn {
+    width: 90px;
+}
+
+.paging-btn-area {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.paging-btn {
+    display: flex;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 17px;
+}
+
+.paging-btn > button {
+    width: 60px;
+    height: 30px;
+}
+
+
+/* 모달창 */
+/* 여기다가 display none 주시면 됩니다 */
+.modal {
+	display: none;
+	position:fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.3);
+	z-index: 2; 
+}
+/* 여기안에서 작업하면되고 */
+.dialog {
+	width: 80vw;
+	height: 80vh;
+	border-radius: 1em;
+	background: white;
+	overflow:auto;
+	margin: auto;
+}
+.modal_up{
+	display: flex;
+}
+.modal_area{
+	display: grid;
+	grid-template-rows: 60px 80px 800px 80px 800px 80px 800px 100px;
+}.modal_down{
+	display: grid;
+	grid-template-columns: 1fr 30px;
+	padding: 20px 20px 0px 20px;
+}
+.modal_down_btn{
+	border: none;
+	background-color: white;
+	font-size: 30px;
+	cursor: pointer;
+}
+
+.modal_area > div{
+	border-bottom: 0.5px solid #73685d;
+	text-align: center;
+}
+
+.modal-img1{
+	margin: auto;
+	width: 600px;
+	height: 600px;
+	background-size: cover;
+	border: 1px solid black;
+}
+.modal-img2{
+	margin: auto;
+	width: 600px;
+	height: 600px;
+	background-size: cover;
+	border: 1px solid black;
+}
 </style>
 </head>
 <body>
@@ -183,9 +241,8 @@
 			<div class="main">
 				<div class="form_above">
 					<div class="select_search_area">
-						<h2>요청허가/조회</h2>
+						<h2>권한요청 허가/조회</h2>
 						<div class="search_div">
-							<span>• 회원검색</span>
 							<form action="/nongra/admin/search">
 								<select name="option">
 									<option name="option" value="nick">닉네임</option>
@@ -263,68 +320,79 @@
 							<button class="modal_down_btn" type="button" onclick="downModal()">x</button>
 						</div>	
 						<h1 style="text-align: center;">사업자 정보</h1>
+						<table>
+							<thead>
+							<tr>
+								<th>First Name</th>
+								<th colspan="4">Last Name</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>사업자번호</td>
+								<td class="mtc1" colspan="4"></td>
+							</tr>
+							<tr>
+								<td>사업형태</td>
+								<td class="mtc2" colspan="4"></td>
+							</tr>
+							<tr>
+								<td>사업장명</td>
+								<td class="mtc3" colspan="4"></td>
+							</tr>
+							<tr>
+								<td>전화번호</td>
+								<td class="mtc4" colspan="4"></td>
+							</tr>
+							<tr>
+								<td>우편번호</td>
+								<td class="mtc5" colspan="4"></td>
+							</tr>
+							<tr>
+								<td>사업장 주소</td>
+								<td class="mtc6" colspan="4"></td>
+							</tr>
+							<tr>
+								<td>상세주소</td>
+								<td class="mtc7" colspan="4"></td>
+							</tr>
+							<tr>
+								<td>법인명</td>
+								<td class="mtc8" colspan="4"></td>
+							</tr>
+							<tr>
+								<td>업태</td>
+								<td class="mtc9" colspan="4"></td>
+							</tr>
+							<tr>
+								<td>업종</td>
+								<td class="mtc10" colspan="4"></td>
+							</tr>
+							<tr>
+								<td>통신판매업번호</td>
+								<td class="mtc11" colspan="4"></td>
+							</tr>
+							<tr>
+								<td>은행명</td>
+								<td class="mtc12" colspan="4"></td>
+							</tr>
+							<tr>
+								<td>입금자명</td>
+								<td class="mtc13" colspan="4"></td>
+							</tr>
+							<tr>
+								<td>계좌번호</td>
+								<td class="mtc14" colspan="4"></td>
+							</tr>
+							</tbody>
+						</table>
 						<div>
-							<div class="modal_table">
-								<div class="modal-table-area">
-									<input type="hidden" value="">
-									<div class="modal-table-title">사업자 번호</div>
-									<div class="modal-table-cotent mtc1"></div>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">사업형태</div>
-									<div class="modal-table-cotent mtc2"></div>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">사업장명</div>
-									<div class="modal-table-cotent mtc3"></div>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">사업자 전화번호</div>
-									<div class="modal-table-cotent mtc4"></div>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">우편번호</div>
-									<div class="modal-table-cotent mtc5"></div>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">사업장 주소</div>
-									<div class="modal-table-cotent mtc6"></div>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">상세주소</div>
-									<div class="modal-table-cotent mtc7"></div>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">법인명</div>
-									<div class="modal-table-cotent mtc8"></div>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">업태</div>
-									<div class="modal-table-cotent mtc9"></div>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">업종</div>
-									<div class="modal-table-cotent mtc10"></div>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">통신판매업신고번호</div>
-									<div class="modal-table-cotent mtc11"></div>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">은행</div>
-									<div class="modal-table-cotent mtc12"></div>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">입금자명</div>
-									<div class="modal-table-cotent mtc13"></div>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">입금계좌</div>
-									<div class="modal-table-cotent mtc14"></div>
-								</div>
-							</div>
+							<h2>통장사본</h2>
 						</div>
 						<img class="modal-img1" alt="통장사본" src="">
+						<div>
+							<h2>사업자 등록증</h2>
+						</div>
 						<img class="modal-img2" alt="사업자등록증" src="">
 						<div class="modal-table-area">
 							<button type="button" onclick="request_ok()">요청허가</button>
@@ -341,6 +409,7 @@
 			const menu1 = document.querySelector(" aside > :nth-child(2) > a ");
 			const menu2 = document.querySelector(" aside > :nth-child(3) > a ");
 			const menu3 = document.querySelector(" aside > :nth-child(4) > a ");
+			const menu4 = document.querySelector(" aside > :nth-child(5) > a ");
 			x.innerHTML = "회원관리";
 			menu1.innerHTML = "회원 조회/수정";
 			menu1.href = "/nongra/admin/select";
@@ -348,6 +417,8 @@
 	        menu2.href = "/nongra/admin/memberBen";
 			menu3.innerHTML = "사업자 허가 여부";
 			menu3.href = "/nongra/admin/request";
+			menu4.innerHTML = "탈퇴 요청 허가 여부";
+			menu4.href = "/nongra/admin/acceptQuit";
 		}
 		createAsideLetter()
 

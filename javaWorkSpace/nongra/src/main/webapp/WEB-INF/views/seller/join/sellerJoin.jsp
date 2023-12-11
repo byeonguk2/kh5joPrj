@@ -26,7 +26,7 @@
     <div id="entire-area">
         <div>
             <h1>농라 파트너 계정등록</h1>
-            <form action="/nongra/seller/join" method="post" name="joinForm" onsubmit="return join()">
+            <form action="/nongra/seller/join" id="form" method="post" name="joinForm" onsubmit="return join()">
                 <div class="css-1pfwvb8">
                     <p class="css-1qif6pj">필수입력사항</p>
                     <div class="css-1og0zk9">
@@ -52,13 +52,14 @@
                             <span class="css-1o72o4s">*</span>
                         </p>
                         <div class="css-gjavw0">
-                            <input name="nick"placeholder="닉네임을 입력해주세요" class="css-gaqliy">
+                            <input name="nick" placeholder="닉네임을 입력해주세요" class="css-gaqliy input-nick">
+                            <button type="button" id="checkbtn2" onclick="checkNick()" class="css-16yppgg checkNick" disabled="">중복확인</button>
                         </div>
                     </div>
                     <div id="nick" class="css-1og0zk92">
                     	<p class="css-3y93rl"></p>
                     	<div class="rowletter-area">
-                        	<span>닉네임에 부적절한 용어는 사용할 수 없습니다.</span>
+                        	<span id="nickGuide">닉네임에 부적절한 용어는 사용할 수 없습니다.</span>
                     	</div>
                     </div>
                     <div class="css-1og0zk9">
