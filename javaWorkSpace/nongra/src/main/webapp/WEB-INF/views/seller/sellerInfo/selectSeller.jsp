@@ -25,7 +25,7 @@ main{
 .content-area{
 	background-color: rgba(0,0,0,0);
 	display: grid;
-	grid-template-rows: 60px  45px  790px;
+	grid-template-rows: 60px  45px 400px  790px;
 	width: 100%;
 	padding-top: 20px;
 }
@@ -106,6 +106,70 @@ main{
 }
 /* outline 테두리 없애기 */
 input:focus {outline: none;} 
+
+.fix_profile{
+	margin: 40px 40px 40px 40px;
+	border: 1px solid #e3e7ee;
+	background-color: #ffffff;
+	display: grid;
+	grid-template-columns: 350px 500px;
+    margin-right: 700px;
+}
+.modify_profile{
+	width: 250px;
+	height: 250px;
+	position: relative;
+	border-radius: 50%;
+	background-size: cover;
+	cursor: pointer;
+}
+.profile_guide{
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr;
+}
+.my_profile{
+	font-size: 24px;
+	font-weight: bold;
+	color: #754327;
+	line-height: 106px;
+}
+.filebox {
+    cursor: pointer;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	
+}
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+.upload-btn{
+	display: inline-block;
+    width: 120px;
+    height: 44px;
+    margin: 0px 0px 0px 8px;
+    background-color: white;
+    border: 1px solid #754327;
+    color: #754327;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 46px;
+   	font-size: 14px;
+   	cursor: pointer;
+}
+.upload-area{
+	display: flex;
+	color: #767a83;
+	font-size: 14px;
+	line-height: 40px;
+	gap: 20px;
+}
 </style>
 </head>
 <body>
@@ -124,6 +188,32 @@ input:focus {outline: none;}
 						<a href="/nongra/seller/businessInfo">사업자 정보</a>
 					</div>
 				</div>
+
+				<form onsubmit="return checkProfile()" action="/nongra/seller/profile" method="post" enctype="multipart/form-data">
+				<div class="fix_profile">
+						<div class="filebox">
+							<label for="file2">
+							<div class="fix_profile__box">
+								<img src="<%= loginSeller.getProfile() %>" alt="프로필" class="modify_profile">
+								<input type="file" name="pofile" id="file2">
+							</div>
+							</label> 
+						</div>
+					<div class="profile_guide">
+						<div class="my_profile">
+							나의 프로필 사진
+						</div>
+						<div class="upload-area" style="display: flex;">
+							<button class="upload-btn">프로필 업로드</button>
+							<p>프로필 사진 클릭해 사진을 첨부 후 업로드 해주세요.</p>
+						</div>
+						<div>
+							<a class="upload-btn" href="/nongra/seller/profile">기본 이미지로 변경</a>
+						</div>
+					</div>
+				</div>
+			</form>
+
 				<div class="content">
 					<div>
 						<label id="title">판매자 개인정보</label>
@@ -163,5 +253,14 @@ input:focus {outline: none;}
 			</div>
 		</main>
 	</div>
+	<script>
+		function checkProfile(){
+			const profile = document.querySelector("input[type=file]");
+			if(!profile.value){
+				alert("프로필 사진을 등록후 업로드 해주세요.");
+				return false;
+			}
+		}
+	</script>
 </body>
 </html>

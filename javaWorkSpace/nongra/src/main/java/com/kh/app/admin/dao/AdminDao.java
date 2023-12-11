@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.kh.app.admin.vo.AdminVo;
 import com.kh.app.member.vo.MemberVo;
 import com.kh.app.page.vo.PageVo;
 import com.kh.app.seller.vo.SellerVo;
@@ -735,7 +736,7 @@ public class AdminDao {
 	public List<SellerVo> acceptQuitRequest(Connection conn, PageVo pvo) throws Exception {
 		
 		// 쿼리문 
-				String sql = "SELECT * FROM ( SELECT ROWNUM RNUM , A.* FROM ( SELECT * FROM SELLER S JOIN MEMBER M ON (S.MEMBER_NO = M.MEMBER_NO) WHERE REQUEST_QUIT_YN = 'Y' AND PERMIT_YN = 'Y' ORDER BY S.SELLER_NO ) A ) WHERE RNUM BETWEEN ? AND ?";
+				String sql = "SELECT * FROM ( SELECT ROWNUM RNUM , A.* FROM ( SELECT * FROM SELLER S JOIN MEMBER M ON (S.MEMBER_NO = M.MEMBER_NO) WHERE REQUEST_QUIT_YN = 'Y' AND QUIT_YN = 'N' AND PERMIT_YN = 'Y' ORDER BY S.SELLER_NO ) A ) WHERE RNUM BETWEEN ? AND ?";
 				
 				// pstmt 
 				PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -846,5 +847,31 @@ public class AdminDao {
 		JDBCTemplate.close(pstmt);
 		
 		return result;
+	}
+
+	public AdminVo login(Connection conn, AdminVo vo) throws Exception {
+		
+		String sql = "SELECT * FROM ADMIN WHERE ID = ? AND PWD = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, vo.getAdminId());
+		pstmt.setString(2, vo.getAdminPwd());
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		AdminVo loginAdmin = null;
+		if(rs.next()) {
+			loginAdmin = new AdminVo(); 
+			loginAdmin.setManagerNo(rs.getString("MANAGER_NO"));
+			loginAdmin.setAdminId(rs.getString("ID"));
+			loginAdmin.setAdminPwd(rs.getString("PAW"));
+			loginAdmin.setAdminNick(rs.getString("NICK"));
+			
+		}
+		
+		JDBCTemplate.close(pstmt);
+		JDBCTemplate.close(rs);
+		
+		return loginAdmin;
+		
 	}
 }

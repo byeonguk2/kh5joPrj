@@ -24,87 +24,183 @@
 		grid-template-columns: 230px 8fr;
 		padding-top: 145px;
 	}
-	form{ß
-		display: grid;
-		grid-template-columns: 1fr;
-	}
-	thead > tr {
-		height: 50px;
-	}
-	.form_above{
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-	}ß
-	.select_search_area{
-		padding: 50px;
-	}
-	.select_div{
-		display: grid;
-		width: 350px;
-		grid-template-columns: 1fr 1fr 1fr 1fr;
-		margin: 10px 0px 10px 0px;
-	}
-	.search_div{
-		display: grid;
-		width: 375px;
-		grid-template-columns: 1fr 1fr 1.5fr 0.5fr; 
-		margin: 10px 0px 10px 0px;
-	} 
-	select {
-		margin-right: 20px;
-	}
-	.table-area {
-		display: flex;
-		justify-content: center;
-	}
-	table{
-		width: 90%;
-	}
-	tr{
-		display: grid;
-		grid-template-columns: 1fr 1fr 2fr 2fr 2fr 2fr 3fr 4fr;
-		align-items: center;
-		border-top: none;
-		border-bottom: 1px solid black;
-		height: 80px;
-	}
-	td {
-		text-align: center;
-		line-height: 40px;
-	}
-	thead > tr {
-		border-top: 1px solid black;
-		border-bottom: 1px solid black;
-	}
-	.btn-paging{
-		display: flex;
-		justify-content: space-between;
-	}
-    .ben-btn{
-        width: 90px;
+	main {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+/*     margin-top: 50px; */
+}
+
+.select_div{
+	display: flex;
+}
+
+.search_div {
+    display: flex;
+    gap: 20px;
+}
+
+/* 테이블 생성 */
+.table-area {
+    display: flex;
+    justify-content: center;
+}
+
+table {
+	margin: auto;
+    border: 1px #a39485 solid;
+    font-size: .9em;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    width: 80%;
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+th {
+    text-align: center;
+}
+
+thead {
+    font-weight: bold;
+    color: #fff;
+    background: #73685d;
+}
+
+td, th {
+    padding: 1em .5em;
+    vertical-align: middle;
+}
+
+td {
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    background: #fff;
+    text-align: center;
+}
+
+td > input{
+	width: 100%;
+	height: 100%;
+	border: none;
+	text-align: center;
+}
+
+a {
+    color: #73685d;
+}
+
+@media all and (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
     }
-    .paging-btn-area{
-    	display: grid;
-    	grid-template-columns: 1fr 2fr 1fr;
+
+    th {
+        text-align: right;
     }
-    .paging-btn{
-    	display: flex;
-		height: 80px;
-		align-items: center;
-		justify-content: center;
-		gap: 20px;
+
+    table {
+        position: relative; 
+        padding-bottom: 0;
+        border: none;
+        box-shadow: 0 0 10px rgba(0,0,0,.2);
     }
-	.paging-btn{
-		font-size: 30px;
-	}
-	.paging-btn > button{
-		width: 60px;
-		height: 30px;
-	}
+
+    thead {
+        float: left;
+        white-space: nowrap;
+    }
+
+    tbody {
+        overflow-x: auto;
+        overflow-y: hidden;
+        position: relative;
+        white-space: nowrap;
+    }
+
+    tr {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    th {
+        border-bottom: 1px solid #a39485;
+    }
+
+    td {
+        border-bottom: 1px solid #e5e5e5;
+    }
+}
+.btn-paging {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ben-btn {
+    width: 90px;
+}
+
+.paging-btn-area {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.paging-btn {
+    display: flex;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 30px;
+}
+
+.paging-btn > button {
+    width: 60px;
+    height: 30px;
+}
+
+.ben-btn {
+    width: 90px;
+}
+
+.paging-btn-area {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.paging-btn {
+    display: flex;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 17px;
+}
+
+.paging-btn > button {
+    width: 60px;
+    height: 30px;
+}
 	
 	/* 모달창 */
 	/* 여기다가 display none 주시면 됩니다 */
 	.modal {
+		display: none;
+		position:fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background: rgba(0,0,0,0.3);
+ 		z-index: 2; 
+	}
+	.modal2 {
 		display: none;
 		position:fixed;
 		left: 0;
@@ -140,110 +236,19 @@
 		font-size: 30px;
 		cursor: pointer;
 	}
-	.modal_table{
-		display: grid;
-		grid-template-rows: 60px 60px 60px 60px 60px 60px;
-		width: 800px;
+	.modal_area > button{
+		width: 100px;
+		height: 50px;
 		margin: auto;
-		margin-top: 50px
-	}
-	.modal-table-area{
-		display: flex;
-	}
-	.modal-table-title{
-		width: 200px;
-		border:1px solid black;
-		text-align: center;
-		line-height: 60px
-	}
-	.modal-table-cotent{
-		width: 100%;
-		border:1px solid black;
-		padding-left: 30px;
-		line-height: 60px
-	}
-	.modal-img1{
-		margin: auto;
-		width: 600px;
-		height: 600px;
-		background-size: cover;
-	}
-	.modal-img2{
-		margin: auto;
-		width: 600px;
-		height: 600px;
-		background-size: cover;
-	}
-	/*  */
-	.modal2 {
-		display: none;
-		position:fixed;
-		left: 0;
-		right: 0;
-		top: 0;
-		bottom: 0;
-		background: rgba(0,0,0,0.3);
- 		z-index: 2; 
-	}
-	/* 여기안에서 작업하면되고 */
-	.dialog {
-		width: 80vw;
-		height: 80vh;
-		border-radius: 1em;
-		background: white;
-		overflow:auto;
-		margin: auto;
-	}
-	.modal_up2{
-		display: flex;
 	}
 	.modal_area2{
 		display: grid;
-		grid-template-rows: 60px 80px 800px 100px;
-	}.modal_down2{
-		display: grid;
-		grid-template-columns: 1fr 30px;
-		padding: 20px 20px 0px 20px;
+		grid-template-rows: 60px 80px 600px 100px;
 	}
-	.modal_down_btn{
-		border: none;
-    	background-color: white;
-		font-size: 30px;
-		cursor: pointer;
-	}
-	.modal_table{
-		display: grid;
-	/* 	grid-template-rows: 60px 60px 60px 60px 60px 60px; */
-		width: 800px;
+	.modal_area2 > button{
+		width: 100px;
+		height: 50px;
 		margin: auto;
-		margin-top: 50px
-	}
-	.modal-table-area{
-		display: flex;
-	}
-	.modal-table-title{
-		width: 200px;
-		border:1px solid black;
-		text-align: center;
-		line-height: 60px
-	}
-	.modal-table-cotent{
-		width: 100%;
-		border:1px solid black;
-		padding-left: 30px;
-		line-height: 60px
-	}
-	.modal-img1{
-		margin: auto;
-		width: 600px;
-		height: 600px;
-		background-size: cover;
-	}
-	.modal-img2{
-		margin: auto;
-		width: 600px;
-		height: 600px;
-		background-size: cover;
 	}
 </style>
 </head>
@@ -254,26 +259,23 @@
 			<%@ include file="/WEB-INF/views/common/aside/aside_admin.jsp" %>
 			<main>
 				<form action="/nongra/admin/searchMember">
+					<h2>회원조회/수정</h2>
 					<div class="select_search_area">
-						<h2>회원조회/수정</h2>
-						<div class="select_div">
-							<span>• 회원조회</span>
-								<input name="searchPageName" type="hidden" value="select">
-								<div><input name="memberType" type="radio" value="Y" checked="true">판매자</div>
-								<div><input name="memberType" type="radio" value="N">소비자</div>
-						</div>
 						<div class="search_div">
-							<span>• 회원검색</span>
 							<select name="option">
 								<option name="option" value="MEMBER_NO">번호</option>
 								<option name="option" value="NICK">닉네임</option>
 								<option name="option" value="ID">아이디</option>
-								<input type="text" name="searchValue">
-								<button>검색</button>
 							</select>
+							<div class="select_div">
+								<input name="searchPageName" type="hidden" value="select">
+								<div><input name="memberType" type="radio" value="Y" checked="true">판매자</div>
+								<div><input name="memberType" type="radio" value="N">소비자</div>
+							</div>
+							<input type="text" name="searchValue">
+							<button>검색</button>
 						</div>
 					</div>
-					<div></div>
 				</form>
 				<div class="table-area">
 					<table>
@@ -333,8 +335,9 @@
 		</div>
 	</div>
 	</div>
+	<!-- 판매자 정보 수정 -->
 	<form action="/nongra/admin/modify" method="post"> 
-	<div class="modal">
+		<div class="modal">
 				<div class="dialog">
 					<div class="modal_area">
 						<div class="modal_down">
@@ -342,167 +345,233 @@
 							<button class="modal_down_btn" type="button" onclick="downModal()">x</button>
 						</div>	
 						<h1 style="text-align: center;">사업자 정보</h1>
-						<div>
-							<div class="modal_table">
-								<div class="modal-table-area">
-									<input type="hidden" class="memberNo" name="memberNo" value="">
-									<input type="hidden" name="sellerYn" class="sellerYn1" value="">
-									<div class="modal-table-title">사업자 번호</div>
-									<input name="businessNo" class="modal-table-cotent mtc1" />
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">사업형태</div>
-									<input name="businessForm" class="modal-table-cotent mtc2"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">사업장명</div>
-									<input name="busineesName" class="modal-table-cotent mtc3"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">사업자 전화번호</div>
-									<input name="phone" class="modal-table-cotent mtc4"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">우편번호</div>
-									<input name="busineesZipCode" class="modal-table-cotent mtc5"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">사업장 주소</div>
-									<input name="address" class="modal-table-cotent mtc6"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">상세주소</div>
-									<input name="detailAddress" class="modal-table-cotent mtc7"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">법인명</div>
-									<input name="corporationName" class="modal-table-cotent mtc8"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">업태</div>
-									<input name="uptae" class="modal-table-cotent mtc9"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">업종</div>
-									<input name="upjong" class="modal-table-cotent mtc10"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">통신판매업신고번호</div>
-									<input name="reportNumber" class="modal-table-cotent mtc11"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">은행</div>
-									<input  name="bank"class="modal-table-cotent mtc12"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">입금자명</div>
-									<input name="depositor" class="modal-table-cotent mtc13"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">입금계좌</div>
-									<input name="account" class="modal-table-cotent mtc14"/>
-								</div>
-								<div class="modal-table-area">
-									<input type="hidden" value="">
-									<div class="modal-table-title">아이디</div>
-									<input name="id" class="modal-table-cotent mtc15" />
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">패스워드</div>
-									<input name="password" class="modal-table-cotent mtc16"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">닉네임</div>
-									<input name="nick" class="modal-table-cotent mtc17"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">이름</div>
-									<input name="name" class="modal-table-cotent mtc18"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">이메일 </div>
-									<input name="email" class="modal-table-cotent mtc19"/>
-								</div>
-							</div>
-						</div>
-						<div class="modal-table-area">
-							<button>요청허가</button>
-						</div>
+						<table>
+							<thead>
+							<tr>
+								<th>First Name</th>
+								<th colspan="4">Last Name</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>사업자 번호</td>
+								<td colspan="4">
+									<input class="memberNo" type="hidden" name="memberNo" value="">
+									<input class="sellerYn1" type="hidden" name="sellerYn" value="">
+									<input name="businessNo" class="mtc1"/>
+								</td>
+							</tr>
+							<tr>
+								<td>사업형태</td>
+								<td colspan="4">
+									<input name="businessForm" class="mtc2"/>
+								</td>
+							</tr>
+							<tr>
+								<td>사업장명</td>
+								<td colspan="4">
+									<input name="busineesName" class="mtc3"/>
+								</td>
+							</tr>
+							<tr>
+								<td>전화번호</td>
+								<td colspan="4">
+									<input name="phone" class="mtc4"/>
+								</td>
+							</tr>
+							<tr>
+								<td>우편번호</td>
+								<td colspan="4">
+									<input name="busineesZipCode" class="mtc5"/>
+								</td>
+							</tr>
+
+							<tr>
+								<td>사업장 주소</td>
+								<td  colspan="4">
+									<input name="address" class="mtc6"/>
+								</td>
+							</tr>
+							<tr>
+								<td>상세주소</td>
+								<td colspan="4">
+									<input name="businessNo" class="mtc7"/>
+								</td>
+							</tr>
+							<tr>
+								<td>법인명</td>
+								<td colspan="4">
+									<input name="detailAddress" class="mtc8"/>
+								</td>
+							</tr>
+							<tr>
+								<td>업태</td>
+								<td colspan="4">
+									<input name="uptae" class="mtc9"/>
+								</td>
+							</tr>
+							<tr>
+								<td>업종</td>
+								<td  colspan="4">
+									<input name="upjong" class="mtc10"/>
+								</td>
+							</tr>
+							<tr>
+								<td>통신판매업번호</td>
+								<td  colspan="4">
+									<input name="reportNumber" class="mtc11"/>
+								</td>
+							</tr>
+							<tr>
+								<td>은행명</td>
+								<td colspan="4">
+									<input name="bank" class="mtc12"/>
+								</td>
+							</tr>
+							<tr>
+								<td>입금자명</td>
+								<td colspan="4">
+									<input name="depositor" class="mtc13"/>
+								</td>
+							</tr>
+							<tr>
+								<td>계좌번호</td>
+								<td colspan="4">
+									<input name="account" class="mtc14"/>
+								</td>
+							</tr>
+							<tr>
+								<td>아이디</td>
+								<td colspan="4">
+									<input name="id" class="mtc15"/>
+								</td>
+							</tr>
+							<tr>
+								<td>패스워드</td>
+								<td colspan="4">
+									<input name="password" class="mtc16"/>
+								</td>
+							</tr>
+							<tr>
+								<td>닉네임</td>
+								<td colspan="4">
+									<input name="nick" class="mtc17"/>
+								</td>
+							</tr>
+							<tr>
+								<td>이름</td>
+								<td colspan="4">
+									<input name="name" class="mtc18"/>
+								</td>
+							</tr>
+							<tr>
+								<td>이메일</td>
+								<td colspan="4">
+									<input name="email" class="mtc19"/>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+						<button>수정하기</button>
 					</div>
 				</div>
 			</div>
-			</form>
-			
-			<form action="/nongra/admin/modify" method="post">
-			<div class="modal2">
+		</form>
+	
+	<!-- 소비자 정보 수정 -->
+	<form action="/nongra/admin/modify" method="post"> 
+		<div class="modal2">
 				<div class="dialog">
-					<div class="modal_area">
+					<div class="modal_area2">
 						<div class="modal_down">
 							<div></div>
 							<button class="modal_down_btn" type="button" onclick="downModal2()">x</button>
 						</div>	
 						<h1 style="text-align: center;">사업자 정보</h1>
-						<div>
-							<div class="modal_table">
-								<div class="modal-table-area">
-									<input type="hidden" class="memberNo2" name="memberNo" value="">
-									<input type="hidden" class="sellerYn2" name="sellerYn" value="">
-									<div class="modal-table-title">아이디</div>
-									<input name="id" class="modal-table-cotent mtc2-1" />
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">패스워드</div>
-									<input name="password" class="modal-table-cotent mtc2-2"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">닉네임</div>
-									<input name="nick" class="modal-table-cotent mtc2-3"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">이름 </div>
-									<input name="name" class="modal-table-cotent mtc2-4"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">이메일 </div>
-									<input name="email" class="modal-table-cotent mtc2-5"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">전화번호 </div>
-									<input name="phone" class="modal-table-cotent mtc2-6"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">생년월일 </div>
-									<input name="birthDay" class="modal-table-cotent mtc2-7"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">잔액 </div>
-									<input name="point" class="modal-table-cotent mtc2-8"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">주소 </div>
-									<input name="address" class="modal-table-cotent mtc2-9"/>
-								</div>
-								<div class="modal-table-area">
-									<div class="modal-table-title">상세주소 </div>
-									<input name="detailAddress" class="modal-table-cotent mtc2-10"/>
-								</div>
-								</div>
-							</div>
-						</div>
-						<div class="modal-table-area">
-							<button>요청허가</button>
-						</div>
+						<table>
+							<thead>
+							<tr>
+								<th>First Name</th>
+								<th colspan="4">Last Name</th>
+							</tr>
+							</thead>
+							<tbody>
+								<input class="memberNo2" type="hidden" name="memberNo" value="">
+								<input class="sellerYn2" type="hidden" name="sellerYn" value="">
+								<td>아이디</td>
+								<td colspan="4">
+									<input name="id" class="mtc2-1"/>
+								</td>
+							</tr>
+							<tr>
+								<td>패스워드</td>
+								<td colspan="4">
+									<input name="password" class="mtc2-2"/>
+								</td>
+							</tr>
+							<tr>
+								<td>닉네임</td>
+								<td colspan="4">
+									<input name="nick" class="mtc2-3"/>
+								</td>
+							</tr>
+							<tr>
+								<td>이름</td>
+								<td colspan="4">
+									<input name="name" class="mtc2-4"/>
+								</td>
+							</tr>
+							<tr>
+								<td>이메일</td>
+								<td colspan="4">
+									<input name="email" class="mtc2-5"/>
+								</td>
+							</tr>
+							<tr>
+								<td>전화번호</td>
+								<td colspan="4">
+									<input name="phone" class="mtc2-6"/>
+								</td>
+							</tr>
+							<tr>
+								<td>생년월일</td>
+								<td colspan="4">
+									<input name="birthDay" class="mtc2-7"/>
+								</td>
+							</tr>
+							<tr>
+								<td>포인트</td>
+								<td colspan="4">
+									<input name="point" class="mtc2-8"/>
+								</td>
+							</tr>
+							<tr>
+								<td>주소</td>
+								<td colspan="4">
+									<input name="address" class="mtc2-9"/>
+								</td>
+							</tr>
+							<tr>
+								<td>상세주소</td>
+								<td colspan="4">
+									<input name="detailAddress" class="mtc2-10"/>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+						<button>수정하기</button>
 					</div>
 				</div>
-				</form>
 			</div>
-			
+		</form>
+	
 	<script>
 		function createAsideLetter(){
 		const x = document.querySelector(".aside-item > label");
 		const menu1 = document.querySelector(" aside > :nth-child(2) > a ");
 		const menu2 = document.querySelector(" aside > :nth-child(3) > a ");
 		const menu3 = document.querySelector(" aside > :nth-child(4) > a ");
+		const menu4 = document.querySelector(" aside > :nth-child(5) > a ");
 		x.innerHTML = "회원관리";
 		menu1.innerHTML = "회원 조회/수정";
 		menu1.href = "/nongra/admin/select";
@@ -510,6 +579,8 @@
 		menu2.href = "/nongra/admin/memberBen";
 		menu3.innerHTML = "사업자 허가 여부";
 		menu3.href = "/nongra/admin/request";
+		menu4.innerHTML = "탈퇴 요청 허가 여부";
+		menu4.href = "/nongra/admin/acceptQuit";
 		}
 		createAsideLetter()
 		
@@ -517,6 +588,7 @@
 			console.log(yn);
 				const modal = document.querySelector(".modal");
 				const modal2 = document.querySelector(".modal2");
+				console.log(modal2);
 				console.log(x);
 				fetch('/nongra/admin/checkAllMembers?no='+x)
 				.then((response)=>{
@@ -549,7 +621,7 @@
 						
 					}else{
 						console.log(yn);
-						modal2.classList.toggle("modal_up2");
+						modal2.classList.toggle("modal_up");
 						document.querySelector(".mtc2-1").value = data.id;
 						document.querySelector(".mtc2-2").value = data.password;
 						document.querySelector(".mtc2-3").value = data.nick;
@@ -572,8 +644,8 @@
 				modal.classList.toggle("modal_up");
 			}
 			function downModal2() {
-				const modal = document.querySelector(".modal2");
-				modal.classList.toggle("modal_up2");
+				const modal2 = document.querySelector(".modal2");
+				modal2.classList.toggle("modal_up");
 			}
 			
 			<% if(alert != null){ %>

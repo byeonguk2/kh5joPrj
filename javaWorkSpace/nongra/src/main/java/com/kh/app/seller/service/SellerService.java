@@ -164,4 +164,24 @@ public class SellerService {
 		
 	}
 
+	public int ChangeProfile(String profilePath, SellerVo loginSeller) throws Exception {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao 호출 
+		SellerDao dao = new SellerDao();
+		int result = dao.ChangeProfile(profilePath,loginSeller,conn);
+
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+			
+		// connection close 
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
 }

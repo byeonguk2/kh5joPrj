@@ -299,7 +299,7 @@ p{
 			const refundStatus = document.querySelector(".refundStatus");
 
 			// 환불상태 체크 
-			if(orderStatusCheck.innerText === '환불신청 중 0건'){
+			if(refundStatusCheck.innerText === '환불신청 중 0건'){
 				refundStatus.innerHTML = "충족";
 			}else{
 				refundStatus.innerHTML = "불충족";
@@ -311,7 +311,7 @@ p{
 			const productStatus = document.querySelector(".productStatus");
 
 			// 상품상태 체크 
-			if(productStatusCheck.innerText === '환불신청 중 0건'){
+			if(productStatusCheck.innerText === '판매 중인 상품 0개'){
 				productStatus.innerHTML = "충족";
 			}else{
 				productStatus.innerHTML = "불충족";

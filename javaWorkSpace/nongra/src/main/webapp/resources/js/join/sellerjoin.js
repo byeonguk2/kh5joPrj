@@ -7,17 +7,33 @@ function checkAll(){
 	         for(var i=0;i<3;i++) document.getElementsByName("checkBox")[i].checked=false;  
 	      }
 	}
-const idInput = document.querySelectorAll(".css-gaqliy");
+const input = document.querySelectorAll(".css-gaqliy");
 const idCheck = document.querySelectorAll(".css-16yppgg");
 
+const input2 = document.querySelectorAll(".input-nick");
+const nickCheck = document.querySelectorAll(".checkNick");
+
 // 입력시 중복체크 버튼 활성화
-idInput[0].addEventListener("keyup",()=>{
-   const x = idInput[0].value.length;
+input[0].addEventListener("keyup",()=>{
+   const x = input[0].value.length;
+   console.log(x);
    if(x !== 0){
 		idCheck[0].disabled = false;
 		return;
 	}
 	idCheck[0].disabled = true;
+})
+
+// 입력시 중복체크 버튼 활성화
+input2[0].addEventListener("keyup",()=>{
+	console.log("나옴")
+   const x = input2[0].value.length;
+   console.log(x);
+   if(x !== 0){
+		nickCheck[0].disabled = false;
+		return;
+	}
+	nickCheck[0].disabled = true;
 })
 
 // 회원가입 유효성 검사
@@ -128,6 +144,10 @@ function join(){
 		alert("아이디 중복 검사를 진행해주세요.");
 		return false;
 	}
+	if(!form.nick.readOnly){
+		alert("닉네임 중복 검사를 진행해주세요.");
+		return false;
+	}
 	
 	const allCkbox= document.querySelectorAll("input[name=checkBox]");
 	for(var i=0; i<=allCkbox.length; i++){
@@ -144,6 +164,40 @@ function join(){
 document.querySelector('input[name=id]').addEventListener("click", function(){
 	form.id.readOnly = false;
 })
+
+// 닉네임 체크
+function checkNick(){
+	var xhr = new XMLHttpRequest();
+	const from = document.querySelector("#form");
+	
+	if(from.nick.value.length < 1){
+		document.querySelector("#nickGuide").innerHTML = '닉네임이 짧습니다.';
+		return false;
+	}
+	
+	xhr.open("GET", "/nongra/seller/nickCheck?nick="+document.querySelector("input[name=nick]").value, true);
+	// 요청을 보내줌
+	xhr.send();
+	
+	console.log(from.nick.value);
+	//요청에 대한 응답이오면 실행되는 함수
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200){
+			xhr.responseText.trim()
+			console.log(xhr.responseText);
+
+			document.getElementById("nickGuide").innerHTML = xhr.responseText.trim();
+
+			if(xhr.responseText === "사용가능한 닉네임 입니다."){
+				form.nick.readOnly = true;
+				form.checkbtn2.disabled = true;
+			}else {
+				form.nick.value = "";
+			}
+
+		}
+	}
+}
 
 function checkId(){
 	var xhr = new XMLHttpRequest();
