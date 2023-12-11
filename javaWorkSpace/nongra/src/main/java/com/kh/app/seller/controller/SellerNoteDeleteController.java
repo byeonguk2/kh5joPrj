@@ -22,11 +22,11 @@ public class SellerNoteDeleteController extends HttpServlet{
 			SellerVo sv = (SellerVo)session.getAttribute("loginSeller");
 			String noteNo = req.getParameter("noteNo");
 			SellerNoteService sns = new SellerNoteService();
-			int result = sns.noteDelete(sv.getMemberNo() , noteNo);
-			if(result != 1) {
-				throw new Exception("삭제 중 오류 발생");
-			}
-			resp.sendRedirect("/nongra/seller/note/send");
+//			int result = sns.noteDelete(sv.getMemberNo() , noteNo);
+//			if(result != 1) {
+//				throw new Exception("삭제 중 오류 발생");
+//			}
+//			resp.sendRedirect("/nongra/seller/note/send");
 			
 		}catch(Exception e) {
 			e.printStackTrace();
