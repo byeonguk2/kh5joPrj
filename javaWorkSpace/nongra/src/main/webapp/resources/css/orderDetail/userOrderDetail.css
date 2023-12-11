@@ -1,0 +1,569 @@
+
+/* 모달창 구매확정 */
+.modal-sure {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position:fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.3);
+}
+
+.modal-sure-hiddnen {
+    display: none;
+}
+
+
+.dialog-sure {
+    min-height: 200px;
+	width: 400px;
+	padding: 2em;
+	border-radius: 1em;
+	background: white;
+    display: flex;
+    flex-direction: column;
+
+    
+}
+
+.dialog-sure-btn{
+    display: flex;
+    justify-content: flex-end;
+} 
+
+.dialog-sure span:nth-child(2){
+    font-size: 14px;
+    color : rgb(153, 153, 153)
+}
+
+
+.dialog-sure span:nth-child(3){
+    text-align: center;
+    font-size: 20px;
+    color : black;
+    padding: 1rem;
+}
+.modal-sure-btn-box{
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    align-items: center;
+    gap: 10x
+    
+}
+
+.btn-sure{
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    background-color: gray;
+    color: white;
+}
+.btn-quit{
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 30px;
+    background-color: gray;
+    color:white;
+}
+
+/* 모달창 답변작성 */
+.modal-review {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position:fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.3);
+
+}
+
+.dialog-review {
+    min-height: 740px;
+	width: 740px;
+	padding: 2em;
+	border-radius: 1em;
+	background: white;
+    display: flex;
+    flex-direction: column;
+
+    
+}
+.dialog-review-header{
+    font-size: 14;
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.dialog-review-header >h2{
+    margin: 0px;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    flex: 0 0 auto;
+    padding: 0px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -0.5px;
+    color: rgb(51, 51, 51);
+}
+.dialog-review-img-box{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    border-top: 1px solid rgba(97, 92, 92, 0.614);
+    padding: 16px;
+    
+}
+.dialog-review-img-box img{
+   
+    border: 1px solid black;
+    width: 72px;
+    height: 72px;
+
+}
+
+.dialog-review-img-exemple{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    border-top: 1px solid rgba(97, 92, 92, 0.614);
+}
+
+.dialog-review-img-exemple >h2{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    color: rgb(51, 51, 51);
+}
+
+.dialog-review-img-exemple > p{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: rgb(128, 128, 128);
+    white-space: pre-line;
+    margin-top: 6px;
+}
+
+.dialog-review-img-exemple-span{
+    color: rgb(216, 183, 100);
+    font-weight: 500;
+}
+
+.dialog-review-img-exemple-picture{
+    display: flex;
+    gap: 30px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-top: 17px;}
+
+
+ .dialog-review-img-exemple-picture-box{
+    display: flex;
+    flex-direction: column;
+
+ }   
+
+.dialog-review-img-exemple-img {
+    
+    width: 100px;
+    height: 100px;
+}
+
+.dialog-review-img-exemple-picture-box p {
+    text-align: center;
+    white-space: pre-line;
+    padding-top: 6px;
+    font-size: 12px;
+    line-height: 16px;
+    color: rgb(153, 153, 153);
+  
+}
+
+.dialog-review-content-box{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: rgb(153, 153, 153);
+    display: flex;
+    padding: 16px;
+
+    width: 637px;
+    height: 221px;
+}
+.dialog-review-content-box >div{
+    padding: 14px;
+    width: 70px;
+}
+
+.dialog-review-content-box textarea{
+    width: 640px;
+    height: 170px;
+    padding: 15px 16px;
+    font-size: 16px;
+    line-height: 21px;
+    word-break: break-all;
+    z-index: 1;
+    background: none;
+    border-radius: 4px;
+    color: rgb(51, 51, 51);
+    resize: none;
+    border: 0.5px solid rgb(51, 51, 51);
+    
+}
+.text-area-box span{
+    text-align: center;
+
+}
+
+.dialog-review-content-picture-input-box{
+    display: flex;
+    gap :20px
+}
+
+.dialog-review-content-picture-input-btn{
+    width: 72px;
+    height: 72px; 
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#my-input{
+    display: none;
+}
+
+.dialog-review-caution{
+    display: flex;
+    gap: 20px;
+    padding-top: 16px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: rgb(153, 153, 153);
+}
+.dialog-review-caution-label{
+    position: relative;
+    flex-shrink: 0;
+    width: 70px;
+    padding-top: 12px;
+    line-height: 19px;
+    color: rgb(51, 51, 51);
+}
+
+.dialog-review-caution-ul{
+    padding-left: 6px;
+    font-weight: 400;
+    font-size: 14px;
+    color: rgb(153, 153, 153);
+    line-height: 21px;
+    list-style-type: none;
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.dialog-review-caution-li{
+    font-weight: 400;
+    font-size: 14px;
+    color: rgb(153, 153, 153);
+    line-height: 21px;
+}
+
+.dialog-review-caution-secret{
+    display: flex;
+    gap: 20px;
+    padding-top: 16px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: rgb(153, 153, 153);
+    border-bottom: 1px solid  rgb(153, 153, 153);;
+    padding: 1rem;
+}
+
+.dialog-review-button-end-box{
+ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    gap: 10px;
+  
+}
+
+.dialog-review-button-end-box button:nth-child(1){
+    -webkit-appearance: button;
+    cursor: pointer;
+    width: 160px;
+    height: 56px;
+    padding: 0px 10px;
+    text-align: center;
+    letter-spacing: 0px;
+    border-radius: 3px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    margin-top: 14px;
+    border: 1px solid rgb(221, 221, 221);
+    background-color: white;
+    color: rgb(0, 0, 0);
+}
+
+
+.dialog-review-button-end-box button:nth-child(2){
+    -webkit-appearance: button;
+    cursor: pointer;
+    width: 160px;
+    height: 56px;
+    padding: 0px 10px;
+    text-align: center;
+    letter-spacing: 0px;
+    border-radius: 3px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    margin-top: 14px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(221, 221, 221);
+    border: none;
+}
+
+.modal-review-hidden{
+    display: none;
+}
+
+
+
+.ul, li{
+    list-style: none;
+}
+.user-order-section{
+    width: 1010px;
+   
+}
+.user-order-ul1{
+    display: list-item;
+    text-align: -webkit-match-parent;
+    color: #999;
+    padding-bottom: 40px;
+}
+
+.order-table-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    padding: 40px;
+    font-size: 24px;
+    font-weight: 500;
+    color: #333;
+          
+}
+.thead-order{
+    height: 58px;
+    border-top:1px solid rgb(51, 51, 51) ;
+    border-bottom: 1px solid rgb(51, 51, 51);
+}
+
+.thead-order > tr > th    {      vertical-align: middle;
+    font-weight: 1000;
+    letter-spacing: -0.5px;
+    color: rgb(51, 51, 51);}
+.tbody-order > tr td{
+    padding: 5px;
+}
+
+.tbody-order-box {
+    display: flex;
+}
+
+.tbody-order-box > a > img {
+    display: inline-block;
+    width: 96px;
+    height: 96px;
+}
+
+.tbody-order-box >ul {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    gap: 10px;
+    padding-inline-start: 10px;
+    justify-content: center;
+    
+}
+.order-store-name >a{
+    text-decoration: none;
+    font-size: 14px;
+    color:  #999;
+   
+
+}
+.order-item-name > a{
+    text-decoration: none;
+    font-size: 14px;
+    color: #333333
+
+}
+.order-date-td {
+    height: 70px;
+    padding: 10px;
+    box-sizing: border-box;
+   
+    text-align: center;
+    vertical-align: middle;
+    word-break: break-all;
+    font-size: 14px;
+    color: #333333
+}
+
+.order-number-td{
+    height: 70px;
+    padding: 10px;
+    box-sizing: border-box;
+   
+    text-align: center;
+    vertical-align: middle;
+    word-break: break-all;
+    font-size: 14px;
+    color: #333333
+}
+.oredr-tr{
+    border-bottom: 1px solid#999;
+}
+
+.order-price-td {
+    height: 70px;
+    padding: 10px;
+    box-sizing: border-box;
+   
+    text-align: center;
+    vertical-align: middle;
+    word-break: break-all;
+    font-size: 14px;
+    
+    color: #333333
+}
+.order-price-td > span {
+    margin: 10px;
+    color: #999;
+    line-height: 1.5;
+}
+
+.order-btn-td{
+    text-align: center;
+    vertical-align: middle;
+}
+.order-buy-sure-before {
+    display: inline-block;
+    margin: 2px;
+    border: none;
+    padding: 10px;
+    width: 120px;
+    background-color: rgba(136, 84, 28, 0.928);
+    color: #ffffff;
+}
+
+.order-review-before{
+    display: inline-block;
+    margin: 2px;
+    border: none;
+    padding: 10px;
+    width: 120px;
+    background-color: rgba(136, 84, 28, 0.928);
+    color: #ffffff;
+}
+
+.order-buy-sure-before:hover{background-color: rgb(43, 226, 183);
+cursor: pointer;}
+
+.order-review-before:hover{background-color: rgb(43, 226, 183); cursor: pointer;}
+
+
+
+
+
+.order-buy-sure-after{
+    display: inline-block;
+    margin: 2px;
+    border: none;
+    padding: 10px;
+    width: 120px;
+    
+    color : 333333
+}
+
+.order-review-after{
+    display: inline-block;
+    margin: 2px;
+    border: none;
+    padding: 10px;
+    width: 120px;
+   
+    color: 333333;
+}
+
+.inquery-paging-area{
+    position: relative;
+    width: 100%;
+    height: 44px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.inquery-paging-area > div button:nth-child(1){
+    width: 44px;
+    height: 44px;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: url(/images/inqeury/paging-prev-activated.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+.inquery-paging-area > div button:nth-child(2){
+    width: 44px;
+    height: 44px;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: url(/images/inqeury/paging-next-activated.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+

@@ -63,7 +63,9 @@ public class MemberMangeReviewController extends HttpServlet{
 			List<ReviewVo> ReviewVoList = rs.memberReviewLookUp(pvo,"1");
 			
 			for (ReviewVo reviewVo : ReviewVoList) {
-				System.out.println(reviewVo.getReviewFileVolist());
+				System.out.println("하이");
+				System.out.println(reviewVo.getCorporationName());
+				
 			}
 		
 			

@@ -47,11 +47,14 @@ public class SellerManageReviewController extends HttpServlet {
 			PageVo pvo =  new PageVo(listCount, currentPage, pageLimit, boardLimit);
 			
 			
+			
 		
 			//service
 //			List<ReviewVo> ReviewVoList = rs.sellerReviewLookUp(pvo,sellerVo.getSellerNo());
 			
 			List<ReviewVo> ReviewVoList = rs.sellerReviewLookUp(pvo,"1");
+			
+		
 			
 			
 			// result (==view)
