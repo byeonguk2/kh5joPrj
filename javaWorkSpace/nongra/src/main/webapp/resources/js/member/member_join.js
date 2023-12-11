@@ -219,7 +219,7 @@ function checkMsg3(){
      document.getElementById("passMsg_re").innerHTML = "비밀번호를 일치합니다.";
      return false;
  }else{
-     document.getElementById("passMsg_re").innerHTML = "";
+     document.getElementById("passMsg_re").innerHTML = "비밀번호가 일치하지 않습니다.";
      return false;
  }
 }

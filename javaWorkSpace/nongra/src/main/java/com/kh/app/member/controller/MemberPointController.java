@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 public class MemberPointController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+//		<%= pointVo.get%>
+		
 		req.getRequestDispatcher("/WEB-INF/views/member/point.jsp").forward(req, resp);
 	}
 }

@@ -35,11 +35,13 @@ public class MemberDeleteController extends HttpServlet	 {
 				HttpSession session=req.getSession();
 				session.setAttribute("alertMsg", "회원탈퇴 성공");
 				resp.sendRedirect("/nongra/home");
+			}else {
+				throw new Exception();
 			}
 		} catch (Exception e) {
 			System.out.println("[ERROR-M004]로그인중 문제 발생.");
 			e.printStackTrace();
-			req.setAttribute("alertMsg", "로그인 실패.,.");
+			req.setAttribute("alertMsg", "회원탈퇴 실패.,.");
 			resp.sendRedirect("/nongra/member/delete");
 		}
 	}
