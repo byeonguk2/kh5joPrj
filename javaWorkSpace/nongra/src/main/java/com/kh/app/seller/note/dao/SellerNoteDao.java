@@ -196,5 +196,29 @@ public class SellerNoteDao {
 		
 		return result;
 	}
+	// 보낸 쪽지 삭제
+	public int sendNoteDelete(Connection conn, SellerNoteVo noteVo) throws Exception{
+		String sql = "UPDATE NOTE SET FROM_DEL_YN = 'Y' WHERE FROM_NO = ? AND NOTE_NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, noteVo.getFromNo());
+		pstmt.setString(2, noteVo.getNoteNo());
+		int result = pstmt.executeUpdate();
+		
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
+	// 받은 쪽지 삭제
+	public int reciveNoteDelete(Connection conn, SellerNoteVo noteVo) throws Exception{
+		String sql = "UPDATE NOTE SET FROM_DEL_YN = 'Y' WHERE TO_NO = ? AND NOTE_NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, noteVo.getToNo());
+		pstmt.setString(2, noteVo.getNoteNo());
+		int result = pstmt.executeUpdate();
+		
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
 
 }

@@ -123,33 +123,7 @@
     
                 </nav>
                 <div id="category-dropdown">
-                    <ul id="category1-dropdown">카테고리 1
-                        <li> 
-                            <a href="#">소분류 1-1</a>
-                        </li>
-                        <li>
-                            <a href="#">소분류 1-2</a>
-                        </li>
-                        <li>
-                            <a href="#">소분류 1-3</a>
-                        </li>
-                    </ul> 
-                    <ul id="category2-dropdown">카테고리 2
-                        <li>
-                            <a href="#">소분류 2-1</a>
-                        </li>
-                        <li>
-                            <a href="#">소분류 2-2</a>
-                        </li>
-                    </ul> 
-                    <ul id="category3-dropdown">카테고리 3
-                        <li>
-                            <a href="#">소분류 3-1</a>
-                        </li>
-                        <li>
-                            <a href="#">소분류 3-2</a>
-                        </li>
-                    </ul>
+
                 </div>
                 
             </header>
@@ -161,12 +135,48 @@
 		<%if(alertMsg != null) {%>
 			alert("<%= alertMsg %>");
 		<% } %>
+
+        function categoryOneList(categoryDropdown){
+            fetch("/nongra/category/oneList")
+            .then( (resp) => {return resp.json();})
+            .then( (data) => {
+                for(let i = 0; i < data.length; ++i){
+                    const ulTag = document.createElement('ul');
+                    ulTag.innerHTML = data[i].category;
+                    ulTag.id = "category" + [i+1] +"-dropdown";
+                    categoryTwoList(data[i].categoryNo , ulTag);
+                    categoryDropdown.appendChild(ulTag);
+                }
+            })
+            .catch( (error) => {
+                console.error("카테고리 에러발생" , error);
+            })
+        }
+
+        function categoryTwoList(categoryNo , ulTag){
+            fetch("/nongra/category/twoList?no="+ categoryNo)
+            .then( ( resp ) => {return resp.json();})
+            .then( ( data => {
+                for (let i = 0; i < data.length; ++i) {
+                    const liTag = document.createElement('li');
+                    const aTag = document.createElement('a');
+                    aTag.innerHTML = data[i].category;
+                    aTag.href = "/nongra/sales/details?categoryNo=" + data[i].categoryNo;
+                    ulTag.appendChild(liTag);
+                    liTag.appendChild(aTag);
+                    }
+                ulTag.addEventListener('click', function () {
+                    toggleSubcategories(ulTag);
+                });    
+            }))
+        }
 		
         document.addEventListener('DOMContentLoaded', function () {
-            var menuIcon = document.querySelector('#menu-icon');
-            var categoryDropdown = document.querySelector('#category-dropdown');
-
+            const menuIcon = document.querySelector('#menu-icon');
+            const categoryDropdown = document.querySelector('#category-dropdown');
+            categoryOneList(categoryDropdown);
             menuIcon.addEventListener('click', function () {
+                
                 if (categoryDropdown.style.display === 'block') {
                     categoryDropdown.style.display = 'none';
                 } else {
@@ -174,27 +184,17 @@
                 }
             });
 
-            document.querySelector('#category1-dropdown').addEventListener('click', function () {
-                toggleSubcategories('#category1-dropdown');
-            });
 
-            document.querySelector('#category2-dropdown').addEventListener('click', function () {
-                toggleSubcategories('#category2-dropdown');
-            });
-
-            document.querySelector('#category3-dropdown').addEventListener('click', function () {
-                toggleSubcategories('#category3-dropdown');
-            });
         });
 
-        function toggleSubcategories(categoryId) {
-            var selectedCategory = document.querySelectorAll(categoryId + ' li');
+        function toggleSubcategories(ulTag) {
+            const liTags = ulTag.querySelectorAll('li');
 
-            selectedCategory.forEach(function (item) {
-                if (item.style.display === 'none' || item.style.display === '') {
-                    item.style.display = 'block';
+            liTags.forEach((liTag) => {
+                if (liTag.style.display === 'none' || liTag.style.display === '') {
+                    liTag.style.display = 'block';
                 } else {
-                    item.style.display = 'none';
+                    liTag.style.display = 'none';
                 }
             });
         }

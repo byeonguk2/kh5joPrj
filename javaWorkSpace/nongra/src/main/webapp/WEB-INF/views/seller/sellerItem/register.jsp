@@ -5,14 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- include libraries(jQuery, bootstrap) -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<!-- include summernote css/js -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 <style>
 
@@ -133,19 +126,19 @@
 							<button type="button" name="category2" onclick="openPopUp2();">카테고리2</button>
 						</div>
 						<button type="button" name="option" onclick="openPopUp3();">상품옵션</button>
-						<input type="file" accept="image/*">
+						<input type="file" name="thumbnail" accept="image/*">썸네일이미지
 					
 					</div>
 					<div></div>
-					<div class="container">
-						<textarea class="summernote" name="editordata"></textarea>   
+					<div>
+						<input type="file" name="content" accept="image/*" multiple="multiple">상품내용이미지
 						
 					</div>
 
 
 					<div></div>
 					<div class="submit">
-						<input type="submit" value="제출">
+						<input type="submit" value="다음">
 					</div>
 				</form>
 		</main>
@@ -198,23 +191,6 @@
 	}
 
 
-$('.summernote').summernote({
-	height : 300,
-	  toolbar: [
-		    // [groupName, [list of button]]
-		    ['fontname', ['fontname']],
-		    ['fontsize', ['fontsize']],
-		    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
-		    ['color', ['forecolor','color']],
-		    ['table', ['table']],
-		    ['para', ['ul', 'ol', 'paragraph']],
-		    ['height', ['height']],
-		    ['insert',['picture','link','video']],
-		    ['view', ['fullscreen', 'help']]
-		  ],
-		fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
-		fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
-});
 	</script>
 </body>
 </html>

@@ -114,6 +114,31 @@ public class SellerNoteService {
 		return cnt;
 		
 	}
+	// 보낸 쪽지 삭제
+	public int sendNoteDelete(SellerNoteVo noteVo) throws Exception{
+		Connection conn = JDBCTemplate.getConnection();
+		SellerNoteDao dao = new SellerNoteDao();
+		int result = dao.sendNoteDelete(conn , noteVo);
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		return result;
+	}
+	public int reciveNoteDelete(SellerNoteVo noteVo) throws Exception{
+		Connection conn = JDBCTemplate.getConnection();
+		SellerNoteDao dao = new SellerNoteDao();
+		int result = dao.reciveNoteDelete(conn , noteVo);
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		return result;
+	}
 
 	
 	
