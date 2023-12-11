@@ -202,3 +202,6 @@ p {
 .btn_menu_cs{
     height: 150px;
 }
+.hidden_post_no {
+    display: none;
+}
