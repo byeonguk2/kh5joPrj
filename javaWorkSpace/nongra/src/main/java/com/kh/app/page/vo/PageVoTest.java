@@ -12,6 +12,7 @@ public class PageVoTest {
 	private int startRow; 		// 조회할 첫번재 행 번호 (ROWNUM)
 	private int lastRow; 		// 조회할 마지막 행 번호 (ROWNUM)
 
+
 	public PageVoTest(int totalPostCnt, int initialPostCnt, int additionalPostCnt, int requestedPageCnt) {
 		super();
 		this.totalPostCnt = totalPostCnt;
@@ -20,11 +21,18 @@ public class PageVoTest {
 		this.maxPage = (int) Math.ceil((double)((totalPostCnt - initialPostCnt) / additionalPostCnt)) + 1 ;
 		if(requestedPageCnt == 0) {
 			this.startRow = 1;
+			this.lastRow = initialPostCnt;
 		} else {
 			this.startRow = initialPostCnt + additionalPostCnt * requestedPageCnt + 1;
+			this.lastRow = startRow + additionalPostCnt - 1;
 		}
 		
-		this.lastRow = startRow + additionalPostCnt - 1;
+	}
+
+	public PageVoTest(int totalPostCnt, int initialPostCnt) {
+		super();
+		this.totalPostCnt = totalPostCnt;
+		this.initialPostCnt = initialPostCnt;
 	}
 
 	public int getTotalPostCnt() {

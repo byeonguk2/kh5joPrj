@@ -1,6 +1,7 @@
 package com.kh.app.board.contact.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,16 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.kh.app.board.contact.service.NoticeService;
 import com.kh.app.board.contact.vo.NoticeVo;
 import com.kh.app.member.vo.MemberVo;
-import com.kh.app.page.vo.PageVo;
 import com.kh.app.page.vo.PageVoTest;
 
-//**** 공지 목록 조회 
-//판매자 -> 판매자 공지를 보여주고, 소비자 또는 로그인 안한 상태 -> 소비자 공지를 보여줄 것 
-@WebServlet("/contact/notice")
-public class NoticeListController extends HttpServlet {
+@WebServlet("/contact/notice/ask")
+public class FaqMoreListController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
@@ -34,26 +33,26 @@ public class NoticeListController extends HttpServlet {
 				}
 			}
 			NoticeService ns = new NoticeService();
-
 			int totalNoticeCnt = ns.selectNoticeCount(readPermissionNo); 
 			int initialPostCnt = 10;
 			int additionalPostCnt = 5;
-			int requestedPageCnt = 0;
+			String requestedPageCnt_ = req.getParameter("requestedPageCnt");
+			if(requestedPageCnt_ == null) {
+				requestedPageCnt_ = "1";
+			}
+			int requestedPageCnt = Integer.parseInt(requestedPageCnt_);
 			PageVoTest pvo = new PageVoTest(totalNoticeCnt, initialPostCnt, additionalPostCnt, requestedPageCnt);
 
-			List<NoticeVo> noticeVoList = ns.selectNoticeList(readPermissionNo, pvo);
-			req.setAttribute("noticeVoList", noticeVoList);
-			req.setAttribute("pvo", pvo);    
-			req.getRequestDispatcher("/WEB-INF/views/board/contact/notice/notice_list.jsp").forward(req, resp);
+			List<NoticeVo> addedVoList = ns.selectNoticeList(readPermissionNo, pvo);
+			Gson gson = new Gson();
+			System.out.println(addedVoList.size());
+			String str = gson.toJson(addedVoList);
+			resp.setCharacterEncoding("UTF-8"); // 필터에 걸리나? 노필요?
+			PrintWriter out = resp.getWriter();
+			out.write(str);
 		}catch (Exception e) {
-			System.out.println("[ERROR-N001] 공지사항 목록조회 중 에러 발생");
 			e.printStackTrace();
-			req.setAttribute("errorMsg", "공지사항 조회 실패");
-			req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);
+			System.out.println("[ERROR-N002] 공지사항 추가조회 에러");
 		}
 	}
 }
-
-//			if(req.getAttribute("requestedPageCnt") !=  null) {              // 먼가 조건식 구린데 함 생각 더 해보기 
-//				requestedPageCnt = (int) req.getAttribute("requestedPageCnt"); //타입 int로 받는거 확정 ㅇㅇ??
-//			}

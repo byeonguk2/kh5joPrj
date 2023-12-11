@@ -24,4 +24,7 @@ public class NoticeService {
 		JDBCTemplate.close(conn);
 		return noticeVoList;
 	}
+	
+	
+
 }
