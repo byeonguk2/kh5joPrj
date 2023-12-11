@@ -63,32 +63,10 @@
                         <div class="post_detail"><p><%=vo.getContent() %></p></div>
                     </li>
                 <% } %>
-                
-                <%-- <c:forEach items="${noticeVoList}" var="vo">
-                    <div class="post change_cursor">
-                        <div class="post_title_emphasized"> ${vo.title} </div>
-                        <c:set var="formattedDate" value='<fmt:formatDate value="${vo.enrollDate}" pattern="yyyy.MM.dd"/>' />
-                        <div class="post_date"> ${formattedDate} </div>
-                        <script>
-                            var enrollDate = "${vo.enrollDate}"; 
-                            var formattedDate = "${formattedDate}"; 
-                        </script>
-                        <div class="post_date"> ${vo.enrollDate} </div>
-                        <span class="open_arrow">
-                            <svg class="svg1" width="24" height="24" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: rgb(136, 136, 136);"><path fill="#888888" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg>
-                        </span>
-                    </div>
-                    <div class="post_detail"><p>${vo.content}</p>
-                    </div>
-                    </c:forEach>         
-                 --%>
-
-                <div class="add_list" onclick="getMoreList">더보기
-                    <svg class="svg2" width="14" height="14" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: #754327;"><path fill="#754327" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg><path fill="#0051f5" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path>
-                </div>
-
-
             </ul>
+            <div class="add_list" onclick="askMoreList()">더보기
+                <svg class="svg2" width="14" height="14" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: #754327;"><path fill="#754327" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg><path fill="#0051f5" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path>
+            </div>
         </div>
 
     </main>
