@@ -63,12 +63,8 @@ public class AdminManageReviewController extends HttpServlet {
 			System.out.println("리뷰 관리자 페이지 에러");
 			session.setAttribute("alertMsg", "리뷰 관리자 페이지 실패");
 			req.getRequestDispatcher("/WEB-INF/views/common/note/result.jsp").forward(req, resp);
-		}
-		
-		
-		
+		}	
 	}
-	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

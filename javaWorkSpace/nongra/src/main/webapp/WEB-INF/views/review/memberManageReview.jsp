@@ -81,10 +81,10 @@
                      </p>
                      
                      <div class="reivew-picture-box">
-                     <c:forEach items="${vo.reviewFileVolist}" var="vo">
-                     <c:if test="${not empty vo.reviewFielSrc}">
-                     <img src="${vo.reviewFielSrc}" alt="리뷰사진" class="review0">
-                     <div class="div-reviewFileNo" style= "display : none"> "${vo.reviewFileNo}" </div>
+                     <c:forEach items="${vo.reviewFileVolist}" var="vo1">
+                     <c:if test="${not empty vo1.reviewFielSrc}">
+                     <img src="${vo1.reviewFielSrc}" alt="리뷰사진" class="review0">
+                     <div class="div-reviewFileNo" style= "display : none"> "${vo1.reviewFileNo}" </div>
                      </c:if>
                      </c:forEach>
                      </div>
@@ -115,10 +115,10 @@
                  </div>
              </div>
          
-             <div class="owner-reply-box2 owner-reply-box3" > 
+             <div class="owner-reply-box2 owner-reply-box4" > 
          
                  <div class="owner-reply-box2-title">
-                     <span>[${vo.corporationName}]</span>
+                    <h1>[${vo.corporationName}]</h1> 
                  </div>
          
                  <div class="owner-reply-box2-content">
