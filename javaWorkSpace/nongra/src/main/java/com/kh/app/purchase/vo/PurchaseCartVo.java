@@ -80,5 +80,7 @@ public class PurchaseCartVo {
 		this.seller = seller;
 	}
 
+
+	
 	
 }

@@ -12,7 +12,7 @@
 		<%@	include file="/WEB-INF/views/common/header/header_sobi.jsp" %>
         <main>
 			<div id="order-complete-area">
-				<div class="check-icon-area"><div class="check-icon"><img src="https://cdn-icons.flaticon.com/svg/3917/3917749.svg?token=exp=1701244334~hmac=ba855cb9a88a9ee2cec4b9163273e58d" alt=""></div></div>
+				<div class="check-icon-area"><div class="check-icon"><img src="/nongra/resources/img/purchase/icon-check.png" alt=""></div></div>
 	            <div class="order-text">닉네임님의 주문이 완료되었습니다.</div>
 	            <div class="price-area">
 	                <span>결제금액</span>

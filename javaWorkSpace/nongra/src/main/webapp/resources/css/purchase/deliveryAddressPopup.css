@@ -3,7 +3,6 @@
     width: 520px;
     height: 360px;
     padding: 3%;
-    background-color: aquamarine;
     display: flex;
     justify-content: center;
     align-items: start;
@@ -33,6 +32,9 @@ table{
     border-collapse: collapse;
    	margin-top: 10px;
 }
+.address-no{
+    font-size: 0px;
+}
 
 /* 선택 이미지 */
 .button{
@@ -47,23 +49,33 @@ table{
     background-color: white;
 }
 thead{
+    background-color: #7544271a;
 	height: 35px;
 	font-size: 20px;
 }
 tbody > tr{
 	margin-top: 5px;
-	background-color: blue;
 }
-tbody > tr > th:nth-child(1){
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: red;
+tbody > tr > td div{
+    padding: 3px;
+    margin-left: 15px;
+}
+.default{
+    background-color: rgb(238, 238, 238);
+    width: 70px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: lightslategray;
+    font-weight: 500;
+    font-size: 13px;
 }
 .img{
     width: 13px;
     height: 13px;
     filter: invert(28%) sepia(11%) saturate(2793%) hue-rotate(337deg) brightness(93%) contrast(87%);
+    cursor: pointer;
 }
 .button-checked{
     background-color: #754327;
@@ -72,9 +84,34 @@ tbody > tr > th:nth-child(1){
     filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(295deg) brightness(107%) contrast(102%);
 }
 
+
 /* 수정버튼 */
 .edit-button{
     background-color: white;
     border: none;
+    cursor: pointer;
+}
+
+/* 새 배송지 추가 */
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#addAddress{
+    background-color: #7544272c;
+    border-radius: 3px;
+    width: 95%;
+    height: 40px;
+    position: fixed;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: lightslategray;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
 }
 
