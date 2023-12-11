@@ -22,7 +22,7 @@ public class AdminLoginController extends HttpServlet{
 		try {
 			String id = req.getParameter("id");
 			String password = req.getParameter("password");
-			
+			 
 			AdminVo vo = new AdminVo();
 			vo.setAdminId(id);
 			vo.setAdminPwd(password);
