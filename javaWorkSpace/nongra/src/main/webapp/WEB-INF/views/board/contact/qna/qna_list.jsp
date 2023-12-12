@@ -63,8 +63,11 @@
             <div class="count_result">
                 <div>
                     전체
-                    <!-- 작성된 문의 건수 노출 -->
-                    <strong>3 </strong>
+                    <% if(qnaMemberVoList.size() == 0){ %>
+                    <strong><%=0 %> </strong>
+                    <% }else{ %>
+                    <strong><%=qnaMemberVoList.size() %> </strong>
+                    <% } %>
                     건
                 </div>
             </div>

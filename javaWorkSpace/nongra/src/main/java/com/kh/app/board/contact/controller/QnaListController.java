@@ -2,6 +2,7 @@ package com.kh.app.board.contact.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,20 +23,23 @@ public class QnaListController extends HttpServlet {
 		try {
 			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
 			if(loginMember == null) {
-				req.setAttribute("alertMsg", "로그인 후 사용가능합니다.");
+				req.getSession().setAttribute("alertMsg", "로그인 후 사용가능합니다.");
 				resp.sendRedirect("/nongra/member/login");
-			}			
-			String userNo = loginMember.getNo();
-			QnaService qs = new QnaService();
-			if(loginMember.getSellerYn().equals("Y")) {
-				List<QnaSellerVo> qnaVoList = qs.getQnaSellerList(userNo);
-				req.setAttribute("qnaVoList", qnaVoList);
-			} else {
-				List<QnaMemberVo> qnaVoList = qs.getQnaMemberList(userNo);
-				req.setAttribute("qnaVoList", qnaVoList);
+			}else {
+				String userNo = loginMember.getNo();
+				QnaService qs = new QnaService();
+				if(loginMember.getSellerYn().equals("Y")) {
+					
+					List<QnaSellerVo> qnaVoList = qs.getQnaSellerList(userNo);
+					req.setAttribute("qnaVoList", qnaVoList);
+				} else {
+					List<QnaMemberVo> qnaVoList = qs.getQnaMemberList(userNo);
+					req.setAttribute("qnaVoList", qnaVoList);
+				}
+				req.getRequestDispatcher("/WEB-INF/views/board/contact/qna/qna_list.jsp").forward(req, resp);
+				
+				
 			}
-			req.getRequestDispatcher("/WEB-INF/views/board/contact/qna/qna_list.jsp").forward(req, resp);
-			
 		}catch (Exception e) {
 			e.printStackTrace();
 			req.setAttribute("errorMsg", "1:1문의 화면 불러오기 실패");
