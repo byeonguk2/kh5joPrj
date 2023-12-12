@@ -288,6 +288,57 @@ public class PurchaseDao {
 		return point;
 	}
 
+	//마이페이지 수정할 배송지 가져오기
+	public PurchaseAddressVo takeAddress(Connection conn, String addressNo) throws Exception {
+		//sql
+		String sql = "SELECT * FROM ADDRESS WHERE NO = ? AND DEL_YN = 'N'";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, addressNo);
+		ResultSet rs = pstmt.executeQuery();
+				
+		//rs
+		PurchaseAddressVo addressVo = null;
+		if(rs.next()) {
+			String no = rs.getString("NO");
+			String address = rs.getString("ADDRESS");
+			String name = rs.getString("NAME");
+			String phone = rs.getString("PHONE");
+			String delYn = rs.getString("DEL_YN");
+			String defaultAddress = rs.getString("DEFAULT_ADDRESS");
+			
+			addressVo = new PurchaseAddressVo();
+			addressVo.setNo(no);
+			addressVo.setAddress(address);
+			addressVo.setName(name);
+			addressVo.setPhone(phone);
+			addressVo.setDelYn(delYn);
+			addressVo.setDefaultAddress(defaultAddress);
+		}
+		
+		//close
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		
+		return addressVo;
+	}
+
+	//마이페이지 수정된 배송지 DB에 넣기
+	public int updateAddress(Connection conn, PurchaseAddressVo addressVo) throws Exception {
+		//sql
+		String sql = "UPDATE ADDRESS SET NAME = ?, PHONE = ?, DEFAULT_ADDRESS = ? WHERE NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, addressVo.getName());
+		pstmt.setString(2, addressVo.getPhone());
+		pstmt.setString(3, addressVo.getDefaultAddress());
+		pstmt.setString(4, addressVo.getNo());
+		int result = pstmt.executeUpdate();
+		
+		//close
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
+
 
 
 
