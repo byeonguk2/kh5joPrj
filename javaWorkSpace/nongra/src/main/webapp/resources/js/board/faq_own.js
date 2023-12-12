@@ -1,26 +1,37 @@
+
+
+let currentPageCategory;
+let previousCateNo;
+
 // 더보기 버튼 클릭 시 호출될 함수
 function takeFaqCateNo() {
     // 현재 활성화된 FAQ 탭의 인덱스를 가져오기
     const activeTab = document.querySelector('.btn_faq_tab.on');
-    const cateNo = Array.from(document.querySelectorAll('.btn_faq_tab')).indexOf(activeTab) + 1;
+    const newCateNo = Array.from(document.querySelectorAll('.btn_faq_tab')).indexOf(activeTab) + 1;
+
+    // 이전에 받아온 cateNo와 새로 클릭한 cateNo 비교
+    if (newCateNo !== previousCateNo) {
+        currentPage = 1; // currentPage 초기화
+        currentPageCategory = newCateNo;
+        previousCateNo = newCateNo; // 이전에 받아온 cateNo 업데이트
+    }
 
     // 더보기 버튼 클릭 시 함수 호출
-    askFaqMoreList(cateNo);
+    askFaqMoreList(newCateNo);
 }
 
-
-//더보기 버튼
-
-function askFaqMoreList(cateNo){
-    let currentPage = 1;
+// 더보기 버튼과 관련된 함수
+function askFaqMoreList(cateNo) {
+    currentPage = currentPage || 1; // currentPage가 없으면 1로 초기화
 
     fetch("/nongra/contact/faq/ask?cateNo=" + cateNo + "&pno=" + currentPage)
-    .then((resp) => {return resp.json(); })
-    .then((data) => {
-        setFaqMoreList(data);
-        currentPage++;
-     })
+        .then((resp) => { return resp.json(); })
+        .then((data) => {
+            setFaqMoreList(data);
+            currentPage++;
+        });
 }
+
 function setFaqMoreList(data) {
     const addedVoList = data;
     console.log(addedVoList);

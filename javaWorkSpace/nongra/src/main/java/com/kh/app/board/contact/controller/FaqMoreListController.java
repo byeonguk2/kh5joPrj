@@ -38,9 +38,13 @@ public class FaqMoreListController extends HttpServlet{
 			int totalNoticeCnt = fs.selectFaqCount(readPermissionNo, cateNo); 
 			int initialPostCnt = 10;
 			int additionalPostCnt = 5;
-		
-			int requestedPageCnt = Integer.parseInt(req.getParameter("pno"));
+			String requestedPageCnt_ = req.getParameter("pno");
+			if(requestedPageCnt_ == null) {
+				requestedPageCnt_ = "1";
+			}
+			int requestedPageCnt = Integer.parseInt(requestedPageCnt_);
 			PageVoTest pvo = new PageVoTest(totalNoticeCnt, initialPostCnt, additionalPostCnt, requestedPageCnt);
+			System.out.println("requestedPageCnt : " + requestedPageCnt + ", startRow:" + pvo.getStartRow() + ", lastRow:" + pvo.getLastRow());
 
 			List<FaqVo> addedVoList = fs.selectFaqList(readPermissionNo, cateNo, pvo);
 			Gson gson = new Gson();

@@ -59,9 +59,17 @@ public class NoticeDao {
 			nvo.setTopDisplay(topDisplay);
 			
 			noticeVoList.add(nvo);
+
 		}
 		JDBCTemplate.close(rs);
 		JDBCTemplate.close(pstmt);
+		
+		for(int i = 0; i < noticeVoList.size(); i++) {
+			System.out.println(noticeVoList.get(i));
+			
+	
+			
+		}
 		return noticeVoList;
 	}
 
