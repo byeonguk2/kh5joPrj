@@ -10,12 +10,18 @@ public class FaqVo {
 	private String modifyDate;
 	private String openYn;
 	private String readPermission;
+	
+	private String categoryName;
+	
+	private String writerId;
+	private String writerNick;
 	public FaqVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public FaqVo(String faqNo, String categoryId, String writerNo, String title, String content, String enrollDate,
-			String modifyDate, String openYn, String readPermission) {
+			String modifyDate, String openYn, String readPermission, String categoryName, String writerId,
+			String writerNick) {
 		super();
 		this.faqNo = faqNo;
 		this.categoryId = categoryId;
@@ -26,6 +32,9 @@ public class FaqVo {
 		this.modifyDate = modifyDate;
 		this.openYn = openYn;
 		this.readPermission = readPermission;
+		this.categoryName = categoryName;
+		this.writerId = writerId;
+		this.writerNick = writerNick;
 	}
 	public String getFaqNo() {
 		return faqNo;
@@ -81,12 +90,33 @@ public class FaqVo {
 	public void setReadPermission(String readPermission) {
 		this.readPermission = readPermission;
 	}
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+	public String getWriterId() {
+		return writerId;
+	}
+	public void setWriterId(String writerId) {
+		this.writerId = writerId;
+	}
+	public String getWriterNick() {
+		return writerNick;
+	}
+	public void setWriterNick(String writerNick) {
+		this.writerNick = writerNick;
+	}
 	@Override
 	public String toString() {
 		return "FaqVo [faqNo=" + faqNo + ", categoryId=" + categoryId + ", writerNo=" + writerNo + ", title=" + title
 				+ ", content=" + content + ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate + ", openYn="
-				+ openYn + ", readPermission=" + readPermission + "]";
+				+ openYn + ", readPermission=" + readPermission + ", categoryName=" + categoryName + ", writerId="
+				+ writerId + ", writerNick=" + writerNick + "]";
 	}
+	
+	
 	
 	
 	

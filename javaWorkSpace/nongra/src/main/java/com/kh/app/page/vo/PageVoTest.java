@@ -17,13 +17,13 @@ public class PageVoTest {
 		super();
 		this.totalPostCnt = totalPostCnt;
 		this.initialPostCnt = initialPostCnt;
-		this.additionalPostCnt = additionalPostCnt;  // 할일 : 디비 추가하면 증가시킬것
+		this.additionalPostCnt = additionalPostCnt;  
 		this.maxPage = (int) Math.ceil((double)((totalPostCnt - initialPostCnt) / additionalPostCnt)) + 1 ;
 		if(requestedPageCnt == 0) {
 			this.startRow = 1;
 			this.lastRow = initialPostCnt;
 		} else {
-			this.startRow = initialPostCnt + additionalPostCnt * requestedPageCnt + 1;
+			this.startRow = initialPostCnt + additionalPostCnt * (requestedPageCnt - 1) + 1;
 			this.lastRow = startRow + additionalPostCnt - 1;
 		}
 		

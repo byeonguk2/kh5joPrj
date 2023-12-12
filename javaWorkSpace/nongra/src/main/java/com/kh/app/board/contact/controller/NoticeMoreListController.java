@@ -11,14 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.kh.app.board.contact.service.FaqService;
-import com.kh.app.board.contact.vo.FaqVo;
+import com.kh.app.board.contact.service.NoticeService;
+import com.kh.app.board.contact.vo.NoticeVo;
 import com.kh.app.member.vo.MemberVo;
 import com.kh.app.page.vo.PageVoTest;
 
-
-@WebServlet("/contact/faq/ask")
-public class FaqMoreListController extends HttpServlet{
+@WebServlet("/contact/notice/ask")
+public class NoticeMoreListController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
@@ -33,25 +32,27 @@ public class FaqMoreListController extends HttpServlet{
 					readPermissionNo = "2";
 				}
 			}
-			FaqService fs = new FaqService();
-			String cateNo = req.getParameter("cateNo");
-			int totalNoticeCnt = fs.selectFaqCount(readPermissionNo, cateNo); 
+			NoticeService ns = new NoticeService();
+			int totalNoticeCnt = ns.selectNoticeCount(readPermissionNo); 
 			int initialPostCnt = 10;
 			int additionalPostCnt = 5;
-		
-			int requestedPageCnt = Integer.parseInt(req.getParameter("pno"));
+			String requestedPageCnt_ = req.getParameter("pno");
+			if(requestedPageCnt_ == null) {
+				requestedPageCnt_ = "1";
+			}
+			int requestedPageCnt = Integer.parseInt(requestedPageCnt_);
 			PageVoTest pvo = new PageVoTest(totalNoticeCnt, initialPostCnt, additionalPostCnt, requestedPageCnt);
 
-			List<FaqVo> addedVoList = fs.selectFaqList(readPermissionNo, cateNo, pvo);
+			List<NoticeVo> addedVoList = ns.selectNoticeList(readPermissionNo, pvo);
 			Gson gson = new Gson();
 			System.out.println(addedVoList.size());
 			String str = gson.toJson(addedVoList);
-			resp.setCharacterEncoding("UTF-8"); 
+			resp.setCharacterEncoding("UTF-8"); // 필터에 걸리나? 노필요?
 			PrintWriter out = resp.getWriter();
 			out.write(str);
 		}catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("[ERROR-F002] FAQ 추가조회 에러");
+			System.out.println("[ERROR-N002] 공지사항 추가조회 에러");
 		}
 	}
 }

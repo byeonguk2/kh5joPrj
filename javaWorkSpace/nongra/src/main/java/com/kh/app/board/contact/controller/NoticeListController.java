@@ -54,6 +54,4 @@ public class NoticeListController extends HttpServlet {
 	}
 }
 
-//			if(req.getAttribute("requestedPageCnt") !=  null) {              // 먼가 조건식 구린데 함 생각 더 해보기 
-//				requestedPageCnt = (int) req.getAttribute("requestedPageCnt"); //타입 int로 받는거 확정 ㅇㅇ??
-//			}
+
