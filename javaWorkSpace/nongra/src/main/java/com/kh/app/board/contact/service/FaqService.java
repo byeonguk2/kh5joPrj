@@ -38,10 +38,10 @@ public class FaqService {
 		return cnt;
 	}
 	// 읽기권한 + 카테고리별 글 목록 조회 
-	public List<FaqVo> searchFaqList(String readPermissionNo, Map<String, String> map, PageVoTest pvo) throws Exception {
+	public List<FaqVo> searchFaqList(String readPermissionNo, Map<String, String> map) throws Exception {
 		Connection conn = JDBCTemplate.getConnection();
 		FaqDao dao = new FaqDao();
-		List<FaqVo> faqVoList = dao.searchFaqList(conn, readPermissionNo, map, pvo);
+		List<FaqVo> faqVoList = dao.searchFaqList(conn, readPermissionNo, map);
 		JDBCTemplate.close(conn);
 		return faqVoList;
 	}

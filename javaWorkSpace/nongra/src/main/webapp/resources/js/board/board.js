@@ -151,19 +151,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // 여기에서 categoryNo를 사용하여 다른 작업 수행
             console.log('Selected cateNo:', cateNo);
+           
             askListbyCateNo(cateNo);
+
         });
     });
 });
 
 //카테고리별 목록조회 
 function askListbyCateNo(cateNo){
-    const pno = 1;
+    const pno = 0;
     fetch("/nongra/contact/faq/ask?cateNo=" + cateNo + "&pno=" + pno)
     .then((resp) => {return resp.json(); })
     .then((data) => {
         setListbyCateNo(data);
         })
+        
 }
 function setListbyCateNo(data) {
     const addedVoList = data;

@@ -37,6 +37,11 @@ public class QnaMemberCateVo {
 		return "QnaMemberCateVo [categoryId=" + categoryId + ", categoryParentId=" + categoryParentId
 				+ ", categoryName=" + categoryName + "]";
 	}
+	public QnaMemberCateVo(String categoryId, String categoryName) {
+		super();
+		this.categoryId = categoryId;
+		this.categoryName = categoryName;
+	}
 	
 	
 }
