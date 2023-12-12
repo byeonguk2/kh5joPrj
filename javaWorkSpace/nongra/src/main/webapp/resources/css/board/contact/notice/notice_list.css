@@ -159,8 +159,9 @@ a {
     fill: rgb(136, 136, 136);
     margin-top: 24px;
     transform: rotate(90deg);
-    width: 24;
-    height: 24;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
 }
 .add_list{
     width: 100%;
