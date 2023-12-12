@@ -9,7 +9,7 @@ main{
 }
 #order-complete-area{
     width: 400px;
-    height: 600px;
+    height: 650px;
     border-radius: 3px;
     border: 1px solid lightgray;
 	margin-top: 100px;
@@ -41,13 +41,15 @@ main{
     justify-content: center;
     height: 100px;
 }
-.price-area{
+.price-area > div{
     height: 40px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     padding-left: 20px;
     padding-right: 20px;
+    font-size: 16px;
 }
 .explanation-area{
     padding-left: 20px;

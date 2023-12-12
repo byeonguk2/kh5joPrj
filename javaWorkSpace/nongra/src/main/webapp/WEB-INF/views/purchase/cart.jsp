@@ -37,7 +37,7 @@
                         </td>
                         <td>
                             <div>
-                                <img src="<%=vo.getGoodsPicture() %>" alt="상품이미지">
+                                <img class="goodsPicture" src="/nongra<%=vo.getGoodsPicture() %>" alt="상품이미지">
                             </div>
                         </td>
                         <td>
