@@ -16,14 +16,23 @@ public class ProductInquiryVo {
 	private String   sellerNo; // 판매자번호
 	private String   itemtitle; //판매글 제목
 	private String   businessName; //가게명
-	private String   userName;  // 유저네임   
+	private String   userName;  // 유저네임
 	
+	private String replyEnrollDate; // 답글 작성시간
+	private String replyUpdateDate; // 답글 업데이트 날짜
+	private String replyDelYn;		// 답글 삭제 여부 		
+	 
 	private ProductInquriyFileVo productInquriyFileVo = new ProductInquriyFileVo();
 	private List<ProductInquriyFileVo> list = new ArrayList<ProductInquriyFileVo>();
 	
+	
+	
+	
+	
 	public ProductInquiryVo(String inquireNo, String consumerNo, String salesNo, String content, String enrollDate,
 			String delYn, String inquireReply, String secretYn, String sellerNo, String itemtitle, String businessName,
-			String userName, ProductInquriyFileVo productInquriyFileVo, List<ProductInquriyFileVo> list) {
+			String userName, String replyEnrollDate, String replyUpdateDate, String replyDelYn,
+			ProductInquriyFileVo productInquriyFileVo, List<ProductInquriyFileVo> list) {
 		super();
 		this.inquireNo = inquireNo;
 		this.consumerNo = consumerNo;
@@ -37,9 +46,13 @@ public class ProductInquiryVo {
 		this.itemtitle = itemtitle;
 		this.businessName = businessName;
 		this.userName = userName;
+		this.replyEnrollDate = replyEnrollDate;
+		this.replyUpdateDate = replyUpdateDate;
+		this.replyDelYn = replyDelYn;
 		this.productInquriyFileVo = productInquriyFileVo;
 		this.list = list;
 	}
+	
 	public ProductInquiryVo() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -117,7 +130,7 @@ public class ProductInquiryVo {
 	public String getUserName() {
 		return userName;
 	}
-	public void setUsername(String userName) {
+	public void setUserName(String userName) {
 		 if (userName.length() == 3) {
 		        this.userName = userName.substring(0,1) + "*" + userName.substring(2);  // 세 글자일 때
 		    } else if (userName.length() == 2) {
@@ -140,14 +153,38 @@ public class ProductInquiryVo {
 	public void setList(List<ProductInquriyFileVo> list) {
 		this.list = list;
 	}
+	public String getReplyEnrollDate() {
+		return replyEnrollDate;
+	}
+	public void setReplyEnrollDate(String replyEnrollDate) {
+		this.replyEnrollDate = replyEnrollDate;
+	}
+	public String getReplyUpdateDate() {
+		return replyUpdateDate;
+	}
+	public void setReplyUpdateDate(String replyUpdateDate) {
+		this.replyUpdateDate = replyUpdateDate;
+	}
+	public String getReplyDelYn() {
+		return replyDelYn;
+	}
+	public void setReplyDelYn(String replyDelYn) {
+		this.replyDelYn = replyDelYn;
+	}
 	@Override
 	public String toString() {
 		return "ProductInquiryVo [inquireNo=" + inquireNo + ", consumerNo=" + consumerNo + ", salesNo=" + salesNo
 				+ ", content=" + content + ", enrollDate=" + enrollDate + ", delYn=" + delYn + ", inquireReply="
 				+ inquireReply + ", secretYn=" + secretYn + ", sellerNo=" + sellerNo + ", itemtitle=" + itemtitle
-				+ ", businessName=" + businessName + ", userName=" + userName + ", productInquriyFileVo="
+				+ ", businessName=" + businessName + ", userName=" + userName + ", replyEnrollDate=" + replyEnrollDate
+				+ ", replyUpdateDate=" + replyUpdateDate + ", replyDelYn=" + replyDelYn + ", productInquriyFileVo="
 				+ productInquriyFileVo + ", list=" + list + "]";
 	}
+	
+	
+	
+	
+	
 	
 	
 	

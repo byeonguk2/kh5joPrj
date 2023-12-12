@@ -94,7 +94,9 @@
 						       <span class="review-date">${vo.updateDate}</span>
 						   </c:otherwise>
 						</c:choose>
-                        
+                        sadasdasd
+                    asdasdasd
+                        asd
                          <button class="review-recommend-btn">
                              <span class="review-b"></span>
                              <span class="review-like">도움돼요 ${vo.likeCnt}</span>
@@ -146,7 +148,23 @@
                      	 		${vo.replyContent} 
                     		 	</p>
                     		 <div class="owner-reply-box2-date-btn">
-                    		 	<span>${vo.replyDate}</span>
+                    		 	
+                    		 	
+                    		 	 <c:choose>
+					    <c:when test="${vo.replyDelYn eq 'Y'}">
+					      
+					       
+                     	 		<span></span> 
+                    		
+					    </c:when>
+					    <c:when test="${empty vo.replyContent}">
+					        	<span></span> 
+					    </c:when>
+					    <c:otherwise>
+                     	 		<span>${vo.replyDate}</span>        		 
+					    </c:otherwise>
+					</c:choose>
+                    		 	
                          
                          		<div>
                          		 <button class="change-btn" >수정</button><span>|</span><button class="delete-btn">삭제</button>

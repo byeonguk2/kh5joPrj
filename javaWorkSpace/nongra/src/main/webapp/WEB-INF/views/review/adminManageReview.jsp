@@ -126,7 +126,24 @@
                      
          
                      <div class="owner-reply-box2-date-btn">
-                         <span>${vo.replyDate}</span> 
+                         
+                     <c:choose>
+					    <c:when test="${vo.replyDelYn eq 'Y'}">
+					       
+                     	 		<span></span> 
+                    		
+					    </c:when>
+					    <c:when test="${empty vo.replyContent}">
+					        	<span></span> 
+					    </c:when>
+					    <c:otherwise>
+                     	 		<span>${vo.replyDate}</span>        		 
+					    </c:otherwise>
+					</c:choose>
+                         
+                         
+                         
+                         
                      </div> 
                  </div>       
              </div>
