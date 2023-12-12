@@ -99,7 +99,7 @@
 		<%@ include file="/WEB-INF/views/common/header/header_seller.jsp" %>
 		<main>
 			<%@ include file="/WEB-INF/views/common/aside/aside_seller.jsp" %>
-			<form class = "content-area">
+			<form class = "content-area" action="/nongra/seller/register" method="post" enctype="multipart/form-data">
 				<h1><span>상품등록</span></h1>
 				<div></div>
 				<div class="text-area">
@@ -126,12 +126,11 @@
 							<button type="button" name="category2" onclick="openPopUp2();">카테고리2</button>
 						</div>
 						<button type="button" name="option" onclick="openPopUp3();">상품옵션</button>
-						<input type="file" name="thumbnail" accept="image/*">썸네일이미지
+						<input type="file" name="part" accept="image/*">썸네일이미지
 					
 					</div>
 					<div></div>
 					<div>
-						<input type="file" name="content" accept="image/*" multiple="multiple">상품내용이미지
 						
 					</div>
 

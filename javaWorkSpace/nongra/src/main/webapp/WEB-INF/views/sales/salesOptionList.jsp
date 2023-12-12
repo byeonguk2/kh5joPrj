@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-        main > form{
+        main {
             display: grid;
             grid-template-columns: 6fr 4fr;
             grid-template-rows: 1fr 5fr 1fr;
@@ -67,35 +67,93 @@
             display: flex;
             justify-content: end;
         }
+
     </style>
 </head>
 <body>
 	<main>
-		<form action="">
-	        <div class="main-top-area">
-	            <div>상품옵션</div>
-	            <button type="submit">등록</button>
-	        </div>
-	        <div class="main-center-left-area">
-	            <div>
-	                <div>옵션을 추가해주세요</div>
-	            </div>
-	        </div>
-	        <div class="main-center-right-area">
-	            <div>
-	                <div>옵션이름</div>
-	                <input type="text" name="optionName" placeholder="욥션을 입력해주세요">
-	            </div>
-	            <div>
-	                <div>가격</div>
-	                <input type="text" name="optionPrice" placeholder="가격을 입력해주세요">
-	            </div>
-	        </div>
-	        <div class="main-bottom-area">
-	            <button>삭제</button>
-	        </div>
-        </form>
+        <div class="main-top-area">
+            <div>상품옵션</div>
+            <div>
+                <button onclick="saveData();">등록</button>
+                <button onclick="complete();">완료</button>
+            </div>
+        </div>
+        <div class="main-center-left-area">
+            <div>
+                <div>옵션을 추가해주세요</div>
+            </div>
+        </div>
+        <div class="main-center-right-area">
+            <div>
+                <div>옵션이름</div>
+                <input type="text" name="optionName" placeholder="욥션을 입력해주세요">
+            </div>
+            <div>
+                <div>가격</div>
+                <input type="number" name="optionPrice" placeholder="가격을 입력해주세요">
+            </div>
+        </div>
+        <div class="main-bottom-area">
+            <button onclick="deleteList();">삭제</button>
+        </div>
     </main>
-	
+	<script>
+		let optionList = [];
+        
+		function saveData() {
+			const optionName = document.querySelector("input[name=optionName]").value;
+			const optionPrice = document.querySelector("input[name=optionPrice]").value;
+            const option = {optionName , optionPrice};
+            const optionArea = document.querySelector(".main-center-left-area > div");
+            const newCheckBox = document.createElement("input");
+            const newDiv = document.createElement('div');
+            newCheckBox.type = "checkbox";
+            newCheckBox.id = "checkBox";
+            const newLabel = document.createElement("label");
+            newLabel.innerHTML = optionName + "(+"+ optionPrice+ "원)";
+            newLabel.setAttribute("for" , "checkBox");
+			optionList.push(option);
+            optionArea.appendChild(newDiv);
+            newDiv.appendChild(newCheckBox);
+            newDiv.appendChild(newLabel);
+            
+		}
+
+        function deleteList() {
+            const checkedCheckboxes = document.querySelectorAll('input[type=checkbox]:checked');
+            checkedCheckboxes.forEach(checkbox => {
+                const div = checkbox.parentElement;
+                if (div) {
+                    div.remove();
+                }
+                const label = checkbox.nextElementSibling;
+                if (label) {
+                    label.remove();
+                }
+                checkbox.remove();
+                const optionName = label.textContent.split('(')[0].trim();
+                const optionIndex = optionList.findIndex(option => option.optionName === optionName);
+                if (optionIndex !== -1) {
+                    optionList.splice(optionIndex, 1);
+                }
+            });
+        }
+
+        function complete() {
+            const data = JSON.stringify(optionList);
+
+            if (window.opener && !window.opener.closed) {
+                if (typeof window.opener.receiveDataFromChild === 'function') {
+                    window.opener.receiveDataFromChild(data);
+                    window.close();
+                } else {
+                    console.error("receiveDataFromChild is not a function in the parent window.");
+                }
+            } else {
+                console.error("Parent window is not available or closed.");
+            }
+        }
+	</script>
 </body>
 </html>

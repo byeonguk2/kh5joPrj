@@ -107,18 +107,24 @@
 		<%@ include file="/WEB-INF/views/common/header/header_seller.jsp" %>
 		<main>
 			<%@ include file="/WEB-INF/views/common/aside/aside_seller.jsp" %>
-			<form class = "content-area" action="/nongra/seller/registerContent" method="post" enctype="multipart/form-data">
+			<form 
+				id="formTag" 
+				class="content-area" 
+				action="/nongra/seller/registerContentaaa" 
+				method="post" 
+				enctype="multipart/form-data"
+			>
 				<h1><span>상품등록</span></h1>
 				<div></div>
 				<div class="text-area">
 					<div>판매글 내용</div>
 					<label id="option-text" for="option">물품 옵션 설정
-						<input type="checkbox" name="option" id="option">
+						<input type="hidden" id="jsonData" name="jsonData" value="khhhhhhhhhhhh">
 					</label>
 				</div>
 					<div class="input-area">
 						<button type="button" name="option" onclick="openPopUp3();">상품옵션</button>
-						<input type="file" name="parts" accept="image/*" multiple="multiple">썸네일이미지
+						<input type="file" name="file" accept="image/*" multiple="multiple">상품설명
 					
 					</div>
 					<div></div>
@@ -136,16 +142,67 @@
 		</main>
 	</div>
 <script>
-
-	document.querySelector('.submit ')
 	
 	function openPopUp3(){
 		let options = "toolbar=no,scrollbars=no,resizable=yes,status=no,menubar=no,width=800, height=800, top=0,left=0";
 		window.open("/nongra/sales/optionList", "상품옵션" , options);			
-		
 	}
 
 
-	</script>
+	function receiveDataFromChild(data) {
+	    try {
+	        const jsonData = JSON.parse(data);
+	        document.querySelector("#jsonData").value = JSON.stringify(jsonData);
+	        console.log(JSON.stringify(jsonData));
+	    } catch (error) {
+	        console.error("Error parsing JSON:", error);
+	    }
+	}
+	
+	
+	const formTag = document.querySelector("#formTag");
+	formTag.addEventListener("submit" , sendData);
+	
+	function sendData(event){
+		
+		event.preventDefault();
+		const formData = new FormData(formTag);
+		
+		fetch("/nongra/seller/registerContent" , {
+			method : "POST",
+			body : formData
+		})
+		.then( ( resp )=> resp.json() )
+		.then( (data) => {
+			
+			
+			alert("성공");
+			
+			
+			
+			console.log(data);
+			
+			
+		} )
+		.catch( (err)=> {
+			console.log(err);
+			alert("실패...");
+		} )
+		;
+	}
+
+
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

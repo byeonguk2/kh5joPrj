@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kh.app.option.vo.OptionVo;
 import com.kh.app.sales.vo.SalesVo;
 import com.kh.app.util.db.JDBCTemplate;
 
@@ -59,9 +60,10 @@ public class SalesDao {
 		
 	}
 	// 상품 등록
-	public int salesRegister(Connection conn, SalesVo vo) throws Exception{
-		String sql = "INSERT INTO SALES_REGISTR(SALES_NO, SELLER_NO, CATEGORY_NO1, CATEGORY_NO2, TITLE, THUMBNAIL, PRICE, STOCK, ORIGIN) VALUES(SEQ_SALES_NO.NEXTVAL, ?, ?, ?, ?,?, ?, ?,?)";
-		PreparedStatement pstmt = conn.prepareStatement(sql);
+	public int salesRegister(Connection conn, SalesVo vo, List<String> fileNameList, List<OptionVo> optionVoList) throws Exception{
+		String salesSql = "INSERT INTO SALES_REGISTR(SALES_NO, SELLER_NO, CATEGORY_NO1, CATEGORY_NO2, TITLE, THUMBNAIL, PRICE, STOCK, ORIGIN) VALUES(SEQ_SALES_NO.NEXTVAL, ?, ?, ?, ?,?, ?, ?,?)";
+		
+		PreparedStatement pstmt = conn.prepareStatement(salesSql);
 		pstmt.setString(1, vo.getSellerNo());
 		pstmt.setString(2, vo.getCategoryNo());
 		pstmt.setString(3, vo.getCategoryNo2());
@@ -73,6 +75,14 @@ public class SalesDao {
 		int result = pstmt.executeUpdate();
 		
 		JDBCTemplate.close(pstmt);
+		
+		String optionSql = "INSERT INTO SALES_OPTION(OPTION_NO, SALES_NO, OPTION_NAME, OPTION_PRICE)VALUES(SEQ_OPTION_NO.NEXTVAL, SEQ_SALES_NO.CURRVAL, ?, ?)";
+		for(OptionVo optionVo : optionVoList) {
+			pstmt = conn.prepareStatement(optionSql);
+		}
+		
+		
+		String fileSql = "INSERT INTO SALES_FILE(FILE_NO, SALES_NO, FILE_NAME)VALUES(SEQ_FILE_NO.NEXTVAL,SEQ_SALES_NO.CURRVAL,?)";
 		
 		return result;
 	}

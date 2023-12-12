@@ -15,13 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-import com.kh.app.sales.service.SalesService;
 import com.kh.app.sales.vo.SalesVo;
 import com.kh.app.seller.vo.SellerVo;
 
 @MultipartConfig(
 		maxFileSize = 1024 * 1024 * 10  ,
-		maxRequestSize = 1024*1024*10 * 5
+		maxRequestSize = 1024 * 1024 * 10 * 5
 )
 
 @WebServlet("/seller/register")
@@ -38,11 +37,9 @@ public class SellerRegisterController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		try {
 			HttpSession session = req.getSession();
 			SellerVo loginSeller = (SellerVo)session.getAttribute("loginSeller");
 			Part part = req.getPart("part");
-			System.out.println(part);
 			
 			InputStream in = part.getInputStream();
 			
@@ -82,20 +79,11 @@ public class SellerRegisterController extends HttpServlet{
 			vo.setFileName(file);
 			vo.setSellerNo(loginSeller.getSellerNo());
 			
-			SalesService ss = new SalesService();
-			int result = ss.salesRegister(vo);
+			session.setAttribute("register", vo);
+			resp.sendRedirect("/nongra/seller/registerContent");
 			
-			if(result != 1) {
-				throw new Exception("상품 등록 디비 다녀온 결과 오류 발생");
-			}
-			resp.sendRedirect("/nongra/sales/optionList");
-			
-		}catch(Exception e){
-			e.printStackTrace();
-			System.out.println("상품 등록중 오류 발생");
 		}
 		
-	}
-	
-	
 }
+	
+	
