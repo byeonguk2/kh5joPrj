@@ -83,10 +83,11 @@ public class FaqDao {
 	//**** 검색창
 	//읽기권한 + 카테고리별 글 수 조회
 		public int searchFaqCount(Connection conn, String readPermissionNo, Map<String, String> map) throws Exception {
-			String sql = "SELECT COUNT(*) AS CNT FROM FAQ WHERE OPEN_YN = 'Y' AND READ_PERMISSION = ? AND " + map.get("searchType") + " LIKE '%' || ? || '%'";
+			String sql = "SELECT COUNT(*) FROM FAQ B JOIN FAQ_CATEGORY C ON C.CATEGORY_ID = B.CATEGORY_ID JOIN MANAGER W ON W.MANAGER_NO = B.WRITER_NO WHERE OPEN_YN = 'Y' AND READ_PERMISSION = ? AND TITLE LIKE '%' || ? ||'%' OR CONTENT LIKE '%' || ? || '%' ORDER BY ENROLL_DATE DESC";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, readPermissionNo);
-			pstmt.setString(2, map.get("searchValue"));
+			pstmt.setString(2, map.get("search"));
+			pstmt.setString(3, map.get("search"));
 			ResultSet rs = pstmt.executeQuery();
 			int cnt = 0;
 			if(rs.next()) {
@@ -98,20 +99,23 @@ public class FaqDao {
 		}
 		
 		// 읽기권한 + 카테고리별 글 목록 조회 
-		public List<FaqVo> searchFaqList(Connection conn, String readPermissionNo, Map<String, String> map, PageVoTest pvo) throws Exception {
-			String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, T.* FROM ( SELECT FAQ_NO , B.CATEGORY_ID , B.WRITER_NO , TITLE , CONTENT , ENROLL_DATE , MODIFY_DATE , OPEN_YN , READ_PERMISSION , ID , NICK , CATEGORY_NAME FROM FAQ B JOIN FAQ_CATEGORY C ON C.CATEGORY_ID = B.CATEGORY_ID JOIN MANAGER W ON W.MANAGER_NO = B.WRITER_NO WHERE OPEN_YN = 'Y' AND READ_PERMISSION = ? AND " + map.get("searchType") + " LIKE '%' || ? || '%'ORDER BY ENROLL_DATE DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
+		public List<FaqVo> searchFaqList(Connection conn, String readPermissionNo, Map<String, String> map) throws Exception {
+			String sql = "SELECT FAQ_NO , B.CATEGORY_ID , B.WRITER_NO , TITLE , CONTENT , ENROLL_DATE , MODIFY_DATE , OPEN_YN , READ_PERMISSION , ID , NICK , CATEGORY_NAME FROM FAQ B JOIN FAQ_CATEGORY C ON C.CATEGORY_ID = B.CATEGORY_ID JOIN MANAGER W ON W.MANAGER_NO = B.WRITER_NO WHERE OPEN_YN = 'Y' AND READ_PERMISSION = ? AND (TITLE LIKE '%' || ? ||'%' OR CONTENT LIKE '%' || ? ||'%') ORDER BY ENROLL_DATE DESC";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, readPermissionNo);
-			pstmt.setString(2, map.get("searchValue"));
-			pstmt.setInt(3, pvo.getStartRow());
-			pstmt.setInt(4, pvo.getLastRow());
+			pstmt.setString(2, map.get("search"));
+			pstmt.setString(3, map.get("search"));
+
+			System.out.println("읽기권한번호 : " + readPermissionNo);
+			
+			
 			ResultSet rs = pstmt.executeQuery();
 			List<FaqVo> faqVoList = new ArrayList<FaqVo>();
 			while(rs.next()) {
 
 				String faqNo = rs.getString("FAQ_NO");
-				String categoryId = rs.getString("B.CATEGORY_ID");
-				String writerNo = rs.getString("B.WRITER_NO");
+				String categoryId = rs.getString("CATEGORY_ID");
+				String writerNo = rs.getString("WRITER_NO");
 				String title = rs.getString("TITLE");
 				String content = rs.getString("CONTENT");
 				String enrollDate = rs.getString("ENROLL_DATE");
@@ -140,6 +144,9 @@ public class FaqDao {
 			}
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(pstmt);
+			
+			System.out.println("검색된 faqVoList :" + faqVoList);
+			
 			return faqVoList;
 		}
 

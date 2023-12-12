@@ -1,3 +1,4 @@
+<%@page import="java.util.Map"%>
 <%@page import="java.util.List"%>
 <%@page import="com.kh.app.board.contact.vo.FaqVo"%>
 <%@page import="com.kh.app.page.vo.PageVoTest"%>
@@ -6,6 +7,10 @@
     <%
     List<FaqVo> faqVoList = (List<FaqVo>) request.getAttribute("faqVoList");
     PageVoTest pvo = (PageVoTest) request.getAttribute("pvo"); 
+    
+
+
+	Map<String,String> map = (Map<String,String>) request.getAttribute("searhMap");
     %>
 <!DOCTYPE html>
 <html>
@@ -42,15 +47,17 @@
         </div>
         <div class="content_area">
             <div class="board_name">자주하는 질문</div>
-            <div class="faq_search_tab">
-                <strong class="search_title">자주하는 질문</strong>
-                <div class="search_wrap">
-                    <div class="search_area">
-                        <input type="search" name="search" placeholder="궁금한 내용을 입력해주세요." class="input_search">
-                        <button type="button" class="btn_search">검색</button>
-                    </div>
-                </div>
-            </div>
+            	<form action="/nongra/contact/faq/search" method="get">
+		            <div class="faq_search_tab">
+			                <strong class="search_title">자주하는 질문</strong>
+			                <div class="search_wrap">
+			                    <div class="search_area">
+			                        <input type="search" name="search" placeholder="궁금한 내용을 입력해주세요." class="input_search">
+			                        <button type="button" class="btn_search">검색</button>
+			                    </div>
+			                </div>
+		            </div>
+            	</form>
             <div class="tab_area">
                 <button type="button" class="on btn_faq_tab" >배송</button>
                 <button type="button" class="btn_faq_tab">주문/결제</button>
@@ -80,9 +87,15 @@
                 	</li>
                 <% } %>
             </ul>
-            <div class="add_list" onclick="takeFaqCateNo()">더보기
-                <svg class="svg2" width="14" height="14" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: #754327;"><path fill="#754327" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg><path fill="#0051f5" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path>
-            </div>
+            <% if(faqVoList != null && map == null){ %>
+	            <div class="add_list" onclick="takeFaqCateNo()">더보기
+	                <svg class="svg2" width="14" height="14" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: #754327;"><path fill="#754327" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg><path fill="#0051f5" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path>
+	            </div>
+            <% }else{ %>
+            	<% if(faqVoList.isEmpty() && map != null){ %>
+            		<Strong>'<%=map.get("search") %>'</Strong> 에 대한 검색 결과가 없습니다.
+            		<% } %>
+            <% } %>
         </div>
     </main>
 
