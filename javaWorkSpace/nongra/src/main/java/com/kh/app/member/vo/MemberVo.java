@@ -14,7 +14,7 @@ public class MemberVo {
 	private String addr2;
 	private String joinDate;
 	private String modifyDate;
-	private String point;
+	private int point;
 	private String profile;
 	private String sellerYn;
 	public MemberVo() {
@@ -23,7 +23,7 @@ public class MemberVo {
 	}
 	public MemberVo(String no, String memberId, String memberPwd, String memberPwd2, String memberNick, String name,
 			String birth, String phone, String email, String addr, String addr2, String joinDate, String modifyDate,
-			String point, String profile, String sellerYn) {
+			int point, String profile, String sellerYn) {
 		super();
 		this.no = no;
 		this.memberId = memberId;
@@ -120,10 +120,10 @@ public class MemberVo {
 	public void setModifyDate(String modifyDate) {
 		this.modifyDate = modifyDate;
 	}
-	public String getPoint() {
+	public int getPoint() {
 		return point;
 	}
-	public void setPoint(String point) {
+	public void setPoint(int point) {
 		this.point = point;
 	}
 	public String getProfile() {
@@ -146,6 +146,7 @@ public class MemberVo {
 				+ ", modifyDate=" + modifyDate + ", point=" + point + ", profile=" + profile + ", sellerYn=" + sellerYn
 				+ "]";
 	}
+	
 	
 }
 	

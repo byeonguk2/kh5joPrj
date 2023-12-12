@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.kh.app.member.vo.MemberVo;
+import com.kh.app.point.vo.PointVo;
 import com.kh.app.util.db.JDBCTemplate;
 
 public class MemberDao {
@@ -51,7 +52,7 @@ public class MemberDao {
 			loginMember.setBirth(birth);
 			loginMember.setJoinDate(joinDate);
 			loginMember.setModifyDate(modifyDate);
-			loginMember.setPoint(point);
+			loginMember.setPoint(Integer.parseInt(point));
 			loginMember.setProfile(profile);
 			loginMember.setSellerYn(sellerYn);
 		}
@@ -60,6 +61,11 @@ public class MemberDao {
 		JDBCTemplate.close(rs);
 		JDBCTemplate.close(pstmt);
 		return loginMember;
+	}
+
+	private int Integer(String point) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	public int join(Connection conn, MemberVo vo) throws Exception {
@@ -122,5 +128,62 @@ public class MemberDao {
 		JDBCTemplate.close(pstmt);
 		return result;
 	}
+	
+	//포인트
+	public PointVo checkPoint(Connection conn, MemberVo loginMember) throws Exception {
+		//sql
+		String sql="SELECT (SELECT TOTAL_PRICE FROM ( SELECT TOTAL_PRICE, ROW_NUMBER() OVER (ORDER BY O.ENROLL_DATE DESC) AS RN FROM MEMBER M JOIN CART C ON (M.MEMBER_NO = C.MEMBER_NO) JOIN ORDER_HISTORY O ON (C.NO = O.CART_NO) WHERE M.MEMBER_NO = ? ) WHERE RN = 1) AS USE_POINT, (SELECT RELOAD_LIST FROM PAY WHERE MEMBER_NO = ? ORDER BY RELOAD_DATE DESC FETCH FIRST 1 ROW ONLY) AS CHARGE_POINT FROM DUAL";
+		PreparedStatement pstmt=conn.prepareStatement(sql);
+		pstmt.setString(1, loginMember.getNo());
+		pstmt.setString(2, loginMember.getNo());
+		ResultSet rs=pstmt.executeQuery();
+		
+		//rs
+		PointVo memberPoint=null;
+		if(rs.next()) {
+			int chargePoint=rs.getInt("CHARGE_POINT");
+			int usePoint=rs.getInt("USE_POINT");
+			
+			memberPoint = new PointVo();
+			memberPoint.setChargePoint(chargePoint);
+			memberPoint.setUsePoint(usePoint);
+			
+		}
+		//close
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		return memberPoint;
+	}
+	
+	//포인트 충전
+	public int charge(Connection conn, MemberVo loginMember, String chargePoint) throws Exception {
+		//sql
+		String sql="INSERT INTO PAY (PAY_NO, MEMBER_NO, RELOAD_LIST) VALUES(SEQ_PAY_NO.NEXTVAL,?,?)";
+		PreparedStatement pstmt=conn.prepareStatement(sql);
+		pstmt.setString(1, loginMember.getNo());
+		pstmt.setString(2, chargePoint);
+		int result=pstmt.executeUpdate();
+		
+		//close
+		JDBCTemplate.close(pstmt);
+		return result;
+	}
+
+	public int update(Connection conn, MemberVo loginMember,String chargePoint) throws Exception {
+		//sql
+		
+		String sql="UPDATE MEMBER SET POINT=? WHERE MEMBER_NO=? ";
+		PreparedStatement pstmt=conn.prepareStatement(sql);
+		pstmt.setInt(1, loginMember.getPoint()+Integer.parseInt(chargePoint));
+		pstmt.setString(2, loginMember.getNo());
+		int result=pstmt.executeUpdate();
+		
+		//close
+		JDBCTemplate.close(pstmt);
+		return result;
+		
+	}
+	
+	
 
 }
