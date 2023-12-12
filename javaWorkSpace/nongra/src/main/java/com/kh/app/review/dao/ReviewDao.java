@@ -363,6 +363,7 @@ public class ReviewDao {
 					
 				ArrayList<ReviewVo> reviewVoList = new ArrayList<ReviewVo>(tempmap.values());
 				
+				// 페이징 처리
 				if(reviewVoList.size()<pvo.getLastRow()) {
 					pvo.setLastRow(reviewVoList.size());
 				}

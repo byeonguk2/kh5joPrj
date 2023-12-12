@@ -16,11 +16,11 @@ import com.kh.app.util.db.JDBCTemplate;
 
 public class OrderDetailDao {
 
-}
+
     public int selectOrderDetailCountByMemberNo(Connection conn, String memberNo) throws Exception {
         
          //SQL
-          String sql = "SELECT * FROM  CART_BREAKDOWN CB LEFT JOIN CART C ON CB.CART_NO = C.NO JOIN MEMBER M ON M.MEMBER_NO = C.MEMBER_NO WHERE M.MEMBER_NO =? AND C.END_YN = 'Y' ORDER BY CB.NO DESC";
+          String sql = "SELECT count(*) FROM MEMBER M JOIN CART C ON C.MEMBER_NO = M.MEMBER_NO JOIN CART_BREAKDOWN CB ON CB.CART_NO = C.NO JOIN SALES_REGISTR SR ON SR.SALES_NO = CB.SALES_NO JOIN SALES_OPTION SO ON SO.OPTION_NO = CB.OPTION_NO JOIN SELLER S ON S.SELLER_NO = SR.SELLER_NO JOIN ORDER_HISTORY OH ON C.NO = OH.CART_NO LEFT JOIN REVIEW R ON CB.NO = R.CART_BREAKDOWN_NO WHERE M.MEMBER_NO = ? AND  C.END_YN = 'Y' ORDER BY CB.NO DESC";
           PreparedStatement pstmt = conn.prepareStatement(sql);
           pstmt.setString(1, memberNo);
           
@@ -43,8 +43,8 @@ public class OrderDetailDao {
     //주문 상세 정보 멤버 넘버로 가져오기 [멤버] 
     public List<OrderDetailVo> manageOrderDetailLookUp(Connection conn, PageVo pvo, String memberNo1) throws Exception {
         
-        //sql
-                String sql ="SELECT CB.NO AS CART_BREAKDWON_NO ,CB.EA ,C.NO AS CART_NO ,C.END_YN ,OH.ORDER_NO ,OH.TOTAL_PRICE ,OH.ENROLL_DATE ,OH.DELIVERY_YN ,OH.REFUND_YN ,OH.REFUND__DATE ,M.MEMBER_NO ,SR.SALES_NO ,SR.TITLE AS ITEM_TITLE ,S.SELLER_NO ,S.BUSINESS_NAME ,R.REVIEW_NO FROM CART_BREAKDOWN CB JOIN CART C ON CB.CART_NO = C.NO JOIN ORDER_HISTORY OH ON C.NO = OH.CART_NO JOIN MEMBER M ON M.MEMBER_NO = C.MEMBER_NO JOIN SALES_REGISTR SR ON CB.SALES_NO = SR.SALES_NO JOIN SELLER S ON SR.SELLER_NO = S.SELLER_NO LEFT JOIN REVIEW R ON R.CART_BREAKDOWN_NO = CB.NO WHERE C.END_YN = 'Y' AND M.MEMBER_NO = ? ORDER BY OH.NO DESC";
+        		//sql
+    			String sql = "SELECT OH.DELIVERY_YN   AS 구매확정여부 ,  OH.NO            AS 결제이력번호 , OH.ORDER_NO      AS 주문번호 , OH.ENROLL_DATE   AS   주문일자 , OH.REFUND_YN    AS   환불여부 , OH.REFUND__DATE AS   환불일 , SR.TITLE AS 상품명 , SR.PRICE AS 상품가격 , SR.SALES_NO AS 상품번호 , SO.OPTION_NAME AS 상품옵션명 , SO.OPTION_PRICE AS 옵션가격 , SR.THUMBNAIL AS 상품사진주소 , CB.EA AS 상품수량 , CB.EA * (SO.OPTION_PRICE + SR.PRICE) as 총가격 , S.BUSINESS_NAME AS 판매점 , CB.NO AS 내역번호 , R.REVIEW_NO AS 리뷰여부 FROM MEMBER M JOIN CART C ON C.MEMBER_NO = M.MEMBER_NO JOIN CART_BREAKDOWN CB ON CB.CART_NO = C.NO JOIN SALES_REGISTR SR ON SR.SALES_NO = CB.SALES_NO JOIN SALES_OPTION SO ON SO.OPTION_NO = CB.OPTION_NO JOIN SELLER S ON S.SELLER_NO = SR.SELLER_NO JOIN ORDER_HISTORY OH ON C.NO = OH.CART_NO LEFT JOIN REVIEW R ON CB.NO = R.CART_BREAKDOWN_NO WHERE M.MEMBER_NO = ? AND  C.END_YN = 'Y' ORDER BY CB.NO DESC";
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1,memberNo1 );
                 //rs
@@ -54,44 +54,46 @@ public class OrderDetailDao {
                 List<OrderDetailVo> list = new ArrayList<OrderDetailVo>();
                 
                 while(rs.next()) {
+                	
+                String  deliveryYn 		=rs.getString("구매확정여부");    						//"구매확정여부"
+                String  payNo 			=rs.getString("결제이력번호");             					//"결제이력번호"
+                String  orderNo 		=rs.getString("주문번호");       						//"주문번호"
+                String  orderEnrollDate =rs.getString("주문일자");    				//  "주문일자"
+                String  refundYn      	=rs.getString("환불여부");			// "환불여부"
+                String  refundDte   	=rs.getString("환불일");			// "환불일"
+                String  itemtitle       =rs.getString("상품명");			// "상품명" 
+                String  price 		 	=rs.getString("상품가격");			//"상품가격"
+                String  salesNo 	 	=rs.getString("상품번호");			//"상품번호"
+                String  optionName  	=rs.getString("상품옵션명");			//"상품옵션명" 
+                String  optionPrice 	=rs.getString("옵션가격");			//"옵션가격"
+                String   thumbnail  	=rs.getString("상품사진주소");			//"상품사진주소" 
+                String    ea 			=rs.getString("상품수량");			//"상품수량"
+                String   totalPrice  	=rs.getString("총가격");			//"총가격"
+                String    businessName 	=rs.getString("판매점");		//"판매점" 
+                String    cbNo 			=rs.getString("내역번호");		//"내역번호"
+                String    reviewNo  	=rs.getString("리뷰여부");			//"리뷰여부"   
+                
+                OrderDetailVo vo = new OrderDetailVo();
                     
-                    
-                      String  cartBreakdwonNo = rs.getString("CART_BREAKDWON_NO");     // 장바구니 목록 번호  
-                      String  ea = rs.getString("EA");                  // 수량                       
-                      String  cartNo = rs.getString("CART_NO");             //장바구니           
-                      String  endYn = rs.getString("END_YN");                // 장바구니 결제완료                
-                      String  orderNo = rs.getString("ORDER_NO");            // 주문번호                  
-                      String  totalPrice = rs.getString("TOTAL_PRICE");         // 총금액            
-                      String  EnrollDate = rs.getString("ENROLL_DATE");     //  결제일              
-                      String  DeliveryYn = rs.getString("DELIVERY_YN");    // 배달여부 (구매 확정 시 업데이트)             
-                      String  refundYn   = rs.getString("REFUND_YN");     // 환불여부            
-                      String  refundDate = rs.getString("REFUND__DATE");  //  환불 일             
-                      String  memberNo   = rs.getString("MEMBER_NO");   // 유저번호                   
-                      String  salesNo    = rs.getString("SALES_NO");   // 판매번호                  
-                      String  itemTitle  = rs.getString("ITEM_TITLE");  // 아이템 타이틀       
-                      String  sellerNo   = rs.getString("SELLER_NO"); //판매자 번호                 
-                      String  businessName = rs.getString("BUSINESS_NAME"); // 가게명    
-                      String  reviewNo     = rs.getString("REVIEW_NO");   
+                vo.setDeliveryYn("N");     
+                vo.setPayNo(payNo);
+                vo.setOrderNo(orderNo);
+                vo.setOrderEnrollDate(orderEnrollDate);
+                vo.setRefundYn(refundYn);
+                vo.setRefundDte(refundDte);
+                vo.setItemtitle(itemtitle);
+	            vo.setPrice(totalPrice); 
+	            vo.setSalesNo(salesNo);
+	            vo.setOptionName(optionName);
+	            vo.setOptionPrice(optionPrice);
+	            vo.setThumbnail(thumbnail);
+	            vo.setEa(ea);
+	            vo.setTotalPrice(totalPrice);
+	            vo.setBusinessName(businessName);
+	            vo.setCbNo(cbNo);
+	            vo.setReviewNo(reviewNo);
                       
-                      OrderDetailVo vo = new OrderDetailVo();
-                      
-                      vo.setCartBreakdwonNo(cartBreakdwonNo);
-                      vo.setEa(ea);
-                      vo.setCartNo(cartNo);
-                      vo.setEndYn(endYn);
-                      vo.setOrderNo(orderNo);
-                      vo.setTotalPrice(totalPrice);
-                      vo.setenrollDate(EnrollDate);
-                      vo.setDeliveryYn(DeliveryYn);
-                      vo.setRefundYn(refundYn);
-                      vo.setRefundDate(refundDate);
-                      vo.setMemberNo(memberNo);
-                      vo.setSalesNo(salesNo);
-                      vo.setItemTitle(itemTitle);
-                      vo.setSellerNo(sellerNo);
-                      vo.setBusinessName(businessName);
-                      vo.setReviewNo(reviewNo);
-                      
+                   
                      list.add(vo);
                 }
             
@@ -106,17 +108,11 @@ public class OrderDetailDao {
                     reviewVoListresult.add(list.get(i));
                 }
                 
-            
-                
-            
                 //close
                 JDBCTemplate.close(rs);
                 JDBCTemplate.close(pstmt);
                 
-                
                 return reviewVoListresult;
-                
-                
             }
-    }        
+    }//class        
 
