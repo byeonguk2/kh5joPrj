@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.app.sails.vo.SalesVo;
 import com.kh.app.sales.service.SalesService;
+import com.kh.app.sales.vo.SalesVo;
 
 @WebServlet("/sales/list")
 public class SalesListController extends HttpServlet{

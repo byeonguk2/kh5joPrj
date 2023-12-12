@@ -1,4 +1,4 @@
-package com.kh.app.sails.vo;
+package com.kh.app.sales.vo;
 
 public class SalesVo {
 	
