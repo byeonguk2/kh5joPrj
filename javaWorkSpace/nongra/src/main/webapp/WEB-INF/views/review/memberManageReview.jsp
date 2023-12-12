@@ -81,10 +81,10 @@
                      </p>
                      
                      <div class="reivew-picture-box">
-                     <c:forEach items="${vo.reviewFileVolist}" var="vo">
-                     <c:if test="${not empty vo.reviewFielSrc}">
-                     <img src="${vo.reviewFielSrc}" alt="리뷰사진" class="review0">
-                     <div class="div-reviewFileNo" style= "display : none"> "${vo.reviewFileNo}" </div>
+                     <c:forEach items="${vo.reviewFileVolist}" var="vo1">
+                     <c:if test="${not empty vo1.reviewFielSrc}">
+                     <img src="${vo1.reviewFielSrc}" alt="리뷰사진" class="review0">
+                     <div class="div-reviewFileNo" style= "display : none"> "${vo1.reviewFileNo}" </div>
                      </c:if>
                      </c:forEach>
                      </div>
@@ -145,7 +145,22 @@
                      
          
                      <div class="owner-reply-box2-date-btn">
-                         <span>${vo.replyDate}</span> 
+                       
+                       
+                          <c:choose>
+					    <c:when test="${vo.replyDelYn eq 'Y'}">
+					       
+                     	 		<span></span> 
+                    		
+					    </c:when>
+					    <c:when test="${empty vo.replyContent}">
+					        	<span></span> 
+					    </c:when>
+					    <c:otherwise>
+                     	 		<span>${vo.replyDate}</span>        		 
+					    </c:otherwise>
+                       </c:choose>
+                       
                      </div> 
                  </div>       
              </div>

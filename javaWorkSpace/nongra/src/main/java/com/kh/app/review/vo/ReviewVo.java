@@ -11,8 +11,9 @@ private String	cartBreakdownNo;
 private String	content;
 private String	WriteDate;
 private String	updateDate;
+private String  reviewDelYn;
 private String	replyDate;
-private String	replyDelYn;
+private String	replyDelYn;		//답글 삭제 여부 
 private String	replyContent;
 private String	ItemTitle	;		//상품 제목
 // BUSINESS_NAME 이거 비지니스 네임
@@ -31,9 +32,11 @@ private List<ReviewFileVo> reviewFileVolist = new ArrayList<ReviewFileVo>(); // 
 
 
 
+
 public ReviewVo(String reviewNo, String consumerNo, String cartBreakdownNo, String content, String writeDate,
-		String updateDate, String replyDate, String replyDelYn, String replyContent, String itemTitle,
-		String corporationName, String nick, String likeCnt, String src, String profile, List<String> fileSrc) {
+		String updateDate, String reviewDelYn, String replyDate, String replyDelYn, String replyContent,
+		String itemTitle, String corporationName, String nick, String likeCnt, String src, String profile,
+		List<String> fileSrc, ReviewFileVo reviewFileVo, List<ReviewFileVo> reviewFileVolist) {
 	super();
 	this.reviewNo = reviewNo;
 	this.consumerNo = consumerNo;
@@ -41,6 +44,7 @@ public ReviewVo(String reviewNo, String consumerNo, String cartBreakdownNo, Stri
 	this.content = content;
 	WriteDate = writeDate;
 	this.updateDate = updateDate;
+	this.reviewDelYn = reviewDelYn;
 	this.replyDate = replyDate;
 	this.replyDelYn = replyDelYn;
 	this.replyContent = replyContent;
@@ -51,6 +55,8 @@ public ReviewVo(String reviewNo, String consumerNo, String cartBreakdownNo, Stri
 	this.src = src;
 	this.profile = profile;
 	this.fileSrc = fileSrc;
+	this.reviewFileVo = reviewFileVo;
+	this.reviewFileVolist = reviewFileVolist;
 }
 public String getReviewNo() {
 	return reviewNo;
@@ -169,13 +175,12 @@ public List<ReviewFileVo> getReviewFileVolist() {
 public void setReviewFileVolist(List<ReviewFileVo> reviewFileVolist) {
 	this.reviewFileVolist = reviewFileVolist;
 }
-@Override
-public String toString() {
-	return "ReviewVo [reviewNo=" + reviewNo + ", consumerNo=" + consumerNo + ", cartBreakdownNo=" + cartBreakdownNo
-			+ ", content=" + content + ", WriteDate=" + WriteDate + ", updateDate=" + updateDate + ", replyDate="
-			+ replyDate + ", replyDelYn=" + replyDelYn + ", replyContent=" + replyContent + ", ItemTitle=" + ItemTitle
-			+ ", corporationName=" + corporationName + ", nick=" + nick + ", likeCnt=" + likeCnt + ", src=" + src
-			+ ", profile=" + profile + ", fileSrc=" + fileSrc + ", reviewFileVolist=" + reviewFileVolist + "]";
+
+public String getReviewDelYn() {
+	return reviewDelYn;
+}
+public void setReviewDelYn(String reviewDelYn) {
+	this.reviewDelYn = reviewDelYn;
 }
 public ReviewFileVo getReviewFileVo() {
 	return reviewFileVo;
@@ -183,6 +188,16 @@ public ReviewFileVo getReviewFileVo() {
 public void setReviewFileVo(ReviewFileVo reviewFileVo) {
 	this.reviewFileVo = reviewFileVo;
 }
+@Override
+public String toString() {
+	return "ReviewVo [reviewNo=" + reviewNo + ", consumerNo=" + consumerNo + ", cartBreakdownNo=" + cartBreakdownNo
+			+ ", content=" + content + ", WriteDate=" + WriteDate + ", updateDate=" + updateDate + ", reviewDelYn="
+			+ reviewDelYn + ", replyDate=" + replyDate + ", replyDelYn=" + replyDelYn + ", replyContent=" + replyContent
+			+ ", ItemTitle=" + ItemTitle + ", corporationName=" + corporationName + ", nick=" + nick + ", likeCnt="
+			+ likeCnt + ", src=" + src + ", profile=" + profile + ", fileSrc=" + fileSrc + ", reviewFileVo="
+			+ reviewFileVo + ", reviewFileVolist=" + reviewFileVolist + "]";
+}
+
 
 
 
