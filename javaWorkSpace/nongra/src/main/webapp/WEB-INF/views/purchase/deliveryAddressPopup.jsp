@@ -48,7 +48,7 @@
 
 </body>
 <footer>
-    <button id="addAddress" onclick="location.href='/nongra/address/shipping-address'">
+    <button id="addAddress">
         + 새 배송지 추가
     </button>
 </footer>

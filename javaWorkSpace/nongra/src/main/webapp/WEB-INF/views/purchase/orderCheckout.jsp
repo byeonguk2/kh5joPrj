@@ -8,6 +8,7 @@
     PurchaseOrderCheckoutVo PurchaseOrderCheckoutVo = (PurchaseOrderCheckoutVo) request.getAttribute("orderCheckOutVo");
     List<PurchaseCartVo> cartVoList = (List<PurchaseCartVo>)PurchaseOrderCheckoutVo.getCartVoList();
     PurchaseAddressVo address = (PurchaseAddressVo)PurchaseOrderCheckoutVo.getAddressVo();
+    int totalPrice = (int)PurchaseOrderCheckoutVo.getTotalPrice();
     %>
 <!DOCTYPE html>
 <html>
@@ -20,7 +21,7 @@
 	<div id="cover">
 		<%@	include file="/WEB-INF/views/common/header/header_sobi.jsp" %>
         <main>
-            <form action="/nongra/order/complete" method="get">
+            <form action="/nongra/order/complete" method="post">
                     <div class="order-head">주문서</div>
                     <div class="order">
                         <span class="head-text">주문상품</span>
@@ -35,7 +36,7 @@
                         <tbody>
                         <%for(PurchaseCartVo vo : cartVoList) {%>
                             <tr class="detailVer">
-                                <td class="product-image-area"><img id="detail-img" src="<%=vo.getGoodsPicture() %>" alt="상품이미지"></td>
+                                <td class="product-image-area"><img id="detail-img" src="/nongra<%=vo.getGoodsPicture() %>" alt="상품이미지"></td>
                                 <td class="product-name-area"><%=vo.getGoodsName() %></td>
                                 <td class="product-cnt-area"><%=vo.getGoodsEA() %></td>
                                 <td class="product-price"><span class="product-one-price"><%=Integer.parseInt(vo.getGoodsPrice()) + Integer.parseInt(vo.getOptionPrice())%></span><span class="product-times-price">상품 전체 금액</span></td>
@@ -119,7 +120,7 @@
                             <table class="pay-table">
                                 <tr>
                                     <td>주문금액</td>
-                                    <td><span class="pay-table-price">0</span>원</td><input type="text" name="price" id="price">
+                                    <td><span class="pay-table-price">0</span>원</td><input type="checkbox" name="price" id="price" value="<%=totalPrice %>" checked>
                                 </tr>
                                 <tr>
                                     <td>농라페이</td>
@@ -461,11 +462,10 @@ clickBuyBtn();
 
 function price() {
     const price  = document.querySelector('.pay-table-price');
-    const inputTag = document.querySelector("input[name=price]");
-    console.log(price.innerText);
-    inputTag.innerText = price.innerText;
-    console.log(inputTag.vlaue);
+    const inputTag = document.querySelector("#price");
+    inputTag.vlaue = price.innerText;
 }
 price();
 
+console.log(document.querySelector("#price").vlaue);
 </script>

@@ -18,12 +18,18 @@ public class PurchaseOrderCheckoutVo {
 	public void setAddressVo(PurchaseAddressVo addressVo) {
 		this.addressVo = addressVo;
 	}
-
+	
+	public int getTotalPrice() {
+		int totalPrice = 0;
+		for(PurchaseCartVo vo : CartVoList) {
+			totalPrice = totalPrice + (Integer.parseInt(vo.getGoodsPrice())+Integer.parseInt(vo.getOptionPrice()))*(Integer.parseInt(vo.getGoodsEA()));
+		}
+		return totalPrice;
+	}
 	@Override
 	public String toString() {
 		return "PurchaseOrderCheckoutVo [CartVoList=" + CartVoList + ", addressVo=" + addressVo + "]";
 	}
-
 	public PurchaseOrderCheckoutVo() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -35,7 +41,7 @@ public class PurchaseOrderCheckoutVo {
 	}
 
 	
-	
+
 	
 	
 }

@@ -1,0 +1,17 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+#cover{
+    width: 1050px;
+}
+#main{
+    display: grid;
+    grid-template-columns: 230px 1fr;
+}
+main{
+    margin: 10px;
+    border: 1px solid #754327;
+    border-radius: 5px;
+    padding: 10px;
+}

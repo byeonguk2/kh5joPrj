@@ -1,5 +1,10 @@
+<%@page import="com.kh.app.purchase.vo.PurchaseOrderCompleteVo"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    PurchaseOrderCompleteVo vo = (PurchaseOrderCompleteVo)request.getAttribute("orderCompleteVo");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,8 +20,14 @@
 				<div class="check-icon-area"><div class="check-icon"><img src="/nongra/resources/img/purchase/icon-check.png" alt=""></div></div>
 	            <div class="order-text">닉네임님의 주문이 완료되었습니다.</div>
 	            <div class="price-area">
-	                <span>결제금액</span>
-	                <span>15972원</span>
+	            	<div>
+		            	<span>주문번호</span>
+		            	<span><%=vo.getOrderNo() %></span>
+	            	</div>
+	            	<div>
+		                <span>결제금액</span>
+		                <span><%=vo.getTotalPrice() %>원</span>
+	            	</div>
 	            </div>
 	            <div class="explanation-area">
 	                <table>
@@ -30,8 +41,8 @@
 	                    </tr>
 	                </table>
 	            </div>
-	            <div class="button-area"><button id="fbutton">주문 상세보기</button></div>
-	            <div class="button-area"><button id="tbutton">쇼핑 계속하기</button></div>
+	            <div class="button-area"><button id="fbutton" onclick="location.href='/nongra/member/orderDetail'">주문 상세보기</button></div>
+	            <div class="button-area"><button id="tbutton" onclick="location.href='/nongra/상품페이지로~~'">쇼핑 계속하기</button></div>
 				
 			</div>
 
