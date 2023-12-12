@@ -17,19 +17,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.kh.app.email.service.EmailService;
 
 @WebServlet("/email/check")
 public class EmailCheckController extends HttpServlet{
-
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		//화면에 보여줄 메세지
-		String alertMsg = "";
 		String AuthenticationKey = "";
+		String alertMsg = "";
 		try {
 			
 			// 이메일 데이터를 받아옴
@@ -105,13 +106,18 @@ public class EmailCheckController extends HttpServlet{
 
 	         // send the message
 	         Transport.send(message);
+	         
 	         sendOk = true;
 
 	         if(sendOk) {
 	        	 Gson gson = new Gson();
-	        	 alertMsg = "이메일이 발송 되었습니다.";
-	        	 String[] success = {alertMsg,AuthenticationKey};
+	        	 alertMsg = "이메일이 발송 되었습니다. "
+	        	 		+ "인증번호 유효시간은 10분입니다.";
+	        	 String[] success = {alertMsg};
 	        	 String successJson = gson.toJson(success);
+	        	 HttpSession servletSession = req.getSession();
+	        	 req.getSession().setAttribute("AuthenticationKey", AuthenticationKey);
+	        	 servletSession.setMaxInactiveInterval(5*60); 
 	        	 resp.getWriter().write(successJson);
 	         }else {
 	        	alertMsg = "이메일 발송이 실패했습니다.";
@@ -122,7 +128,7 @@ public class EmailCheckController extends HttpServlet{
 			e.printStackTrace();
 			Gson gson = new Gson();
 			AuthenticationKey = "";
-			String[] success = {alertMsg,AuthenticationKey};
+			String[] success = {alertMsg};
 			String failJson = gson.toJson(success);
 			resp.getWriter().write(failJson);
 		}
