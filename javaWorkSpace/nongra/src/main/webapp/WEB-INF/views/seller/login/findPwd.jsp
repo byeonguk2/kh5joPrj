@@ -62,10 +62,8 @@
      height: 200px;
      border: double 3px lightgray;
     text-align: center;
-     
  }
- .modal {
-     
+ .modal {  
      display: flex;
      justify-content: center;
      align-items: center;
@@ -78,22 +76,14 @@
      
  }
  .dialog {
-   width: 500px;
-    height: 100px;
+    width: 500px;
+    height: 250px;
     padding: 2em;
     border-radius: 1em;
     background: aliceblue;
+    grid-template-rows: 1fr;
     display: grid;
- }
- .dialog > button{
- 	width: 100px;
- 	margin: auto;
- 	height: 40px;
- 	border: 1px solid #754327;
- 	color: white;
- 	background-color: #754327;
- 	border-radius: 5px;
- }
+}
  .modal-none{
      display: none;
  }
@@ -109,16 +99,49 @@
      color: #fff;
      background-color: #754327;
  }
+ thead{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+ }
+ tbody{
+	display: grid;
+	grid-template-rows: 50px 50px 50px;
+ }
+ tr{
+	padding: 0px 50px 0px 50px;
+	height: 40px;
+ }
+ .title{
+ 	width: 130px;
+ }
+ td > input {
+ 	width: 250px;
+ 	height: 25px;
+ }
+ .pwdBtn{
+ 	width: 150px;
+ 	height: 40px;
+ 	border: 1px solid #754327;
+ 	color: white;
+ 	background-color: #754327;
+ 	border-radius: 5px;
+ }
+ .btn-area{
+ 	display: flex;
+ 	align-items: center;
+ 	justify-content: center;
+ }
 </style>
 </head>
 <body>
 	<div id="root">
         <div class="css-auhedv">
-            <h1>아이디 찾기</h1>
+            <h1>비밀번호 찾기</h1>
             <div id="selectId">
                 <form action="" method="post">
                		<div id="emailInputTag-area">
-               			<input id="emailInputTag" autocomplete="off" type="email" placeholder="이메일을 입력해주세요" name="id" class="css-18jns9z" value="">
+               			<input id="emailInputTag" autocomplete="off" type="email" placeholder="이메일을 입력해주세요" name="email" class="css-18jns9z" value="">
                			<button onclick="return checkEmail();" type="button" class="email-btn">인증번호 발급</button>
 					</div> 
                     <div class = "AuthenticationKey-area">
@@ -134,8 +157,28 @@
                     <!-- 여기에 display none -->
                     <div class="modal modal-none" style="z-index: 3;">
                         <div class="dialog">
-                            <h3>asdad</h3>
-                            <button style="cursor: pointer;" type="button" onclick="location.href='/nongra/seller/login'">로그인 홈으로</button>
+                            <table>
+                            	<thead>
+                            		<th colspan="2"><h3>비밀번호 변경</h3></th>
+                            	</thead>
+                            	<tbody>
+                            		<tr>
+										<td class="title">아이디: </td>
+										<td><input name="id" type="text"></td>
+									</tr>
+									<tr>
+										<td class="title">변경할 비밀번호: </td>
+										<td><input name="pwd" type="text"></td>
+									</tr>
+									<tr>
+										<td class="title">비밀번호 확인: </td>
+										<td><input name="pwd_re" type="text"></td>
+									</tr>
+                            	</tbody>
+                            </table>
+                            <div class="btn-area">
+                            	 <button class="pwdBtn" style="cursor: pointer;" type="button" onclick="return changePwd()">비밀번호 변경하기</button>
+                            </div>
                    		 </div>
                        </div>
                    </div>
@@ -188,19 +231,13 @@
 		    .then(response => response.json())
 		    .then(data => {
 		      if (data === "인증이 성공하였습니다.") {
+		    	  
 		    	 alert(data);
+		    	 
 				 // 성공시 페이지 이동 
 				 console.log("성공했어");
-				 // 아이디 조회
-				 fetch("/nongra/email/selectId?email="+email)
-				 .then((resp)=>{return resp.text()})
-				 .then((data2)=>{
-					 const h3Tag = document.querySelector(".dialog > h3");
-					 console.log(data2);
-					 h3Tag.innerHTML = data2;
-					 const modal=document.querySelector(".modal");
-				     modal.classList.toggle("modal-none");
-				 })
+				 const modal=document.querySelector(".modal");
+			     modal.classList.toggle("modal-none");
 		      } else {
 				alert(data);
 		      }
@@ -243,5 +280,51 @@
 	setTimeout(function () {
 	  clearInterval(PlAYTIME);
 	}, 300000); // 5분이 되면 타이머를 삭제한다.
+	
+	function changePwd() {
+		
+		const id = document.querySelector("input[name=id]").value;
+		const pwd = document.querySelector("input[name=pwd]").value;
+		const pwd_re = document.querySelector("input[name=pwd_re]").value;
+		const memberEmail = document.querySelector("input[name=email]").value;
+		
+		if(!pwd){
+			alert("비밀번호를 입력해주세요.");
+			form.password.focus();
+			return false;
+		}
+		if(!pwd_re){
+			alert("비밀번호를 입력해주세요.");
+			form.password.focus();
+			return false;
+		}
+		if(pwd !== pwd_re){
+			alert("비밀번호를 일치하지 않습니다.");
+			form.password.focus();
+			return false;
+		}
+		const MemberVo = function (id,memberEmail,pwd,pwd_re){
+			this.memberId = id ,
+			this.email = memberEmail ,
+			this.memberPwd = pwd ,
+			this.memberPwd2 = pwd_re 
+		}
+
+		const vo = new MemberVo(id,memberEmail,pwd,pwd_re);
+
+		fetch("/nongra/email/updatePwd", {
+		    method: 'POST',
+		    body: JSON.stringify(vo)
+		  })
+		  // 중괄호 없으면 바로리턴
+		  .then(resp => resp.text())
+		  .then( data => {
+			alert(data)
+			if(data === "비밀번호 변경이 성공했습니다."){
+				location.href="/nongra/seller/login";
+			}
+		  } )
+		  .catch(()=>{alert("오류발생!!")})
+	}
 	
 </script>
