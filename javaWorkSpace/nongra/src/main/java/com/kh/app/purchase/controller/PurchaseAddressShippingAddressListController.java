@@ -11,30 +11,28 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.app.member.vo.MemberVo;
 import com.kh.app.purchase.service.PurchaseService;
-import com.kh.app.purchase.vo.PurchaseCartVo;
+import com.kh.app.purchase.vo.PurchaseAddressVo;
 
-@WebServlet("/cart")
-public class PurchaseCartController extends HttpServlet{
+@WebServlet("/address/shipping-address/list")
+public class PurchaseAddressShippingAddressListController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			//data
 			MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
-			if(loginMember == null) {
-				throw new Exception("잘못된 접근입니다.(로그인 정보 없음)");
-			}
 			
 			//service
 			PurchaseService ps = new PurchaseService();
-			List<PurchaseCartVo> purchaseCartVoList= ps.cartList(loginMember);
+			List<PurchaseAddressVo> voList = ps.takeAllAddress(loginMember);
 			
-			//result(==view)
-			req.setAttribute("purchaseVoList", purchaseCartVoList);
-			req.getRequestDispatcher("/WEB-INF/views/purchase/cart.jsp").forward(req, resp);
+			//result
+			
+			req.setAttribute("voList", voList);
+			req.getRequestDispatcher("/WEB-INF/views/purchase/deliveryAddressPopup.jsp").forward(req, resp);
 			
 		}catch(Exception e) {
-			System.out.println("[ERROR-P001]장바구니 목록 불러오는 중 예외 발생");
 			e.printStackTrace();
+			System.out.println("[ERROR-A002] 배송지 전체 목록 불러오던 중 예외 발생");
 		}
-	}//doGet
-}//class
+	}
+}

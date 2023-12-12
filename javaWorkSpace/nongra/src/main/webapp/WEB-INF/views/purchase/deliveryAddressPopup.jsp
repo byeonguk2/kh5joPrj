@@ -1,5 +1,9 @@
+<%@page import="com.kh.app.purchase.vo.PurchaseAddressVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core"%>
+<% List<PurchaseAddressVo> voList = (List<PurchaseAddressVo>) request.getAttribute("voList"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,20 +27,30 @@
                     </tr>
                 </thead>
                 <tbody>
+                <%for(PurchaseAddressVo vo : voList) {%>
                     <tr>
                         <th><button onclick="checked()" class="button"><img src="/nongra/resources/img/purchase/icon-check.png" alt="대충 체크표시ㅋ" class="img"></button></th>
-                        <th>
-                            <div>기본배송지</div>
-                        </th>
+                        <td>
+                            <div>
+								<%if(vo.getDefaultAddress().equals("Y")){ %><div class="default">기본배송지</div><%} %>
+								<div><%=vo.getAddress() %></div>
+								<div><%=vo.getName() %> | <%=vo.getPhone() %><span class="address-no"><%=vo.getNo() %></span></div>
+                            </div>
+                        </td>
                         <th><button class="edit-button"><img src="https://res.kurly.com/kurly/ico/2021/edit_24_24_ccc.svg" alt=""></button></th>
                     </tr>
+                <%} %>
                 </tbody>
             </table>
-
-
+            
         </main>
-
     </div>
+
 </body>
+<footer>
+    <button id="addAddress" onclick="location.href='/nongra/address/shipping-address'">
+        + 새 배송지 추가
+    </button>
+</footer>
 </html>
 <script type="text/javascript"><%@include file="/resources/js/purchase/deliveryAddressPopup.js"%></script>

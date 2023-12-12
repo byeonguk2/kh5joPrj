@@ -11,6 +11,8 @@ button{
     border-color: white;
     border: none;
 }
+
+/* 주문서 txt  */
 .order-head{
     display: flex;
     justify-content: center;
@@ -22,6 +24,8 @@ button{
     font-weight: 900;
     
 }
+
+/* 주문상품 */
 .order{
     margin-top: 15px;
     height: 23px;
@@ -43,6 +47,7 @@ button{
     display: none;
 }
 
+
 .simpleDetailBtn > img{
     height: 25px;
     width: 25px;
@@ -62,12 +67,14 @@ button{
     height: 150px;
     border-bottom: 1px solid lightgray;
 }
+
+
 .product-image-area{
     display: flex;
     place-content: center center;
     padding-left: 10px;
 }
-.detailVer > div > img{
+.product-image-area > img{
     height: 150px;
     width: 100px;
     object-fit: contain;
@@ -87,6 +94,14 @@ button{
     align-items: center;
     justify-content: center;
 }
+.product-one-price{
+    font-size: 0px;
+}
+
+
+
+
+
 .orderer-area{
     margin-top: 70px;
 }
@@ -128,6 +143,9 @@ td{
 }
 
 /*배송정보 버튼*/
+#addressNo{
+    display: none;
+}
 .delivery-btn{
     width: 70px;
     height: 30px;
@@ -140,6 +158,14 @@ td{
 .delivery-btn:hover{
     background-color: #75442710;
 }
+#addressNo{
+    font-size: 0px;
+}
+
+.pay-title{
+	margin-top: 70px;
+}
+
 
 /*충전하기 버튼*/
 .charge-btn{
@@ -200,4 +226,151 @@ td{
 	height: 0px;
 	margin: 0px;
 	padding: 0px;
+}
+
+#price{
+    /* display: none; */
+}
+
+
+/*모달창*/
+#modal.modal-overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+	display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+#modal .modal-window {
+    background: rgb(255, 255, 255);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 13.5px );
+    -webkit-backdrop-filter: blur( 13.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    width: 400px;
+    height: 300px;
+    position: relative;
+    top: -100px;
+    padding: 10px;
+}
+#modal .title {
+    padding-left: 10px;
+    display: inline;
+    color: rgb(0, 0, 0);  
+    width: 80%;
+}
+#modal h3{
+	display: inline;
+	width: 100%;
+}
+#modal .title h2 {
+    display: inline;
+}
+#modal .close-area {
+    display: inline;
+    float: right;
+    padding-right: 10px;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px gray;
+    color: lightslategray;
+}
+#modal .content {
+    margin-top: 20px;
+    padding: 0px 10px;
+    color: rgb(0, 0, 0);
+}
+
+.modal-table{
+	border-collapse: collapse; 
+	border-spacing: 0;
+	border: 1px solid black;
+}
+.modal-table thead{
+	background-color: lightgrey;
+}
+.modal-table td, th{
+	border: 1px solid lightslategray;
+	width: 33%;
+	padding: 10px;
+}
+.modal-table td{
+	font-size: 13px;
+}
+.content > p{
+	font-size: 13px;
+	color: lightslategray;
+	padding: 5px;
+}
+#btn-modal{
+	cursor: pointer;
+}
+
+
+#modal2.modal-overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+	display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+#modal2 .modal-window {
+    background: rgb(255, 255, 255);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 13.5px );
+    -webkit-backdrop-filter: blur( 13.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    width: 450px;
+    height: 300px;
+    position: relative;
+    top: -100px;
+    padding: 10px;
+    overflow-y: auto;
+}
+#modal2 .title {
+    padding-left: 10px;
+    display: inline;
+    color: rgb(0, 0, 0);  
+    width: 80%;
+}
+#modal2 h3{
+	display: inline;
+	width: 100%;
+}
+#modal2 .title h2 {
+    display: inline;
+}
+#modal2 .close-area2 {
+    display: inline;
+    float: right;
+    padding-right: 10px;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px gray;
+    color: lightslategray;
+}
+#modal2 .content {
+    margin-top: 20px;
+    padding: 0px 10px;
+    color: rgb(0, 0, 0);
 }
