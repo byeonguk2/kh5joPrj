@@ -1,4 +1,4 @@
-package com.kh.app.purchase.controller;
+package com.kh.app.member.controller;
 
 import java.io.IOException;
 
