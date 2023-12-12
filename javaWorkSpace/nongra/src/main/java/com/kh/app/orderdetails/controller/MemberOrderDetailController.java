@@ -52,7 +52,7 @@ public class MemberOrderDetailController extends HttpServlet {
 		          //List<ReviewVo> ReviewVoList = rs.memberReviewLookUp(pvo,loginMember.getNo());
 		          List<OrderDetailVo> orderDetailVoList = os.memberOrderDetailLookUp(pvo,"1");
 		          
-		          System.out.println(orderDetailVoList);
+		          
 		          
 		          // result (==view)
           

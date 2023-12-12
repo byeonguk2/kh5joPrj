@@ -75,7 +75,7 @@ public class OrderDetailDao {
                 
                 OrderDetailVo vo = new OrderDetailVo();
                     
-                vo.setDeliveryYn("N");     
+                vo.setDeliveryYn(deliveryYn);     
                 vo.setPayNo(payNo);
                 vo.setOrderNo(orderNo);
                 vo.setOrderEnrollDate(orderEnrollDate);
@@ -114,5 +114,22 @@ public class OrderDetailDao {
                 
                 return reviewVoListresult;
             }
-    }//class        
+    // 오덜 히스토리 구매확정 [멤버]
+	public int memberorderSure(Connection conn, String ohNo) throws Exception {
+		//sql
+		String sql = "UPDATE ORDER_HISTORY SET DELIVERY_YN ='Y' WHERE NO = ?";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, ohNo);
+		//result
+		int result = pstmt.executeUpdate();
+		
+		//close
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	
+	}
+    
+}//class        
 
