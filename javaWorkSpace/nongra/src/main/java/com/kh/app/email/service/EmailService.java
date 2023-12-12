@@ -8,14 +8,14 @@ import com.kh.app.util.db.JDBCTemplate;
 
 public class EmailService {
 
-	public String[] EmailCheck(String email) throws Exception {
+	public boolean EmailCheck(String email) throws Exception {
 		
 		// connection
 		Connection conn = JDBCTemplate.getConnection();
 		
 		// dao 호출 
 		EmailDao dao = new EmailDao();
-		String[] result = dao.EmailCheck(email,conn);
+		boolean result = dao.EmailCheck(email,conn);
 			
 		// connection close 
 		JDBCTemplate.close(conn);

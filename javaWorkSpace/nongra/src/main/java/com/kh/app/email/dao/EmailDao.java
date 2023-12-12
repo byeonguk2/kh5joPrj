@@ -9,20 +9,20 @@ import com.kh.app.util.db.JDBCTemplate;
 
 public class EmailDao {
 
-	public String[] EmailCheck(String email, Connection conn) throws Exception {
+	public boolean EmailCheck(String email, Connection conn) throws Exception {
 		
-		String sql = "SELECT EMAIL,ID FROM MEMBER WHERE EMAIL = ?";
+		String sql = "SELECT EMAIL,ID FROM MEMBER WHERE EMAIL = ? AND QUIT_YN = 'N'";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, email);
 		
 		ResultSet rs = pstmt.executeQuery();
 		
-		String[] result = null;
+		boolean result = false;
 		if(rs.next()) {
-			result = new String[2];
-			result[0] = rs.getString("ID");
-			result[1] = rs.getString("EMAIL");
+			result = true;
 		}
+		
+		System.out.println(result);
 		
 		JDBCTemplate.close(pstmt);
 		JDBCTemplate.close(rs);
