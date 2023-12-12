@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
     
     
     <%
@@ -89,146 +89,94 @@
                 <tr class="oredr-tr">
                     <td>
                         <div class="tbody-order-box">
-                            <a href=""><img src="" alt="하이" ></a>
+                            <a href=""><img src="/nongra${vo.thumbnail}" alt="상품사진" ></a>
                             
                             <ul>
                                 <li class="order-store-name"><a href="">${vo.businessName}</a></li>
-                                <li class="order-item-name"><a href="">${vo.itemTitle }</a>   </li>
+                                <li class="order-item-name"><a href="">${vo.itemtitle }</a>   </li>
                             </ul>
                         </div>  
                     </td>
                     
                     <td class="order-date-td">
-                        ${vo.enrollDate}
+                        ${vo.orderEnrollDate}
                     </td>
                     <td class="order-number-td">
                         <a href="">${vo.orderNo}</a>    
                     </td>
                     <td class="order-price-td">
-                        ${vo. }
+                        <span>${vo.totalPrice}원</span>
                         <br>
-                        <span>1개</span>
+                        <span>${vo.ea}개</span>
                     </td>
                     <td class="order-btn-td">
-                       <button class="order-buy-sure-before">구매확정</button><button class="order-review-before">후기작성</button> 
-                    </td>
-                </tr>
-               </c:forEach>  
-
-                <tr class="oredr-tr">
-                    <td>
-                        <div class="tbody-order-box">
-                            <a href=""><img src="" alt="하이" ></a>
-                            
-                            <ul>
-                                <li class="order-store-name"><a href="">상점이름</a></li>
-                                <li class="order-item-name"><a href="">상품이름 상품이름 상품이름 상품이름</a>   </li>
-                            </ul>
-                        </div>
-                           
-                    </td>
+              	   <c:choose>
+					    <c:when test="${vo.refundYn eq 'Y'}"> 
+					       <button class="order-buy-sure-after">환불완료</button>
+					    </c:when> 
+				    	<c:otherwise>
+				    		
+				    	
+				    	 <c:choose>
+							  <c:when test="${vo.deliveryYn eq 'N'}">
+							   <button class="order-buy-sure-before">구매확정 <div class ="payNo" style="display : none">${vo.payNo}</div></button>    
+							   <button class="order-review-after">구매확정대기<div class ="reviewNo" style="display : none">${vo.reviewNo}</div></button> 
+							  </c:when> 
+							  <c:otherwise>
+							  <button class="order-buy-sure-after">구매 확정 완료</button>
+							   
+						<c:choose>
+							  <c:when test="${empty vo.reviewNo}">
+							   <button class="order-review-before">후기작성<div class ="cbNO" style="display : none">${vo.cbNo}</div>
+							   <div class ="thumbnail" style="display : none">/nongra${vo.thumbnail}</div><div class ="itemtitle" style="display : none">[${vo.businessName}]${vo.itemtitle}</div>
+							   </button>  
+							  </c:when>
+							  <c:otherwise>
+							  	<button class="order-review-after">후기 작성 완료<div class ="reviewNo" style="display : none">${vo.reviewNo}</div></button> 
+ 							  </c:otherwise>
+						</c:choose>  
+							  
+							  </c:otherwise>							  
+						</c:choose>
+	    			</c:otherwise>    
+				</c:choose>
+                    			
                     
-                    <td class="order-date-td">
-                        2023.11.25
-                    </td>
-                    <td class="order-number-td">
-                        <a href="">20231125/01</a>    
-                    </td>
-                    <td class="order-price-td">
-                        27,793원
-                        <br>
-                        <span>1개</span>
-                    </td>
-                    <td class="order-btn-td">
-                       <button class="order-buy-sure-after">구매 확정 완료</button><button class="order-review-before">후기작성</button> 
+          
                     </td>
                 </tr>
-
-                <tr class="oredr-tr">
-                    <td>
-                        <div class="tbody-order-box">
-                            <a href=""><img src="" alt="하이" ></a>
-                            
-                            <ul>
-                                <li class="order-store-name"><a href="">상점이름</a></li>
-                                <li class="order-item-name"><a href="">상품이름 상품이름 상품이름 상품이름</a>   </li>
-                            </ul>
-                        </div>
-                           
-                    </td>
-                    
-                    <td class="order-date-td">
-                        2023.11.25
-                    </td>
-                    <td class="order-number-td">
-                        <a href="">20231125/01</a>    
-                    </td>
-                    <td class="order-price-td">
-                        27,793원
-                        <br>
-                        <span>1개</span>
-                    </td>
-                    <td class="order-btn-td">
-                       <button class="order-buy-sure-after">구매 확정 완료</button><button class="order-review-after">후기 작성 완료</button> 
-                    </td>
-                </tr>
-
-
-            
-    
-
-                <tr class="oredr-tr">
-                    <td>
-                        <div class="tbody-order-box">
-                            <a href=""><img src="" alt="하이" ></a>
-                            
-                            <ul>
-                                <li class="order-store-name"><a href="">상점이름</a></li>
-                                <li class="order-item-name"><a href="">상품이름 상품이름 상품이름 상품이름</a>   </li>
-                            </ul>
-                        </div>
-                           
-                    </td>
-                    
-                    <td class="order-date-td">
-                        2023.11.25
-                    </td>
-                    <td class="order-number-td">
-                        <a href="">20231125/01</a>    
-                    </td>
-                    <td class="order-price-td">
-                        27,793원
-                        <br>
-                        <span>1개</span>
-                    </td>
-                    <td class="order-btn-td">
-                       <button class="order-buy-sure-after">환불완료</button>
-                    </td>
-                </tr>
-
-
-                
+               </c:forEach>         
             </tbody>  
         </table>    
     </div>
 
     <div class="inquery-paging-area">
         <div class="inquery-pageing-btn-area" >
-            <button ></button>
-            <button></button>
-        </div>
+             
+             	<% if(pvo.getCurrentPage() == 1) {%>
+             		<button ><img src="/nongra/resources/img/review/paging-prev-disabled.svg" ></button>
+             	<%}else{   %>
+             		<button class=page-btn-next onclick = 'pagePrevious()' ><img src="/nongra/resources/img/review/paging-prev-activated.svg" ></button>                                            
+                 <%	} %>
+                 	 
+                  <% if(pvo.getCurrentPage() == pvo.getMaxPage()) {%>
+             		<button ><img src="/nongra/resources/img/review/paging-next-disabled.svg" ></button>
+             	<%}else{   %>
+             		<button class=page-btn-previous onclick= 'pageNext()'><img src="/nongra/resources/img/review/paging-next-activated.svg" ></button>                                            
+                 <%	} %>		   
+             </div>
     </div>   
 </section>
 
 <!-- 모달 구매 확정 창 -->
-<div class="modal-sure modal-sure-hiddnen style="z-index: 3;">
+<div class="modal-sure modal-sure-hiddnen" style="z-index: 3;">
     <div class="dialog-sure">
         <div class="dialog-sure-btn"><button id="modal-close">X</button></div>
         <span >-구매 확정 시 교환 환불은 불가능 합니다 </span>
         <span>정말 구매 확정 하시겠습니까?</span>
 
         <div class="modal-sure-btn-box">
-            <button class="btn-sure">확정</button><label class="btn-quit" for="modal-close">취소</label>
+            <form class="form-sure" action="/nongra/member/orderSure" method="post"><button class="btn-sure" name="ohNo">확정</button></form><label class="btn-quit" for="modal-close">취소</label>
         </div>
     </div>
 </div>
@@ -241,8 +189,8 @@
             <h2>후기 작성</h2> <label for="review-cancel">X</label>
         </header>
         <div class="dialog-review-img-box">
-            <img src="" alt="상품사진">  
-            <span>[못난이토마토] 못난이토마볶음 500g</span>
+            <img src="" alt="상품사진" class="imgSrc-modal">  
+            <span class="item-title-modal">[못난이토마토] 못난이토마볶음 500g</span>
         </div>
 
         <div class="dialog-review-img-exemple">
@@ -285,7 +233,7 @@
             </div>
 
             <div class="dialog-review-button-end-box">
-                <button id="review-cancel">취소</button>
+                <button id="review-cancel" type="button" >취소</button>
                 <button id="review-regiseter">등록</button>
             </div>
         </form>  
@@ -311,50 +259,80 @@
     const modalOpenButton = document.querySelectorAll(".order-buy-sure-before")
     const modalCloseButton = document.querySelector("#modal-close")
     const modalSureButton = document.querySelector(".btn-sure")
-    const modal = document.querySelector(".modal-sure")
+    const modal = document.querySelector(".modal-sure") 
+    const payNo = document.querySelectorAll(".payNo")
+	const sure = document.querySelector(".btn-sure") 
+	
+	
 
-
+    
+   
+    
+    
+    
     for(let i=0; i<modalOpenButton.length; i++){
         modalOpenButton[i].addEventListener('click', () => {
+        	    	
     modal.classList.remove('modal-sure-hiddnen');
+    	
+    		sure.value = payNo[i].innerHTML;
+    	 
     });
-
-    }
+   }
+  
+    
+   
 
     
     modalCloseButton.addEventListener('click', () => {
     modal.classList.add('modal-sure-hiddnen');
+    	console.log(sure)
     });
 
     modalSureButton.addEventListener('click', () => {
     modal.classList.add('modal-sure-hiddnen');
-        alert("구매확정이 완료되었습니다")
+    		
 
     });
+    
+    // 여기다 리뷰 
+    const cbNO =  document.querySelectorAll(".cbNO")
+    
+    //썸네일주기
+    const thumbnail = document.querySelectorAll(".thumbnail")
+    // 아이템이름 주기
+    const itemtitle = document.querySelectorAll(".itemtitle")
+    
+    //리뷰넘
+    const reviewNo = document.querySelectorAll(".reviewNo")
+   
+    
+    // 모달창 이미지 소스 아이템이름 
+    const imgSrcModal  = document.querySelector(".imgSrc-modal")
+    const  itemTitleModal = document.querySelector(".item-title-modal")
+  	
     
 
     // 모달 후기작성 버튼
     const reviewModalOpenButton = document.querySelectorAll(".order-review-before")
    
-    
     const reviewModalCloseButton = document.querySelector("#review-cancel")
   
     const reivewModalSureButton1 = document.querySelector("#review-regiseter")
    
     const reviewModal = document.querySelector(".modal-review")
 
-    console.log(reviewModal)
+    
 
 
     for(let i=0; i<reviewModalOpenButton.length; i++){
-        reviewModalOpenButton[i].addEventListener('click', () => {
-            
-            reviewModal.classList.remove('modal-review-hidden');
+        reviewModalOpenButton[i].addEventListener('click', () => {   
+        	imgSrcModal.src=thumbnail[i].innerHTML;
+        	itemTitleModal.innerHTML= itemtitle[i].innerHTML;
+        
+            reviewModal.classList.remove('modal-review-hidden');     
     });
-
-    }
-
-    
+   }
     reviewModalCloseButton.addEventListener('click', () => {
         reviewModal.classList.add('modal-review-hidden');
     });
@@ -364,6 +342,38 @@
         alert("리뷰 작성이 완료되었습니다")
 
     });
+    
+    
+    
+    
+	<% if(searchMap !=null){  %>
+	
+	
+	 function pageNext(){
+		 location.href = '/nongra/admin/manageReview/search?pno=' + <%=pvo.getCurrentPage()+1%> + '&searchType=' + '<%= searchMap.get("searchType") %>' + '&searchValue=' + '<%=searchMap.get("searchValue")%>';
+	 };
+ 	 function pagePrevious(){
+ 		 location.href = '/nongra/admin/manageReview/search?pno=' + <%=pvo.getCurrentPage()-1%> + '&searchType=' + '<%= searchMap.get("searchType") %>' + '&searchValue=' + '<%=searchMap.get("searchValue")%>';  
+ 	 };
+				 
+	 <%} else{%>
+	
+	 function pageNext(){
+		 
+	 
+		 	location.href = '/nongra/member/orderDetail?pno=' + <%=pvo.getCurrentPage()+1%>
+	       
+	    }
+
+	    function pagePrevious(){
+	    	location.href = '/nongra/member/orderDetail?pno=' + <%=pvo.getCurrentPage()-1%>
+	    	     
+	       }
+
+	 <%}%>
+    
+    
+    
 
     
 

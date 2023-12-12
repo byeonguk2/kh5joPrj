@@ -3,6 +3,8 @@ package com.kh.app.orderdetails.service;
 import java.sql.Connection;
 import java.util.List;
 
+import javax.naming.spi.DirStateFactory.Result;
+
 import com.kh.app.orderdetails.dao.OrderDetailDao;
 import com.kh.app.orderdetails.vo.OrderDetailVo;
 import com.kh.app.page.vo.PageVo;
@@ -47,5 +49,29 @@ public class OrderDetailService {
         
   
     }
+    // 오덜 히스토리 구매확정 [멤버]
+	public int memberorderSure(String ohNo) throws Exception {
+		
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// dao
+		OrderDetailDao dao = new OrderDetailDao();
+		
+		//result
+		int reuslt = dao.memberorderSure(conn,ohNo);
+		
+		if(reuslt ==1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		//close 
+		JDBCTemplate.close(conn);
+		
+		return reuslt;
+	}
+	
     
 }//class
