@@ -20,14 +20,17 @@ public class SalesService {
 		return salesVoList;
 	}
 	// 상품 등록
-	public int salesRegister(SalesVo vo) throws Exception{
+	public int salesRegister(SalesVo vo, List<String> fileNameList) throws Exception{
 		Connection conn = JDBCTemplate.getConnection();
 		SalesDao dao = new SalesDao();
-		int result = dao.salesRegister(conn , vo);
+		int result = dao.salesRegister(conn , vo , fileNameList);
 		
-		if(result != 1) {
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
 			JDBCTemplate.rollback(conn);
 		}
+		
 		JDBCTemplate.close(conn);
 		
 		return result;
