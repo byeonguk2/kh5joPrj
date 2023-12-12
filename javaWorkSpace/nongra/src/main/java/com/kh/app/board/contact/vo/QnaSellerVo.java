@@ -16,31 +16,16 @@ public class QnaSellerVo {
 	private String replyModifyDate;
 	private String categoryParentId;
 	private String categoryName;
+	private String id;
+	private String nick;
+	private String sTitle;
+	private String thumbnail;
+
 	public QnaSellerVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public QnaSellerVo(String sellerQnaNo, String categoryId, String salesNo, String sellerNo, String title,
-			String content, String enrollDate, String modifyDate, String modifyYn, String replyWriterNo,
-			String replyContent, String replyEnrollDate, String replyModifyDate, String categoryParentId,
-			String categoryName) {
-		super();
-		this.sellerQnaNo = sellerQnaNo;
-		this.categoryId = categoryId;
-		this.salesNo = salesNo;
-		this.sellerNo = sellerNo;
-		this.title = title;
-		this.content = content;
-		this.enrollDate = enrollDate;
-		this.modifyDate = modifyDate;
-		this.modifyYn = modifyYn;
-		this.replyWriterNo = replyWriterNo;
-		this.replyContent = replyContent;
-		this.replyEnrollDate = replyEnrollDate;
-		this.replyModifyDate = replyModifyDate;
-		this.categoryParentId = categoryParentId;
-		this.categoryName = categoryName;
-	}
+	
 	public String getSellerQnaNo() {
 		return sellerQnaNo;
 	}
@@ -131,14 +116,75 @@ public class QnaSellerVo {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
+
+	public QnaSellerVo(String sellerQnaNo, String categoryId, String salesNo, String sellerNo, String title,
+			String content, String enrollDate, String modifyDate, String modifyYn, String replyWriterNo,
+			String replyContent, String replyEnrollDate, String replyModifyDate, String categoryParentId,
+			String categoryName, String id, String nick, String sTitle, String thumbnail) {
+		super();
+		this.sellerQnaNo = sellerQnaNo;
+		this.categoryId = categoryId;
+		this.salesNo = salesNo;
+		this.sellerNo = sellerNo;
+		this.title = title;
+		this.content = content;
+		this.enrollDate = enrollDate;
+		this.modifyDate = modifyDate;
+		this.modifyYn = modifyYn;
+		this.replyWriterNo = replyWriterNo;
+		this.replyContent = replyContent;
+		this.replyEnrollDate = replyEnrollDate;
+		this.replyModifyDate = replyModifyDate;
+		this.categoryParentId = categoryParentId;
+		this.categoryName = categoryName;
+		this.id = id;
+		this.nick = nick;
+		this.sTitle = sTitle;
+		this.thumbnail = thumbnail;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getNick() {
+		return nick;
+	}
+
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
+
+	public String getsTitle() {
+		return sTitle;
+	}
+
+	public void setsTitle(String sTitle) {
+		this.sTitle = sTitle;
+	}
+
+	public String getThumbnail() {
+		return thumbnail;
+	}
+
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+
 	@Override
 	public String toString() {
 		return "QnaSellerVo [sellerQnaNo=" + sellerQnaNo + ", categoryId=" + categoryId + ", salesNo=" + salesNo
 				+ ", sellerNo=" + sellerNo + ", title=" + title + ", content=" + content + ", enrollDate=" + enrollDate
 				+ ", modifyDate=" + modifyDate + ", modifyYn=" + modifyYn + ", replyWriterNo=" + replyWriterNo
 				+ ", replyContent=" + replyContent + ", replyEnrollDate=" + replyEnrollDate + ", replyModifyDate="
-				+ replyModifyDate + ", categoryParentId=" + categoryParentId + ", categoryName=" + categoryName + "]";
+				+ replyModifyDate + ", categoryParentId=" + categoryParentId + ", categoryName=" + categoryName
+				+ ", id=" + id + ", nick=" + nick + ", sTitle=" + sTitle + ", thumbnail=" + thumbnail + "]";
 	}
+	
 	
 	
 	

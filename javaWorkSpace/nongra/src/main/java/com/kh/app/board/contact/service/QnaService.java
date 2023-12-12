@@ -2,6 +2,7 @@ package com.kh.app.board.contact.service;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Map;
 
 import com.kh.app.board.contact.dao.NoticeDao;
 import com.kh.app.board.contact.dao.QnaDao;
@@ -15,17 +16,17 @@ public class QnaService {
 	public List<QnaMemberCateVo> getParentCateList() throws Exception {
 		Connection conn = JDBCTemplate.getConnection();
 		QnaDao dao = new QnaDao();  
-		List<QnaMemberCateVo> parentCateVoList = dao.getParentCateList(conn);
+		List<QnaMemberCateVo> parentCateVoList = dao.getQnaMemberParentCateList(conn);
 		JDBCTemplate.close(conn);
 		return parentCateVoList;
 	}
 
-	public List<QnaMemberCateVo> getChildCateList() throws Exception {
+	public Map<String, QnaMemberCateVo> getChildCateList() throws Exception {
 		Connection conn = JDBCTemplate.getConnection();
 		QnaDao dao = new QnaDao();  
-		List<QnaMemberCateVo> childCateVoList = dao.getParentCateList(conn);
+		Map<String, QnaMemberCateVo> map = dao.getQnaMemberChildCateList(conn);
 		JDBCTemplate.close(conn);
-		return childCateVoList;
+		return map;
 	}
 	public List<QnaSellerVo> getQnaSellerList(String userNo) throws Exception {
 		Connection conn = JDBCTemplate.getConnection();
@@ -38,6 +39,14 @@ public class QnaService {
 		Connection conn = JDBCTemplate.getConnection();
 		QnaDao dao = new QnaDao();  
 		List<QnaMemberVo> qnaVoList = dao.getQnaMemberList(conn, userNo);
+		JDBCTemplate.close(conn);
+		return qnaVoList;
+	}
+	
+	public QnaMemberCateVo getQnaMemberParentCateName (Connection conn, String userNo) throws Exception{
+		Connection conn = JDBCTemplate.getConnection();
+		QnaDao dao = new QnaDao();  
+		String parentCateId = dao.getQnaMemberList(conn, userNo);
 		JDBCTemplate.close(conn);
 		return qnaVoList;
 	}
