@@ -3,8 +3,8 @@ package com.kh.app.sales.service;
 import java.sql.Connection;
 import java.util.List;
 
-import com.kh.app.sails.vo.SalesVo;
 import com.kh.app.sales.dao.SalesDao;
+import com.kh.app.sales.vo.SalesVo;
 import com.kh.app.util.db.JDBCTemplate;
 
 public class SalesService {
@@ -18,6 +18,19 @@ public class SalesService {
 		List<SalesVo> salesVoList = sd.salesListSelect(conn);
 		
 		return salesVoList;
+	}
+	// 상품 등록
+	public int salesRegister(SalesVo vo) throws Exception{
+		Connection conn = JDBCTemplate.getConnection();
+		SalesDao dao = new SalesDao();
+		int result = dao.salesRegister(conn , vo);
+		
+		if(result != 1) {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		
+		return result;
 	}
 
 }

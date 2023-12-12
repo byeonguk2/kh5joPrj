@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.kh.app.sails.vo.SalesVo;
+import com.kh.app.sales.vo.SalesVo;
 import com.kh.app.util.db.JDBCTemplate;
 
 public class SalesDao {
@@ -57,6 +57,24 @@ public class SalesDao {
 		
 		return salesVoList;
 		
+	}
+	// 상품 등록
+	public int salesRegister(Connection conn, SalesVo vo) throws Exception{
+		String sql = "INSERT INTO SALES_REGISTR(SALES_NO, SELLER_NO, CATEGORY_NO1, CATEGORY_NO2, TITLE, THUMBNAIL, PRICE, STOCK, ORIGIN) VALUES(SEQ_SALES_NO.NEXTVAL, ?, ?, ?, ?,?, ?, ?,?)";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, vo.getSellerNo());
+		pstmt.setString(2, vo.getCategoryNo());
+		pstmt.setString(3, vo.getCategoryNo2());
+		pstmt.setString(4, vo.getTitle());
+		pstmt.setString(5, vo.getFileName());
+		pstmt.setString(6, vo.getPrice());
+		pstmt.setString(7, vo.getStock());
+		pstmt.setString(8, vo.getOrigin());
+		int result = pstmt.executeUpdate();
+		
+		JDBCTemplate.close(pstmt);
+		
+		return result;
 	}
 
 }
