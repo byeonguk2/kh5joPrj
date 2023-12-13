@@ -11,6 +11,7 @@
     String deleteYn = (String) request.getAttribute("DeleteYn");
     PageVo pvo = (PageVo)request.getAttribute("pvo");
     Map<String, String> searchMap = (Map<String, String>)request.getAttribute("searchMap");
+    
 %>
     
 
@@ -231,8 +232,6 @@
 
             <div class="dialog-review-caution-secret">
                 <label class="dialog-review-caution-label"></label>
-                <input type="checkbox" name="secret" value="Y">
-                <span>후기 비공개하기</span>
             </div>
 
             <div class="dialog-review-button-end-box">
@@ -345,7 +344,6 @@
 
     reivewModalSureButton1.addEventListener('click', () => {
         reviewModal.classList.add('modal-review-hidden');
-        alert("리뷰 작성이 완료되었습니다")
 
     });
     
