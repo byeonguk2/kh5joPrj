@@ -22,9 +22,9 @@
                     <button type="submit" style='cursor:pointer' >로그인</button>
                 </form>
                 <div>
-                    <a class="" href="/find/id">아이디 찾기</a>
+                    <a class="" href="/nongra/id/find">아이디 찾기</a>
                     <span>|</span>
-                    <a class="" href="/find/pw">비밀번호 찾기</a>
+                    <a class="" href="/nongra/pwd/find">비밀번호 찾기</a>
                     <span>|</span>
                     <a class="" href="/nongra/member/join">회원 가입</a>
                 </div>
