@@ -184,4 +184,23 @@ public class SellerService {
 		return result;
 	}
 
+	public int emailCheck(String email) throws Exception {
+		
+		// conn 가져오기 
+		Connection conn = JDBCTemplate.getConnection();
+				
+		// dao 선언  호출 
+		SellerDao dao = new SellerDao();
+				
+		// 디비 조회후 받아온 값 저장 
+		int num = dao.emailCheck(conn, email);
+				
+		// close
+		JDBCTemplate.close(conn);
+				
+		//return
+		return num;
+		
+	}
+
 }

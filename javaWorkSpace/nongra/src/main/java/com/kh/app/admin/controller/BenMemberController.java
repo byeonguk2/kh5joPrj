@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.app.admin.service.AdminService;
+import com.kh.app.admin.vo.MemberDTO;
 import com.kh.app.page.vo.PageVo;
 import com.kh.app.seller.vo.SellerVo;
 
@@ -23,7 +24,7 @@ public class BenMemberController extends HttpServlet {
 			
 			System.out.println("넘어옴");
 			
-			int listCount = as.selectMemberSellerCount(); //(디비가서 조회하기) 전체게시글 갯수
+			int listCount = as.totalOfAllMembers(); //(디비가서 조회하기) 전체게시글 갯수
 			System.out.println(listCount);
 			String currentPagr_ = req.getParameter("pno");
 			if(currentPagr_ == null) {
@@ -36,9 +37,9 @@ public class BenMemberController extends HttpServlet {
 			
 			PageVo pvo = new PageVo(listCount, currentPage, pageLimit, boardLimit);
 			
-			List<SellerVo> voList = as.memberBen(pvo);
+			List<MemberDTO> memberVoList = as.findAllMembers(pvo);
 			
-			req.setAttribute("voList", voList);
+			req.setAttribute("memberVoList", memberVoList);
 			req.setAttribute("pvo", pvo);
 			req.getRequestDispatcher("/WEB-INF/views/admin/member/memberBen.jsp").forward(req, resp);
 			

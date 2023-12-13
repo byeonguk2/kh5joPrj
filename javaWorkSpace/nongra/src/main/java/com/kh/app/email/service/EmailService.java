@@ -46,6 +46,10 @@ public class EmailService {
 		// connection
 		Connection conn = JDBCTemplate.getConnection();
 		
+		if(!vo.getMemberPwd().equals(vo.getMemberPwd2())) {
+			throw new Exception("비밀번호가 일치하지 않습니다.");
+		}
+		
 		// dao 호출 
 		EmailDao dao = new EmailDao();
 		int result = dao.updatePwd(vo,conn);

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.app.admin.service.AdminService;
+import com.kh.app.admin.vo.MemberDTO;
 import com.kh.app.page.vo.PageVo;
 import com.kh.app.seller.vo.SellerVo;
 
@@ -52,16 +53,16 @@ public class MemberSearchListController extends HttpServlet {
 			PageVo pvo = new PageVo(listCount, currentPage,pageLimit,boardLimit);
 			
 			// service 
-			List<SellerVo> SellerVoList = as.searchMember(map,pvo);
+			List<MemberDTO> memberVoList = as.searchMember(map,pvo);
 			
 			req.setAttribute("map", map);
 			req.setAttribute("pvo", pvo);
-			req.setAttribute("voList", SellerVoList);
+			req.setAttribute("memberVoList", memberVoList);
 			
 			if(!searchPageName.equals("select")) {
 				req.getRequestDispatcher("/WEB-INF/views/admin/member/memberBen.jsp").forward(req, resp);
 			}else {
-				req.getRequestDispatcher("/WEB-INF/views/admin/member/selectMember.jsp").forward(req, resp);
+				req.getRequestDispatcher("/WEB-INF/views/admin/member/findAllMembers.jsp").forward(req, resp);
 			}
 			
 		}catch (Exception e) {

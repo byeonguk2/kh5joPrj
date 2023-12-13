@@ -412,7 +412,7 @@ a {
 			const menu4 = document.querySelector(" aside > :nth-child(5) > a ");
 			x.innerHTML = "회원관리";
 			menu1.innerHTML = "회원 조회/수정";
-			menu1.href = "/nongra/admin/select";
+			menu1.href = "/nongra/admin/findAllMembers";
 			menu2.innerHTML = "회원 정지/해제";
 	        menu2.href = "/nongra/admin/memberBen";
 			menu3.innerHTML = "사업자 허가 여부";
@@ -446,8 +446,8 @@ a {
 					document.querySelector(".mtc14").innerHTML = data.vo.account;
 					console.log(data.fileList);
 					console.log(data.fileList2);
-					document.querySelector(".modal-img1").src = data.fileList;
-					document.querySelector(".modal-img2").src = data.fileList2;
+					document.querySelector(".modal-img1").src = data.fileList2;
+					document.querySelector(".modal-img2").src = data.fileList;
 					console.log(document.querySelector(".modal-img2").src);
 					
 				});

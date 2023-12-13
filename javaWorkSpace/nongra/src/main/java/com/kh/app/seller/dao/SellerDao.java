@@ -92,7 +92,7 @@ public class SellerDao {
 	// 판매자 로그인
 	public SellerVo login(SellerVo vo, Connection conn) throws Exception {
 		
-		String sql = "SELECT * FROM SELLER S JOIN MEMBER M ON (S.MEMBER_NO = M.MEMBER_NO) WHERE QUIT_YN ='N' AND M.ID = ? AND M.PWD = ?";
+		String sql = "SELECT * FROM SELLER S JOIN MEMBER M ON (S.MEMBER_NO = M.MEMBER_NO) WHERE M.FREEZE_YN = 'N' AND M.QUIT_YN ='N' AND M.SELLER_YN = 'Y' AND M.ID = ?  AND M.PWD = ?";
 		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, vo.getId());
@@ -318,6 +318,37 @@ public class SellerDao {
 		JDBCTemplate.close(pstmt);
 		
 		return result;
+	}
+
+	public int emailCheck(Connection conn, String email) throws Exception {
+		
+		// sql문 (WHERE문을 이용해 ID를 조회후 COUNT가 성공하면 1 실패하면 0 반환 )
+		String sql = "SELECT COUNT(EMAIL) FROM MEMBER WHERE EMAIL = ?";
+		
+		// pstmt
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		// 회원가입시 받은 아이디 
+		pstmt.setString(1, email);
+		
+		//rs 
+		ResultSet rs = pstmt.executeQuery();
+		
+		// 0상태로 초기화
+		int num = 0;
+		
+		//만약에 rs.next가 존재한다면 1으로 반환 
+		if(rs.next()) {
+			num = rs.getInt(1);
+		}
+		
+		//close
+		JDBCTemplate.close(pstmt);
+		JDBCTemplate.close(rs);
+		
+		// return 
+		return num;
+		
 	}
 
 }

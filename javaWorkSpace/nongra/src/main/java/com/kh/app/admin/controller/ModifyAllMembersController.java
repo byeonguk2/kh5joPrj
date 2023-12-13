@@ -10,38 +10,36 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.kh.app.admin.service.AdminService;
+import com.kh.app.admin.vo.MemberDTO;
 import com.kh.app.member.vo.MemberVo;
 import com.kh.app.seller.vo.SellerVo;
 
 // 회원 정보수정 컨트롤러
 @WebServlet("/admin/modify")
-public class ModifyMemberByAdmin extends HttpServlet {
+public class ModifyAllMembersController extends HttpServlet {
 
 	// 포스트 방식으로 정보들을 받아옴
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		HttpSession session = req.getSession();
-		String checkMemberTypeByMsg = null;
 		
 		try {
 			// 회원 데이터 받아옴
 			String sellerYn = req.getParameter("sellerYn");
-			System.out.println("yn: "+sellerYn);
 			
 			// 서비스 생성
 			AdminService adminService = new AdminService();
 			
 			// sellerYn 값이 null이라면 예외가 발생
 			if(sellerYn == null) {
-				checkMemberTypeByMsg = "소비자인지 판매자인지 여부를 알수 없습니다.";
-				throw new Exception(checkMemberTypeByMsg);
+				throw new Exception("소비자인지 판매자인지 구분불가");
 			}
 			
 			// 회원의 공통 데이터
 			String memberNo = req.getParameter("memberNo");
 			String id = req.getParameter("id");
-			String password = req.getParameter("password");
+			String pwd = req.getParameter("password");
 			String nick = req.getParameter("nick");
 			String name = req.getParameter("name");
 			String email = req.getParameter("email");
@@ -65,61 +63,42 @@ public class ModifyMemberByAdmin extends HttpServlet {
 				String depositor = req.getParameter("depositor");
 				String account = req.getParameter("account");
 				
-				SellerVo  vo = new SellerVo(memberNo, sellerYn, nick, id, password, password, email, nick, email, memberNo, memberNo, name, phone, businessNo, businessForm, busineesName, phone, corporationName, uptae, upjong, busineesZipCode, address, detailAddress, reportNumber, bank, depositor, account, uptae, upjong, reportNumber, bank, depositor, account, sellerYn,account,"d");
+				MemberDTO memberDTO = new MemberDTO(memberNo, id, pwd, nick, name, phone, detailAddress, detailAddress, pwd, nick, name, phone, detailAddress, 0, email, busineesName, sellerYn, sellerYn, businessNo, businessForm, busineesName, phone, busineesZipCode, address, detailAddress, corporationName, uptae, upjong, reportNumber, bank, bank, depositor, account, depositor, account);
 				
-				System.out.println("사업자번호 길이"+businessNo.length());
-				
-				if(businessNo.length() != 10) {
-					// 수정이 실패했다면 예외 발생
-					checkMemberTypeByMsg = "사업자 번호는 10자리로 입력하세요.";
-					throw new Exception(checkMemberTypeByMsg);
-				}
-				System.out.println(phone.length());
-				if(phone.length() >= 11) {
-					// 수정이 실패했다면 예외 발생
-					checkMemberTypeByMsg = "전화번호는 11자리 미만으로 입력하세요.";
-					throw new Exception(checkMemberTypeByMsg);
-				}
+				System.out.println("DTO: "+memberDTO);
 				
 				// 판매자 정보 수정.
-				int result = adminService.ModifySellerByAdmin(vo);
+				int result = adminService.ModifySellerByAdmin(memberDTO);
 				
 				// 수정이 잘 됬는지 체크
 				if(result != 2) {
 					// 수정이 실패했다면 예외 발생
-					checkMemberTypeByMsg = "판매자 정보 수정이 실패했습니다.";
-					throw new Exception(checkMemberTypeByMsg);
+					throw new Exception("판매자 정보 수정이 실패했습니다.");
 				}
 				
-				checkMemberTypeByMsg = "수정이 완료 되었습니다.";
-				
-				session.setAttribute("alert", checkMemberTypeByMsg);
-				resp.sendRedirect("/nongra/admin/select");
+				// 성공시 메세지랑 같이 이동
+				session.setAttribute("alertMsg", "수정이 완료 되었습니다.");
+				resp.sendRedirect("/nongra/admin/findAllMembers");
 				
 			}else {
 				
 				// 소비자 추가정보
 				String birthDay = req.getParameter("birthDay");
-				String point = req.getParameter("point");
+				int point = Integer.parseInt(req.getParameter("point"));
 				
-				MemberVo vo = new MemberVo(memberNo, id, password, password, nick, name, birthDay, phone, email, address, detailAddress, point, birthDay, point, point, sellerYn);
-				
-				System.out.println(vo);
-				
+				MemberDTO memberDTO = new MemberDTO(memberNo, id, pwd, nick, name, phone, address, detailAddress, birthDay, phone, address, detailAddress, birthDay, point, email);
+
 				// 소비자 정보 수정.
-				int result = adminService.ModifyMemberByAdmin(vo);
+				int result = adminService.ModifyMemberByAdmin(memberDTO);
 				
 				// 수정이 잘 됬는지 체크
 				if(result != 1) {
 					// 수정이 실패했다면 예외 발생
-					checkMemberTypeByMsg = "소비자 정보 수정이 실패했습니다.";
-					throw new Exception(checkMemberTypeByMsg);
+					throw new Exception("소비자 정보 수정이 실패했습니다.");
 				}
 				
-				checkMemberTypeByMsg = "수정이 완료 되었습니다.";
-				
-				session.setAttribute("alert", checkMemberTypeByMsg);
-				resp.sendRedirect("/nongra/admin/select");
+				session.setAttribute("alertMsg", "수정이 완료 되었습니다.");
+				resp.sendRedirect("/nongra/admin/findAllMembers");
 				
 			}
 			
@@ -130,8 +109,8 @@ public class ModifyMemberByAdmin extends HttpServlet {
 			e.printStackTrace();
 			
 			// 세션에 오류내용 추가후 에러메시지로 안내 
-			session.setAttribute("alert", checkMemberTypeByMsg);
-			resp.sendRedirect("/nongra/admin/select");
+			session.setAttribute("alertMsg", "소비자 정보 수정이 실패했습니다.");
+			resp.sendRedirect("/nongra/admin/findAllMembers");
 			
 		}
 		
