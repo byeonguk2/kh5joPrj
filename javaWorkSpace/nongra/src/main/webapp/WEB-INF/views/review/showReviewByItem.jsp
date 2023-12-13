@@ -185,98 +185,11 @@
              	<%}else{   %>
              		<button class=page-btn-previous onclick= 'pageNext()'><img src="/nongra/resources/img/review/paging-next-activated.svg" ></button>                                            
                  <%	} %>		
-             		
-             		
-             	
-             	
-           
-                 
              </div>
          </div>
-         
-         
              </section>
-			
-			</div>
+		</div>
 	</div>
-	
-	
-	  <!-- 모달 삭제 창 -->
-<div class="modal-sure modal-sure-hiddnen">
-    <div class="dialog-sure">
-        <div class="dialog-sure-btn"><button id="modal-close">X</button></div>
-        <span >-삭제 시 리뷰 복구는 불가능 합니다 </span>
-        <span>정말 삭제 하시겠습니까?</span>
-
-        <div class="modal-sure-btn-box">
-            <button class="btn-sure">삭제</button><label class="btn-quit" for="modal-close">취소</label>
-        </div>
-    </div>
-</div>
-
-
-
-
-<!-- 모달 수정작성 창 -->
-
-<div class="modal-review modal-review-hidden">
-    <header class="dialog-review">
-        <header class="dialog-review-header">
-            <h2>후기 작성</h2> <label for="review-cancel">X</label>
-        </header>
-        <div class="dialog-review-img-box">
-            <img src="" alt="상품사진">  
-            <span>[못난이토마토] 못난이토마볶음 500g</span>
-        </div>
-
-        <div class="dialog-review-img-exemple">
-            <h2>후기는 이렇게 작성해보세요</h2>
-            <p class>제품의 <span class="dialog-review-img-exemple-span">맛·향·크기·사용감</span> 등을 설명해주세요
-                <strong>좋았던 점, 아쉬웠던 점</strong>도 솔직하게 얘기해주세요</p>
-           
-        </div>
-
-        <form action="">
-            <div class="dialog-review-content-box">
-                <div>내용</div>
-                
-                <textarea id="contents" placeholder="상품 특성에 맞는 후기를 작성해주세요.(20자 이상)" inputmode="text" aria-label="textarea-message" name="contents" class="css-5etceh e1tjt2bn1"></textarea>
-
-            </div>
-
-            <div>
-                <div class="dialog-review-content-picture-input-box">
-                    <h3>사진 첨부</h3>
-                    <div>
-                        <input id="my-input" type="file">
-                        <button class="dialog-review-content-picture-input-btn" onclick="onClickUpload()"><img src="" alt=""></button></div>
-                </div>
-            </div>
-
-            <div class="dialog-review-caution">
-                <label class="dialog-review-caution-label"></label>
-                <ul class="dialog-review-caution-ul">
-                    <li class="dialog-review-caution-li">사진은 최대 8장까지, 30MB 이하의 이미지만 업로드가 가능합니다.</li>
-                    <li class="dialog-review-caution-li">상품과 무관하거나 반복되는 동일 단어/문장을 사용하여 후기로 볼 수 없는 글, 판매자와 고객의 후기 이용을 방해한다고 판단되는 경우, 배송 박스, 구매 상품을 구분할 수 없는 전체 사진, 화면캡쳐, 음란 및 부적절하거나 불법적인 내용은 통보없이 삭제 될 수 있습니다.</li>
-                    <li class="dialog-review-caution-li">전화번호, 이메일, 주소, 계좌번호 등 개인정보가 노출되지 않도록 주의해주세요.</li>
-                    <li class="dialog-review-caution-li">사진후기로 등록한 후기의 경우, 최소 1장의 사진을 등록 후 수정이 가능합니다.</li>
-                </ul>
-            </div>
-
-            <div class="dialog-review-caution-secret">
-                <label class="dialog-review-caution-label"></label>
-                <input type="checkbox">
-                <span>후기 비공개하기</span>
-            </div>
-
-            <div class="dialog-review-button-end-box">
-                <button type="button" id="review-cancel">취소</button>
-                <button id="review-regiseter">수정</button>
-            </div>
-        </form>  
-    </header>
-</div>
-
 
 </body>
 </html>
@@ -302,48 +215,10 @@
     }
 
 
-     // 모달 구매확정 버튼
-    
-     //리뷰넘버
-     const reviewNo =document.querySelectorAll(".reviewNO")
-
-     //삭제 버튼
-     const modalOpenButton = document.querySelectorAll(".reply-delete-btn")
-    
-     const modalCloseButton = document.querySelector("#modal-close")
-    
-     //확정 버튼
-     const modalSureButton = document.querySelector(".btn-sure")
-    
-     const modal = document.querySelector(".modal-sure")
-
-
-    for(let i=0; i<modalOpenButton.length; i++){
-        modalOpenButton[i].addEventListener('click', () => {
-    modal.classList.remove('modal-sure-hiddnen');
-    window.x = reviewNo[i].innerHTML;
-  
-    });
-
-    }
-  
-    modalCloseButton.addEventListener('click', () => {
-    modal.classList.add('modal-sure-hiddnen');
-    });
-
-    modalSureButton.addEventListener('click', () => {
-    modal.classList.add('modal-sure-hiddnen');
-    
-    location.href='/nongra/admin/reviewDelete?DeleteNo=' + window.x
-    });
-	
+     
    
 	var deleteYnValue = "<%=deleteYn %>";
     
- 
-
-
-
 	<% if(searchMap !=null){  %>
 	
 	 function setSearchArea(){
@@ -370,12 +245,7 @@
 	  setSearchArea();
 
 	<% } %>
-	
- 	
-    
-    
-
-	
+		
 	/*페이징 처리  */
 	<% if(searchMap !=null){  %>
 	
@@ -392,66 +262,15 @@
 	 function pageNext(){
 		 
 	 
-		 	location.href = '/nongra/member/manageReview?pno=' + <%=pvo.getCurrentPage()+1%>
+		 	location.href = '/nongra/member/showReviewByItem?pno=' + <%=pvo.getCurrentPage()+1%>
 	       
 	    }
 
 	    function pagePrevious(){
-	    	location.href = '/nongra/member/manageReview?pno=' + <%=pvo.getCurrentPage()-1%>
+	    	location.href = '/nongra/member/showReviewByItem?pno=' + <%=pvo.getCurrentPage()-1%>
 	    	     
 	       }
 
 	 <%}%>
 	
-
-	  // 모달 후기수정 버튼
-	    const reviewModalOpenButton = document.querySelectorAll(".change-btn")
-	   
-	    
-	   const reviewModalCloseButton = document.querySelector("#review-cancel")
-	 
-	   const reivewModalSureButton1 = document.querySelector("#review-regiseter")
-	  
-	   const reviewModal = document.querySelector(".modal-review")
-
-	   console.log(reviewModal)
-
-
-	   for(let i=0; i<reviewModalOpenButton.length; i++){
-	       reviewModalOpenButton[i].addEventListener('click', () => {
-	           
-	           reviewModal.classList.remove('modal-review-hidden');
-	   });
-
-	   }
-
-	   
-	   reviewModalCloseButton.addEventListener('click', () => {
-	       reviewModal.classList.add('modal-review-hidden');
-	   });
-
-	   reivewModalSureButton1.addEventListener('click', () => {
-	       reviewModal.classList.add('modal-review-hidden');
-	    
-
-	   });
-
-	    const c1 =document.querySelectorAll(".product-inquery-normal")
-	    const c2 =document.querySelectorAll(".produt-inquery-answer-tr1 ");
-	    
-	    for(let i=0; i<c1.length; ++i){
-	        c1[i].addEventListener('click',()=>{
-	        c2[i].classList.toggle("produt-inquery-answer-tr")
-	           
-	    } )      
-	    }
-    
-	
-	 
-	 
-
-
-
-
-   
     </script>

@@ -339,6 +339,7 @@ white-space: normal;
 	justify-content: center;
 	align-items: center;
 	position:fixed;
+	z-index: 5;
 	left: 0;
 	right: 0;
 	top: 0;

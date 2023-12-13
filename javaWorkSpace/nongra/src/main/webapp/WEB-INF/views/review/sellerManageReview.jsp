@@ -69,11 +69,11 @@
         		<div class ="reviewNO" style="display : none">${vo.reviewNo}</div>
              <div class="review" >
                  <div class="review-user-nick">
-                     <figure class="user-photo" style="background-image: url("${vo.profile}")></figure> <span>"${vo.nick}"</span>
+                     <figure class="user-photo" style="background-image: url("${vo.profile}")></figure> <span>${vo.nick}</span>
                  </div>
          
                  <div class="review-content-box">
-                     <div class="review-item-name">"${vo.itemTitle}"</div>
+                     <div class="review-item-name">${vo.itemTitle}</div>
                      <p class="review-content">
                          ${vo.content}
                      </p>
@@ -319,7 +319,6 @@
     //등록
     modalReviewRegisterButton.addEventListener('click', () => {
         modalReview.classList.add('review-answer-modal-hidden');
-        alert("답변 작성이 완료되었습니다")
 
     });
 
@@ -351,7 +350,7 @@
     //변경 등록
     modalReviewChangeRegisterButton.addEventListener('click', () => {
         modalChangeReview.classList.add('review-answer-modal-hidden-1');
-        alert("답변 변경이 완료되었습니다")
+       
 
     });
 
@@ -378,7 +377,7 @@
 
    modalSureButton.addEventListener('click', () => {
    modal.classList.add('modal-sure-hiddnen');
-       alert("답변 삭제가 완료되었습니다")
+      
 
    });
 
@@ -393,11 +392,7 @@
    
 	var deleteYnValue = "<%=deleteYn %>";
     
-    if(deleteYnValue === '실패'){
-    	alert('리뷰 삭제' +deleteYnValue);
-    }else if(deleteYnValue ==='성공'){
-    	alert('리뷰 삭제' +deleteYnValue);
-    }	
+    
     
 
 

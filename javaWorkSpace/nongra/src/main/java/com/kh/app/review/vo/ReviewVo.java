@@ -5,23 +5,27 @@ import java.util.List;
 
 public class ReviewVo {
 	
-private String  reviewNo;
-private String  consumerNo;
-private String	cartBreakdownNo;
-private String	content;
-private String	WriteDate;
-private String	updateDate;
-private String  reviewDelYn;
-private String	replyDate;
+private String  reviewNo;			// 리뷰넘 
+private String  consumerNo;			//소비자번호
+private String	cartBreakdownNo;	//장바구니 
+private String	content;		// 내용
+private String	WriteDate;		// 작성일
+private String	updateDate;		//삭제 업데이트일
+private String  reviewDelYn;	//리뷰 삭제 여부 
+private String	replyDate;		//답글 작성일
 private String	replyDelYn;		//답글 삭제 여부 
-private String	replyContent;
+private String	replyContent;	//응답 내용
 private String	ItemTitle	;		//상품 제목
+private String  recommendYn;    //리뷰 작성여부 null 일때 좋아요 안눌렀어
+								
 // BUSINESS_NAME 이거 비지니스 네임
 private String	corporationName;   
 private String	nick;
 private String	likeCnt;
 private String src;
 private String profile;
+
+
 
 
 private List<String> fileSrc;
@@ -42,13 +46,13 @@ public ReviewVo(String reviewNo, String consumerNo, String cartBreakdownNo, Stri
 	this.consumerNo = consumerNo;
 	this.cartBreakdownNo = cartBreakdownNo;
 	this.content = content;
-	WriteDate = writeDate;
+	this.WriteDate = writeDate;
 	this.updateDate = updateDate;
 	this.reviewDelYn = reviewDelYn;
 	this.replyDate = replyDate;
 	this.replyDelYn = replyDelYn;
 	this.replyContent = replyContent;
-	ItemTitle = itemTitle;
+	this.ItemTitle = itemTitle;
 	this.corporationName = corporationName;
 	this.nick = nick;
 	this.likeCnt = likeCnt;
@@ -188,15 +192,26 @@ public ReviewFileVo getReviewFileVo() {
 public void setReviewFileVo(ReviewFileVo reviewFileVo) {
 	this.reviewFileVo = reviewFileVo;
 }
+
+
+public String getRecommendYn() {
+	return recommendYn;
+}
+public void setRecommendYn(String recommendYn) {
+	this.recommendYn = recommendYn;
+}
 @Override
 public String toString() {
 	return "ReviewVo [reviewNo=" + reviewNo + ", consumerNo=" + consumerNo + ", cartBreakdownNo=" + cartBreakdownNo
 			+ ", content=" + content + ", WriteDate=" + WriteDate + ", updateDate=" + updateDate + ", reviewDelYn="
 			+ reviewDelYn + ", replyDate=" + replyDate + ", replyDelYn=" + replyDelYn + ", replyContent=" + replyContent
-			+ ", ItemTitle=" + ItemTitle + ", corporationName=" + corporationName + ", nick=" + nick + ", likeCnt="
-			+ likeCnt + ", src=" + src + ", profile=" + profile + ", fileSrc=" + fileSrc + ", reviewFileVo="
-			+ reviewFileVo + ", reviewFileVolist=" + reviewFileVolist + "]";
+			+ ", ItemTitle=" + ItemTitle + ", recommendYn=" + recommendYn + ", corporationName=" + corporationName
+			+ ", nick=" + nick + ", likeCnt=" + likeCnt + ", src=" + src + ", profile=" + profile + ", fileSrc="
+			+ fileSrc + ", reviewFileVo=" + reviewFileVo + ", reviewFileVolist=" + reviewFileVolist + "]";
 }
+
+
+
 
 
 

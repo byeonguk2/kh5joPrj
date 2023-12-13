@@ -17,7 +17,7 @@ import com.kh.app.review.service.ReviewService;
   
   	@WebServlet("/admin/reviewDelete") 
   	public class AdminManagerReviewDeleteController extends HttpServlet{
-  //번호 받아서 리뷰 삭제 (관리자) , (유저)
+  //번호 받아서 리뷰 삭제 (관리자),(유저)
   @Override 
   protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	 
@@ -33,24 +33,24 @@ import com.kh.app.review.service.ReviewService;
 		  //  result
 		  int result = rs.adminManagerReviewDelete(deleteNo);
 		  
-		  if(result !=1) { throw new Exception(); } 
-		  
+		  if(result !=1) { 
+			  session.setAttribute("alert", "리뷰 삭제 실패");
+			  throw new Exception(); 
+		  		 }
+		  session.setAttribute("alert", "리뷰 삭제 성공");
+
 		  
 		  if(loginMember== null) {
-		  req.setAttribute("DeleteYn", "성공");
-		  req.getRequestDispatcher("/admin/manageReview").forward(req, resp);
+			  resp.sendRedirect("/nongra/admin/manageReview");
 		  }else {
-			 req.setAttribute("DeleteYn", "성공");
-			 req.getRequestDispatcher("/member/manageReview").forward(req, resp);
+			 resp.sendRedirect("/nongra/member/manageReview");
 		}
 		    
 		 } catch (Exception e) { 
 			if(loginMember== null) {
-		  req.setAttribute("DeleteYn", "실패");
-		  req.getRequestDispatcher("/admin/manageReview").forward(req, resp);
+				resp.sendRedirect("/nongra/admin/manageReview");
 			}else {
-				 req.setAttribute("DeleteYn", "실패");
-				  req.getRequestDispatcher("/member/manageReview").forward(req, resp);
+				 resp.sendRedirect("/nongra/member/manageReview");	
 			}
 		 }
 	} 
