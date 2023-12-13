@@ -57,8 +57,9 @@
                     <div class="event_content">
                         <p>
                         <% for(EventFileVo fileVo : fileVoList) { %>
-                            <img src="/nongra/resources/img/board/event/<%=fileVo.getFileName() %>" alt="<%=fileVo.getFileName() %>">
-                            <!-- 반복문 추가할것 mainY안뜨게  -->
+							<% if(fileVo.getMainYn().equals("N")){ %>
+                           		<img src="/nongra/resources/img/board/event/<%=fileVo.getFileName() %>.png" alt="<%=fileVo.getFileName() %>">
+                            <% } %>
                         <% } %>
                         </p>
                     </div>
@@ -70,7 +71,6 @@
 
 			</div>
 		</main>
-		<footer>footer</footer>
 	</div>
 </body>
 </html>

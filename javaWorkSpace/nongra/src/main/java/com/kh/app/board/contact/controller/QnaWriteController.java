@@ -31,6 +31,7 @@ public class QnaWriteController extends HttpServlet {
 		//	List<QnaSellerCateVo> parentCateVoList = qs.getParentCateList();
 		//	List<QnaSellerCateVo> childCateVoList = qs.getChildCateList();
 			
+			req.setAttribute("parentCateVoList", parentCateVoList);
 			
 			req.getRequestDispatcher("/WEB-INF/views/board/contact/qna/qna_write.jsp").forward(req, resp);
 			
