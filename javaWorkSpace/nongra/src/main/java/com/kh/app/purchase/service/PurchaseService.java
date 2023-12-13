@@ -236,13 +236,13 @@ public class PurchaseService {
 		PurchaseDao dao = new PurchaseDao();
 		PurchaseOrderCheckoutVo orderCheckOutVo = new PurchaseOrderCheckoutVo();
 			//주문번호에 맞는 장바구니 목록
-//		List<PurchaseCartVo> purchaseCartVoList = dao.endOrderCart(conn, orderNo);
-//		orderCheckOutVo.setCartVoList(purchaseCartVoList);
+		List<PurchaseCartVo> purchaseCartVoList = dao.endOrderCart(conn, orderNo);
+		
 		
 			//주문번호에 맞는 배송지 정보
 //		PurchaseAddressVo addressVo = dao.endOrderAddress(conn, orderNo);
 //		orderCheckOutVo.setAddressVo(addressVo);
-		
+//		
 		//tx
 
 		
