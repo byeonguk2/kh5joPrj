@@ -56,9 +56,12 @@ Map<String, String> searchMap = (Map<String, String>) request.getAttribute("sear
 				<div id="box">
 					<div id="welcome"><%=loginMember.getMemberNick()%>님 환영합니다
 					</div>
-					<div id="pay">페이금액 0원</div>
+					<div id="pay">페이금액 <%=loginMember.getPoint()%>원</div>
 				</div>
-				<h3>최근 주문 내역</h3>
+				<div id=h3>
+				<a href="/nongra/member/orderDetail">최근 주문 내역</a>
+				</div>
+				
 				<div id="box2">
 
 
@@ -154,8 +157,10 @@ Map<String, String> searchMap = (Map<String, String>) request.getAttribute("sear
 
 				</div>
 
-
+				<div id=h3>
 				<h3>최근 구매 상품</h3>
+				
+				</div>
 				<div id="box3">
 					<div id="img_box">
 						<img src="https://dummyimage.com/100x100/000/fff.png&text=sample"
