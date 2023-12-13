@@ -12,29 +12,28 @@ import javax.servlet.http.HttpServletResponse;
 import com.kh.app.sales.service.SalesService;
 import com.kh.app.sales.vo.SalesVo;
 
-@WebServlet("/sales/list")
-public class SalesListController extends HttpServlet{
+@WebServlet("/sales/detail")
+public class SalesDetailController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
-			SalesService ss = new SalesService();
-			List<SalesVo> salesVoList = ss.salesListSelect();
-			int listCount = ss.selectSalesAllCount();
+			String salesNo = req.getParameter("salesNo");
 			
-			if(salesVoList == null) {
-				throw new Exception("목록 불러오는 중에 오류 발생");
-			}
-					
-			req.setAttribute("listCount", listCount);
-			req.setAttribute("salesVoList", salesVoList);
-			req.getRequestDispatcher("/WEB-INF/views/sales/salesList.jsp").forward(req, resp);
-		}catch(Exception e) {
+			SalesService ss = new SalesService();
+			
+			List<SalesVo> salesVoList = ss.selectSalesDetail();
+			
+			
+			
+			req.getRequestDispatcher("/WEB-INF/views").forward(req, resp);
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 		
 		
+		
 	}
-
+	
 }

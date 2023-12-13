@@ -7,14 +7,16 @@ main{
 
 .main-section{
     display: grid;
-    grid-template-rows: 100px 9fr;
+    grid-template-rows: 100px 800px;
     width: 750px;
-    align-items: end;
+    align-items: center;
 }
 .main-top-area{
     display: grid;
+    height: 100%;
     grid-template-columns: 1fr 2fr;
     margin-bottom: 15px;
+    align-items: end;
 }
 .main-top-area>div>span:nth-child(1){
     margin-left: 20px;

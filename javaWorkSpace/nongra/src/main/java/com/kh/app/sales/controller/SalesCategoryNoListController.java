@@ -25,6 +25,8 @@ public class SalesCategoryNoListController extends HttpServlet{
 			int listCount = ss.selectSalesCount(categoryNo);
 			List<SalesVo> salesVoList =  ss.salesCategoryNoSelect(categoryNo);
 			
+			System.out.println(salesVoList);
+			
 			if(salesVoList == null) {
 				throw new Exception("상품 목록 가져오는 중에 디비 문제 발생");
 			}
