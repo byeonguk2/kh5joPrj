@@ -172,14 +172,13 @@
 			method : "POST",
 			body : formData
 		})
-		.then( ( resp )=> resp.json() )
+		.then( ( resp )=> resp.text() )
 		.then( (data) => {
 			
 			
 			alert("상품 등록 성공");
 			
-			
-			
+			window.location.href = "/nongra/seller/home";
 			console.log(data);
 			
 			

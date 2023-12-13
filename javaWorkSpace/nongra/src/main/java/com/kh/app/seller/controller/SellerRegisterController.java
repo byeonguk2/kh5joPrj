@@ -68,7 +68,7 @@ public class SellerRegisterController extends HttpServlet{
 			String origin = req.getParameter("origin");
 			String categoryNo1 = req.getParameter("categoryNo1");
 			String categoryNo2 = req.getParameter("categoryNo2");
-			String file = sep+"nongra"+ sep +"resources" + sep +"upload"+sep+"img"+fileName;
+			String file = sep + "resources" + sep +"upload"+sep+"img"+fileName;
 			SalesVo vo = new SalesVo();
 			vo.setTitle(title);
 			vo.setPrice(price);

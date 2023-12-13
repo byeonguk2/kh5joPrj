@@ -115,10 +115,10 @@ public class SellerNoteService {
 		
 	}
 	// 보낸 쪽지 삭제
-	public int sendNoteDelete(SellerNoteVo noteVo) throws Exception{
+	public int sendNoteDelete(SellerNoteVo noteVo, String memberNo) throws Exception{
 		Connection conn = JDBCTemplate.getConnection();
 		SellerNoteDao dao = new SellerNoteDao();
-		int result = dao.sendNoteDelete(conn , noteVo);
+		int result = dao.sendNoteDelete(conn , noteVo , memberNo);
 		if(result == 1) {
 			JDBCTemplate.commit(conn);
 		}else {
@@ -127,10 +127,10 @@ public class SellerNoteService {
 		
 		return result;
 	}
-	public int reciveNoteDelete(SellerNoteVo noteVo) throws Exception{
+	public int reciveNoteDelete(SellerNoteVo noteVo, String memberNo) throws Exception{
 		Connection conn = JDBCTemplate.getConnection();
 		SellerNoteDao dao = new SellerNoteDao();
-		int result = dao.reciveNoteDelete(conn , noteVo);
+		int result = dao.reciveNoteDelete(conn , noteVo , memberNo);
 		if(result == 1) {
 			JDBCTemplate.commit(conn);
 		}else {

@@ -14,7 +14,7 @@ public class SalesDao {
 	
 	//상품 목록 조회
 	public List<SalesVo> salesListSelect(Connection conn) throws Exception{
-		String sql = "SELECT R.SALES_NO ,R.SELLER_NO ,R.TITLE ,R.CONTENT ,R.PRICE ,R.STATUS ,R.ENROLL_DATE ,M.NICK AS MEMBER_NICK ,M.NAME AS MEMBER_NAME ,C.CATEGORY ,C.CATEGORY_NO ,C.CATEGORY_NO2 ,F.FILE_NAME FROM SALES_REGISTR R JOIN SALES_FILE F ON R.SALES_NO = F.SALES_NO JOIN CATEGORY C ON R.CATEGORY_NO = C.CATEGORY_NO JOIN SELLER S ON R.SELLER_NO = S.SELLER_NO JOIN MEMBER M ON S.MEMBER_NO = M.MEMBER_NO WHERE R.DEL_YN = 'N' AND R.STATUS = '판매중' ORDER BY R.ENROLL_DATE DESC";
+		String sql = "SELECT R.SALES_NO ,R.SELLER_NO ,R.TITLE ,R.PRICE ,R.STATUS ,R.ENROLL_DATE ,M.NICK AS MEMBER_NICK ,M.NAME AS MEMBER_NAME ,C.CATEGORY ,C.CATEGORY_NO ,C.CATEGORY_NO2 ,F.FILE_NAME FROM SALES_REGISTR R JOIN SALES_FILE F ON R.SALES_NO = F.SALES_NO JOIN CATEGORY C ON R.CATEGORY_NO1 = C.CATEGORY_NO JOIN SELLER S ON R.SELLER_NO = S.SELLER_NO JOIN MEMBER M ON S.MEMBER_NO = M.MEMBER_NO WHERE R.DEL_YN = 'N' AND R.STATUS = '판매중' ORDER BY R.ENROLL_DATE DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
 		
@@ -23,7 +23,6 @@ public class SalesDao {
 			String salesNo = rs.getString("SALES_NO");
 			String sellerNo = rs.getString("SELLER_NO");
 			String title = rs.getString("TITLE");
-			String content = rs.getString("CONTENT");
 			String price = rs.getString("PRICE");
 			String status = rs.getString("STATUS");
 			String enrollDate = rs.getString("ENROLL_DATE");
@@ -38,7 +37,6 @@ public class SalesDao {
 			sv.setSalesNo(salesNo);
 			sv.setSellerNo(sellerNo);
 			sv.setTitle(title);
-			sv.setContent(content);
 			sv.setPrice(price);
 			sv.setStatus(status);
 			sv.setEnrollDate(enrollDate);
@@ -98,8 +96,8 @@ public class SalesDao {
 		
 		return result;
 	}
-	public List<SalesVo> salesList(Connection conn, String sellerNo) throws Exception{
-		String sql = "";
-	}
+//	public List<SalesVo> salesList(Connection conn, String sellerNo) throws Exception{
+//		String sql = "";
+//	}
 
 }

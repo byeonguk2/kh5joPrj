@@ -108,9 +108,6 @@
 					<div>재고</div>
 					<div>원산지</div>
 					<div>상품 카테고리</div>
-					<label id="option-text" for="option">물품 옵션 설정
-						<input type="checkbox" name="option" id="option">
-					</label>
 				</div>
 					<div class="input-area">
 						<input type="text" name="title">
@@ -125,7 +122,6 @@
    							<span id="categoryLabel2" >카테고리를 선택해주세요</span>
 							<button type="button" name="category2" onclick="openPopUp2();">카테고리2</button>
 						</div>
-						<button type="button" name="option" onclick="openPopUp3();">상품옵션</button>
 						<input type="file" name="part" accept="image/*">썸네일이미지
 					
 					</div>
@@ -181,11 +177,6 @@
 			alert("카테고리1을 먼저 선택해주세요");
 		}
 		
-		
-	}
-	function openPopUp3(){
-		let options = "toolbar=no,scrollbars=no,resizable=yes,status=no,menubar=no,width=800, height=800, top=0,left=0";
-		window.open("/nongra/sales/optionList", "상품옵션" , options);			
 		
 	}
 

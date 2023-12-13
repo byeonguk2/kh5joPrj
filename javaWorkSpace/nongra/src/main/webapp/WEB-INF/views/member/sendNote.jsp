@@ -1,8 +1,10 @@
-<%@page import="com.kh.app.page.vo.PageVo"%>
 <%@page import="com.kh.app.seller.vo.SellerNoteVo"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.Map"%>
+<%@page import="com.kh.app.page.vo.PageVo"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
     <%
     	List<SellerNoteVo>sendNoteList = (List<SellerNoteVo>)request.getAttribute("sendNoteList");
     	PageVo pvo = (PageVo)request.getAttribute("pvo");
@@ -12,10 +14,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="/nongra/resources/css/member/member_mypage.css">
+<link rel="stylesheet" href="/nongra/resources/css/common/cssReset.css">
+<link rel="stylesheet"
+	href="/nongra/resources/css/orderDetail/userOrderDetail.css">
+
 <style>
+	#wrap{
+		width : 100%;
+	}
+	#main-area{
+	display: grid;
+	grid-template-columns: 230px 8fr;
+	padding-top: ;
+	}
+	#headerer{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 	main{
-		display: grid;
-		grid-template-columns: 231px 8fr;
+	display: grid;
+	grid-template-columns: 231px 8fr;
 	}
 	
 	.content-area{
@@ -123,16 +144,18 @@
     .currentPage{
     	text-decoration: underline;
     }
-</style>
+		
+	</style>
 </head>
 <body>
-	<div class = "wrap">
-		<%@ include file="/WEB-INF/views/common/header/header_seller.jsp" %>
+
+	<div id="wrap1">
+		<%@ include file="/WEB-INF/views/common/header/header_sobi.jsp"%>
 		<main>
-			<%@ include file="/WEB-INF/views/common/aside/aside_seller.jsp" %>
+			<%@ include file="/WEB-INF/views/common/aside/aside_sobi_main.jsp"%>
 			<div class="content-area">
 				<div class="h1-area">
-					<h1>받은쪽지</h1>
+					<h1>보낸쪽지</h1>
 				</div>
 				<div class="send">
 					<div class="send-area">
@@ -141,9 +164,14 @@
 								<span>전체 <%= pvo.getListCount() %></span>
 							</div>
 							<div class="send-search-area">
+								<select name="search">
+									<option name="search" value="title">제목</option>
+									<option name="search" value="content">내용</option>
+								</select>
 								<div>
-									<input type="search" placeholder="검색">
+									<input name="searchName" type="search" placeholder="검색">
 								</div>
+								<button onclick="search();">검색</button>
 							</div>
 						</div>	
 						<table class="table">
@@ -172,7 +200,7 @@
 							<div class="page-area">
 								
 								<% if(pvo.getStartPage() != 1){ %>
-									<a href="/nongra/seller/note/recive?pno=<%= pvo.getStartPage() - 1%>">이전</a>
+									<a href="/nongra/member/sendNote?pno=<%= pvo.getStartPage() - 1%>">이전</a>
 								<%} %>
 								
 								<% for(int i = pvo.getStartPage(); i<= pvo.getEndPage(); i++){%>
@@ -180,13 +208,13 @@
 									<%if(i == pvo.getCurrentPage()){ %>
                                         <span class="currentPage"><%= i %></span>
 									<%}else{ %>
-										<a href="/nongra/seller/note/recive?pno=<%= i %>"><%= i %></a>
+										<a href="/nongra/member/sendNote?pno=<%= i %>"><%= i %></a>
 									<%} %>
 									
 								<%} %>
 								
 								<% if(pvo.getEndPage() != pvo.getMaxPage()){ %>
-									<a href="/nongra/seller/note/recive?pno=<%= pvo.getEndPage() + 1%>">다음</a>
+									<a href="/nongra/member/sendNote?pno=<%= pvo.getEndPage() + 1%>">다음</a>
 								<%} %>
 							</div>
 							<button onclick="openPopup();">작성하기</button>
@@ -197,8 +225,10 @@
 				</div>
 			</div>
 		</main>
-	</div>
 
+	</div>
+</body>
+</html>
 <script>
     let newWindow; // 전역 변수로 창을 선언
 
@@ -214,6 +244,20 @@
             }
         }
     }
+	function deleteNote() {
+		const radioButtons = document.querySelector("input[name=checkbox]:checked").value;
+		console.log(radioButtons);
+		
+        fetch("/nongra/sendNote/delete?noteNo="+ radioButtons)
+            .then((resp) => resp.text())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch(() => {
+                console.log("에러발생");
+            });
+        window.location.reload();
+    }
 
     function openPopup() {
         let options = "toolbar=no,scrollbars=no,resizable=yes,status=no,menubar=no,width=800,height=800,top=0,left=0";
@@ -222,7 +266,7 @@
             newWindow.close();
         }
 
-        newWindow = window.open("/nongra/seller/note/write", "쪽지작성", options);
+        newWindow = window.open("/nongra/member/note/write", "쪽지작성", options);
 
         newWindow.addEventListener('beforeunload', function () {
             newWindow = null; // 창이 닫혔으므로 참조 제거
@@ -234,28 +278,20 @@
 
         if (radioButtons.length === 1) {
             const noteNo = radioButtons[0].value;
-            window.location.href = "/nongra/seller/recive/note/detail?noteNo=" + noteNo;
+            // 선택된 쪽지 번호에 기반하여 세부 내용을 보여주는 페이지로 리다이렉트 또는 모달 표시 로직을 구현합니다.
+            window.location.href = "/nongra/member/sendNote/detail?noteNo=" + noteNo;
         } else {
+            // 아무 라디오 버튼도 선택되지 않았을 경우 알림이나 메시지를 표시합니다.
             alert("세부 내용을 보려면 쪽지를 선택하세요.");
         }
         
     }
-	function deleteNote() {
-		const radioButtons = document.querySelector("input[name=checkbox]:checked").value;
-		console.log(radioButtons);
+	function search(){
 		
-        fetch("/nongra/reciveNote/delete?noteNo="+ radioButtons)
-            .then((resp) => resp.text())
-            .then((data) => {
-                console.log(data);
-            })
-            .catch(() => {
-                console.log("에러발생");
-            });
-        window.location.reload();
-    }
+		const searchName = document.querySelector('input[name=searchName]').value;
+		const searchValue = document.querySelector('select[name=search]').value;
+		window.location.href = '/nongra/seller/note/send/search?search='+ searchValue + '&searchName='+ searchName;
+	}
 
 	
 </script>
-</body>
-</html>

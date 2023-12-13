@@ -13,10 +13,23 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	main{
+		#wrap{
+			width : 100%;
+		}
+		#main-area{
+		display: grid;
+		grid-template-columns: 230px 8fr;
+		padding-top: ;
+		}
+		#headerer{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		main{
 		display: grid;
 		grid-template-columns: 231px 8fr;
-	}
+		}
 	
 	.content-area{
 		display: grid;
@@ -126,10 +139,10 @@
 </style>
 </head>
 <body>
-	<div class = "wrap">
-		<%@ include file="/WEB-INF/views/common/header/header_seller.jsp" %>
+	<div id="wrap1">
+		<%@ include file="/WEB-INF/views/common/header/header_sobi.jsp"%>
 		<main>
-			<%@ include file="/WEB-INF/views/common/aside/aside_seller.jsp" %>
+			<%@ include file="/WEB-INF/views/common/aside/aside_sobi_main.jsp"%>
 			<div class="content-area">
 				<div class="h1-area">
 					<h1>받은쪽지</h1>
@@ -172,7 +185,7 @@
 							<div class="page-area">
 								
 								<% if(pvo.getStartPage() != 1){ %>
-									<a href="/nongra/seller/note/recive?pno=<%= pvo.getStartPage() - 1%>">이전</a>
+									<a href="/nongra/member/reciveNote?pno=<%= pvo.getStartPage() - 1%>">이전</a>
 								<%} %>
 								
 								<% for(int i = pvo.getStartPage(); i<= pvo.getEndPage(); i++){%>
@@ -180,13 +193,13 @@
 									<%if(i == pvo.getCurrentPage()){ %>
                                         <span class="currentPage"><%= i %></span>
 									<%}else{ %>
-										<a href="/nongra/seller/note/recive?pno=<%= i %>"><%= i %></a>
+										<a href="/nongra/member/reciveNote?pno=<%= i %>"><%= i %></a>
 									<%} %>
 									
 								<%} %>
 								
 								<% if(pvo.getEndPage() != pvo.getMaxPage()){ %>
-									<a href="/nongra/seller/note/recive?pno=<%= pvo.getEndPage() + 1%>">다음</a>
+									<a href="/nongra/member/reciveNote?pno=<%= pvo.getEndPage() + 1%>">다음</a>
 								<%} %>
 							</div>
 							<button onclick="openPopup();">작성하기</button>
@@ -222,7 +235,7 @@
             newWindow.close();
         }
 
-        newWindow = window.open("/nongra/seller/note/write", "쪽지작성", options);
+        newWindow = window.open("/nongra/member/note/write", "쪽지작성", options);
 
         newWindow.addEventListener('beforeunload', function () {
             newWindow = null; // 창이 닫혔으므로 참조 제거
@@ -234,7 +247,7 @@
 
         if (radioButtons.length === 1) {
             const noteNo = radioButtons[0].value;
-            window.location.href = "/nongra/seller/recive/note/detail?noteNo=" + noteNo;
+            window.location.href = "/nongra/member/reciveNote/detail?noteNo=" + noteNo;
         } else {
             alert("세부 내용을 보려면 쪽지를 선택하세요.");
         }

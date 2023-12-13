@@ -15,11 +15,34 @@
 <title>Insert title here</title>
     <style>
     
-  		main{
-			display: grid;
-			grid-template-columns: 231px 8fr;
-			justify-content: center;
-		}
+	#wrap{
+		width : 100%;
+	}
+	#main-area{
+	display: grid;
+	grid-template-columns: 230px 8fr;
+	padding-top: ;
+	}
+	#headerer{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	main{
+	display: grid;
+	grid-template-columns: 231px 8fr;
+	}
+	
+	.content-area{
+		display: grid;
+		grid-template-rows: 1fr 9fr;
+		border: 1px solid gray;
+		margin-left: 10px;
+		margin-top: 10px;
+		border-radius: 20px;
+		width: 99%;
+		box-sizing: border-box;
+	}
     	
     	.content{
     		display : flex;
@@ -45,10 +68,10 @@
     </style>
 </head>
 <body>
-	<div class = "wrap">
-		<%@ include file="/WEB-INF/views/common/header/header_seller.jsp" %>
+	<div id="wrap1">
+		<%@ include file="/WEB-INF/views/common/header/header_sobi.jsp"%>
 		<main>
-			<%@ include file="/WEB-INF/views/common/aside/aside_seller.jsp" %>
+			<%@ include file="/WEB-INF/views/common/aside/aside_sobi_main.jsp"%>
 			<div class="content">
 				<div class="content-area">
 
@@ -76,7 +99,7 @@
 					<%}else{ %>
 						<span>ok</span>
 					<%}%>
-			            <span><a href="/nongra/seller/note/send">목록</a></span>
+			            <span><a href="/nongra/member/sendNote">목록</a></span>
 		        	</div>
 			    </div>
 		    </div>

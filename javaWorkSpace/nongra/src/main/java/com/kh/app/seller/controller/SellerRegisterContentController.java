@@ -59,7 +59,7 @@ public class SellerRegisterContentController extends HttpServlet{
 			String origin = salesVo.getOrigin();
 			String categoryNo1 = salesVo.getCategoryNo();
 			String categoryNo2 = salesVo.getCategoryNo2();
-			file = salesVo.getFileName();
+			String thumbnail = salesVo.getFileName();
 			String sellerNo = salesVo.getSellerNo();
 			
 			
@@ -99,7 +99,7 @@ public class SellerRegisterContentController extends HttpServlet{
 				        while ((size = in.read(buf)) != -1) {
 				            out.write(buf, 0, size);
 				        }
-				        file = sep+"nongra"+ sep +"resources" + sep +"upload"+sep+"img"+fileName;
+				        file = sep +"resources" + sep +"upload"+sep+"img"+fileName;
 				        fileNameList.add(file);
 				        in.close();
 				        out.close();
@@ -117,8 +117,8 @@ public class SellerRegisterContentController extends HttpServlet{
 			vo.setCategoryNo(categoryNo1);
 			vo.setCategoryNo2(categoryNo2);
 			vo.setSellerNo(sellerNo);
-			vo.setFileName(file);
-			System.out.println(fileNameList);
+			vo.setFileName(thumbnail);
+			System.out.println(vo.getFileName());
 			System.out.println(vo);
 			SalesService ss = new SalesService();
 			int result = ss.salesRegister(vo , fileNameList ,optionVoList);
@@ -128,9 +128,8 @@ public class SellerRegisterContentController extends HttpServlet{
 			}
 			
 			req.removeAttribute("register");
-			
-			resp.sendRedirect("/nongra/seller/sales/list");
-			
+			System.out.println("성공");
+			resp.getWriter().write("성공");
 		}catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("상품 등록 하는 중에 오류 발생");
