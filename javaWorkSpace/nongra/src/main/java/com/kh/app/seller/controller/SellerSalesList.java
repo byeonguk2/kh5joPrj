@@ -28,7 +28,7 @@ public class SellerSalesList extends HttpServlet{
 			
 			SalesService ss = new SalesService();
 			
-			List<SalesVo> salesList = ss.salesList(sellerNo);
+//			List<SalesVo> salesList = ss.salesList(sellerNo);
 			
 			
 			

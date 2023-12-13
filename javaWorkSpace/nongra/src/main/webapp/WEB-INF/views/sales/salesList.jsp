@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	int listCount =	(int)request.getAttribute("listCount");
+
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,17 +21,12 @@
 	<%@ include file="/WEB-INF/views/common/header/header_sobi.jsp" %>
 	<main>
 		<aside>
-			<div>1</div>
+			<div></div>
 		</aside>
 		<div class="main-section">
 			<div class="main-top-area">
-				<div><span>총 524건</span></div>
+				<div><span><%= listCount %></span></div>
 				<div>
-					<a href="">추천순 |</a>
-					<a href="">신상품순 |</a>
-					<a href="">판매량순 |</a>
-					<a href="">낮은 가격순 |</a>
-					<a href="">높은 가격순</a>
 				</div>
 			</div>
 			<div class="main-area">
