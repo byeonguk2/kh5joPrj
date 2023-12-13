@@ -38,9 +38,16 @@ public class MemberReviewWriteController extends HttpServlet {
 	try {
 		
 		Collection<Part> parts = req.getParts();
-		System.out.println(secret);
-		System.out.println(content);
-		System.out.println(parts.size());
+		ArrayList<Part> fileList = new ArrayList<Part>();
+		for (Part part : parts) {
+            if (part.getSubmittedFileName() != null) {
+            		fileList.add(part);
+            }
+            
+            System.out.println(fileList.size());
+		
+		
+		
 		
 		ReviewService rs = new ReviewService();
 		// data 
