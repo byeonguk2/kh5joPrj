@@ -236,7 +236,7 @@
 
             <div class="dialog-review-button-end-box">
                 <button id="review-cancel" type="button" >취소</button>
-                <button id="review-regiseter">등록</button>
+                <button id="review-regiseter" name="cbNo" value="">등록</button>
             </div>
         </form>  
     </header>
@@ -302,14 +302,18 @@
     
     // 여기다 리뷰 
     const cbNO =  document.querySelectorAll(".cbNO")
-    
+    //레지스터
+    const regiseter =  document.querySelectorAll(".review-regiseter")
     //썸네일주기
     const thumbnail = document.querySelectorAll(".thumbnail")
     // 아이템이름 주기
     const itemtitle = document.querySelectorAll(".itemtitle")
     
     //리뷰넘
-    const reviewNo = document.querySelectorAll(".reviewNo")
+    const reviewNo = document.querySelector(".reviewNo")
+   
+    
+    
    
     
     // 모달창 이미지 소스 아이템이름 
@@ -327,15 +331,17 @@
    
     const reviewModal = document.querySelector(".modal-review")
 
-    const reviewregiseterBtn = document.querySelector(".review-regiseter")
+    const reviewregiseterBtn = document.querySelector("#review-regiseter")
 
 
     for(let i=0; i<reviewModalOpenButton.length; i++){
         reviewModalOpenButton[i].addEventListener('click', () => {   
         	imgSrcModal.src=thumbnail[i].innerHTML;
-        	itemTitleModal.innerHTML= itemtitle[i].innerHTML;
-        	
-            reviewModal.classList.remove('modal-review-hidden');     
+        	itemTitleModal.innerHTML= itemtitle[i].innerHTML;       	
+        	reviewregiseterBtn.value = cbNO[i].innerHTML;
+            console.log(reviewregiseterBtn.value)
+            reviewModal.classList.remove('modal-review-hidden');
+            
     });
    }
     reviewModalCloseButton.addEventListener('click', () => {

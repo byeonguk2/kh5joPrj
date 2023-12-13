@@ -495,23 +495,29 @@ public class ReviewDao {
 		
 		String sql ="";
 		int result =0;
-		// sql
+		//sql
 		 sql = "INSERT INTO REVIEW (REVIEW_NO ,CONSUMER_NO,CART_BREAKDOWN_NO,CONTENT,RATING) VALUES ( SEQ_REVIEW.NEXTVAL , ? , ? , ? ,1)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, vo.getConsumerNo());	
 		pstmt.setString(2, vo.getCartBreakdownNo());	
 		pstmt.setString(3, vo.getContent());	
 		 result = pstmt.executeUpdate();
+		 System.out.println("리뷰내용" + result);
 		
 		if (result !=1) {
+			
 			return 0;
+		}else {			
+			JDBCTemplate.close(pstmt);
 		}
 		
 		for (String str :strlist) {
+				System.out.println("리뷰사진" + result );
 			sql = "INSERT INTO REVIEW_FILE (REVIEW_FILE_NO,REVIEW_NO,FILE_SRC) VALUES (SEQ_REVIEW_FILE.NEXTVAL , SEQ_REVIEW.CURRVAL, ?)";
-			pstmt.setString(4, str);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, str);
 			result = pstmt.executeUpdate();
-				if(result ==0) {
+				if(result !=1) {
 					return 0;
 				}
 		}

@@ -39,6 +39,8 @@ public class MemberReviewWriteController extends HttpServlet {
 		String memberNo = "1";
 		String cbNo = req.getParameter("cbNo"); 
 		String content = req.getParameter("content");
+		System.out.println(cbNo);
+		System.out.println(content);
 		
 	try {
 			
@@ -75,7 +77,11 @@ public class MemberReviewWriteController extends HttpServlet {
   	      int index = submittedFileName.lastIndexOf(".");
   	      String ext = submittedFileName.substring(index);
   	      String fileName = sep +  randomName   + ext;
-  	      strlist.add(fileName);
+  	      System.out.println(fileName);
+  	      String src = sep + "nongra" +sep +"resources" + sep + "upload" + sep + "img" + sep + "review" + fileName;
+  	      System.out.println(src);
+  	      strlist.add(src);
+  	    
   	      File target = new File(path + fileName);
   	      FileOutputStream out = new FileOutputStream(target);
   	      
@@ -90,7 +96,7 @@ public class MemberReviewWriteController extends HttpServlet {
   	      out.close();
         }
         
-        System.out.println("여기까진 처리됌");
+      
 
 		ReviewService rs = new ReviewService();
 		
