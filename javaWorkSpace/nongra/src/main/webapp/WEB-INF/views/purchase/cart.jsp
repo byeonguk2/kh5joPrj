@@ -1,3 +1,4 @@
+<%@page import="javax.print.attribute.SetOfIntegerSyntax"%>
 <%@page import="com.kh.app.purchase.vo.PurchaseCartVo"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="java.util.List"%>
@@ -28,7 +29,13 @@
             
             <table>
                 <tbody>
+                <%if(PurchaseCartVoList.size()==0){%>
+                	<div id="nullArea">
+                		<span id="null">장바구니에 담긴 상품이 없습니다.</span>
+                	</div>
+                <%}else{ %>
                 <%for(PurchaseCartVo vo : PurchaseCartVoList) {%>
+
                     <tr>
                         <td>
                             <div class="checkboxArea">
@@ -74,17 +81,23 @@
                             </div>
                         </td>
                     </tr>
+					<%} %>
                     <% } %>
                 </tbody>
             </table>
 
             
-            
-            <a class="orderBtnArea" href="/nongra/order/checkout">
-                <button class="orderBtn">
+            <a class="orderBtnArea">
+                <%if(PurchaseCartVoList.size()==0){%>
+                <button class="nullCart" onclick="location.href='home'">
+                	<span>상품을 담아주세요</span>
+                </button>
+                <%}else{ %>
+                <button class="orderBtn"  onclick="location.href='/nongra/order/checkout'">
                     <span id="totalPrice">00</span><span>원</span>
                     주문하기
                 </button>
+                <%} %>
             </a>
 		</main>
 		

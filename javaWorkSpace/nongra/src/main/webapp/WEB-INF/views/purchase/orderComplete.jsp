@@ -4,7 +4,6 @@
     pageEncoding="UTF-8"%>
     <%
     PurchaseOrderCompleteVo vo = (PurchaseOrderCompleteVo)request.getAttribute("orderCompleteVo");
-    MemberVo loginMember = (MemberVo) request.getAttribute("loginMember");
     %>
 <!DOCTYPE html>
 <html>

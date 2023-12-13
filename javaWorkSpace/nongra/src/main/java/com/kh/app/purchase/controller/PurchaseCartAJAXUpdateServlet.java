@@ -20,8 +20,6 @@ public class PurchaseCartAJAXUpdateServlet extends HttpServlet{
 			//data
 			String cartBreakDownNo = req.getParameter("cartBreakDownNo"); //장바구니 내역 번호
 			String cartBreakDownEa = req.getParameter("cartBreakDownEa"); //장바구니 내역 변경된 수량
-			System.out.println(cartBreakDownNo);
-			System.out.println(cartBreakDownEa);
 			
 			//service
 			PurchaseService ps = new PurchaseService();

@@ -29,12 +29,13 @@
                 <tbody>
                 <%for(PurchaseAddressVo vo : voList) {%>
                     <tr>
-                        <th><button onclick="checked()" class="button"><img src="/nongra/resources/img/purchase/icon-check.png" alt="대충 체크표시ㅋ" class="img"></button></th>
+                        <th><button class="button"><img src="/nongra/resources/img/purchase/icon-check.png" alt="대충 체크표시ㅋ" class="img"></button></th>
                         <td>
                             <div>
-								<%if(vo.getDefaultAddress().equals("Y")){ %><div class="default">기본배송지</div><%} %>
-								<div><%=vo.getAddress() %></div>
-								<div><%=vo.getName() %> | <%=vo.getPhone() %><span class="address-no"><%=vo.getNo() %></span></div>
+                            	<span class="address-no"><%=vo.getNo() %></span>
+                            	<span><%if(vo.getDefaultAddress().equals("Y")){ %><div class="default">기본배송지</div><%} %></span>
+								<div class="addr"><%=vo.getAddress() %></div>
+								<div><span class="name"><%=vo.getName() %></span> | <span><%=vo.getPhone() %></span></div>
                             </div>
                         </td>
                         <th><button class="edit-button"><img src="https://res.kurly.com/kurly/ico/2021/edit_24_24_ccc.svg" alt=""></button></th>

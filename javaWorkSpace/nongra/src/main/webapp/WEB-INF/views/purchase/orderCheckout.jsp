@@ -83,13 +83,13 @@
                                     <td><%if(address.getDefaultAddress().equals("Y")){ %>
                                         <span id="address">기본배송지</span>
                                         <%} %>
-                                        <%=address.getAddress() %>
-                                        <span id="addressNo"><input type="text" name="addressNo" value="<%=address.getNo() %>"></span>
+                                        <span id="addr"><%=address.getAddress() %></span>
+                                        <span id="addressNo"><input id="addrNo" type="text" name="addressNo" value="<%=address.getNo() %>"></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td><%=address.getName() %>, <%=address.getPhone() %></td>
+                                    <td><span id="addrName"><%=address.getName() %></span>, <span id="addrPhone"><%=address.getPhone() %></span></td>
                                 </tr>
                                 <tr>
                                     <td></td>
@@ -466,6 +466,4 @@ function price() {
     inputTag.vlaue = price.innerText;
 }
 price();
-
-console.log(document.querySelector("#price").vlaue);
 </script>

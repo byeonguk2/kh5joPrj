@@ -16,17 +16,38 @@
 		<div id="main">
 			<%@	include file="/WEB-INF/views/common/aside/aside_sobi_main.jsp" %>
 			<main>
-				<form action="/nongra/address/shipping-address/update" method="post">
-					<input type="text" name="no" class="none" value="<%= addressVo.getNo()%>">
-					<div>배송지 : <%=addressVo.getAddress() %></div>
-					받는 사람 : <input type="text" name="name" value="<%=addressVo.getName()%>">
-					<br>
-					전화번호 : <input type="text" name="phone" value="<%=addressVo.getPhone()%>">
-					<br>
-					<input type="checkbox" name="defaultAddress">기본 배송지
-					<br>
-					<button>수정</button>
-				</form>
+				<div>
+					<form action="/nongra/address/shipping-address/update" method="post">
+						<table>
+							<input type="text" name="no" class="none" value="<%= addressVo.getNo()%>">
+							<tbody>
+								<tr>
+									<td>배송지</td>
+									<td><%=addressVo.getAddress() %></td>
+								</tr>
+								<tr>
+									<td>받는 사람</td>
+									<td><input type="text" name="name" value="<%=addressVo.getName()%>"></td>
+								</tr>
+								<tr>
+									<td>전화번호</td>
+									<td><input type="text" name="phone" value="<%=addressVo.getPhone()%>"></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><input type="checkbox" name="defaultAddress">기본 배송지</td>
+								</tr>
+								<tr>
+									<th></th>
+									<th><button>수정</button></th>
+								</tr>
+							</tbody>
+						</table>
+
+						
+						
+					</form>
+				</div>
 			</main>
 		</div>
 		
