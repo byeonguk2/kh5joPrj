@@ -21,7 +21,7 @@ public class QnaService {
 		return parentCateVoList;
 	}
 
-	public Map<String, QnaMemberCateVo> getChildCateList() throws Exception {
+	public Map<String, QnaMemberCateVo> getMemberChildCateList() throws Exception {
 		Connection conn = JDBCTemplate.getConnection();
 		QnaDao dao = new QnaDao();  
 		Map<String, QnaMemberCateVo> map = dao.getQnaMemberChildCateList(conn);

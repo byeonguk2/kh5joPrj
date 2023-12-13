@@ -98,13 +98,13 @@
                                             <!-- <img src="/nongra/resources/img/board/qna_product01.png" alt="상품이미지"> -->
                                             (주문일 : 
                                                     <% String orderNo = vo.getOrderNo().substring(0, 8); %>
-                                                    <%= orderNo %>)
+                                                    <%= orderNo %>,
                                         </div>
                                         <div class="">
-                                            주문번호 : <%=vo.getOrderNo() %>
+                                            주문번호 : <%=vo.getOrderNo() %> )
                                         </div>
                                         <div class="">
-                                            결제금액 <%=vo.getTotalPrice() %>원<br>
+                                            결제금액 : <%=vo.getTotalPrice() %>원<br>
                                         </div>
                                         <% } %>
                                     <div class="">
