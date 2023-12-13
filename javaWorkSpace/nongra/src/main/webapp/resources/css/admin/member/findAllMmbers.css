@@ -1,0 +1,234 @@
+@charset "UTF-8";
+
+#main-area{
+display: grid;
+grid-template-columns: 230px 8fr;
+padding-top: 145px;
+}
+
+main {
+   display: grid;
+   grid-template-columns: 1fr;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.select_div{
+	display: flex;
+}
+
+.search_div {
+    display: flex;
+    gap: 20px;
+}
+
+/* 테이블 생성 */
+.table-area {
+    display: flex;
+    justify-content: center;
+}
+
+table {
+	margin: auto;
+    border: 1px #a39485 solid;
+    font-size: .9em;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    width: 80%;
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+th {
+    text-align: center;
+}
+
+thead {
+    font-weight: bold;
+    color: #fff;
+    background: #73685d;
+}
+
+td, th {
+    padding: 1em .5em;
+    vertical-align: middle;
+}
+
+td {
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    background: #fff;
+    text-align: center;
+}
+
+td > input{
+	width: 100%;
+	height: 100%;
+	border: none;
+	text-align: center;
+}
+
+a {
+    color: #73685d;
+}
+
+@media all and (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    th {
+        text-align: right;
+    }
+
+    table {
+        position: relative; 
+        padding-bottom: 0;
+        border: none;
+        box-shadow: 0 0 10px rgba(0,0,0,.2);
+    }
+
+    thead {
+        float: left;
+        white-space: nowrap;
+    }
+
+    tbody {
+        overflow-x: auto;
+        overflow-y: hidden;
+        position: relative;
+        white-space: nowrap;
+    }
+
+    tr {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    th {
+        border-bottom: 1px solid #a39485;
+    }
+
+    td {
+        border-bottom: 1px solid #e5e5e5;
+    }
+}
+
+.btn-paging {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ben-btn {
+    width: 90px;
+}
+
+.paging-btn-area {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.paging-btn {
+    display: flex;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 30px;
+}
+
+.paging-btn > button {
+    width: 60px;
+    height: 30px;
+}
+
+.ben-btn {
+    width: 90px;
+}
+
+.paging-btn-area {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.paging-btn {
+    display: flex;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 17px;
+}
+
+.paging-btn > button {
+    width: 60px;
+    height: 30px;
+}
+	
+/* 모달창 */
+/* 여기다가 display none 주시면 됩니다 */
+.modal {
+	display: none;
+	position:fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.3);
+		z-index: 2; 
+}
+.modal2 {
+	display: none;
+	position:fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.3);
+		z-index: 2; 
+}
+/* 여기안에서 작업하면되고 */
+.dialog {
+	width: 80vw;
+	height: 80vh;
+	border-radius: 1em;
+	background: white;
+	overflow:auto;
+	margin: auto;
+}
+.modal_up{
+	display: flex;
+}
+.modal_area{
+	display: grid;
+	grid-template-rows: 60px 80px 1200px 100px;
+}.modal_down{
+	display: grid;
+	grid-template-columns: 1fr 30px;
+	padding: 20px 20px 0px 20px;
+}
+.modal_down_btn{
+	border: none;
+   	background-color: white;
+	font-size: 30px;
+	cursor: pointer;
+}
+.modal_area > button{
+	width: 100px;
+	height: 50px;
+	margin: auto;
+}
+.modal_area2{
+	display: grid;
+	grid-template-rows: 60px 80px 600px 100px;
+}
+.modal_area2 > button{
+	width: 100px;
+	height: 50px;
+	margin: auto;
+}

@@ -13,6 +13,9 @@ const idCheck = document.querySelectorAll(".css-16yppgg");
 const input2 = document.querySelectorAll(".input-nick");
 const nickCheck = document.querySelectorAll(".checkNick");
 
+const input3 = document.querySelectorAll(".input-email");
+const emailCheck = document.querySelectorAll(".checkEmail");
+
 // 입력시 중복체크 버튼 활성화
 input[0].addEventListener("keyup",()=>{
    const x = input[0].value.length;
@@ -36,6 +39,19 @@ input2[0].addEventListener("keyup",()=>{
 	nickCheck[0].disabled = true;
 })
 
+
+// 입력시 중복체크 버튼 활성화
+input3[0].addEventListener("keyup",()=>{
+	console.log("나옴")
+   const x = input3[0].value.length;
+   console.log(x);
+   if(x !== 0){
+		emailCheck[0].disabled = false;
+		return;
+	}
+	emailCheck[0].disabled = true;
+})
+
 // 회원가입 유효성 검사
 
 const form = document.joinForm;
@@ -48,6 +64,7 @@ function join(){
 	// //비밀번호에 공백을 포함할 수 없다.
 	// //비밀번호와 비밀번호 확인 값이 같은지 확인
 	var regExp = /^[a-z0-9]{4,12}$/;
+
 	if(!regExp.test(form.id.value)){
 		alert("아이디에 형식이 맞지 않습니다");
 		form.id.focus();
@@ -149,6 +166,11 @@ function join(){
 		return false;
 	}
 	
+	if(!form.email.readOnly){
+		alert("이메일 중복 검사를 진행해주세요.");
+		return false;
+	}
+	
 	const allCkbox= document.querySelectorAll("input[name=checkBox]");
 	for(var i=0; i<=allCkbox.length; i++){
 	if(allCkbox[i].checked == false){
@@ -164,7 +186,12 @@ function join(){
 document.querySelector('input[name=id]').addEventListener("click", function(){
 	form.id.readOnly = false;
 })
-
+document.querySelector('input[name=nick]').addEventListener("click", function(){
+	form.nick.readOnly = false;
+})
+document.querySelector('input[name=email]').addEventListener("click", function(){
+	form.email.readOnly = false;
+})
 // 닉네임 체크
 function checkNick(){
 	var xhr = new XMLHttpRequest();
@@ -229,6 +256,28 @@ function checkId(){
 	}
 }
 
+function checkemail(){
+	
+	const email = document.querySelector("input[name=email]");
+	console.log(email.value);
+	
+	fetch("/nongra/seller/emailCheck?email="+email.value)
+	.then((resp)=>{
+		return resp.text();
+	})
+	.then((data)=>{
+		document.querySelector("#emailGuide").innerHTML = data;
+		if(data === "사용가능한 이메일 입니다."){
+			form.email.readOnly = true;
+			form.checkbtn3.disabled = true;
+		}else{
+			form.email.value = "";
+		}
+	})
+
+}
+
+
 //안내
 function checkMsg(){
 	let hangleCheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/
@@ -281,3 +330,4 @@ function checkMsg4(){
 		return false;
 	}
 }
+

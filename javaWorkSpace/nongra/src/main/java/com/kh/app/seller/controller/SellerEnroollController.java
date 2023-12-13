@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -161,18 +162,25 @@ public class SellerEnroollController extends HttpServlet {
 			// 구분자 생성
 			String sep = File.separator;
 			
-			// 파일 이름 변수로 할당
-			String fileName = sep+f.getSubmittedFileName();
-			String fileName2 = sep+f2.getSubmittedFileName();
-			
 			// 경로 설정
 			String path = req.getServletContext().getRealPath(sep+"resources"+sep+"upload"+sep+"img");
+			String randomName = System.nanoTime() + "_" + UUID.randomUUID();
 			
-			System.out.println("경로"+path+sep+fileName+"/"+"경로2"+path+sep+fileName2);
+			// 파일 이름 변수로 할당
+			String submittedFileName =  f.getSubmittedFileName();
+			String submittedFileName2 = f2.getSubmittedFileName();
 			
-			File target = new File (path+sep+fileName);
-			File target2 = new File (path+sep+fileName2);
+			int index = submittedFileName.lastIndexOf(".");
+			int index2 = submittedFileName2.lastIndexOf(".");
 			
+			String ext = submittedFileName.substring(index);
+			String ext2 = submittedFileName2.substring(index2);
+			
+			
+			String fileName = sep + randomName + ext;
+			String fileName2 = sep + randomName + ext2;
+			File target = new File(path + fileName);
+			File target2 = new File(path + fileName2);
 			FileOutputStream out = new FileOutputStream(target);
 			FileOutputStream out2 = new FileOutputStream(target2);
 			
@@ -184,8 +192,8 @@ public class SellerEnroollController extends HttpServlet {
 			}
 			byte[] buf2 = new byte[1024];
 			int size2 = 0;
-			while((size =in.read(buf)) != -1) {
-				out2.write(buf,0,size);
+			while((size2 =in2.read(buf2)) != -1) {
+				out2.write(buf2,0,size2);
 			}
 			
 			// 스트림 close
@@ -198,7 +206,6 @@ public class SellerEnroollController extends HttpServlet {
 			String[] strArr = new String[2];
 			strArr[0] = sep+"nongra"+sep+"resources"+sep+"upload"+sep+"img"+fileName;
 			strArr[1] = sep+"nongra"+sep+"resources"+sep+"upload"+sep+"img"+fileName2;
-			System.out.println(strArr);
 			
 			// vo에 값들 전부 할당
 			joinVo.setBusinessNo(business_no);

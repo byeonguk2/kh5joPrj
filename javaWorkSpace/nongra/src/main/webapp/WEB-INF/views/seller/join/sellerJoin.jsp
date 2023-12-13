@@ -98,13 +98,14 @@
                             <span class="css-1o72o4s">*</span>
                         </p>
                         <div class="css-gjavw0">
-                            <input type="email" name="email" placeholder="이메일을 입력해 주세요" class="css-gaqliy">
+                            <input type="email" name="email" placeholder="이메일을 입력해 주세요" class="css-gaqliy input-email">
+                            <button type="button" id="checkbtn3" onclick="checkemail()" class="css-16yppgg checkEmail" disabled="">중복확인</button>
                         </div>
                     </div>
                     <div class="css-1og0zk92">
                     	<p class="css-3y93rl"></p>
                     	<div class="rowletter-area">
-                        	<span></span>
+                        	<span id="emailGuide"></span>
                     	</div>
                     </div>
                     <div class="css-1og0zk9">

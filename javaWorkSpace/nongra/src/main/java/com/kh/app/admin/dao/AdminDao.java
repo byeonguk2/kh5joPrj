@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.kh.app.admin.vo.AdminVo;
+import com.kh.app.admin.vo.MemberDTO;
 import com.kh.app.member.vo.MemberVo;
 import com.kh.app.page.vo.PageVo;
 import com.kh.app.seller.vo.SellerVo;
@@ -353,10 +354,11 @@ public class AdminDao {
 		return voList;
 	}
 
-	public List<SellerVo> memberBen(Connection conn, PageVo pvo) throws Exception {
+	// 모든 회원 조회
+	public List<MemberDTO> findAllMembers(Connection conn, PageVo pvo) throws Exception {
 		
-		// 쿼리문 
-		String sql = "SELECT * FROM ( SELECT ROWNUM RNUM , A.* FROM ( SELECT * FROM MEMBER WHERE QUIT_YN = 'N' ORDER BY MEMBER_NO ) A ) WHERE RNUM BETWEEN ? AND ?";
+		// SQL 쿼리문 
+		String sql = "SELECT * FROM ( SELECT ROWNUM RNUM , A.* FROM ( SELECT * FROM MEMBER M LEFT JOIN SELLER S ON (M.MEMBER_NO = S.MEMBER_NO) WHERE M.QUIT_YN = 'N' ORDER BY M.MEMBER_NO ) A ) WHERE RNUM BETWEEN ? AND ?";
 		
 		// pstmt 
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -366,65 +368,93 @@ public class AdminDao {
 		// rs
 		ResultSet rs = pstmt.executeQuery();
 		
-		// 판매자 리스트 
-		List<SellerVo> voList = new ArrayList<SellerVo>();
+		// 모든 회원 정보 받아오기 
+		List<MemberDTO> memberVoList = new ArrayList<MemberDTO>();
 
 	 	// rs반복
 		while(rs.next()) {
 				
-				// member 테이블 값 
-				String memberNo = rs.getString("MEMBER_NO");
-				String id = rs.getString("ID");
-				String pwd = rs.getString("PWD");
-				String nick = rs.getString("NICK");
-				String name = rs.getString("NAME");
-				String phone = rs.getString("PHONE");
-				String email = rs.getString("EMAIL");
-				String joinDate = rs.getString("JOIN_DATE");
-				String freezeYn = rs.getString("FREEZE_YN");
-				String sellerYn = rs.getString("SELLER_YN");
-				
-				SellerVo vo = new SellerVo();
-				
-				vo.setMemberNo(memberNo);
-				vo.setId(id);
-				vo.setPassword(pwd);
-				vo.setNick(nick);
-				vo.setName(name);
-				
-				vo.setPhone(phone);
-				vo.setEmail(email);
-				vo.setJoinDate(joinDate);
-				vo.setFreezeYn(freezeYn);
-				vo.setSellerYn(sellerYn);
-	
-				voList.add(vo);
+			// member 테이블 값 
+			String memberNo = rs.getString("MEMBER_NO");
+			String id = rs.getString("ID");
+			String pwd = rs.getString("PWD");
+			String nick = rs.getString("NICK");
+			String name = rs.getString("NAME");
+			String phone = rs.getString("PHONE");
+			String address = rs.getString("ADDRESS");
+			String detailAddress = rs.getString("DETAIL_ADDRESS");
+			String birthDate = rs.getString("BIRTH_DATE");
+			String profile = rs.getString("PROFILE");
+			String quitYn = rs.getString("QUIT_YN");
+			String joinDate = rs.getString("JOIN_DATE");
+			String modifyDate = rs.getString("MODIFY_DATE");
+			int point = rs.getInt("POINT");
+			String email = rs.getString("EMAIL");
+			String freezeYn = rs.getString("FREEZE_YN");
+			String sellerYn = rs.getString("SELLER_YN");
+			
+			// seller 테이블 값
+			String sellerNo = rs.getString("SELLER_NO");
+			String businessNo = rs.getString("MEMBER_NO");
+			String businessForm = rs.getString("BUSINESS_NO");
+			String businessName = rs.getString("BUSINESS_FORM");
+			String businessPhone = rs.getString("BUSINESS_NAME");
+			String busineesZipcode = rs.getString("BUSINESS_PHONE");
+			String businessAddress = rs.getString("BUSINESS_ADDRESS");
+			String detailedAdr = rs.getString("DETAILED_ADR");
+			String corporationName = rs.getString("CORPORATION_NAME");
+			String uptae = rs.getString("UPTAE");
+			String upjong = rs.getString("UPJONG");
+			String reportNumber = rs.getString("REPORT_NUMBER");
+			String bank = rs.getString("BANK");
+			String permitYn = rs.getString("PERMIT_YN");
+			String depositor = rs.getString("DEPOSITOR");
+			String account = rs.getString("ACCOUNT");
+			String requestQuitYn = rs.getString("REQUEST_QUIT_YN");
+			String modifyYn = rs.getString("MODIFY_YN");
+
+			// 생성자로 할당
+			MemberDTO memberDTO = new MemberDTO(memberNo, id, pwd, nick, name, phone, detailAddress, profile, quitYn, joinDate, modifyDate, email, freezeYn, sellerYn, sellerNo, businessNo, businessForm, businessName, businessPhone, busineesZipcode, businessAddress, corporationName, uptae, upjong, reportNumber, bank, permitYn, depositor, account, requestQuitYn, modifyYn); 
+			
+			memberVoList.add(memberDTO);
 				
 		}
 		
-			JDBCTemplate.close(pstmt);
-			JDBCTemplate.close(rs);
+		// close
+		JDBCTemplate.close(pstmt);
+		JDBCTemplate.close(rs);
 			
-			return voList;
+		// return
+		return memberVoList;
+		
 	}
 
-	public int selectMemberSellerCount(Connection conn) throws Exception {
+	// 모든 회원의 수 구하기
+	public int totalOfAllMembers(Connection conn) throws Exception {
 		
+		// sql
 		String sql = "SELECT COUNT(*) FROM MEMBER WHERE QUIT_YN = 'N'";
 		
+		// pstmt
 		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		// rs 
 		ResultSet rs = pstmt.executeQuery();
 		
-		int listCount = 0;
+		// listConut 기본값으로 설정
+		int memberCount = 0;
 		
+		// 회원 모든수 구하기
 		if(rs.next()) {
-			listCount = rs.getInt(1);
+			memberCount = rs.getInt(1);
 		}
 		
+		// close
 		JDBCTemplate.close(pstmt);
 		JDBCTemplate.close(rs);
 		
-		return listCount;
+		// return
+		return memberCount;
 		
 	}
 
@@ -450,7 +480,7 @@ public class AdminDao {
 	}
 
 	// 모든 멤버 검색
-	public List<SellerVo> searchMember(Connection conn, Map<String, String> map, PageVo pvo) throws Exception {
+	public List<MemberDTO> searchMember(Connection conn, Map<String, String> map, PageVo pvo) throws Exception {
 	
 		// 쿼리문 
 				String searchType = map.get("option");
@@ -468,7 +498,7 @@ public class AdminDao {
 				ResultSet rs = pstmt.executeQuery();
 						
 				// 판매자 리스트 
-				List<SellerVo> voList = new ArrayList<SellerVo>();
+				List<MemberDTO> voList = new ArrayList<MemberDTO>();
 
 				// rs반복
 				while(rs.next()) {
@@ -485,11 +515,11 @@ public class AdminDao {
 					String freezeYn = rs.getString("FREEZE_YN");
 					String sellerYn = rs.getString("SELLER_YN");
 					
-					SellerVo vo = new SellerVo();
+					MemberDTO vo = new MemberDTO();
 					
 					vo.setMemberNo(memberNo);
 					vo.setId(id);
-					vo.setPassword(pwd);
+					vo.setPwd(pwd);
 					vo.setNick(nick);
 					vo.setName(name);
 					vo.setPhone(phone);
@@ -633,82 +663,95 @@ public class AdminDao {
 	}
 
 	// 판매자 개인정보 수정
-	public int ModifySeller_InfoByAdmin(SellerVo vo, Connection conn) throws Exception {
+	public int ModifySeller_InfoByAdmin(MemberDTO memberDTO, Connection conn) throws Exception {
 		
+		// sql 
 		String sql = "UPDATE MEMBER SET ID = ?, PWD = ?, NICK = ?, NAME = ?, PHONE = ?, EMAIL = ?, MODIFY_DATE = SYSDATE WHERE MEMBER_NO = ?";
 		
+		// pstmt
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, vo.getId());
-		pstmt.setString(2, vo.getPassword());
-		pstmt.setString(3, vo.getNick());
-		pstmt.setString(4, vo.getName());
-		pstmt.setString(5, vo.getPhone());
-		pstmt.setString(6, vo.getEmail());
-		pstmt.setString(7, vo.getMemberNo());
+		pstmt.setString(1, memberDTO.getId());
+		pstmt.setString(2, memberDTO.getPwd());
+		pstmt.setString(3, memberDTO.getNick());
+		pstmt.setString(4, memberDTO.getName());
+		pstmt.setString(5, memberDTO.getPhone());
+		pstmt.setString(6, memberDTO.getEmail());
+		pstmt.setString(7, memberDTO.getMemberNo());
 		
+		// result
 		int result = pstmt.executeUpdate();
 		
-		//close
+		// close
 		JDBCTemplate.close(pstmt);
 		
+		// return
 		return result;
 	
 	}
 	
 	// 판매자 사업자정보 수정
-	public int ModifySeller_businessInfoByAdmin(SellerVo vo, Connection conn) throws Exception {
+	public int ModifySeller_businessInfoByAdmin(MemberDTO memberDTO, Connection conn) throws Exception {
 		
-		String sql = "UPDATE SELLER SET BUSINESS_FORM = ?, BUSINESS_NAME = ?, BUSINESS_PHONE = ?, BUSINEES_ZIPCODE = ?, BUSINESS_ADDRESS = ?, UPTAE = ?, UPJONG = ?, BANK = ?, DEPOSITOR = ?, ACCOUNT = ?, CORPORATION_NAME = ? WHERE MEMBER_NO = ?";
+		// sql
+		String sql = "UPDATE SELLER SET BUSINESS_FORM = ?, BUSINESS_NAME = ?, BUSINESS_PHONE = ?, BUSINEES_ZIPCODE = ? , DETAILED_ADR = ? , BUSINESS_ADDRESS = ?, UPTAE = ?, UPJONG = ?, BANK = ?, DEPOSITOR = ?, ACCOUNT = ?, CORPORATION_NAME = ? WHERE MEMBER_NO = ?";
 		
+		// pstmt
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
-		pstmt.setString(1, vo.getBusinessForm());
-		pstmt.setString(2, vo.getBusineesName());
-		pstmt.setString(3, vo.getBusineesPhone());
-		pstmt.setString(4, vo.getBusineesZipCode());
-		pstmt.setString(5, vo.getBusineesAdr());
+		pstmt.setString(1, memberDTO.getBusinessForm());
+		pstmt.setString(2, memberDTO.getBusinessName());
+		pstmt.setString(3, memberDTO.getBusinessPhone());
+		pstmt.setString(4, memberDTO.getBusineesZipcode());
+		pstmt.setString(5, memberDTO.getDetailAddress());
+		pstmt.setString(6, memberDTO.getAddress());
 
-		pstmt.setString(6, vo.getUptae());
-		pstmt.setString(7, vo.getUpjong());
-		pstmt.setString(8, vo.getBank());
-		pstmt.setString(9, vo.getDepositor());
+		pstmt.setString(7, memberDTO.getUptae());
+		pstmt.setString(8, memberDTO.getUpjong());
+		pstmt.setString(9, memberDTO.getBank());
+		pstmt.setString(10, memberDTO.getDepositor());
 		
-		pstmt.setString(10, vo.getAccount());
-		pstmt.setString(11, vo.getCorporationName());
-		pstmt.setString(12, vo.getMemberNo());
+		pstmt.setString(11, memberDTO.getAccount());
+		pstmt.setString(12, memberDTO.getCorporationName());
+		pstmt.setString(13, memberDTO.getMemberNo());
 		
+		// result 
 		int result = pstmt.executeUpdate();
 		
+		// close 
 		JDBCTemplate.close(pstmt);
 		
+		// return
 		return result;
 		
 	}
-
-	public int ModifyMemberByAdmin(MemberVo vo, Connection conn) throws Exception {
+	
+	// 소비자 정보 수정
+	public int ModifyMemberByAdmin(MemberDTO dto, Connection conn) throws Exception {
 		
+		// sql
 		String sql = "UPDATE MEMBER SET ID = ?, PWD = ?, NICK = ?, NAME = ? , EMAIL = ?, PHONE = ?, BIRTH_DATE = ?, POINT = ?, ADDRESS = ?, DETAIL_ADDRESS = ?, MODIFY_DATE = SYSDATE WHERE MEMBER_NO = ?";
 		
+		// pstmt
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, vo.getMemberId());
-		pstmt.setString(2, vo.getMemberPwd());
-		pstmt.setString(3, vo.getMemberNick());
-		pstmt.setString(4, vo.getName());
-		pstmt.setString(5, vo.getEmail());
-		pstmt.setString(6, vo.getPhone());
-		pstmt.setString(7, vo.getBirth());
-		pstmt.setString(8, vo.getPoint());
-		pstmt.setString(9, vo.getAddr());
-		pstmt.setString(10, vo.getAddr2());
-		pstmt.setString(11, vo.getNo());
+		pstmt.setString(1, dto.getId());
+		pstmt.setString(2, dto.getPwd());
+		pstmt.setString(3, dto.getNick());
+		pstmt.setString(4, dto.getName());
+		pstmt.setString(5, dto.getEmail());
+		pstmt.setString(6, dto.getPhone());
+		pstmt.setString(7, dto.getBirthDate());
+		pstmt.setInt(8, dto.getPoint());
+		pstmt.setString(9, dto.getAddress());
+		pstmt.setString(10, dto.getDetailAddress());
+		pstmt.setString(11, dto.getMemberNo());
 		
+		// result
 		int result = pstmt.executeUpdate();
 		
-		System.out.println("판매자 개인정보: "+result);
-		
-		//close
+		//	close
 		JDBCTemplate.close(pstmt);
 		
+		// return
 		return result;
 		
 	}

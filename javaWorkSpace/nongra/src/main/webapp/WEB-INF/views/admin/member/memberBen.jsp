@@ -1,3 +1,4 @@
+<%@page import="com.kh.app.admin.vo.MemberDTO"%>
 <%@page import="com.kh.app.page.vo.PageVo"%>
 <%@page import="java.util.Map"%>
 <%@page import="com.kh.app.seller.vo.SellerVo"%>
@@ -5,7 +6,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-    List<SellerVo> voList = (List<SellerVo>)request.getAttribute("voList"); 
+	List<MemberDTO> memberVoList = (List<MemberDTO>)request.getAttribute("memberVoList"); 
     PageVo pvo = (PageVo)request.getAttribute("pvo");
     Map<String,Object> map = (Map<String,Object>)request.getAttribute("map");
 %>
@@ -218,7 +219,7 @@ a {
                             </tr>
                         </thead>
                         <tbody>
-                            <% for(SellerVo list : voList){ %>
+                            <% for(MemberDTO list : memberVoList){ %>
                             <tr>
                                 <th></th>
                                 <td><%= list.getMemberNo() %></td>
@@ -263,7 +264,7 @@ a {
             const menu4 = document.querySelector(" aside > :nth-child(5) > a ");
             x.innerHTML = "회원관리";
             menu1.innerHTML = "회원 조회/수정";
-            menu1.href = "/nongra/admin/select";
+            menu1.href = "/nongra/admin/findAllMembers";
             menu2.innerHTML = "회원 정지/해제";
             menu2.href = "/nongra/admin/memberBen";
             menu3.innerHTML = "사업자 허가 여부";
