@@ -26,7 +26,7 @@ public class QnaWriteController extends HttpServlet {
 			//할일 : 사용자 번호받아서 어떤메소드 실행할지 if문 추가 
 			QnaService qs = new QnaService();
 			List<QnaMemberCateVo> parentCateVoList = qs.getParentCateList();
-			List<QnaMemberCateVo> childCateVoList = qs.getChildCateList();
+//			List<QnaMemberCateVo> childCateVoList = qs.getChildCateList();
 			
 		//	List<QnaSellerCateVo> parentCateVoList = qs.getParentCateList();
 		//	List<QnaSellerCateVo> childCateVoList = qs.getChildCateList();

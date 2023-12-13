@@ -43,12 +43,12 @@ public class QnaService {
 		return qnaVoList;
 	}
 	
-	public QnaMemberCateVo getQnaMemberParentCateName (Connection conn, String userNo) throws Exception{
-		Connection conn = JDBCTemplate.getConnection();
-		QnaDao dao = new QnaDao();  
-		String parentCateId = dao.getQnaMemberList(conn, userNo);
-		JDBCTemplate.close(conn);
-		return qnaVoList;
-	}
+//	public QnaMemberCateVo getQnaMemberParentCateName (Connection conn, String userNo) throws Exception{
+//		Connection conn = JDBCTemplate.getConnection();
+//		QnaDao dao = new QnaDao();  
+//		String parentCateId = dao.getQnaMemberList(conn, userNo);
+//		JDBCTemplate.close(conn);
+//		return qnaVoList;
+//	}
 	
 }
