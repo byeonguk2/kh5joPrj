@@ -38,6 +38,7 @@ public class MemberMypageOrderCheckoutController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			//data
+			System.out.println(753);
 			String orderNo = req.getParameter("orderNo");
 			String refundReason = req.getParameter("REFUND_REASON");
 			

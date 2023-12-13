@@ -104,11 +104,21 @@
 
 
                     </div>
-					<div class="hi">
-                        <input type="text" name="orderNo" value="<%=cartVoList.get(0).getOrderNumber() %>">
-                        <button id="reBtn" onclick="openPopup();">환불하기</button>
+					<form action="/nongra/mypage/order/checkout" method="post" class="hi">
+                        <input class="b" type="text" name="orderNo" value="<%=cartVoList.get(0).getOrderNumber() %>">
+                        <br>
+                        <div>
+                            <h3>환불사유 :    </h3><input id="haha" type="text" name="REFUND_REASON">
+                        </div>
+                        <br>
+                        <div>
 
-                    </div>
+                            <button id="reBtn">환불하기</button>
+                        </div>
+
+                    </form>
+
+                    
 
                     </div>
 
@@ -121,16 +131,6 @@
 </html>
 <script type="text/javascript" src="/nongra/resources/js/member/mypageOrderDetail.js"></script>
 <script>
-function openPopup() {
-    const orderNum = document.querySelector('#orderNum');
-    const childWindow = window.open("/nongra/mypage/refund",'_농라','width=400,height=250,top=500,left=500');
 
-
-    setTimeout( ()=>{
-        const childInputTag = childWindow.document.querySelector('input[name=orderNo]');
-        childInputTag.value = orderNum.innerText;
-    } , 100);
-
-}
 </script>
 
