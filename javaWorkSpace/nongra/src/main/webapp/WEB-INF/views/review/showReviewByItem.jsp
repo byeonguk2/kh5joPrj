@@ -1,4 +1,5 @@
 <%@page import="java.util.Map"%>
+<%@page ="java.util.Map"%>
 <%@page import="com.kh.app.page.vo.PageVo"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -100,15 +101,26 @@
 						   </c:otherwise>
 						</c:choose>
                         
-                         <button class="review-recommend-btn">
+                         <button class="review-recommend-btn  ">
                              <span class="review-b"></span>
-                             <span class="review-like">도움돼요 ${vo.likeCnt}</span>
+                         <c:choose>
+						   <c:when test="${not empty vo.recommendYn }">
+						      <span class="review-like review-like-after ">도움돼요<span class="like-num">${vo.likeCnt}</span> </span>
+						   </c:when>
+						
+						   <c:otherwise>
+						        <span class="review-like ">도움돼요<span class="like-num">${vo.likeCnt}</span></span>
+						   </c:otherwise>
+						</c:choose>
+                           
+                           
+                            
                          </button>
                      </footer>
                      <div class="owner-replay-box">
                          <span class="reply-span1">답글보기</span>
                          <div>
-                         <button class="reply-delete-btn">삭제</button>
+                    
                          </div> 
                      </div> 
                  </div>
@@ -270,7 +282,24 @@
 	    	location.href = '/nongra/member/showReviewByItem?pno=' + <%=pvo.getCurrentPage()-1%>
 	    	     
 	       }
+	    
+	 // 
+	 const reviewNoLike    = document.querySelectorAll(".reviewNO");
+	 console.log(reviewNoLike)
+	 const reviewLike      =  document.querySelectorAll(".review-like")
+	 console.log(reviewLike)
+	 const reviewLikeAfter =  document.querySelectorAll(".review-like-after")
+	 console.log(reviewLikeAfter)
+	 const likeCnt     =document.querySelectorAll(".like-num")
+	  console.log(reviewLikeAfter)
+	 
+	 
+	 
+	 
+	  
+	    
 
 	 <%}%>
 	
     </script>
+    

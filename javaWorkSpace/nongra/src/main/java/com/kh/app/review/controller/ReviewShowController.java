@@ -54,7 +54,7 @@ public class ReviewShowController extends HttpServlet {
 			
 			req.setAttribute("ReviewVoList", ReviewVoList);
 			req.setAttribute("pvo", pvo);
-			req.getRequestDispatcher("/WEB-INF/views/review/adminManageReview.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/review/showReviewByItem.jsp").forward(req, resp);
 			
 			
 			
@@ -62,8 +62,8 @@ public class ReviewShowController extends HttpServlet {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("리뷰 관리자 페이지 에러");
-			session.setAttribute("alertMsg", "리뷰 관리자 페이지 실패");
+			System.out.println("리뷰 페이지 에러");
+			session.setAttribute("alertMsg", "리뷰 페이지 실패");
 			req.getRequestDispatcher("/WEB-INF/views/common/note/result.jsp").forward(req, resp);
 		}
 	}
