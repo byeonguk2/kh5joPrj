@@ -64,8 +64,8 @@ public class MemberMypageController extends HttpServlet {
 	          
 	      } catch (Exception e) {
 	          e.printStackTrace();
-	      System.out.println("리뷰 멤버 페이지 에러");
-	      req.setAttribute("errorMsg", "로그인 실패.,.");
+	      System.out.println("[ERROR-M007]마이페이지 조회 중 문제 발생.");
+	      req.setAttribute("errorMsg", "마이페이지 조회 실패.,.");
 			req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);
 	      }
 }
