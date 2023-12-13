@@ -99,7 +99,7 @@ div{
  #join1{
     width: 200px;
     height: 57px;
-    background-color: rgb(76, 87, 242);
+    background-color: #754327;
 
     color: aliceblue;
     border: 1px solid #067DFD;
@@ -162,7 +162,7 @@ div{
     margin: 14px auto 0;
     padding: 14px 16px 12px;
     text-align: center;
-    background-color: rgb(76, 87, 242);;
+    background-color: #754327;;;
     -webkit-border-radius: 8px;
     border-radius: 8px;
     overflow: hidden;

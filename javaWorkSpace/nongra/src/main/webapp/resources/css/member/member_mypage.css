@@ -23,7 +23,7 @@ main{
     /* border: solid 1px black; */
 }
 #box3{
-    display: grid;
+    display: flex;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     border: solid 1px black;
 }
@@ -38,14 +38,15 @@ main{
     line-height: 20px;
     font-weight: bold;
 }
-#img_box{
-    display: flex;
-	flex-direction: column;
-	justify-content: center;
-	text-align: center;
-	}
+
 #h3{
 	line-height: 80px;
 	font-weight: bold;
 }
 
+
+#box3 > a > img {
+    display: inline-block;
+    width: 96px;
+    height: 96px;
+}
