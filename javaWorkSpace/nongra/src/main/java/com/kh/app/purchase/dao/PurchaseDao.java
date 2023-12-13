@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.tomcat.dbcp.dbcp2.Jdbc41Bridge;
 
@@ -367,6 +369,7 @@ public class PurchaseDao {
 		//rs
 		List<PurchaseCartVo> PurchaseCartVoList = new ArrayList<PurchaseCartVo>();
 		while(rs.next()) {
+			String cartOrderNo = rs.getString("주문번호");
 			String cartTotalPrice = rs.getString("총금액");
 			String enrollDate = rs.getString("결제시간");
 			String ea = rs.getString("수량");
@@ -375,17 +378,84 @@ public class PurchaseDao {
 			String goodsName = rs.getString("상품명");
 			String goodsPrice = rs.getString("상품가격");
 			String thumbnail = rs.getString("사진");
-			String seller = rs.getString("판매자");
+			String seller = rs.getString("판매자명");
 			
-			PurchaseCartVo cartVo = new PurchaseCartVo(goodsName, goodsPrice, optionName, optionPrice, thumbnail, orderNo, ea, seller);
+			PurchaseCartVo cartVo = new PurchaseCartVo();
+			cartVo.setOrderNumber(cartOrderNo);
+			cartVo.setCartTotalPrice(cartTotalPrice);
+			cartVo.setEnrollDate(enrollDate);
+			cartVo.setGoodsEA(ea);
+			cartVo.setOptionName(optionName);
+			cartVo.setOptionPrice(optionPrice);
+			cartVo.setGoodsName(goodsName);
+			cartVo.setGoodsPrice(goodsPrice);
+			cartVo.setGoodsPicture(thumbnail);
+			cartVo.setSeller(seller);
+			
+			
 			PurchaseCartVoList.add(cartVo);
 		}
 		
 		
+		//close
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		
+		
+		
+		return PurchaseCartVoList;
+	}
+
+	//주문번호에 맞는 배송지
+	public PurchaseAddressVo endOrderAddress(Connection conn, String orderNo) throws Exception {
+		//sql
+		String sql = "SELECT A.NO AS \"배송지번호\" , A.ADDRESS AS \"배송지\" , A.NAME AS \"받는사람\" , A.PHONE AS \"전화번호\" , A.DEL_YN AS \"삭제여부\" , A.DEFAULT_ADDRESS AS \"기본배송지\" FROM ORDER_INFORMATION OI JOIN ADDRESS A ON OI.ADDRESS_NO = A.NO WHERE OI.NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, orderNo);
+		ResultSet rs = pstmt.executeQuery();
+		
+		//rs
+		PurchaseAddressVo addressVo = null;
+		if(rs.next()) {
+			String no = rs.getString("배송지번호");
+			String address = rs.getString("배송지");
+			String name = rs.getString("받는사람");
+			String phone = rs.getString("전화번호");
+			String delYn = rs.getString("삭제여부");
+			String defaultAddress = rs.getString("기본배송지");
+			
+			addressVo = new PurchaseAddressVo();
+			addressVo.setNo(no);
+			addressVo.setAddress(address);
+			addressVo.setName(name);
+			addressVo.setPhone(phone);
+			addressVo.setDelYn(delYn);
+			addressVo.setDefaultAddress(defaultAddress);
+		}
 		
 		//close
-		return null;
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		
+		return addressVo;
 	}
+
+	//주문 환불
+	public int orderRefund(Connection conn, String orderNo, String refundReason) throws Exception {
+		//sql
+		String sql = "UPDATE ORDER_HISTORY SET REFUND_YN = 'Y' , REFUND__DATE = SYSDATE , REFUND_REASON = ? WHERE ORDER_NO =?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, refundReason);
+		pstmt.setString(2, orderNo);
+		int result = pstmt.executeUpdate();
+		
+		//close
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
+
+
 
 
 
