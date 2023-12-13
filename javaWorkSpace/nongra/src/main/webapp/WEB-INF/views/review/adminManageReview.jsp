@@ -59,11 +59,11 @@
         		<div class ="reviewNO" style="display : none">${vo.reviewNo}</div>
              <div class="review" >
                  <div class="review-user-nick">
-                     <figure class="user-photo" style="background-image: url("${vo.profile}")></figure> <span>"${vo.nick}"</span>
+                     <figure class="user-photo" style="background-image: url("${vo.profile}")></figure> <span>${vo.nick}</span>
                  </div>
          
                  <div class="review-content-box">
-                     <div class="review-item-name">"${vo.itemTitle}"</div>
+                     <div class="review-item-name">${vo.itemTitle}</div>
                      <p class="review-content">
                          ${vo.content}
                      </p>
@@ -287,11 +287,7 @@
    
 	var deleteYnValue = "<%=deleteYn %>";
     
-    if(deleteYnValue === '실패'){
-    	alert('리뷰 삭제' +deleteYnValue);
-    }else if(deleteYnValue ==='성공'){
-    	alert('리뷰 삭제' +deleteYnValue);
-    }	
+   
     
 
 

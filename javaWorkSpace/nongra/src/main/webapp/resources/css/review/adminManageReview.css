@@ -89,7 +89,7 @@ button{
 	margin-right: 0.5em;
 	border: 2px solid #333;
 	border-radius: 50%;
-	background-color: gold;
+	
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 150%;
@@ -346,6 +346,7 @@ white-space: normal;
 	top: 0;
 	bottom: 0;
 	background: rgba(0,0,0,0.3);
+	 z-index: 5;
 }
 
 .modal-sure-hiddnen {

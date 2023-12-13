@@ -169,7 +169,7 @@ public class ReviewService {
 		
 		return list; 
 	}
-	//리뷰 작성 [멤버]
+	//리뷰 작성 내용 + 사진 [멤버]
 	public int memberReiewWrite(ReviewVo vo, ArrayList<String> strlist) throws Exception {
 		
 		// conn
@@ -177,8 +177,13 @@ public class ReviewService {
 				
 		// dao
 		ReviewDao dao = new ReviewDao();
-		int result = dao.adminManagerReviewDelete(conn,vo,strlist);
+		int result = dao.memberReviewWrite(conn,vo);
 		
+		if(result ==1 && strlist.size()>0) {
+			result = dao.memberReviewWritePicture(conn,strlist);
+		}
+				
+		//result
 		if(result ==1 ) {
 			JDBCTemplate.commit(conn);
 		}else {
@@ -186,10 +191,43 @@ public class ReviewService {
 		}
 		
 		// close 
-		
 		JDBCTemplate.close(conn);
 		
 		return result; 
+		
+	}
+	// [상품번호랑 유저번호로] 리뷰조회 및 좋아요 개수 구하기
+	public int selectReviewCountByItemNo(String salesNo, String mebmerNo) throws Exception {
+		
+		
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+						
+		// dao
+		ReviewDao dao = new ReviewDao();
+		int cnt = dao.selectReviewCountBySellerNo(conn,salesNo,mebmerNo);
+		
+		// close
+		JDBCTemplate.close(conn);
+		
+		return cnt;
+		
+	}
+	// [상품번호랑 유저번호로] 리뷰조회 및 좋아요 개수로 페이지 보여주기 
+	public List<ReviewVo> memberReviewShow(PageVo pvo, String salesNo, String mebmerNo) throws Exception {
+		
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+				
+		// dao
+		ReviewDao dao = new ReviewDao();
+		List<ReviewVo> list = dao.memberReviewShow(conn,pvo,salesNo,mebmerNo);
+		// close 
+				
+		JDBCTemplate.close(conn);
+		
+		return list; 
+		
 		
 	}
 	
