@@ -45,11 +45,28 @@
 			#category-dropdown a:hover {
 			    background-color: #f2f2f2; /* 호버 시 배경색을 설정합니다 */
 			}
+            .gost{
+                position: absolute;
+                margin-top: 20px;
+                margin-left: 900px;
+                z-index: 1;
+                display: none;
+            }
+            .gost-coming{
+                display: block;
+            }
+            .aLogin{
+                cursor: pointer;
+            }
 		</style>
 	</head>
 	<body>
 		<div id="wrap1">
             <header>
+                <ul class="gost">
+                    <li><a href="/nongra/member/login">일반 회원 로그인</a></li>
+                    <li><a href="/nongra/seller/login">파트너 로그인</a></li>
+                  </ul>
                 <div></div>
                 <div></div>
                 <div class="top-menu">
@@ -62,7 +79,7 @@
                 <div class="top-menu">
                    
                     	<%if(loginMember==null){%>
-                    		 <a href="/nongra/member/login">로그인</a>
+                    		 <a class="aLogin" onclick="gost()">로그인</a>
                     	<%}else{%>
                     		<a href="/nongra/member/logout">로그아웃</a>
                     	<%}%>
@@ -161,7 +178,7 @@
                     const liTag = document.createElement('li');
                     const aTag = document.createElement('a');
                     aTag.innerHTML = data[i].category;
-                    aTag.href = "/nongra/sales/details?categoryNo=" + data[i].categoryNo;
+                    aTag.href = "/nongra/sales/categoryList?categoryNo=" + data[i].categoryNo;
                     ulTag.appendChild(liTag);
                     liTag.appendChild(aTag);
                     }
@@ -199,5 +216,9 @@
             });
         }
 
+        function gost(){
+            const gost = document.querySelector(".gost");
+            gost.classList.toggle("gost-coming")
+        }
 		
 	</script>
