@@ -513,7 +513,7 @@ public class ReviewDao {
 		
 		for (String str :strlist) {
 				System.out.println("리뷰사진" + result );
-			sql = "INSERT INTO REVIEW_FILE (REVIEW_FILE_NO,REVIEW_NO,FILE_SRC) VALUES (SEQ_REVIEW_FILE.NEXTVAL , SEQ_REVIEW.CURRVAL, ?)";
+			sql = "INSERT INTO REVIEW_FILE (RWVIEW_FILE_NO,REVIEW_NO,FILE_SRC) VALUES (SEQ_REVIEW_FILE.NEXTVAL , SEQ_REVIEW.CURRVAL, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, str);
 			result = pstmt.executeUpdate();

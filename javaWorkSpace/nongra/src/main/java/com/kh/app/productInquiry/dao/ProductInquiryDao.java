@@ -93,7 +93,7 @@ public class ProductInquiryDao {
 			vo.setSellerNo(sellerNo);
 			vo.setItemtitle(itemtitle);
 			vo.setBusinessName(businessName);
-			vo.setUsername(userName);
+			vo.setUserName(userName);
 			 
 			 list.add(vo);
 		}
@@ -209,7 +209,7 @@ public class ProductInquiryDao {
 					vo.setSellerNo(sellerNo);
 					vo.setItemtitle(itemtitle);
 					vo.setBusinessName(businessName);
-					vo.setUsername(userName);
+					vo.setUserName(userName);
 					 
 					 list.add(vo);
 				}
@@ -250,8 +250,6 @@ public class ProductInquiryDao {
 				return ProductInquiryVoList;
 				
 			}
-	
-	
 	
 
 }
