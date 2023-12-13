@@ -98,5 +98,8 @@ public class SalesDao {
 		
 		return result;
 	}
+	public List<SalesVo> salesList(Connection conn, String sellerNo) throws Exception{
+		String sql = "";
+	}
 
 }
