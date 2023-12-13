@@ -207,6 +207,7 @@ white-space: normal;
     display: inline-block;
     text-align: center;
     line-height: 32px;
+    cursor: pointer;
 }
 .reply-delete-btn{
     border: 1px solid rgb(226, 226, 226);
@@ -218,6 +219,7 @@ white-space: normal;
     text-align: center;
     line-height: 32px;
     margin-left: 50p;
+    cursor: pointer;
 }
 
 .inquery-paging-area{
