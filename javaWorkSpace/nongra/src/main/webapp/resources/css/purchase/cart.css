@@ -27,10 +27,21 @@ button{
     margin-bottom: 30px;
 }
 
+#nullArea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    color: rgb(180, 180, 180);
+    font-size: 18px;
+    font-weight: 700;
+}
+
 /* 상품 테이블 */
 table{
     width: 100%;
     border-bottom: 1px solid black;
+    padding-bottom: 20px;
 }
 tr{
     padding: 10px;
@@ -167,12 +178,20 @@ tbody>tr>td:nth-child(7){
 .orderBtnArea{
     margin-top: 30px;
     float: right;
-}
-.orderBtn{
+}.orderBtn{
     width: 200px;
     height: 50px;
     background-color: #754327;
     color: white;
     font-weight: 900;
     border-radius: 3px;
+}
+.nullCart{
+    width: 200px;
+    height: 50px;
+    background-color: white;
+    border: 1px solid #754327;
+    color: #754327;
+    font-weight: 900;
+    border-radius: 5px;
 }

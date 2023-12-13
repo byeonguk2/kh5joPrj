@@ -15,7 +15,47 @@ main{
     border: 1px solid #754327;
     border-radius: 5px;
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .none{
     display: none;
+}
+
+input{
+    margin: 5px;
+}
+table > tbody > tr {
+    height: 50px;
+}
+table > tbody > tr > td:nth-child(1){
+    width: 80px;
+    text-align: right;
+    padding-right: 15px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #75442785;
+}
+table > tbody > tr > td:nth-child(2){
+    width: 200px;
+    font-weight: 600;
+}
+input[type=text]{
+    height: 30px;
+    width: 100%;
+    padding-left: 5px ;
+    border: none;
+    background-color: #bd8a701c;
+    border-radius: 5px;
+}
+th > button{
+    width: 80%;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 900;
+    background-color: #bd8a70;
+    border: none;
+    border-radius: 5px;
+    color: wheat;
 }
