@@ -1,6 +1,7 @@
 package com.kh.app.review.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -167,6 +168,29 @@ public class ReviewService {
 		JDBCTemplate.close(conn);
 		
 		return list; 
+	}
+	//리뷰 작성 [멤버]
+	public int memberReiewWrite(ReviewVo vo, ArrayList<String> strlist) throws Exception {
+		
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+				
+		// dao
+		ReviewDao dao = new ReviewDao();
+		int result = dao.adminManagerReviewDelete(conn,vo,strlist);
+		
+		if(result ==1 ) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		// close 
+		
+		JDBCTemplate.close(conn);
+		
+		return result; 
+		
 	}
 	
 

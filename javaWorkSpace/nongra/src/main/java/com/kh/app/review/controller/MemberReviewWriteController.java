@@ -1,9 +1,13 @@
 package com.kh.app.review.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -28,52 +32,93 @@ public class MemberReviewWriteController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("포스트호출되는데");
+		
 		HttpSession session = req.getSession();		
 		MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+//		String memberNo = loginMember.getNo();
+		String memberNo = "1";
 		String cbNo = req.getParameter("cbNo"); 
-		String secret = req.getParameter("secret");
 		String content = req.getParameter("content");
-		 
+		System.out.println(cbNo);
+		System.out.println(content);
+		
 	try {
+			
+		ReviewVo vo = new ReviewVo();
+		vo.setConsumerNo(memberNo);
+		vo.setConsumerNo(content);
+		vo.setCartBreakdownNo(cbNo);
+		
 		
 		Collection<Part> parts = req.getParts();
-		System.out.println(secret);
-		System.out.println(content);
-		System.out.println(parts.size());
-		
+		ArrayList<Part> fileList = new ArrayList<Part>();
+		for (Part part : parts) {
+            if (part.getSubmittedFileName() != null) {
+            		fileList.add(part);
+            }
+		}
+         
+		ArrayList<String> strlist = new ArrayList<String>();
+         
+        for(Part part : fileList) {
+        	Part f = part;
+        	
+        	//읽기 준비
+  	      InputStream in = f.getInputStream();
+  	      
+  	      //내보내기 준비
+  	      String sep = File.separator;
+  	      String path = req.getServletContext().getRealPath(sep + "resources" + sep + "upload" + sep + "img" + sep +"review");
+  	      String randomName = System.currentTimeMillis() + "_" + UUID.randomUUID();
+  	      
+  	      //원본 파일면
+  	      String submittedFileName = f.getSubmittedFileName();
+  	      
+  	      int index = submittedFileName.lastIndexOf(".");
+  	      String ext = submittedFileName.substring(index);
+  	      String fileName = sep +  randomName   + ext;
+  	      System.out.println(fileName);
+  	      String src = sep + "nongra" +sep +"resources" + sep + "upload" + sep + "img" + sep + "review" + fileName;
+  	      System.out.println(src);
+  	      strlist.add(src);
+  	    
+  	      File target = new File(path + fileName);
+  	      FileOutputStream out = new FileOutputStream(target);
+  	      
+  	      byte[] buf = new byte[1024];
+  	      int size = 0;
+  	      while( (size = in.read(buf)) != -1) {
+  	         out.write(buf, 0, size);
+  	      }
+  	      
+  	      // 정리
+  	      in.close();
+  	      out.close();
+        }
+        
+      
+
 		ReviewService rs = new ReviewService();
-		// data 
-		// int listCount = rs.selectReviewCount(loginMember.getNo());
-		
-		
 		
 		//service
-		//int result = rs.memberReiewWrite(loginMember.getNo(),cbNo);
-		/*
-		 * int result = rs.memberReiewWrite("1",cbNo);
-		 * 
-		 * 
-		 * 
-		 * 
-		 * // result (==view)
-		 * 
-		 * if(result)
-		 */
+		int result = rs.memberReiewWrite(vo,strlist);
+		// result (==view)
+		if(result !=1 ) {
+			throw new Exception();
+		}
+		
+	
 		
 		//-> getRequestDispatcher()는 요청을 그대로 들고 가는 걸 알고 있으면 된다.
-		resp.sendRedirect(req.getContextPath()+"/member/orderDetail");
-//		resp.sendRedirect(req.getContextPath()+"/member/orderDetail");
-		req.setAttribute("WriteYn", "리뷰 작성");	
-		
-		
-		
+		resp.sendRedirect("/nongra/member/orderDetail");
+		session.setAttribute("alertMsg", "리뷰 작성성공");	
 		
 	} catch (Exception e) {
 		e.printStackTrace();
 	System.out.println("리뷰 멤버 페이지 에러");
-		session.setAttribute("alertMsg", "리뷰 멤버 페이지 실패");
-	req.getRequestDispatcher("/WEB-INF/views/common/note/result.jsp").forward(req, resp);
-	}
-	}
-}
+		session.setAttribute("alertMsg", "리뷰 작성실패");
+		resp.sendRedirect("/nongra/member/orderDetail");
+		}
+	}// method	
+} //class 
+
