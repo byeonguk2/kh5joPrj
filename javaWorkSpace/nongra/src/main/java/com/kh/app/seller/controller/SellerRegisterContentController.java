@@ -61,7 +61,6 @@ public class SellerRegisterContentController extends HttpServlet{
 			String categoryNo2 = salesVo.getCategoryNo2();
 			file = salesVo.getFileName();
 			String sellerNo = salesVo.getSellerNo();
-			fileNameList.add(file);
 			
 			
 			Collection<Part> parts = req.getParts();
@@ -118,17 +117,23 @@ public class SellerRegisterContentController extends HttpServlet{
 			vo.setCategoryNo(categoryNo1);
 			vo.setCategoryNo2(categoryNo2);
 			vo.setSellerNo(sellerNo);
+			vo.setFileName(file);
 			System.out.println(fileNameList);
 			System.out.println(vo);
 			SalesService ss = new SalesService();
-//			int result = ss.salesRegister(vo , fileNameList ,optionVoList);
+			int result = ss.salesRegister(vo , fileNameList ,optionVoList);
 		
-//			System.out.println(result);
+			if(result != 1) {
+				throw new Exception();
+			}
 			
-			resp.getWriter().write("{\"msg\":\"good\"}");
+			req.removeAttribute("register");
+			
+			resp.sendRedirect("/nongra/seller/sales/list");
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+			System.out.println("상품 등록 하는 중에 오류 발생");
 		}
 		
 	}
