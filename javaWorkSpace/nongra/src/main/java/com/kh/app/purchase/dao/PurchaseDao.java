@@ -132,7 +132,7 @@ public class PurchaseDao {
 		ResultSet rs = pstmt.executeQuery();
 		
 		//rs
-		List<PurchaseAddressVo> voList = null;
+		List<PurchaseAddressVo> voList =  new ArrayList<PurchaseAddressVo>();
 		while(rs.next()) {
 			String no = rs.getString("배송지정보번호");
 			String address = rs.getString("배송지");
@@ -150,7 +150,6 @@ public class PurchaseDao {
 			vo.setDelYn(delYn);
 			vo.setDefaultAddress(defaultAddress);
 
-			voList = new ArrayList<PurchaseAddressVo>();
 			voList.add(vo);
 		}
 		
@@ -337,6 +336,34 @@ public class PurchaseDao {
 		JDBCTemplate.close(pstmt);
 		
 		return result;
+	}
+
+	//마이페이지 배송지 주소 새롭게 추가
+	public int addAddress(Connection conn, PurchaseAddressVo addressVo, MemberVo loginMember) throws Exception {
+		//sql
+		String sql = "INSERT INTO ADDRESS(NO, MEMBER_NO, ADDRESS, NAME, PHONE, DEFAULT_ADDRESS) VALUES (SEQ_ADDRESS.NEXTVAL, ?, ?, ?, ?, ?)";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, loginMember.getNo());
+		pstmt.setString(2, addressVo.getAddress());
+		pstmt.setString(3, addressVo.getName());
+		pstmt.setString(4, addressVo.getPhone());
+		pstmt.setString(5, addressVo.getDefaultAddress());
+		int result = pstmt.executeUpdate();
+		
+		//close
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
+
+	//주문번호에 맞는 장바구니 목록
+	public List<PurchaseCartVo> endOrderCart(Connection conn, String orderNo) {
+		//sql
+		String sql = "";
+		//rs
+		
+		//close
+		return null;
 	}
 
 

@@ -37,8 +37,8 @@ public class PurchaseService {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//dao
-		PurchaseDao pd = new PurchaseDao();
-		int result = pd.cartEAUpdate(conn, cartBreakDownNo, cartBreakDownEa);
+		PurchaseDao dao = new PurchaseDao();
+		int result = dao.cartEAUpdate(conn, cartBreakDownNo, cartBreakDownEa);
 		
 		//tx
 		if(result == 1) {
@@ -59,8 +59,8 @@ public class PurchaseService {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//dao
-		PurchaseDao pd = new PurchaseDao();
-		int result = pd.cartListRemove(conn, cartBreakDownNo);
+		PurchaseDao dao = new PurchaseDao();
+		int result = dao.cartListRemove(conn, cartBreakDownNo);
 		
 		//tx
 		if(result == 1) {
@@ -103,8 +103,8 @@ public class PurchaseService {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//dao
-		PurchaseDao pd = new PurchaseDao();
-		List<PurchaseAddressVo> voList = pd.takeAllAddress(conn, loginMember);
+		PurchaseDao dao = new PurchaseDao();
+		List<PurchaseAddressVo> voList = dao.takeAllAddress(conn, loginMember);
 		
 		//close
 		JDBCTemplate.close(conn);
@@ -120,22 +120,22 @@ public class PurchaseService {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//dao
-		PurchaseDao pd = new PurchaseDao();
+		PurchaseDao dao = new PurchaseDao();
 		
 			//해당 멤버 장바구니 번호 불러오기
-		String orderNo = pd.takeCartNo(conn, loginMember);
+		String orderNo = dao.takeCartNo(conn, loginMember);
 			//장바구니 END_YN 'Y'로 변경
-		int updateResult = pd.cartEndYnUpdate(conn, orderNo);
+		int updateResult = dao.cartEndYnUpdate(conn, orderNo);
 			//주문 정보 입력
-		int orderInformationResult = pd.putOrderInformation(conn, addressNo, totalPrice, request);
+		int orderInformationResult = dao.putOrderInformation(conn, addressNo, totalPrice, request);
 			//방금 넣은 주문 정보 번호 가져오기
-		String orderInformationNo = pd.takeorderInformation(conn, addressNo, totalPrice);
+		String orderInformationNo = dao.takeorderInformation(conn, addressNo, totalPrice);
 			//주문 이력 입력
-		int orderHistoryResult = pd.putOrderHistory(conn, orderInformationNo, orderNo);
+		int orderHistoryResult = dao.putOrderHistory(conn, orderInformationNo, orderNo);
 			//잔액에서 결제 금액 차감
-		int balanceResult = pd.balanceUpdate(conn, loginMember, totalPrice);
+		int balanceResult = dao.balanceUpdate(conn, loginMember, totalPrice);
 			//남은 잔액 가져옴
-		String balancePoint = pd.takePoint(conn, loginMember);
+		String balancePoint = dao.takePoint(conn, loginMember);
 			//로그인 정보에 포인트 업데이트
 		loginMember.setPoint(Integer.parseInt(balancePoint));
 		HttpSession session=req.getSession();
@@ -161,8 +161,8 @@ public class PurchaseService {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//dao
-		PurchaseDao pd = new PurchaseDao();
-		PurchaseAddressVo addressVo = pd.takeAddress(conn, addressNo);
+		PurchaseDao dao = new PurchaseDao();
+		PurchaseAddressVo addressVo = dao.takeAddress(conn, addressNo);
 		
 		//close
 		JDBCTemplate.close(conn);
@@ -189,8 +189,8 @@ public class PurchaseService {
 		addressVo.setDefaultAddress(defaultAddress);
 		
 		//dao
-		PurchaseDao pd = new PurchaseDao();
-		int result = pd.updateAddress(conn, addressVo);
+		PurchaseDao dao = new PurchaseDao();
+		int result = dao.updateAddress(conn, addressVo);
 		
 		//tx
 		if(result == 1) {
@@ -201,6 +201,52 @@ public class PurchaseService {
 		
 		//close
 		return result;
+	}
+
+	//마이페이지 배송지 주소 새롭게 추가
+	public int addAddress(PurchaseAddressVo addressVo, MemberVo loginMember) throws Exception {
+		//conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//dao
+		PurchaseDao dao = new PurchaseDao();
+		int result = dao.addAddress(conn, addressVo, loginMember);
+		
+		//tx
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		//close
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+	//마이페이지 주문서 가져오기
+	public PurchaseOrderCheckoutVo takeOrderCheckOut(String orderNo) throws Exception {
+		//conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//dao
+		PurchaseDao dao = new PurchaseDao();
+		PurchaseOrderCheckoutVo orderCheckOutVo = new PurchaseOrderCheckoutVo();
+			//주문번호에 맞는 장바구니 목록
+		List<PurchaseCartVo> purchaseCartVoList = dao.endOrderCart(conn, orderNo);
+		orderCheckOutVo.setCartVoList(purchaseCartVoList);
+		
+			//주문번호에 맞는 배송지 정보
+//		PurchaseAddressVo addressVo = dao.endOrderAddress(conn, orderNo);
+//		orderCheckOutVo.setAddressVo(addressVo);
+		
+		//tx
+
+		
+		//close
+		
+		return null;
 	}
 
 }

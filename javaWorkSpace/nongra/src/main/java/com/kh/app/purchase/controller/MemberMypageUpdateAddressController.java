@@ -12,7 +12,7 @@ import com.kh.app.purchase.service.PurchaseService;
 import com.kh.app.purchase.vo.PurchaseAddressVo;
 
 @WebServlet("/address/shipping-address/update")
-public class MemberMypageUpdateAddress extends HttpServlet{
+public class MemberMypageUpdateAddressController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
