@@ -96,7 +96,7 @@ public class SalesDao {
 		
 		return result;
 	}
-
+	// 카테고리 번호로 상품 리스트  조회
 	public List<SalesVo> salesCategoryNoSelect(Connection conn, String categoryNo) throws Exception{
 		String sql = "SELECT R.SALES_NO ,R.SELLER_NO ,R.TITLE ,R.PRICE ,R.STATUS ,R.ENROLL_DATE ,M.NICK AS MEMBER_NICK ,M.NAME AS MEMBER_NAME ,C.CATEGORY ,C.CATEGORY_NO ,C.CATEGORY_NO2 ,F.FILE_NAME FROM SALES_REGISTR R JOIN SALES_FILE F ON R.SALES_NO = F.SALES_NO JOIN CATEGORY C ON R.CATEGORY_NO1 = C.CATEGORY_NO JOIN SELLER S ON R.SELLER_NO = S.SELLER_NO JOIN MEMBER M ON S.MEMBER_NO = M.MEMBER_NO WHERE CATEGORY_NO = ? AND R.DEL_YN = 'N' AND R.STATUS = '판매중' ORDER BY R.ENROLL_DATE DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -114,7 +114,7 @@ public class SalesDao {
 			String memberNick = rs.getString("MEMBER_NICK");
 			String memberName = rs.getString("MEMBER_NAME");
 			String category = rs.getString("CATEGORY");
-			String categoryNo = rs.getString("CATEGORY_NO");
+			String categoryNo1 = rs.getString("CATEGORY_NO");
 			String categoryNo2 = rs.getString("CATEGORY_NO2");
 			String fileName = rs.getString("FILE_NAME");
 			
@@ -128,7 +128,7 @@ public class SalesDao {
 			sv.setMemberNick(memberNick);
 			sv.setMemberName(memberName);
 			sv.setCategory(category);
-			sv.setCategoryNo(categoryNo);
+			sv.setCategoryNo(categoryNo1);
 			sv.setCategoryNo2(categoryNo2);
 			sv.setFileName(fileName);
 			
@@ -142,6 +142,7 @@ public class SalesDao {
 		return salesVoList;
 		
 	}
+	// 카테고리별 상품 갯수 조회
 	public int selectSalesCount(Connection conn, String categoryNo) throws Exception{
 		String sql = "SELECT COUNT (*) AS CNT FROM (SELECT R.SALES_NO ,R.SELLER_NO ,R.TITLE ,R.PRICE ,R.STATUS ,R.ENROLL_DATE ,M.NICK AS MEMBER_NICK ,M.NAME AS MEMBER_NAME ,C.CATEGORY ,C.CATEGORY_NO ,C.CATEGORY_NO2 ,F.FILE_NAME FROM SALES_REGISTR R JOIN SALES_FILE F ON R.SALES_NO = F.SALES_NO JOIN CATEGORY C ON R.CATEGORY_NO1 = C.CATEGORY_NO JOIN SELLER S ON R.SELLER_NO = S.SELLER_NO JOIN MEMBER M ON S.MEMBER_NO = M.MEMBER_NO WHERE CATEGORY_NO = ? AND R.DEL_YN = 'N' AND R.STATUS = '판매중' ORDER BY R.ENROLL_DATE DESC)";
 		
@@ -160,6 +161,33 @@ public class SalesDao {
 		
 		return result;
 		
+	}
+	
+	// 전체 상품 갯수 조회
+	public int selectSalesAllCount(Connection conn) throws Exception{
+		String sql = "SELECT COUNT (*) AS CNT FROM (SELECT R.SALES_NO ,R.SELLER_NO ,R.TITLE ,R.PRICE ,R.STATUS ,R.ENROLL_DATE ,M.NICK AS MEMBER_NICK ,M.NAME AS MEMBER_NAME ,C.CATEGORY ,C.CATEGORY_NO ,C.CATEGORY_NO2 ,F.FILE_NAME FROM SALES_REGISTR R JOIN SALES_FILE F ON R.SALES_NO = F.SALES_NO JOIN CATEGORY C ON R.CATEGORY_NO1 = C.CATEGORY_NO JOIN SELLER S ON R.SELLER_NO = S.SELLER_NO JOIN MEMBER M ON S.MEMBER_NO = M.MEMBER_NO WHERE R.DEL_YN = 'N' AND R.STATUS = '판매중' ORDER BY R.ENROLL_DATE DESC)";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		
+		int result = 0;
+		while(rs.next()) {
+			result = rs.getInt(1);
+		}
+		
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		
+		
+		return result;
+	}
+	
+	// 상품 상세정보 조회
+	public List<SalesVo> selectSalesDetail() throws Exception{
+		String sql = "";
+		
+		
+		return null;
 	}
 
 }

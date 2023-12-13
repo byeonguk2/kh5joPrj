@@ -54,5 +54,23 @@ public class SalesService {
 		
 		return result;
 	}
+	public int selectSalesAllCount() throws Exception{
+		Connection conn = JDBCTemplate.getConnection();
+		
+		SalesDao sd = new SalesDao();
+		int result = sd.selectSalesAllCount(conn );
+		
+		return result;
+	}
+	// 상품 상세보기
+	public List<SalesVo> selectSalesDetail() throws Exception{
+		Connection conn = JDBCTemplate.getConnection();
+		
+		SalesDao dao = new SalesDao();
+		List<SalesVo> salesVoList = dao.selectSalesDetail();
+		
+		return salesVoList;
+		
+	}
 
 }
