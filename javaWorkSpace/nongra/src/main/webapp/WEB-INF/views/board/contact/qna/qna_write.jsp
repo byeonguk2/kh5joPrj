@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="/nongra/resources/css/board/contact/faq/faq_own_list.css">
 <link rel="stylesheet" href="/nongra/resources/css/board/contact/qna/qna_own_list.css">
 <link rel="stylesheet" href="/nongra/resources/css/board/contact/qna/qna_own_write.css">
+<script defer src="/nongra/resources/js/board/board.js"></script>
+
 </head>
 <body>
     <div id="wrap_board">
@@ -72,15 +74,14 @@
                                         <div class="qna_drop_wrap">
                                             <select name="qna_category1" id="qna_dropdown">
                                                 <option value>선택하세요</option>
-                                                <option value="qna_cate1_01">상품</option>
-                                                <option value="qna_cate1_02">배송</option>
-                                                <option value="qna_cate1_03">주문/결제</option>
-                                                <option value="qna_cate1_04">회원</option>
-                                                <option value="qna_cate1_05">농라페이</option>
-                                                <option value="qna_cate1_06">기타</option>
+                                                <% for(QnaMemberCateVo vo : parentCateVoList){ %>
+                                                	<option value="<%=vo.getCategoryId() %>"><%=vo.getCategoryName() %></option>
+                                                    
+                                                	<% } %>
                                             </select>
+
                                             <div class="qna_drop_opt">
-                                                <a href="" class="qna_drop_select">
+                                                <a href="#" class="qna_drop_select">
                                                     <span class="qna_txt">선택하세요</span>
                                                     <span class="sel_arrow">
                                                         <svg class="svg1" width="20" height="20" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: rgb(136, 136, 136);"><path fill="#888888" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg>
@@ -89,43 +90,46 @@
                                                 <div class="qna_drop_scroll">
                                                     <ul class="qna_drop_list">
                                                         <li class="selected" data-index="0">
-                                                            <a href=""><span class="qna_txt">선택하세요</span></a>
+                                                            <a href="#"><span class="qna_txt">선택하세요</span></a>
                                                         </li>
                                                         <li data-index="1">
-                                                            <a href=""><span class="qna_txt">상품</span></a>
+                                                            <a href="#"><span class="qna_txt">상품</span></a>
                                                         </li>
                                                         <li data-index="2">
-                                                            <a href=""><span class="qna_txt">배송</span></a>
+                                                            <a href="#"><span class="qna_txt">배송</span></a>
                                                         </li>
                                                         <li data-index="3">
-                                                            <a href=""><span class="qna_txt">주문/결제</span></a>
+                                                            <a href="#"><span class="qna_txt">주문/결제</span></a>
                                                         </li>
                                                         <li data-index="4">
-                                                            <a href=""><span class="qna_txt">회원</span></a>
+                                                            <a href="#"><span class="qna_txt">회원</span></a>
                                                         </li>
                                                         <li data-index="5">
-                                                            <a href=""><span class="qna_txt">농라페이</span></a>
+                                                            <a href="#"><span class="qna_txt">농라페이</span></a>
                                                         </li>
                                                         <li data-index="6">
-                                                            <a href=""><span class="qna_txt">기타</span></a>
+                                                            <a href="#"><span class="qna_txt">기타</span></a>
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </div>
+
+                                            
+                                              
+
+
                                         </div>
     
                                         <div class="qna_drop_wrap">
                                             <select name="qna_category2" id="qna_dropdown">
                                                 <option value>선택하세요</option>
-                                                <option value="qna_cate1_01">상품</option>
-                                                <option value="qna_cate1_02">배송</option>
-                                                <option value="qna_cate1_03">주문/결제</option>
-                                                <option value="qna_cate1_04">회원</option>
-                                                <option value="qna_cate1_05">농라페이</option>
-                                                <option value="qna_cate1_06">기타</option>
+                                                <% for(Map.Entry<String, QnaMemberCateVo> entry : cateMap.entrySet()){ %>
+                                                <% if(entry.getKey().equals(x)) %>
+                                                	<option value="<%=vo.getCategoryId() %>"><%=vo.getCategoryName() %></option>
+                                                	<% } %> 
                                             </select>
                                             <div class="qna_drop_opt">
-                                                <a href="" class="qna_drop_select">
+                                                <a href="#" class="qna_drop_select">
                                                     <span class="qna_txt">선택하세요</span>
                                                     <span class="sel_arrow">
                                                         <svg class="svg1" width="20" height="20" focusable="false" viewBox="0 0 16 16" aria-hidden="true" role="presentation" style="fill: rgb(136, 136, 136);"><path fill="#888888" fill-rule="nonzero" d="M11.057 8L5.53 13.529c-.26.26-.26.682 0 .942.26.26.682.26.942 0l6-6c.26-.26.26-.682 0-.942l-6-6c-.26-.26-.682-.26-.942 0-.26.26-.26.682 0 .942L11.057 8z"></path></svg>
@@ -134,25 +138,25 @@
                                                 <div class="qna_drop_scroll">
                                                     <ul class="qna_drop_list">
                                                         <li class="selected" data-index="0">
-                                                            <a href=""><span class="qna_txt">선택하세요</span></a>
+                                                            <a href="#"><span class="qna_txt">선택하세요</span></a>
                                                         </li>
                                                         <li data-index="1">
-                                                            <a href=""><span class="qna_txt">상품</span></a>
+                                                            <a href="#"><span class="qna_txt">상품</span></a>
                                                         </li>
                                                         <li data-index="2">
-                                                            <a href=""><span class="qna_txt">배송</span></a>
+                                                            <a href="#"><span class="qna_txt">배송</span></a>
                                                         </li>
                                                         <li data-index="3">
-                                                            <a href=""><span class="qna_txt">주문/결제</span></a>
+                                                            <a href="#"><span class="qna_txt">주문/결제</span></a>
                                                         </li>
                                                         <li data-index="4">
-                                                            <a href=""><span class="qna_txt">회원</span></a>
+                                                            <a href="#"><span class="qna_txt">회원</span></a>
                                                         </li>
                                                         <li data-index="5">
-                                                            <a href=""><span class="qna_txt">농라페이</span></a>
+                                                            <a href="#"><span class="qna_txt">농라페이</span></a>
                                                         </li>
                                                         <li data-index="6">
-                                                            <a href=""><span class="qna_txt">기타</span></a>
+                                                            <a href="#"><span class="qna_txt">기타</span></a>
                                                         </li>
                                                     </ul>
                                                 </div>

@@ -225,3 +225,82 @@ function setListbyCateNo(data) {
 
 
 
+//선택하세요 누르면 드랍목록보이게 (카테고리1)
+document.addEventListener('DOMContentLoaded', function() {
+    // 페이지가 로드되면 실행될 JavaScript 코드
+    var qnaDropdown = document.getElementById('qna_dropdown');
+    qnaDropdown.addEventListener('click', function() {
+      qnaDropdown.classList.toggle('on');
+    });
+  });
+
+  //선택하세요 누르면 드랍목록보이게 (카테고리2)
+  document.addEventListener('DOMContentLoaded', function() {
+    // 페이지가 로드되면 실행될 JavaScript 코드
+    var qnaDropdown = document.getElementById('qna_dropdown');
+    var selectedValue = document.querySelector('.qna_drop_scroll .selected');
+
+    qnaDropdown.addEventListener('click', function() {
+      qnaDropdown.classList.toggle('on');
+    });
+
+    //카테고리1 선택된 값 출력 
+    document.querySelectorAll('.qna_drop_scroll li').forEach(function(li) {
+      li.addEventListener('click', function() {
+        var index = this.getAttribute('data-index');
+        var text = this.querySelector('.qna_txt').innerText;
+        selectedValue.innerText = text;
+        qnaDropdown.classList.remove('on');
+        // 선택된 값 출력 (예: 콘솔에 출력)
+        console.log('Selected Value:', index);
+
+      });
+    });
+  });
+
+  //cate1선택값담기 
+  var qnaDropdown = document.getElementById('qna_dropdown');
+
+  qnaDropdown.addEventListener('change', function() {
+      var selectedValue = this.value;
+  
+      // 선택된 값 출력 (예: 콘솔에 출력)
+      console.log('Selected Value:', selectedValue);
+  
+      // findCate2 함수 호출
+      findCate2(selectedValue);
+  });
+  
+  function findCate2(selectedValue) {
+      // 여기에서 선택된 값으로 원하는 작업을 수행할 수 있습니다.
+      console.log('findCate2 called with selectedValue:', selectedValue);
+  }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // 페이지가 로드되면 실행될 JavaScript 코드
+    var qnaDropOpts = document.querySelectorAll('.qna_drop_opt');
+
+    qnaDropOpts.forEach(function(qnaDropdown) {
+      qnaDropdown.addEventListener('click', function() {
+        qnaDropdown.classList.toggle('on');
+        var qnaDropScroll = qnaDropdown.querySelector('.qna_drop_scroll');
+        qnaDropScroll.style.display = qnaDropdown.classList.contains('on') ? 'block' : 'none';
+      });
+    });
+  });
+
+  document.getElementById('qna_dropdown').addEventListener('change', function() {
+    var selectedText = this.options[this.selectedIndex].text; // 선택된 텍스트 가져오기
+
+    // 선택된 값을 "선택하세요"에 반영
+    var selectPlaceholder = document.querySelector('.qna_drop_select');
+    selectPlaceholder.textContent = selectedText;
+
+
+});
+
+const qnaCate2 = document.addEventListener('select[name=qna_category2]');
+// qnaCate2.addEventListener('click', findCate2(){
+
+// })
