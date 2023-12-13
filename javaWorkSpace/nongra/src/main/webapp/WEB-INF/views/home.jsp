@@ -1,17 +1,10 @@
+<%@page import="com.kh.app.home.vo.SalesVo_v2"%>
 <%@page import="java.util.Map"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="java.util.List"%>
 <%@page import="com.kh.app.sales.vo.SalesVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-
-    <% 
-    	Map<String , Object> map = (Map<String , Object>)request.getAttribute("map"); 
-	    List<SalesVo> salesBestReviewVoList = (List<SalesVo>) map.get("salesBestReviewVoList");
-		List<SalesVo> salesBestOrderVoList = (List<SalesVo>)map.get("salesBestOrderVoList");
-		List<SalesVo> salesBestReviewLikeVoList = (List<SalesVo>)map.get("salesBestReviewLikeVoList");
-    %>
-    
     
 <!DOCTYPE html>
 <html>
@@ -47,7 +40,7 @@ pageEncoding="UTF-8"%>
 		width: 1050px; 
 		height: 600px;
 		padding: 40px 0px;
-		margin-bottom: 100px;
+		margin-bottom: 20px;
 	}
 
 	.title-area{
@@ -157,6 +150,181 @@ pageEncoding="UTF-8"%>
 	    text-decoration-line: none;
 	}
 	
+	/* 모달창 */
+	.modal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position:fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.3);
+
+	}
+	/* 여기안에서 작업하면되고 */
+	.dialog {
+	width: 440px;
+    height: 400px;
+    padding: 2em;
+    border-radius: 1em;
+    background: white;
+	}
+
+	/* 토글로 열고 닫기 style */
+	.modal-none{
+		display: none;
+	} 
+
+	.sales-title{
+		display: flex;
+		gap: 20px;
+		padding: 10px 0px;
+		border-bottom: 1px solid rgb(244, 244, 244);
+	}
+
+	.sales-title > div > img{
+		background-size: cover;
+		width: 50px;
+		height: 50px;
+	}
+	.sales-title > div > span{
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 50px;
+	}
+
+	.middle{
+		display: flex;
+		flex-direction: column;
+		padding: 10px 0px;
+		border-bottom: 1px solid rgb(244, 244, 244);
+	}
+
+	.detail-name{
+		font-size: 14px;
+		line-height: 19px;
+		color: rgb(51, 51, 51);
+		padding-top: 10px;
+	}
+
+	.guide {
+		font-size: 12px;
+		line-height: 1.33;
+		margin-top: 2px;
+		color: rgb(102, 102, 102);
+	}
+
+	.modal-price{
+		font-weight: bold;
+		font-size: 14px;
+		color: rgb(51, 51, 51);
+		line-height: 28px;
+	}
+
+	.calculation-area{
+		display: flex;
+		justify-content: space-between;
+		margin-top: 7px;
+	}
+
+	.calculation{
+		display: flex;
+	}
+
+	.minus{
+		width: 28px;
+		height: 28px;
+		color: transparent;
+		border: none;
+		border-top: 1px solid gainsboro;
+		border-left: 1px solid gainsboro;
+		border-bottom: 1px solid gainsboro;
+		background-color: white;
+		background-size: cover;
+		background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0yMCAxNHYySDEwdi0yeiIgZmlsbD0iI0RERCIgZmlsbC1ydWxlPSJub256ZXJvIi8+Cjwvc3ZnPgo=");
+	}
+
+	.quantity {
+		width: 31px;
+		height: 28px;
+		border: none;
+		border-top: 1px solid gainsboro;
+		border-bottom: 1px solid gainsboro;
+		background-color: white;
+		text-align: center;
+	}
+
+	.plus {
+		width: 28px;
+		height: 28px;
+		border: none;
+		color: transparent;
+		border-top: 1px solid gainsboro;
+		border-right: 1px solid gainsboro;
+		border-bottom: 1px solid gainsboro;
+		background-color: white;
+		background-size: cover;
+		background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xNiAxMHY0aDR2MmgtNHY0aC0ydi00aC00di0yaDR2LTRoMnoiIGZpbGw9IiMzMzMiIGZpbGwtcnVsZT0ibm9uemVybyIvPgo8L3N2Zz4K");
+	}
+
+	.total-price-area{
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.total{
+		font-weight: bold;
+		font-size: 14px;
+		color: rgb(51, 51, 51);
+		line-height: 19px;
+	}
+
+	.real-price{
+		font-size: 24px;
+		font-weight: 500;
+		line-height: 24px;
+	}
+
+	.bottom{
+		padding: 14px 0px 20px;
+	}
+
+	.modal-point {
+		font-size: 13px;
+		line-height: 18px;
+		color: rgb(51, 51, 51);
+		text-align: right;
+	}
+
+	.btn-area{
+		display: flex;
+   	 	flex-direction: row;
+	}
+
+	.btn-area > button {
+		width: 50%;
+    	margin: 0px 4px;
+		display: block;
+		padding: 0px 10px;
+		text-align: center;
+		overflow: hidden;
+		height: 56px;
+		border-radius: 3px;
+		border: 1px solid rgb(221, 221, 221);
+	}
+
+	.cart-btn{
+		background-color: #754327;
+		color: white;
+	}
+
+	#modal-close{
+		color: rgb(51, 51, 51);
+		background-color: white;
+	}
+
 </style>
 </head>
 <body>
@@ -206,20 +374,8 @@ pageEncoding="UTF-8"%>
 				<span class="title-top">✨리뷰 작성이 많은순🏅</span>
 				<p class="title-bottom">농라 추천 득템 기회❗️</p>
 			</div>
-			<div class="item-area">
-				<% for(SalesVo vo : salesBestReviewVoList){ %>
-				<a>
-				<div class="item">
-					<img src="/nongra<%= vo.getFileName() %>" alt="상품">
-					<button class="shopingCart-btn">
-						<span class="cart-icon"></span>
-						"담기"
-					</button>
-					<h3 class="item-guide"><%= vo.getTitle() %></h3>
-					<span class="price"><%= vo.getPrice() %></span>
-				</div>
-				</a>
-				<% } %>	
+			<div class="item-area first">
+				
 			</div>
 		</div>
 		
@@ -229,20 +385,9 @@ pageEncoding="UTF-8"%>
 				<span class="title-top">✨가장 많이 주문한 상품🏅</span>
 				<p class="title-bottom">농라 회원들의 베스트 상품들❗️</p>
 			</div>
-			<div class="item-area">
-				<% for(SalesVo vo : salesBestOrderVoList){ %>
-				<a>
-				<div class="item">
-					<img src="/nongra<%= vo.getFileName() %>" alt="상품">
-					<button class="shopingCart-btn">
-						<span class="cart-icon"></span>
-						"담기"
-					</button>
-					<h3 class="item-guide"><%= vo.getTitle() %></h3>
-					<span class="price"><%= vo.getPrice() %></span>
-				</div>
-				</a>
-				<% } %>	
+			<div class="item-area tow">
+				<!-- 자바스크립트로 처리할거임 -->
+					
 			</div>
 		</div>
 
@@ -261,10 +406,19 @@ pageEncoding="UTF-8"%>
 			<div class="item-area">
 				<div class="item">
 					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
-					<button class="shopingCart-btn">
+					<button class="modal-open shopingCart-btn">
 						<!-- 카트 ajax -->
 						<span class="cart-icon"></span>
-						"담기"
+						담기
+					</button>
+					<h3 class="item-guide">[델리치오] 호주산 목초육 안심 스테이크 250g (냉장)</h3>
+					<span class="price">20000원</span>
+				</div>
+				<div class="item">
+					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
+					<button class="shopingCart-btn">
+						<span class="cart-icon"></span>
+						담기
 					</button>
 					<h3 class="item-guide">[델리치오] 호주산 목초육 안심 스테이크 250g (냉장)</h3>
 					<span class="price">20000원</span>
@@ -282,16 +436,7 @@ pageEncoding="UTF-8"%>
 					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
 					<button class="shopingCart-btn">
 						<span class="cart-icon"></span>
-						"담기"
-					</button>
-					<h3 class="item-guide">[델리치오] 호주산 목초육 안심 스테이크 250g (냉장)</h3>
-					<span class="price">20000원</span>
-				</div>
-				<div class="item">
-					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
-					<button class="shopingCart-btn">
-						<span class="cart-icon"></span>
-						"담기"
+						담기
 					</button>
 					<h3 class="item-guide">[델리치오] 호주산 목초육 안심 스테이크 250g (냉장)</h3>
 					<span class="price">20000원</span>
@@ -304,20 +449,8 @@ pageEncoding="UTF-8"%>
 				<span class="title-top">✨리뷰 좋아요가 많은 상품들🥩</span>
 				<p class="title-bottom">농라 회원님들의 평가가 좋은 상품❗️</p>
 			</div>
-			<div class="item-area">
-				<% for(SalesVo vo : salesBestReviewLikeVoList){ %>
-				<a>
-				<div class="item">
-					<img src="/nongra<%= vo.getFileName() %>" alt="상품">
-					<button class="shopingCart-btn">
-						<span class="cart-icon"></span>
-						"담기"
-					</button>
-					<h3 class="item-guide"><%= vo.getTitle() %></h3>
-					<span class="price"><%= vo.getPrice() %></span>
-				</div>
-				</a>
-				<% } %>	
+			<div class="item-area three">
+				
 			</div>
 		</div>
 	</main>
@@ -328,5 +461,197 @@ pageEncoding="UTF-8"%>
 	</div>
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- 모달창 -->
+<div class="modal modal-none">
+	<div class="dialog">
+			<div class="sales-title">
+				<div>
+					<img src="https://product-image.kurly.com/product/image/93e02bd6-4eb9-4a43-af19-0161d1799c01.jpg" alt="">
+				</div>
+				<div>
+					<span>[전주 베테랑] 칼국수</span>
+				</div>
+			</div>
+			<div class="middle">
+				<span class="detail-name">[KF365] 간편한 6가지 해물 모듬 600g</span>
+				<span class="guide">적립제외상품</span>
+				<div class="calculation-area">
+					<span class="modal-price">8200원</span>
+					<div class="calculation">
+						<button class="minus"> - </button>
+						<div class="quantity">1</div>
+						<button class="plus"></button>
+					</div>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="total-price-area">
+					<p class="total">합계</p>
+					<div class="real-price">
+						<span>8200</span>
+						<span>원</span>
+					</div>
+				</div>
+				<p class="modal-point">로그인 후, 적립 혜택 제공</p>
+			</div>
+			<div class="btn-area">
+				<button id="modal-close">취소</button>
+				<button class="cart-btn">장바구니</button>
+			</div>
+	</div>	
+</div>
+
+<script>
+
+	window.onload = function(){
+    function getSales() {
+	// 모든 데이터 바로 요청받기
+	fetch("/nongra/home/select")
+	.then((resp)=>{return resp.json();})
+	.then((data)=>{
+		console.log(data);
+
+		const list = data.salesBestReviewVoList;
+		const orderList = data.salesBestOrderVoList;
+		const ReviewLikeList = data.salesBestReviewLikeVoList;
+
+		// 리뷰 작성이 많은순
+		for (const x in list) {
+
+			const frist = document.querySelector(".first");
+
+			// 디브 생성
+			let div = document.createElement('div');
+			let textNode = document.createTextNode(data);
+
+			frist.appendChild(div);
+			div.classList.add("item");
+
+			let img = document.createElement('img');
+			div.appendChild(img);
+			img.src = '/nongra'+list[x].thumbNail;
+
+			let btn = document.createElement('button');
+			btn.classList.add("modal-open");
+			btn.classList.add("shopingCart-btn");
+			let span = document.createElement('span');
+			span.classList.add('cart-icon');
+			btn.appendChild(span);
+			btn.appendChild(document.createTextNode("담기"));
+			div.appendChild(btn);
+
+			let h3 = document.createElement('h3');
+			h3.classList.add("item-guide");
+			h3.appendChild(document.createTextNode(list[x].title))
+			div.appendChild(h3);
+
+			let span2 = document.createElement('span');
+			span2.classList.add("price");
+			span2.appendChild(document.createTextNode(list[x].price+'원'))
+			div.appendChild(span2);
+
+		}
+
+		for (const x in orderList) {
+
+		const frist = document.querySelector(".tow");
+
+		// 디브 생성
+		let div = document.createElement('div');
+		let textNode = document.createTextNode(data);
+
+		frist.appendChild(div);
+		div.classList.add("item");
+
+		let img = document.createElement('img');
+		div.appendChild(img);
+		img.src = '/nongra'+orderList[x].thumbNail;
+
+		let btn = document.createElement('button');
+		btn.classList.add("modal-open");
+		btn.classList.add("shopingCart-btn");
+		let span = document.createElement('span');
+		span.classList.add('cart-icon');
+		btn.appendChild(span);
+		btn.appendChild(document.createTextNode("담기"));
+		div.appendChild(btn);
+
+		let h3 = document.createElement('h3');
+		h3.classList.add("item-guide");
+		h3.appendChild(document.createTextNode(orderList[x].title))
+		div.appendChild(h3);
+
+		let span2 = document.createElement('span');
+		span2.classList.add("price");
+		span2.appendChild(document.createTextNode(orderList[x].price+'원'))
+		div.appendChild(span2);
+
+		}
+
+		for (const x in orderList) {
+
+		const frist = document.querySelector(".three");
+		// 디브 생성
+		let div = document.createElement('div');
+		let textNode = document.createTextNode(data);
+
+		frist.appendChild(div);
+		div.classList.add("item");
+
+		let img = document.createElement('img');
+		div.appendChild(img);
+		img.src = '/nongra'+ReviewLikeList[x].thumbNail;
+
+		let btn = document.createElement('button');
+		btn.classList.add("modal-open");
+		btn.classList.add("shopingCart-btn");
+		let span = document.createElement('span');
+		span.classList.add('cart-icon');
+		btn.appendChild(span);
+		btn.appendChild(document.createTextNode("담기"));
+		div.appendChild(btn);
+
+		let h3 = document.createElement('h3');
+		h3.classList.add("item-guide");
+		h3.appendChild(document.createTextNode(ReviewLikeList[x].title))
+		div.appendChild(h3);
+
+		let span2 = document.createElement('span');
+		span2.classList.add("price");
+		span2.appendChild(document.createTextNode(ReviewLikeList[x].price+'원'))
+		div.appendChild(span2);
+
+		}
+
+	})
+	}
+    
+	getSales();
+	}
+    // 디브 선택
+	const modal = document.querySelector(".modal");
+	// 모달창 열기버튼
+	const open = document.querySelectorAll(".modal-open");
+
+	//모달창 닫기버튼
+	const close = document.querySelector("#modal-close");
+
+	
+	// 모달창 열기
+	for(let i=0; i<open.length; ++i){
+        open[i].addEventListener('click',()=>{
+		modal.classList.toggle("modal-none")       
+    } )      
+    }
+
+	//모달창 닫기
+	close.addEventListener('click',()=>{
+		modal.classList.toggle("modal-none")       
+    } ) 
+	
+
+</script>
+
 </body>
 </html>

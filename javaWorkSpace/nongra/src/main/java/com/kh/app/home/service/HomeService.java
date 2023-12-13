@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.kh.app.home.dao.HomeDao;
+import com.kh.app.home.vo.SalesVo_v2;
 import com.kh.app.sales.vo.SalesVo;
 import com.kh.app.util.db.JDBCTemplate;
 
@@ -22,9 +23,9 @@ public class HomeService {
 		List<String> bestReviewLikeNoList = dao.selectBestReviewLikeCount(conn);
 		
 		// 리뷰 많은순
-		List<SalesVo> salesBestReviewVoList = dao.selectItemList(bestReviewNoList,conn);
-		List<SalesVo> salesBestOrderVoList = dao.selectItemList(bestOrderNoList,conn);
-		List<SalesVo> salesBestReviewLikeVoList = dao.selectItemList(bestReviewLikeNoList,conn);
+		List<SalesVo_v2> salesBestReviewVoList = dao.selectItemList(bestReviewNoList,conn);
+		List<SalesVo_v2> salesBestOrderVoList = dao.selectItemList(bestOrderNoList,conn);
+		List<SalesVo_v2> salesBestReviewLikeVoList = dao.selectItemList(bestReviewLikeNoList,conn);
 		
 		Map<String , Object> map = new HashMap<>();
 		
