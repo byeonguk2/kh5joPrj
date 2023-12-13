@@ -177,9 +177,17 @@ white-space: normal;
     font-size: 12px;
     line-height: 20px;
     color: rgb(153, 153, 153);
-    padding: 0;
-    
+    padding: 0;    
 }
+
+.review-like-after{
+    
+    font-size: 12px;
+    line-height: 20px;
+    color: darkred;
+    padding: 0;
+   }
+    
 .owner-replay-box{
     display: flex;
    	
