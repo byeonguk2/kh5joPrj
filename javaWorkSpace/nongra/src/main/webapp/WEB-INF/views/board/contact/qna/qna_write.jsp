@@ -1,5 +1,12 @@
+<%@page import="java.util.Map"%>
+<%@page import="com.kh.app.board.contact.vo.QnaMemberCateVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+	    List<QnaMemberCateVo> parentCateVoList = (List<QnaMemberCateVo>) request.getAttribute("parentCateVoList");
+	    Map<String, QnaMemberCateVo> cateMap = (Map<String, QnaMemberCateVo>) request.getAttribute("cateMap");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +55,7 @@
                 <div>답변은 실시간 답변이 아니므로 문의량이 많을 시 답변이 지연될 수 있습니다. 답변은 평일 09:00~18:00에 등록되며, 
                     가능한 빨리 답변드릴 수 있도록 노력하겠습니다.</div>
             </div>
-            <form action="">
+            <form action="/contact/inquiry/write" method="post">
                 <div class="qna_form">
                     <div class="noti_form_qna">
                         <p class="noti_txt">
@@ -163,7 +170,7 @@
                                         <div class="qna_btn_wrap">
                                             <!-- modal -->
                                             <!-- 구현하면서 더 손볼 곳 -->
-                                            <button id="btnOrdItemList" name="ordItem" type="button" data-layer-target="#ccs_sel_prod1" onclick="ordListForMyssgCs(); return false;" class="btn_open ccs_btn_line">
+                                            <button id="btnOrdItemList" name="payNo" type="button" data-layer-target="#ccs_sel_prod1" onclick="ordListForMyssgCs(); return false;" class="btn_open ccs_btn_line">
                                                 <span>주문상품 선택</span></button>                                       
                                         </div>
                                     </div>
