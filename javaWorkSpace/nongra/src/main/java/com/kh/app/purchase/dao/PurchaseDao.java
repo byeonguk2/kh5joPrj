@@ -357,10 +357,31 @@ public class PurchaseDao {
 	}
 
 	//주문번호에 맞는 장바구니 목록
-	public List<PurchaseCartVo> endOrderCart(Connection conn, String orderNo) {
+	public List<PurchaseCartVo> endOrderCart(Connection conn, String orderNo) throws Exception {
 		//sql
-		String sql = "";
+		String sql = "SELECT OI.NO AS \"주문번호\" , OI.TOTAL_PRICE AS \"총금액\" , OH.ENROLL_DATE AS \"결제시간\" , CB.EA AS \"수량\" , SO.OPTION_NAME AS \"옵션명\" , SO.OPTION_PRICE AS \"옵션가격\" , SR.TITLE AS \"상품명\" , SR.PRICE AS \"상품가격\" , SR.THUMBNAIL AS \"사진\" , S.BUSINESS_NAME AS \"판매자명\" FROM ORDER_INFORMATION OI JOIN ORDER_HISTORY OH ON OI.NO = OH.ORDER_NO JOIN CART C ON OH.CART_NO = C.NO JOIN CART_BREAKDOWN CB ON CB.CART_NO = C.NO JOIN SALES_OPTION SO ON CB.OPTION_NO = SO.OPTION_NO JOIN SALES_REGISTR SR ON CB.SALES_NO = SR.SALES_NO JOIN SELLER S ON SR.SELLER_NO = S.SELLER_NO WHERE OI.NO = ? AND C.END_YN = 'Y'";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, orderNo);
+		ResultSet rs = pstmt.executeQuery();
+		
 		//rs
+		List<PurchaseCartVo> PurchaseCartVoList = new ArrayList<PurchaseCartVo>();
+		while(rs.next()) {
+			String cartTotalPrice = rs.getString("총금액");
+			String enrollDate = rs.getString("결제시간");
+			String ea = rs.getString("수량");
+			String optionName = rs.getString("옵션명");
+			String optionPrice = rs.getString("옵션가격");
+			String goodsName = rs.getString("상품명");
+			String goodsPrice = rs.getString("상품가격");
+			String thumbnail = rs.getString("사진");
+			String seller = rs.getString("판매자");
+			
+			PurchaseCartVo cartVo = new PurchaseCartVo(goodsName, goodsPrice, optionName, optionPrice, thumbnail, orderNo, ea, seller);
+			PurchaseCartVoList.add(cartVo);
+		}
+		
+		
 		
 		//close
 		return null;
