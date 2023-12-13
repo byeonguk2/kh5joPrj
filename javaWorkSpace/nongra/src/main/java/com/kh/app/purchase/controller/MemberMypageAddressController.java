@@ -14,7 +14,7 @@ import com.kh.app.purchase.service.PurchaseService;
 import com.kh.app.purchase.vo.PurchaseAddressVo;
 
 @WebServlet("/mypage/address")
-public class MemberMypageAddress extends HttpServlet{
+public class MemberMypageAddressController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
@@ -24,7 +24,7 @@ public class MemberMypageAddress extends HttpServlet{
 			//service
 			PurchaseService ps = new PurchaseService();
 			List<PurchaseAddressVo> voList = ps.takeAllAddress(loginMember);
-			
+
 			//result
 			
 			req.setAttribute("voList", voList);

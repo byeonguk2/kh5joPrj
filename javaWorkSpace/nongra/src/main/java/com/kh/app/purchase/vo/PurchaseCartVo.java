@@ -9,6 +9,8 @@ public class PurchaseCartVo {
 	private String orderNumber;
 	private String goodsEA;
 	private String seller;
+	private String totalPrice;
+	
 	public String getGoodsName() {
 		return goodsName;
 	}
@@ -78,7 +80,14 @@ public class PurchaseCartVo {
 		this.orderNumber = orderNumber;
 		this.goodsEA = goodsEA;
 		this.seller = seller;
+		this.totalPrice = Integer.toString((Integer.parseInt(goodsPrice) + Integer.parseInt(optionPrice))*Integer.parseInt(goodsEA));
 	}
+
+	public String getTotalPrice() {
+		int totalPrice = (Integer.parseInt(goodsPrice) + Integer.parseInt(optionPrice))*Integer.parseInt(goodsEA);
+		return Integer.toString(totalPrice);
+	}
+
 
 
 	

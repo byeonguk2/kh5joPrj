@@ -65,6 +65,19 @@ public class PurchaseAddressVo {
 		this.delYn = delYn;
 		this.defaultAddress = defaultAddress;
 	}
+	public PurchaseAddressVo(String address, String name, String phone, String defaultAddress) {
+		super();
+		if(defaultAddress == null || defaultAddress.equals("Y")) {
+			defaultAddress = "N";
+		}else {
+			defaultAddress = "Y";
+		}
+		this.address = address;
+		this.name = name;
+		this.phone = phone;
+		this.defaultAddress = defaultAddress;
+	}
+
 	
 	
 }

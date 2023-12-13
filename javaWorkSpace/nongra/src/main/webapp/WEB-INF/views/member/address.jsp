@@ -22,31 +22,29 @@
 						<button id="addAddress">+ 새 배송지 추가</button>
 					</form>
 				</div>
-				<form action="/nongra/address/shipping-address/update" method="get">
-					<table>
-						<thead>
-							<tr>
-								<th>주소</th>
-								<th>받으실 분</th>
-								<th>연락처</th>
-								<th>수정</th>
-							</tr>
-						</thead>
-						<tbody>
-						<%for(PurchaseAddressVo vo : voList) {%>
-							<tr>
-								<td>
-									<%if(vo.getDefaultAddress().equals("Y")){ %><div class="default">기본배송지</div><%} %>
-									<div><%=vo.getAddress() %></div>
-								</td>
-								<td><div><%=vo.getName() %></div><input class="address-no" name="addressNo" value="<%=vo.getNo() %>"></td>
-								<td><div><%=vo.getPhone() %></div></td>
-								<th><button class="edit-button"><img src="https://res.kurly.com/kurly/ico/2021/edit_24_24_ccc.svg" alt=""></button></th>
-							</tr>
-						<%} %>
-						</tbody>
-					</table>
-				</form>
+				<table>
+					<thead>
+						<tr>
+							<th>주소</th>
+							<th>받으실 분</th>
+							<th>연락처</th>
+							<th>수정</th>
+						</tr>
+					</thead>
+					<tbody>
+					<%for(PurchaseAddressVo vo : voList) {%>
+						<tr>
+							<td>
+								<%if(vo.getDefaultAddress().equals("Y")){ %><div class="default">기본배송지</div><%} %>
+								<div><%=vo.getAddress() %></div>
+							</td>
+							<td><div><%=vo.getName() %></div><span class="address-no"><%=vo.getNo() %></span></td>
+							<td><div><%=vo.getPhone() %></div></td>
+							<th><button class="edit-button"><img src="https://res.kurly.com/kurly/ico/2021/edit_24_24_ccc.svg" alt=""></button></th>
+						</tr>
+					<%} %>
+					</tbody>
+				</table>
 			</main>
 		</div>
 		
