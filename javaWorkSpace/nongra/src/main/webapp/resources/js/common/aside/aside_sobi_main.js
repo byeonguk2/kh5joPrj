@@ -1,5 +1,5 @@
 const side3 = document.querySelector(".sitem1 > .side-icon2");  
-        console.log(side3); 
+        
         side3.addEventListener("click",()=>{
             const menu = document.querySelectorAll(".menu");
             side3.classList.toggle("rotate");

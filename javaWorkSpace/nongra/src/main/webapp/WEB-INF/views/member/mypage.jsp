@@ -92,7 +92,7 @@ body {
 									<tr class="oredr-tr">
 										<td>
 											<div class="tbody-order-box">
-												<a href=""><img src="/nongra${vo.thumbnail}" alt="상품사진"></a>
+												<a href="/sales/detail"><img src="/nongra${vo.thumbnail}" alt="상품사진"></a>
 
 												<ul>
 													<li class="order-store-name"><a href="">${vo.businessName}</a></li>
@@ -163,10 +163,11 @@ body {
 
 				</div>
 				
-				<c:forEach items="${ReviewVoList}" var="vo"  >
+				
 				<div id="box3">
+				<c:forEach items="${ReviewVoList}" var="vo"  >
 					<div id="img_box">
-						<a href=""><img src="/nongra${vo.thumbnail}" alt="상품사진"></a>
+						<a href="/sales/detail"><img src="/nongra${vo.thumbnail}" alt="상품사진"></a>
 					</div>
 					<%--  <div id="img_box">
 						<a href=""><img src="/nongra${vo.thumbnail}" alt="상품사진"></a>
@@ -184,9 +185,9 @@ body {
 						<img src="https://dummyimage.com/100x100/000/fff.png&text=sample"
 							alt="썸네일사진원본파일명"> 
 					</div> --%>
-
+					</c:forEach>
 				</div>
-				</c:forEach>
+				<br><br><br><br><br><br><br>
 			</div>
 
 
