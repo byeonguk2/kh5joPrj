@@ -199,20 +199,23 @@
                 <strong>좋았던 점, 아쉬웠던 점</strong>도 솔직하게 얘기해주세요</p>
        
 
-        <form action="">
+        <form action="/nongra/member/ReviewWrite"  method="post" enctype="multipart/form-data" >
             <div class="dialog-review-content-box">
                 <div>내용</div>
                 
-                <textarea id="contents" placeholder="상품 특성에 맞는 후기를 작성해주세요.(20자 이상)" inputmode="text" aria-label="textarea-message" name="contents" class="css-5etceh e1tjt2bn1"></textarea>
+                <textarea id="contents" placeholder="상품 특성에 맞는 후기를 작성해주세요.(20자 이상)" inputmode="text" aria-label="textarea-message" name="content" class="css-5etceh e1tjt2bn1"></textarea>
 
             </div>
 
             <div>
+    			<div>        
+	            <div>
                 <div class="dialog-review-content-picture-input-box">
                     <h3>사진 첨부</h3>
                     <div>
-                        <input id="my-input" type="file">
-                        <button class="dialog-review-content-picture-input-btn" onclick="onClickUpload()" type="button"><img src="" alt=""></button></div>
+                        <input id="my-input" type="file" name='f'  multiple   >
+                       <!--  <button class="dialog-review-content-picture-input-btn" onclick="onClickUpload()" type="button"><img src="" alt=""></button> -->
+                    </div>
                 </div>
             </div>
 
@@ -228,7 +231,7 @@
 
             <div class="dialog-review-caution-secret">
                 <label class="dialog-review-caution-label"></label>
-                <input type="checkbox">
+                <input type="checkbox" name="secret" value="Y">
                 <span>후기 비공개하기</span>
             </div>
 
@@ -239,6 +242,9 @@
         </form>  
     </header>
 </div>
+
+
+
 			
 			
 			</div>
@@ -322,14 +328,14 @@
    
     const reviewModal = document.querySelector(".modal-review")
 
-    
+    const reviewregiseterBtn = document.querySelector(".review-regiseter")
 
 
     for(let i=0; i<reviewModalOpenButton.length; i++){
         reviewModalOpenButton[i].addEventListener('click', () => {   
         	imgSrcModal.src=thumbnail[i].innerHTML;
         	itemTitleModal.innerHTML= itemtitle[i].innerHTML;
-        
+        	
             reviewModal.classList.remove('modal-review-hidden');     
     });
    }
@@ -371,9 +377,18 @@
 	       }
 
 	 <%}%>
-    
-    
-    
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	
+	 
+	
+	    
+	    
 
     
 
