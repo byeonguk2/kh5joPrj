@@ -4,6 +4,7 @@
     pageEncoding="UTF-8"%>
     <%
     PurchaseOrderCompleteVo vo = (PurchaseOrderCompleteVo)request.getAttribute("orderCompleteVo");
+    MemberVo loginMember = (MemberVo) request.getAttribute("loginMember");
     %>
 <!DOCTYPE html>
 <html>
@@ -18,7 +19,7 @@
         <main>
 			<div id="order-complete-area">
 				<div class="check-icon-area"><div class="check-icon"><img src="/nongra/resources/img/purchase/icon-check.png" alt=""></div></div>
-	            <div class="order-text">닉네임님의 주문이 완료되었습니다.</div>
+	            <div class="order-text"><%=loginMember.getMemberNick() %>님의 주문이 완료되었습니다.</div>
 	            <div class="price-area">
 	            	<div>
 		            	<span>주문번호</span>
