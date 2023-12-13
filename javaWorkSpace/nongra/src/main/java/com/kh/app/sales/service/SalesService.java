@@ -3,7 +3,6 @@ package com.kh.app.sales.service;
 import java.sql.Connection;
 import java.util.List;
 
-import com.kh.app.option.vo.OptionVo;
 import com.kh.app.sales.dao.SalesDao;
 import com.kh.app.sales.vo.SalesVo;
 import com.kh.app.util.db.JDBCTemplate;
@@ -21,10 +20,10 @@ public class SalesService {
 		return salesVoList;
 	}
 	// 상품 등록
-	public int salesRegister(SalesVo vo, List<String> fileNameList, List<OptionVo> optionVoList) throws Exception{
+	public int salesRegister(SalesVo vo, List<String> fileNameList) throws Exception{
 		Connection conn = JDBCTemplate.getConnection();
 		SalesDao dao = new SalesDao();
-		int result = dao.salesRegister(conn , vo , fileNameList , optionVoList);
+		int result = dao.salesRegister(conn , vo , fileNameList);
 		
 		if(result == 1) {
 			JDBCTemplate.commit(conn);

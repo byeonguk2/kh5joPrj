@@ -79,22 +79,10 @@ public class SalesDao {
 		String optionSql = "INSERT INTO SALES_OPTION(OPTION_NO, SALES_NO, OPTION_NAME, OPTION_PRICE)VALUES(SEQ_OPTION_NO.NEXTVAL, SEQ_SALES_NO.CURRVAL, ?, ?)";
 		for(OptionVo optionVo : optionVoList) {
 			pstmt = conn.prepareStatement(optionSql);
-			pstmt.setString(1, optionVo.getOptionName());
-			pstmt.setString(2, optionVo.getOptionPrice());
-			result = pstmt.executeUpdate();
-			
-			JDBCTemplate.close(pstmt);
 		}
 		
 		
 		String fileSql = "INSERT INTO SALES_FILE(FILE_NO, SALES_NO, FILE_NAME)VALUES(SEQ_FILE_NO.NEXTVAL,SEQ_SALES_NO.CURRVAL,?)";
-		for(String file : fileNameList) {
-			pstmt = conn.prepareStatement(fileSql);
-			pstmt.setString(1, file);
-			result = pstmt.executeUpdate();
-			
-			JDBCTemplate.close(pstmt);
-		}
 		
 		return result;
 	}
