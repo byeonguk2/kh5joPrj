@@ -82,6 +82,8 @@ select {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    padding-bottom: 10px;
+    color: #333;
 }
 .sel_arrow{
     position: absolute;
@@ -93,6 +95,7 @@ select {
 
 .qna_drop_opt.on .qna_drop_scroll {
     display: block;
+    z-index: 1;
 }
 .qna_drop_scroll {
     display: none;
@@ -105,6 +108,10 @@ select {
     margin-top: -1px;
     border: 1px solid #e1e1e1;
     background: #fff;
+    text-decoration: none;
+    color: #333;
+    padding-left: 30px;
+
 }
 #qna_dropdown {
     display: none;
@@ -241,4 +248,7 @@ ul {
     background-color: #754327;
     color: #fff;
     border: #754327 solid 1px;
+}
+.hidden_btn{
+    display: none;
 }
