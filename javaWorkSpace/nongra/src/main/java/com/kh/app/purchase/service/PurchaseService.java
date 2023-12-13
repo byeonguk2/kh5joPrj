@@ -137,7 +137,7 @@ public class PurchaseService {
 			//남은 잔액 가져옴
 		String balancePoint = pd.takePoint(conn, loginMember);
 			//로그인 정보에 포인트 업데이트
-		loginMember.setPoint(balancePoint);
+		loginMember.setPoint(Integer.parseInt(balancePoint));
 		HttpSession session=req.getSession();
 		session.setAttribute("loginMember",loginMember );
 		
@@ -153,6 +153,54 @@ public class PurchaseService {
 		
 		return orderInformationNo;
 		
+	}
+
+	//마이페이지 수정할 배송지 가져오기
+	public PurchaseAddressVo takeAddress(String addressNo) throws Exception {
+		//conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//dao
+		PurchaseDao pd = new PurchaseDao();
+		PurchaseAddressVo addressVo = pd.takeAddress(conn, addressNo);
+		
+		//close
+		JDBCTemplate.close(conn);
+		
+		return addressVo;
+	}
+
+	//마이페이지 수정된 배송지 DB에 넣기
+	public int updateAddress(String no, String name, String phone, String defaultAddress) throws Exception {
+		//conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		///business logic??
+		if(defaultAddress == null) {
+			defaultAddress = "N";
+			
+		}else {
+			defaultAddress = "Y";
+		}
+		PurchaseAddressVo addressVo = new PurchaseAddressVo();
+		addressVo.setNo(no);
+		addressVo.setName(name);
+		addressVo.setPhone(phone);
+		addressVo.setDefaultAddress(defaultAddress);
+		
+		//dao
+		PurchaseDao pd = new PurchaseDao();
+		int result = pd.updateAddress(conn, addressVo);
+		
+		//tx
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		//close
+		return result;
 	}
 
 }
