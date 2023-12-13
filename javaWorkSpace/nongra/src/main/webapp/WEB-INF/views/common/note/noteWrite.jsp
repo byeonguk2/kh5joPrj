@@ -1,9 +1,11 @@
+<%@page import="com.kh.app.member.vo.MemberVo"%>
 <%@page import="com.kh.app.seller.vo.SellerVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
     <%
     	SellerVo loginSeller = (SellerVo) session.getAttribute("loginSeller"); 
+    	MemberVo loginMember = (MemberVo) session.getAttribute("loginMember");
     %>
     
 <!DOCTYPE html>
@@ -88,7 +90,11 @@
                     <span>내용</span>
                 </div>
                 <div class="main-right">
+                	<% if(loginMember == null ){ %>
                 	<div><%= loginSeller.getId() %></div>
+                	<%}else if(loginSeller == null){ %>
+                	<div><%= loginMember.getMemberId() %></div>
+                	<%} %>
                     <input type="text" name="toId" placeholder="아이디를 입력해주세요">
                     <input type="text" name="title" placeholder="제목을 입력해주세요">
                     <textarea name="content" placeholder="내용을 입력해주세요"></textarea>

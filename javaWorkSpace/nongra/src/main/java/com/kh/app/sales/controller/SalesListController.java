@@ -22,6 +22,7 @@ public class SalesListController extends HttpServlet{
 			SalesService ss = new SalesService();
 			List<SalesVo> salesVoList = ss.salesListSelect();
 			
+			
 			if(salesVoList == null) {
 				throw new Exception("목록 불러오는 중에 오류 발생");
 			}

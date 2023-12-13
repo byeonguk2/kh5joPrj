@@ -64,7 +64,9 @@
 			            </div>
 			        </div>
 			        <div class="content-main">
+			        	<span>제목 : </span>
 			            <div><%=noteVo.getTitle() %></div>
+			            <span>내용 : </span>
 						<div><%=noteVo.getContent() %></div>
 			        </div>
 		        	<div></div>
@@ -74,8 +76,6 @@
 					<%}else{ %>
 						<span>no</span>
 					<%}%>
-			            <button>X삭제</button>
-			            <button>답장</button>
 			            <span><a href="/nongra/seller/note/recive">목록</a></span>
 		        	</div>
 			    </div>
@@ -84,3 +84,5 @@
 	</div>
 </body>
 </html>
+
+

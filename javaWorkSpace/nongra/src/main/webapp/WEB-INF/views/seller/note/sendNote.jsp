@@ -177,7 +177,7 @@
 							<div class="page-area">
 								
 								<% if(pvo.getStartPage() != 1){ %>
-									<a href="/nongra//seller/note/send?pno=<%= pvo.getStartPage() - 1%>">이전</a>
+									<a href="/nongra/seller/note/send?pno=<%= pvo.getStartPage() - 1%>">이전</a>
 								<%} %>
 								
 								<% for(int i = pvo.getStartPage(); i<= pvo.getEndPage(); i++){%>
@@ -196,7 +196,7 @@
 							</div>
 							<button onclick="openPopup();">작성하기</button>
                             <button onclick="viewDetails();">쪽지보기</button>
-							<button>삭제</button>
+							<button onclick="deleteNote();">삭제</button>
 						</div>
 					</div>
 				</div>
@@ -253,6 +253,20 @@
 		const searchValue = document.querySelector('select[name=search]').value;
 		window.location.href = '/nongra/seller/note/send/search?search='+ searchValue + '&searchName='+ searchName;
 	}
+	function deleteNote() {
+		const radioButtons = document.querySelector("input[name=checkbox]:checked").value;
+		console.log(radioButtons);
+		
+        fetch("/nongra/sendNote/delete?noteNo="+ radioButtons)
+            .then((resp) => resp.text())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch(() => {
+                console.log("에러발생");
+            });
+        window.location.reload();
+    }
 
 	
 </script>

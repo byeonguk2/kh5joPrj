@@ -1,4 +1,4 @@
-package com.kh.app.seller.controller;
+package com.kh.app.member.controller;
 
 import java.io.IOException;
 
@@ -14,8 +14,9 @@ import com.kh.app.seller.service.SellerNoteService;
 import com.kh.app.seller.vo.SellerNoteVo;
 import com.kh.app.seller.vo.SellerVo;
 
-@WebServlet("/seller/note/write")
-public class SellerNoteWriteController extends HttpServlet{
+
+@WebServlet("/member/note/write")
+public class MemberNoteWrite extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,17 +31,15 @@ public class SellerNoteWriteController extends HttpServlet{
 		HttpSession session = req.getSession();
 		resp.setCharacterEncoding("UTF-8");
 		try {
-			SellerVo loginSeller = (SellerVo) session.getAttribute("loginSeller");
 			MemberVo loginMember = (MemberVo) session.getAttribute("loginMember");
-			System.out.println(loginSeller.getMemberNo());
 			String toId = req.getParameter("toId");
 			String title = req.getParameter("title");
 			String content = req.getParameter("content");
 			
 			
 			SellerNoteVo snv = new SellerNoteVo();
-			snv.setFromNo(loginSeller.getMemberNo());
-			snv.setFromId(loginSeller.getId());
+			snv.setFromNo(loginMember.getNo());
+			snv.setFromId(loginMember.getMemberId());
 			snv.setToId(toId);
 			snv.setTitle(title);
 			snv.setContent(content);
@@ -65,4 +64,5 @@ public class SellerNoteWriteController extends HttpServlet{
 		}
 		
 	}
+	
 }

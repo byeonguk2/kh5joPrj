@@ -39,8 +39,8 @@
             <label>쪽지 목록</label>
             <div style='cursor: pointer;' class="side-icon2"></div>
         </div>   
-        <div class="menu"><a href="/nongra/seller/note/send">보낸쪽지</a></div>
-        <div class="menu"><a href="/nongra/seller/note/recive">받은쪽지</a></div>
+        <div class="menu"><a href="/nongra/member/sendNote">보낸쪽지</a></div>
+        <div class="menu"><a href="/nongra/member/reciveNote">받은쪽지</a></div>
 
         <div class="aside-item">
             <div class="side-icon side-user" id="icon-user" style="border-top: none;"></div>

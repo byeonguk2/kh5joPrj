@@ -74,7 +74,7 @@ public class SellerNoteDao {
 	//받은 쪽지 갯수 조회
 	public int selectReciveNoteCount(String memberNo, Connection conn) throws Exception{
 		
-		String sql = "SELECT COUNT(*) AS CNT FROM NOTE WHERE TO_NO = ? AND FROM_DEL_YN = 'N'";
+		String sql = "SELECT COUNT(*) AS CNT FROM NOTE WHERE TO_NO = ? AND TO_DEL_YN = 'N'";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, memberNo);
 		ResultSet rs = pstmt.executeQuery();
@@ -90,7 +90,7 @@ public class SellerNoteDao {
 		return cnt;
 	}
 	
-	//받은 쪽지 갯수 조회
+	//보낸 쪽지 갯수 조회
 	public int selectSendNoteCount(String memberNo, Connection conn) throws Exception{
 		
 		String sql = "SELECT COUNT(*) AS CNT FROM NOTE WHERE FROM_NO = ? AND FROM_DEL_YN = 'N'";
@@ -197,10 +197,10 @@ public class SellerNoteDao {
 		return result;
 	}
 	// 보낸 쪽지 삭제
-	public int sendNoteDelete(Connection conn, SellerNoteVo noteVo) throws Exception{
+	public int sendNoteDelete(Connection conn, SellerNoteVo noteVo, String memberNo) throws Exception{
 		String sql = "UPDATE NOTE SET FROM_DEL_YN = 'Y' WHERE FROM_NO = ? AND NOTE_NO = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, noteVo.getFromNo());
+		pstmt.setString(1, memberNo);
 		pstmt.setString(2, noteVo.getNoteNo());
 		int result = pstmt.executeUpdate();
 		
@@ -209,10 +209,10 @@ public class SellerNoteDao {
 		return result;
 	}
 	// 받은 쪽지 삭제
-	public int reciveNoteDelete(Connection conn, SellerNoteVo noteVo) throws Exception{
-		String sql = "UPDATE NOTE SET FROM_DEL_YN = 'Y' WHERE TO_NO = ? AND NOTE_NO = ?";
+	public int reciveNoteDelete(Connection conn, SellerNoteVo noteVo, String memberNo) throws Exception{
+		String sql = "UPDATE NOTE SET TO_DEL_YN = 'Y' WHERE TO_NO = ? AND NOTE_NO = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, noteVo.getToNo());
+		pstmt.setString(1, memberNo);
 		pstmt.setString(2, noteVo.getNoteNo());
 		int result = pstmt.executeUpdate();
 		
@@ -220,5 +220,6 @@ public class SellerNoteDao {
 		
 		return result;
 	}
+	
 
 }
