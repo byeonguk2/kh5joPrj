@@ -44,7 +44,8 @@ main{
 	justify-content: center;
 	text-align: center;
 	}
-h3{
-	text-align: end;
+#h3{
+	line-height: 80px;
+	font-weight: bold;
 }
 
