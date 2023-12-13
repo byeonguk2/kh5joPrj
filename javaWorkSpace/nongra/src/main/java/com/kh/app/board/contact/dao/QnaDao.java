@@ -20,7 +20,7 @@ public class QnaDao {
 	//**** 문의내역 조회
 	//판매자
 	public List<QnaSellerVo> getQnaSellerList(Connection conn, String userNo) throws Exception {
-		String sql = "SELECT S.SELLER_QNA_NO , S.CATEGORY_ID , S.SALES_NO , S.SELLER_NO , S.TITLE , S.CONTENT , S.ENROLL_DATE , S.MODIFY_DATE , S.MODIFY_YN , S.REPLY_WRITER_NO , S.REPLY_CONTENT , S.REPLY_ENROLL_DATE , S.REPLY_MODIFY_DATE , C.CATEGORY_PARENT_ID , C.CATEGORY_NAME FROM QNA_SELLER S JOIN QNA_SELLER_CATEGORY C ON S.CATEGORY_ID = C.CATEGORY_ID WHERE S.SELLER_NO = ? ORDER BY S.ENROLL_DATE";
+		String sql = "SELECT DISTINCT SELLER_QNA_NO ,CATEGORY_ID ,Q.SELLER_NO ,Q.SALES_NO ,Q.TITLE ,CONTENT ,Q.ENROLL_DATE ,Q.MODIFY_DATE ,Q.MODIFY_YN ,REPLY_WRITER_NO ,REPLY_CONTENT ,REPLY_ENROLL_DATE ,REPLY_MODIFY_DATE ,ID ,NICK ,SR.TITLE 상품명 ,SR.THUMBNAIL FROM QNA_SELLER Q JOIN SELLER S ON Q.SELLER_NO = S.SELLER_NO JOIN MEMBER M ON M.MEMBER_NO = S.MEMBER_NO JOIN SALES_REGISTR SR ON Q.SALES_NO = SR.SALES_NO WHERE Q.SELLER_NO = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, userNo);
 		ResultSet rs = pstmt.executeQuery();
@@ -28,36 +28,41 @@ public class QnaDao {
 		while(rs.next()) {
 			String sellerQnaNo = rs.getString("SELLER_QNA_NO");
 			String categoryId = rs.getString("CATEGORY_ID");
-			String salesNo = rs.getString("SALES_NO");
-			String sellerNo = rs.getString("SELLER_NO");
-			String title = rs.getString("TITLE");
+			String SellerNo = rs.getString("SELLER_NO");
+			String SalesNo = rs.getString("SALES_NO");
+			String Title = rs.getString("TITLE");
 			String content = rs.getString("CONTENT");
-			String enrollDate = rs.getString("ENROLL_DATE");
-			String modifyDate = rs.getString("MODIFY_DATE");
-			String modifyYn = rs.getString("MODIFY_YN");
+			String EnrollDate = rs.getString("ENROLL_DATE");
+			String ModifyDate = rs.getString("MODIFY_DATE");
+			String ModifyYn = rs.getString("MODIFY_YN");
 			String replyWriterNo = rs.getString("REPLY_WRITER_NO");
 			String replyContent = rs.getString("REPLY_CONTENT");
 			String replyEnrollDate = rs.getString("REPLY_ENROLL_DATE");
 			String replyModifyDate = rs.getString("REPLY_MODIFY_DATE");
-			String categoryParentId = rs.getString("CATEGORY_PARENT_ID");
-			String categoryName = rs.getString("CATEGORY_NAME");
+			String id = rs.getString("ID");
+			String nick = rs.getString("NICK");
+			String sTitle = rs.getString("상품명");
+			String Thumbnail = rs.getString("THUMBNAIL");
+
 		    
 			QnaSellerVo vo = new QnaSellerVo();
 			vo.setSellerQnaNo(sellerQnaNo);
 			vo.setCategoryId(categoryId);
-			vo.setSalesNo(salesNo);
-			vo.setSellerNo(sellerNo);
-			vo.setTitle(title);
-			vo.setContent(replyContent);
-			vo.setEnrollDate(DateFormat.formattedDate(enrollDate));
-			vo.setModifyDate(DateFormat.formattedDate(modifyDate));
-			vo.setModifyYn(modifyYn);
+			vo.setSellerNo(SellerNo);
+			vo.setSalesNo(SalesNo);
+			vo.setTitle(Title);
+			vo.setContent(content);
+			vo.setEnrollDate(DateFormat.formattedDate(EnrollDate));
+			vo.setModifyDate(DateFormat.formattedDate(ModifyDate));
+			vo.setModifyYn(ModifyYn);
 			vo.setReplyWriterNo(replyWriterNo);
 			vo.setReplyContent(replyContent);
 			vo.setReplyEnrollDate(DateFormat.formattedDate(replyEnrollDate));
 			vo.setReplyModifyDate(DateFormat.formattedDate(replyModifyDate));
-			vo.setCategoryParentId(categoryParentId);
-			vo.setCategoryName(categoryName);
+			vo.setId(id);
+			vo.setNick(nick);
+			vo.setsTitle(sTitle);
+			vo.setThumbnail(Thumbnail);
 			
 			qnaVoList.add(vo);
 		}
@@ -68,7 +73,7 @@ public class QnaDao {
 	
 	//소비자
 	public List<QnaMemberVo> getQnaMemberList(Connection conn, String userNo) throws Exception {
-		String sql = "SELECT M.MEMBER_QNA_NO , M.CATEGORY_ID , M.PAY_NO , M.MEMBER_NO , M.TITLE , M.CONTENT , M.ENROLL_DATE , M.MODIFY_DATE , M.MODIFY_YN , M.REPLY_WRITER_NO , M.REPLY_CONTENT , M.REPLY_ENROLL_DATE , M.REPLY_MODIFY_DATE , C.CATEGORY_PARENT_ID , C.CATEGORY_NAME FROM QNA_MEMBER M JOIN QNA_MEMBER_CATEGORY C ON M.CATEGORY_ID = C.CATEGORY_ID WHERE M.MEMBER_NO = ? ORDER BY M.ENROLL_DATE";
+		String sql = "SELECT DISTINCT Q.MEMBER_QNA_NO, QC.CATEGORY_ID, QC.CATEGORY_PARENT_ID, QC.CATEGORY_NAME AS CHILD_CATEGORY_NAME, PC.CATEGORY_NAME AS PARENT_CATEGORY_NAME, Q.MEMBER_NO, Q.PAY_NO, Q.TITLE, Q.CONTENT, F.FILE_NO, F.FILE_NAME, Q.ENROLL_DATE, Q.MODIFY_DATE, Q.MODIFY_YN, Q.REPLY_WRITER_NO, Q.REPLY_CONTENT, Q.REPLY_ENROLL_DATE, Q.REPLY_MODIFY_DATE, M.ID, M.NICK, ORDER_NO, TOTAL_PRICE FROM QNA_MEMBER Q JOIN QNA_MEMBER_CATEGORY QC ON QC.CATEGORY_ID = Q.CATEGORY_ID LEFT JOIN QNA_MEMBER_FILE F ON Q.MEMBER_QNA_NO = F.MEMBER_QNA_NO JOIN MEMBER M ON Q.MEMBER_NO = M.MEMBER_NO LEFT JOIN ORDER_HISTORY OH ON Q.PAY_NO = OH.NO LEFT JOIN ORDER_INFORMATION OI ON OH.ORDER_NO = OI.NO LEFT JOIN CART C ON C.NO = OH.CART_NO LEFT JOIN CART_BREAKDOWN CB ON CB.CART_NO = C.NO LEFT JOIN QNA_MEMBER_CATEGORY PC ON QC.CATEGORY_PARENT_ID = PC.CATEGORY_ID WHERE M.MEMBER_NO = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, userNo);
 		ResultSet rs = pstmt.executeQuery();
@@ -76,10 +81,14 @@ public class QnaDao {
 		while(rs.next()) {
 			String memberQnaNo = rs.getString("MEMBER_QNA_NO");
 			String categoryId = rs.getString("CATEGORY_ID");
+			String categoryParentId = rs.getString("CATEGORY_PARENT_ID");
+			String categoryName = rs.getString("CATEGORY_NAME");
 			String memberNo = rs.getString("MEMBER_NO");
 			String payNo = rs.getString("PAY_NO");
 			String title = rs.getString("TITLE");
 			String content = rs.getString("CONTENT");
+			String fileNo = rs.getString("FILE_NO");
+			String fileName = rs.getString("FILE_NAME");
 			String enrollDate = rs.getString("ENROLL_DATE");
 			String modifyDate = rs.getString("MODIFY_DATE");
 			String modifyYn = rs.getString("MODIFY_YN");
@@ -87,16 +96,23 @@ public class QnaDao {
 			String replyContent = rs.getString("REPLY_CONTENT");
 			String replyEnrollDate = rs.getString("REPLY_ENROLL_DATE");
 			String replyModifyDate = rs.getString("REPLY_MODIFY_DATE");
-			String categoryParentId = rs.getString("CATEGORY_PARENT_ID");
-			String categoryName = rs.getString("CATEGORY_NAME");
-		    
+			String id = rs.getString("ID");
+			String nick = rs.getString("NICK");
+			String orderNo = rs.getString("ORDER_NO");
+			String totalPrice = rs.getString("TOTAL_PRICE");
 			QnaMemberVo vo = new QnaMemberVo();
+			
+			
 			vo.setMemberQnaNo(memberQnaNo);
 			vo.setCategoryId(categoryId);
-			vo.setPayNo(payNo);
+			vo.setCategoryParentId(categoryParentId);
+			vo.setCategoryName(categoryName);
 			vo.setMemberNo(memberNo);
+			vo.setPayNo(payNo);
 			vo.setTitle(title);
-			vo.setContent(replyContent);
+			vo.setContent(content);
+			vo.setFileNo(fileNo);
+			vo.setFileName(fileName);
 			vo.setEnrollDate(DateFormat.formattedDate(enrollDate));
 			vo.setModifyDate(DateFormat.formattedDate(modifyDate));
 			vo.setModifyYn(modifyYn);
@@ -104,9 +120,11 @@ public class QnaDao {
 			vo.setReplyContent(replyContent);
 			vo.setReplyEnrollDate(DateFormat.formattedDate(replyEnrollDate));
 			vo.setReplyModifyDate(DateFormat.formattedDate(replyModifyDate));
-			vo.setCategoryParentId(categoryParentId);
-			vo.setCategoryName(categoryName);
-			
+			vo.setId(id);
+			vo.setNick(nick);
+			vo.setOrderNo(orderNo);
+			vo.setTotalPrice(totalPrice);
+
 			qnaVoList.add(vo);
 		}
 		JDBCTemplate.close(rs);
@@ -207,6 +225,23 @@ public class QnaDao {
 		return map;
 	}
 	
-	
+	//소비자 부모 카테고리명 조회
+	public QnaMemberCateVo getQnaMemberParentCateName (Connection conn, String parentCateId) throws Exception{
+		String sql = "SELECT CATEGORY_NAME FROM QNA_MEMBER_CATEGORY WHERE CATEGORY_PARENT_ID = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, parentCateId);
+		ResultSet rs = pstmt.executeQuery();
+		QnaMemberCateVo vo = new QnaMemberCateVo();
+		
+		while(rs.next()) {
+			String parentCateName= rs.getString("CATEGORY_NAME");
+			
+			vo.setCategoryParentName(parentCateName);
+			
+		}
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		return vo;
+	}
 	
 }
