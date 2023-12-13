@@ -1,5 +1,18 @@
+<%@page import="java.util.Map"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@page import="java.util.List"%>
+<%@page import="com.kh.app.sales.vo.SalesVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
+
+    <% 
+    	Map<String , Object> map = (Map<String , Object>)request.getAttribute("map"); 
+	    List<SalesVo> salesBestReviewVoList = (List<SalesVo>) map.get("salesBestReviewVoList");
+		List<SalesVo> salesBestOrderVoList = (List<SalesVo>)map.get("salesBestOrderVoList");
+		List<SalesVo> salesBestReviewLikeVoList = (List<SalesVo>)map.get("salesBestReviewLikeVoList");
+    %>
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -194,87 +207,42 @@
 				<p class="title-bottom">농라 추천 득템 기회❗️</p>
 			</div>
 			<div class="item-area">
+				<% for(SalesVo vo : salesBestReviewVoList){ %>
+				<a>
 				<div class="item">
-					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
+					<img src="/nongra<%= vo.getFileName() %>" alt="상품">
 					<button class="shopingCart-btn">
 						<span class="cart-icon"></span>
 						"담기"
 					</button>
-					<h3 class="item-guide">[델리치오] 호주산 목초육 안심 스테이크 250g (냉장)</h3>
-					<span class="price">20000원</span>
+					<h3 class="item-guide"><%= vo.getTitle() %></h3>
+					<span class="price"><%= vo.getPrice() %></span>
 				</div>
-				<div class="item">
-					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
-					<button class="shopingCart-btn">
-						<span class="cart-icon"></span>
-						"담기"
-					</button>
-					<h3 class="item-guide">[델리치오] 호주산 목초육 안심 스테이크 250g (냉장)</h3>
-					<span class="price">20000원</span>
-				</div>
-				<div class="item">
-					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
-					<button class="shopingCart-btn">
-						<span class="cart-icon"></span>
-						"담기"
-					</button>
-					<h3 class="item-guide">[델리치오] 호주산 목초육 안심 스테이크 250g (냉장)</h3>
-					<span class="price">20000원</span>
-				</div>
-				<div class="item">
-					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
-					<button class="shopingCart-btn">
-						<span class="cart-icon"></span>
-						"담기"
-					</button>
-					<h3 class="item-guide">[델리치오] 호주산 목초육 안심 스테이크 250g (냉장)</h3>
-					<span class="price">20000원</span>
-				</div>
+				</a>
+				<% } %>	
 			</div>
 		</div>
-
+		
+		
 		<div class="ItemIntroduction-box">
 			<div class="title-area">
-				<span class="title-top">✨가장 많이 주문한 상품 🐶</span>
-				<p class="title-bottom">농라 회원 베스트 상품들❗️</p>
+				<span class="title-top">✨가장 많이 주문한 상품🏅</span>
+				<p class="title-bottom">농라 회원들의 베스트 상품들❗️</p>
 			</div>
 			<div class="item-area">
+				<% for(SalesVo vo : salesBestOrderVoList){ %>
+				<a>
 				<div class="item">
-					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
+					<img src="/nongra<%= vo.getFileName() %>" alt="상품">
 					<button class="shopingCart-btn">
 						<span class="cart-icon"></span>
 						"담기"
 					</button>
-					<h3 class="item-guide">[델리치오] 호주산 목초육 안심 스테이크 250g (냉장)</h3>
-					<span class="price">20000원</span>
+					<h3 class="item-guide"><%= vo.getTitle() %></h3>
+					<span class="price"><%= vo.getPrice() %></span>
 				</div>
-				<div class="item">
-					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
-					<button class="shopingCart-btn">
-						<span class="cart-icon"></span>
-						"담기"
-					</button>
-					<h3 class="item-guide">[델리치오] 호주산 목초육 안심 스테이크 250g (냉장)</h3>
-					<span class="price">20000원</span>
-				</div>
-				<div class="item">
-					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
-					<button class="shopingCart-btn">
-						<span class="cart-icon"></span>
-						"담기"
-					</button>
-					<h3 class="item-guide">[델리치오] 호주산 목초육 안심 스테이크 250g (냉장)</h3>
-					<span class="price">20000원</span>
-				</div>
-				<div class="item">
-					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
-					<button class="shopingCart-btn">
-						<span class="cart-icon"></span>
-						"담기"
-					</button>
-					<h3 class="item-guide">[델리치오] 호주산 목초육 안심 스테이크 250g (냉장)</h3>
-					<span class="price">20000원</span>
-				</div>
+				</a>
+				<% } %>	
 			</div>
 		</div>
 
@@ -329,7 +297,7 @@
 					<span class="price">20000원</span>
 				</div>
 			</div>
-		</div>
+		</div> 
 
 		<div class="ItemIntroduction-box">
 			<div class="title-area">
@@ -337,42 +305,19 @@
 				<p class="title-bottom">농라 회원님들의 평가가 좋은 상품❗️</p>
 			</div>
 			<div class="item-area">
+				<% for(SalesVo vo : salesBestReviewLikeVoList){ %>
+				<a>
 				<div class="item">
-					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
+					<img src="/nongra<%= vo.getFileName() %>" alt="상품">
 					<button class="shopingCart-btn">
 						<span class="cart-icon"></span>
 						"담기"
 					</button>
-					<h3 class="item-guide">[델리치오] 호주산 목초육 안심 스테이크 250g (냉장)</h3>
-					<span class="price">20000원</span>
+					<h3 class="item-guide"><%= vo.getTitle() %></h3>
+					<span class="price"><%= vo.getPrice() %></span>
 				</div>
-				<div class="item">
-					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
-					<button class="shopingCart-btn">
-						<span class="cart-icon"></span>
-						"담기"
-					</button>
-					<h3 class="item-guide">[델리치오] 호주산 목초육 안심 스테이크 250g (냉장)</h3>
-					<span class="price">20000원</span>
-				</div>
-				<div class="item">
-					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
-					<button class="shopingCart-btn">
-						<span class="cart-icon"></span>
-						"담기"
-					</button>
-					<h3 class="item-guide">[델리치오] 호주산 목초육 안심 스테이크 250g (냉장)</h3>
-					<span class="price">20000원</span>
-				</div>
-				<div class="item">
-					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
-					<button class="shopingCart-btn">
-						<span class="cart-icon"></span>
-						"담기"
-					</button>
-					<h3 class="item-guide">[델리치오] 호주산 목초육 안심 스테이크 250g (냉장)</h3>
-					<span class="price">20000원</span>
-				</div>
+				</a>
+				<% } %>	
 			</div>
 		</div>
 	</main>
