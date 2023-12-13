@@ -36,5 +36,13 @@ public class SalesService {
 		
 		return result;
 	}
+	public List<SalesVo> salesList(String sellerNo) throws Exception{
+		Connection conn = JDBCTemplate.getConnection();
+		
+		SalesDao sd = new SalesDao();
+		List<SalesVo> salesVoList = sd.salesList(conn , sellerNo);
+		
+		return salesVoList;
+	}
 
 }
