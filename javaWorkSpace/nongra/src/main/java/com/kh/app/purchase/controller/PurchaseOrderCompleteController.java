@@ -36,6 +36,7 @@ public class PurchaseOrderCompleteController extends HttpServlet{
 			
 			
 			req.setAttribute("orderCompleteVo", vo);
+			req.setAttribute("loginMember", loginMember);
 			req.getRequestDispatcher("/WEB-INF/views/purchase/orderComplete.jsp").forward(req, resp);
 		}catch (Exception e) {
 			System.out.println("[ERROR-OC001] 주문완료하던 중 예외 발생");
