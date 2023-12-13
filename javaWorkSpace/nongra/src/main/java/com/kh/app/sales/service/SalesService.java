@@ -36,13 +36,23 @@ public class SalesService {
 		
 		return result;
 	}
-//	public List<SalesVo> salesList(String sellerNo) throws Exception{
-//		Connection conn = JDBCTemplate.getConnection();
-//		
-//		SalesDao sd = new SalesDao();
-//		List<SalesVo> salesVoList = sd.salesList(conn , sellerNo);
-//		
-//		return salesVoList;
-//	}
+	// 카테고리 별 상품 조회
+	public List<SalesVo> salesCategoryNoSelect(String categoryNo) throws Exception{
+		Connection conn = JDBCTemplate.getConnection();
+		
+		SalesDao sd = new SalesDao();
+		List<SalesVo> salesVoList = sd.salesCategoryNoSelect(conn , categoryNo);
+		
+		return salesVoList;
+	}
+	// 카테고리 별 상품 갯수
+	public int selectSalesCount(String categoryNo) throws Exception{
+		Connection conn = JDBCTemplate.getConnection();
+		
+		SalesDao sd = new SalesDao();
+		int result = sd.selectSalesCount(conn , categoryNo);
+		
+		return result;
+	}
 
 }
