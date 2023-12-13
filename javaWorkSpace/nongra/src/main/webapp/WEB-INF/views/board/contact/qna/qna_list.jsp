@@ -82,7 +82,7 @@
                                 <% }else{ %>
                                 답변완료
                                 <% } %></div>
-                            <div class="qna_list_box2"> 부모카테고리명 - <%=vo.getCategoryName() %></div>
+                            <div class="qna_list_box2"> <%=vo.getCategoryName() %></div>
                             <div class="qna_list_box3"><%=vo.getTitle() %></div>
                             <div class="qna_list_box4"><%= vo.getEnrollDate() %></div>
                             <div class="qna_list_box5">
@@ -93,21 +93,25 @@
                             <div class="question_area">
                                 <div class="question_box1">문의</div>
                                 <div class="question_box2">
-                                    <div class="">
-                                        <img src="/nongra/resources/img/board/qna_product01.png" alt="상품이미지">
-                                    </div>
-                                    <div class="">
-                                        [멋쟁이 토마토 마켓]  <br>
-                                        멋쟁이 토마토 5kg 1박스 <br>
-                                        결제금액 24,900원
-                                    </div>
-                                    <div class="">
-                                        주문번호 : 20230808080831 <br>
-                                        (결제일 : 2023.08.08)       
-                                    </div>
+                                    <% if(vo.getPayNo() != null){%>
+                                        <div class="">
+                                            <!-- <img src="/nongra/resources/img/board/qna_product01.png" alt="상품이미지"> -->
+                                            (주문일 : 
+                                                    <% String orderNo = vo.getOrderNo().substring(0, 8); %>
+                                                    <%= orderNo %>)
+                                        </div>
+                                        <div class="">
+                                            주문번호 : <%=vo.getOrderNo() %>
+                                        </div>
+                                        <div class="">
+                                            결제금액 <%=vo.getTotalPrice() %>원<br>
+                                        </div>
+                                        <% } %>
                                     <div class="">
                                         <%=vo.getContent() %>
-                                        <img src="/nongra/resources/img/board/qna_question01.png" alt="문의이미지">
+                                        <% if(vo.getFileNo() != null){%>
+                                         <img src="/nongra/resources/img/board/contact/qna_member/<%=vo.getFileName() %>.png" alt="<%=vo.getFileName() %>">
+                                        <% } %>
                                     </div>
                                 </div>
                             </div>

@@ -108,7 +108,7 @@
                                         </div>
     
                                         <div class="qna_drop_wrap">
-                                            <select name="qna_category1" id="qna_dropdown">
+                                            <select name="qna_category2" id="qna_dropdown">
                                                 <option value>선택하세요</option>
                                                 <option value="qna_cate1_01">상품</option>
                                                 <option value="qna_cate1_02">배송</option>
