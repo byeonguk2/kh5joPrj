@@ -1,5 +1,4 @@
 <%@page import="java.util.Map"%>
-<%@page ="java.util.Map"%>
 <%@page import="com.kh.app.page.vo.PageVo"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -33,7 +32,7 @@
 		}
 		#main-area{
 		display: grid;
-		grid-template-columns: 230px 8fr;
+		grid-template-columns: 80px 8fr;
 		}
 			#headerer{
 			display: flex;
@@ -49,7 +48,7 @@
 </head>
 <body>
 	<div id="wrap">
-		 <%@ include file="/WEB-INF/views/common/header/header_sobi_memberModify.jsp" %> 
+		 <%@ include file="/WEB-INF/views/common/header/header_sobi.jsp" %> 
 	</div>
 	  <div id = "main-area">
 		
@@ -57,7 +56,15 @@
 			<div id="headerer">
 			 <section class="review-section"> 
                 <div class="my-review"> 
-                 <h2>리뷰 관리</h2>
+                 <h2><c:if test="${not empty ReviewVoList}">
+					    <!-- ReviewVoList가 비어있지 않은 경우에만 처리 -->
+					    <c:set var="firstReview" value="${ReviewVoList[0]}" />
+					
+					    <c:if test="${not empty firstReview}">
+					        <!-- firstReview가 비어있지 않은 경우에만 처리 -->
+					        <c:out value="${firstReview.itemTitle}" />
+					    </c:if>
+					</c:if> 리뷰</h2>
                </div> 
          
                <!--체크박스로 ajax 처리-->
@@ -105,7 +112,7 @@
                              <span class="review-b"></span>
                          <c:choose>
 						   <c:when test="${not empty vo.recommendYn }">
-						      <span class="review-like review-like-after ">도움돼요<span class="like-num">${vo.likeCnt}</span> </span>
+						      <span class="review-like review-like-after">도움돼요<span class="like-num">${vo.likeCnt}</span> </span>
 						   </c:when>
 						
 						   <c:otherwise>
@@ -283,15 +290,79 @@
 	    	     
 	       }
 	    
-	 // 
-	 const reviewNoLike    = document.querySelectorAll(".reviewNO");
+	 // 리뷰넘전달해야할 번호
+	 const reviewNoLike = document.querySelectorAll(".reviewNO");
 	 console.log(reviewNoLike)
-	 const reviewLike      =  document.querySelectorAll(".review-like")
+	 //이벤트 리스너 달아야 할번호
+	 const reviewLike = document.querySelectorAll(".review-like")
 	 console.log(reviewLike)
+	 // 토글 달아야함
 	 const reviewLikeAfter =  document.querySelectorAll(".review-like-after")
 	 console.log(reviewLikeAfter)
-	 const likeCnt     =document.querySelectorAll(".like-num")
-	  console.log(reviewLikeAfter)
+	 //이안에 숫자를 변경
+	 const likeCnt =document.querySelectorAll(".like-num")
+	  console.log(likeCnt[0].innerText)
+	  
+	  
+	 
+	  for (let i = 0; i < reviewLike.length; ++i) {
+		  reviewLike[i].addEventListener('click', function() {
+            // 클릭 이벤트가 발생했을 때 수행할 동작 작성
+            
+            // review-like-after 클래스가 있는지 확인하고 likeCnt 증가 또는 감소
+            if (reviewLike[i].classList.contains("review-like-after")) {
+                // review-like-after 클래스가 있는 경우
+                
+                reviewLikeCancel(reviewNoLike[i].innerText)
+                
+                likeCnt[i].innerText = parseInt(likeCnt[i].innerText) - 1;
+                
+            } else {
+                // review-like-after 클래스가 없는 경우
+                likeCnt[i].innerText = parseInt(likeCnt[i].innerText) + 1;
+                
+                reviewLikeadd(reviewNoLike[i].innerText)
+            }
+                   
+            reviewLike[i].classList.toggle("review-like-after");
+           
+        });
+    }
+	 
+	 
+	function reviewLikeadd(no){
+			
+			const x = {
+					reviewNo : no
+					}
+			
+			fetch("/nongra/member/reviewLike",{
+				method : "post" ,
+				body: JSON.stringify(x)
+			})
+		/* 	.then( resp => resp.json("하이") )
+			.then( (data) =>{console.log(data)})
+			.catch(()=>{console.log("캐치블럭 실패실패")}) */
+		}
+	
+	function reviewLikeCancel(no){
+		
+		const x = {
+				reviewNo : no
+				}
+		
+		fetch("/nongra/member/reviewLikeCancel",{
+			method : "post" ,
+			body: JSON.stringify(x)
+		})
+		.then( resp => resp.json("하이") )
+		.then( (data) =>{console.log(data)})
+		.catch(()=>{console.log("캐치블럭 실패실패")})
+	}
+ 
+	 
+	 
+	  
 	 
 	 
 	 

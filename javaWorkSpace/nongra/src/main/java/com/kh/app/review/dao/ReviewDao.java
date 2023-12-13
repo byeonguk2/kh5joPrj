@@ -490,7 +490,7 @@ public class ReviewDao {
 		return reviewVoListresult;
 	}
 
-	//리뷰 작성 내용 + 사진 [멤버]
+	//리뷰 작성 내용 [멤버]
 	public int memberReviewWrite(Connection conn, ReviewVo vo) throws Exception {
 
 
@@ -521,6 +521,9 @@ public class ReviewDao {
 				return 0;
 			}
 		}
+		
+		//close
+		JDBCTemplate.close(pstmt);
 
 
 		return result;
@@ -546,8 +549,7 @@ public class ReviewDao {
 	}
 	// [상품번호랑 유저번호로] 리뷰조회 및 좋아요 개수로 페이지 보여주기 
 	public List<ReviewVo> memberReviewShow(Connection conn, PageVo pvo, String salesNo, String mebmerNo) throws Exception {
-		System.out.println(salesNo);
-		System.out.println(mebmerNo);
+		
 		String sql = "SELECT R.REVIEW_NO ,R.CONSUMER_NO ,R.CART_BREAKDOWN_NO ,R.CONTENT ,R.WRITE_DATE ,R.UPDATE_DATE ,R.REPLY_DATE ,R.REPLY_DEL_YN ,R.REPLY_CONTENT ,SR.TITLE AS ITEM_TITLE ,SR.SALES_NO AS ,S.BUSINESS_NAME ,M.NICK ,M.PROFILE ,T.LIKE_CNT ,RF.FILE_SRC ,RLK.REVIEW_NO AS RECOMMEND_YN FROM REVIEW R JOIN CART_BREAKDOWN CB ON R.CART_BREAKDOWN_NO = CB.NO JOIN SALES_REGISTR SR ON CB.SALES_NO = SR.SALES_NO JOIN SELLER S ON SR.SELLER_NO = S.SELLER_NO JOIN MEMBER M ON R.CONSUMER_NO = M.MEMBER_NO LEFT JOIN ( SELECT R.REVIEW_NO ,COUNT(*) AS LIKE_CNT FROM REVIEW R JOIN REVIEW_LIKE RL ON R.REVIEW_NO = RL.REVIEW_NO GROUP BY R.REVIEW_NO ORDER BY R.REVIEW_NO ) T ON T.REVIEW_NO = R.REVIEW_NO FULL JOIN REVIEW_FILE RF ON R.REVIEW_NO = RF.REVIEW_NO LEFT JOIN ( SELECT * FROM REVIEW_LIKE WHERE member_no = ? ) RLK ON R.REVIEW_NO = RLK.REVIEW_NO WHERE REVIEW_DEL_YN = 'N'  AND SR.SALES_NO = ? ORDER BY R.REVIEW_NO DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, mebmerNo);
@@ -557,6 +559,9 @@ public class ReviewDao {
 
 		//list
 		List<ReviewVo> list = new ArrayList<ReviewVo>();
+		
+		
+	
 
 		while(rs.next()) {
 
@@ -627,8 +632,46 @@ public class ReviewDao {
 		JDBCTemplate.close(pstmt);
 
 		return reviewVoListresult;
+	}
+	// 리뷰 좋아요 취소[딜리트쿼리]
+	public int reviewLikeCancel(Connection conn, ReviewVo vo) throws Exception {
+		// sql
+		
+		String sql = "DELETE FROM REVIEW_LIKE WHERE review_no = ? AND member_no = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1,vo.getReviewNo());
+		pstmt.setString(2, vo.getConsumerNo());
+
+		int result = pstmt.executeUpdate();
+
+		//close
+		JDBCTemplate.close(pstmt);
+		
+	
+
+		return result;
+	}
+	// 리뷰 좋아요
+	public int reviewLike(Connection conn, ReviewVo vo) throws SQLException {
+		// sql
+		
+		String sql = "INSERT INTO REVIEW_LIKE (review_no, member_no) VALUES (?, ?)";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1,vo.getReviewNo());
+		pstmt.setString(2, vo.getConsumerNo());
+
+		int result = pstmt.executeUpdate();
+
+		//close
+		JDBCTemplate.close(pstmt);
+		
+	
+
+		return result;}
+		
+		
 	}			
-}						
+						
 
 
 

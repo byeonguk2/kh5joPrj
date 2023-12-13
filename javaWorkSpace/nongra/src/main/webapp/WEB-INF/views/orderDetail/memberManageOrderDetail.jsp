@@ -32,8 +32,7 @@
 		}
 		#main-area{
 		display: grid;
-		grid-template-columns: 230px 8fr;
-		padding-top: ;
+		grid-template-columns: 80px 8fr;
 		}
 		#headerer{
 			display: flex;
@@ -42,13 +41,16 @@
 		}
 		
 		
+		
+		
+		
 	</style>
 	
 	
 </head>
 <body>
 	<div id="wrap">
-		<%@ include file="/WEB-INF/views/common/header/header_sobi_memberModify.jsp" %>
+		<%@ include file="/WEB-INF/views/common/header/header_sobi.jsp" %>
 	</div>
 	  <div id = "main-area">
 		
