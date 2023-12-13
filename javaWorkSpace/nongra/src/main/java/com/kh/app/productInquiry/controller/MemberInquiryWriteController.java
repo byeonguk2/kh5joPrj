@@ -1,4 +1,4 @@
-package com.kh.app.review.controller;
+package com.kh.app.productInquiry.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,15 +12,13 @@ import javax.servlet.http.HttpSession;
 
 import com.kh.app.member.vo.MemberVo;
 import com.kh.app.page.vo.PageVo;
+import com.kh.app.productInquiry.service.ProductInquiryService;
+import com.kh.app.productInquiry.vo.ProductInquiryVo;
 import com.kh.app.review.service.ReviewService;
 import com.kh.app.review.vo.ReviewVo;
 
-import oracle.jdbc.internal.XSSessionNamespace;
-
-// [상품번호랑 유저번호로] 리뷰조회 및 좋아요 수행
-@WebServlet("/member/showReviewByItem")
-public class ReviewShowController extends HttpServlet {
-	
+@WebServlet("/member/InquiryWrite")
+public class MemberInquiryWriteController extends HttpServlet {
 //	상품기준 리뷰 조회
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,15 +26,14 @@ public class ReviewShowController extends HttpServlet {
 			
 			MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
 			String salesNo = req.getParameter("saleNo");
-			System.out.println(loginMember);
+			
 			
 		try {
 			
-			ReviewService rs = new ReviewService();
+			ProductInquiryService ps = new ProductInquiryService();
 			//data 
-			
-			int listCount =rs.selectReviewCountByItemNo("1",loginMember.getNo());
-//			int listCount = rs.selectReviewCountByItemNo("1","1");
+			int listCount =ps.selectInquiryCountByItemNo("1","1");
+//			int listCount =ps.selectInquiryCountByMemberNo("saleNo",loginMember.getNo());
 			String currentPage_ =req.getParameter("pno");
 			if(currentPage_ ==null) {
 				currentPage_ ="1";
@@ -47,24 +44,21 @@ public class ReviewShowController extends HttpServlet {
 			PageVo pvo =  new PageVo(listCount, currentPage, pageLimit, boardLimit);
 			
 			//service
-//			 List<ReviewVo> ReviewVoList = rs.memberReviewShow(pvo,"1","1");
-			List<ReviewVo> ReviewVoList = rs.memberReviewShow(pvo,"1",loginMember.getNo());
+			 List<ProductInquiryVo> produtInquiryVoList = ps.memberInquiryShow(pvo,"1","1");
+//			List<ReviewVo> ReviewVoList = rs.memberReviewShow(pvo,saleNo,loginMember.getNo());
 			
 			
 			// result (==view)
-			resp.getWriter().write("성공");
-			req.setAttribute("ReviewVoList", ReviewVoList);
+			
+			req.setAttribute("produtInquiryVoList", produtInquiryVoList);
 			req.setAttribute("pvo", pvo);
-			req.getRequestDispatcher("/WEB-INF/views/review/showReviewByItem.jsp").forward(req, resp);
-			
-			
-			
+			req.getRequestDispatcher("/WEB-INF/views/inquiry/showInquiryByItem.jsp").forward(req, resp);
 			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("리뷰 페이지 에러");
-			session.setAttribute("alertMsg", "리뷰 페이지 실패");
+			System.out.println("상품 페이지 에러");
+			session.setAttribute("alertMsg", "상품 문의 페이지 실패");
 			req.getRequestDispatcher("/WEB-INF/views/common/note/result.jsp").forward(req, resp);
 		}
 	}

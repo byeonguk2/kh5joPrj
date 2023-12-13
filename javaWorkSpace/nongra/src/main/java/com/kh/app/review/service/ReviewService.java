@@ -230,10 +230,49 @@ public class ReviewService {
 		
 		
 	}
-	
+	// 리뷰 좋아요 취소
+	public int reviewLikeCancel(ReviewVo vo) throws Exception {
+		
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+				
+		// dao
+		ReviewDao dao = new ReviewDao();
+		int result = dao.reviewLikeCancel(conn,vo);
+		
+		if(result ==1 ) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		// close 
+		
+		JDBCTemplate.close(conn);
+		
+		return result; 
 
 	
-
-
-
+	}
+			// 리뷰 좋아요
+			public int reviewLike(ReviewVo vo) throws Exception {
+				// conn
+				Connection conn = JDBCTemplate.getConnection();
+						
+				// dao
+				ReviewDao dao = new ReviewDao();
+				int result = dao.reviewLike(conn,vo);
+				
+				if(result ==1 ) {
+					JDBCTemplate.commit(conn);
+				}else {
+					JDBCTemplate.rollback(conn);
+				}
+				
+				// close 
+				
+				JDBCTemplate.close(conn);
+				
+				return result;
+	}
 }
