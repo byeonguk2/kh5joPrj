@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,13 +24,13 @@
 
         <div class="aside-item">
             <div class="side-icon" id="icon-smile"></div>
-            <a href="/nongra/member/reviewmanage">리뷰 관리</a>
+            <a href="/nongra//member/manageReview">리뷰 관리</a>
             <div class="side-icon2"></div>
         </div>    
 
         <div class="aside-item">
             <div class="side-icon" id="icon-check"></div>
-            <a href="/nongra/my/order/inquiry">상품문의</a>
+            <a href="/nongra//member/manageInquiry">상품문의</a>
             <div  class="side-icon2" onclick="fun01"></div>
         </div>    
 

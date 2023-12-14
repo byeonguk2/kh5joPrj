@@ -31,17 +31,17 @@
         <div class="menu"><a href="/nongra/seller/register">상품등록</a></div>
         <div class="aside-item sitem4">
             <div class="side-icon" id="icon-check"></div>
-            <label>상품문의관리</label>
+            <a href="/nongra/seller/manageInquiry">상품문의관리</a>
             <div class="down_icon" onclick="fun01"></div>
         </div>    
         <div class="aside-item sitem5">
             <div class="side-icon" id="icon-smile"></div>
-            <label>리뷰 관리</label>
+            <label><a href="/nongra/seller/manageReview">리뷰 관리</a></label>
             <div class="down_icon"></div>
         </div>   
         <div class="aside-item sitem6">
             <div class="side-icon" id="icon-lotate"></div>
-            <label>주문 조회</label>
+            <label>문의 조회</label>
             <div class="down_icon"></div>
         </div>    
         <div class="aside-item sitem7">

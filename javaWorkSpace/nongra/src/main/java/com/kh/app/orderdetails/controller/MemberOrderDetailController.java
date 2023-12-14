@@ -33,8 +33,7 @@ public class MemberOrderDetailController extends HttpServlet {
 		          
 		          OrderDetailService os = new OrderDetailService();
 		          //data 
-//		          int listCount = rs.selectReviewCount(loginMember.getNo());
-		          int listCount = os.selectOrderDetailCountByMemberNo("1");
+		          int listCount = os.selectOrderDetailCountByMemberNo(loginMember.getNo());
 		          String currentPage_ =req.getParameter("pno");
 		          if(currentPage_ ==null) {
 		              currentPage_ ="1";
@@ -49,8 +48,7 @@ public class MemberOrderDetailController extends HttpServlet {
 		          
 
 		          //service
-		          //List<ReviewVo> ReviewVoList = rs.memberReviewLookUp(pvo,loginMember.getNo());
-		          List<OrderDetailVo> orderDetailVoList = os.memberOrderDetailLookUp(pvo,"1");
+		          List<OrderDetailVo> orderDetailVoList = os.memberOrderDetailLookUp(pvo,loginMember.getNo());
 		          
 		          
 		          

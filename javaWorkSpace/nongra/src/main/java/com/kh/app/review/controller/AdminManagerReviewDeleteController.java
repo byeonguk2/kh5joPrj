@@ -15,7 +15,7 @@ import com.kh.app.admin.controller.requestOkControlle;
 import com.kh.app.member.vo.MemberVo;
 import com.kh.app.review.service.ReviewService;
   
-  	@WebServlet("/admin/reviewDelete") 
+  	@WebServlet("/common/reviewDelete") 
   	public class AdminManagerReviewDeleteController extends HttpServlet{
   //번호 받아서 리뷰 삭제 (관리자),(유저)
   @Override 

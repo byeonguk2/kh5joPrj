@@ -36,7 +36,7 @@ public class MemberReviewWriteController extends HttpServlet {
 		HttpSession session = req.getSession();		
 		MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
 		String memberNo = loginMember.getNo();
-//		String memberNo = "1";
+
 		String cbNo = req.getParameter("cbNo"); 
 		String content = req.getParameter("content");
 		

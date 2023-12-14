@@ -17,6 +17,7 @@ public class ProductInquiryVo {
 	private String   itemtitle; //판매글 제목
 	private String   businessName; //가게명
 	private String   userName;  // 유저네임
+	private String   contentTitl; // 제목에 들어갈
 	
 	private String replyEnrollDate; // 답글 작성시간
 	private String replyUpdateDate; // 답글 업데이트 날짜
@@ -29,6 +30,13 @@ public class ProductInquiryVo {
 	
 	
 	
+	public String getContentTitl() {
+		return contentTitl;
+	}
+
+	public void setContentTitl(String contentTitl) {
+	}
+
 	public ProductInquiryVo(String inquireNo, String consumerNo, String salesNo, String content, String enrollDate,
 			String delYn, String inquireReply, String secretYn, String sellerNo, String itemtitle, String businessName,
 			String userName, String replyEnrollDate, String replyUpdateDate, String replyDelYn,
@@ -54,8 +62,7 @@ public class ProductInquiryVo {
 	}
 	
 	public ProductInquiryVo() {
-		super();
-		// TODO Auto-generated constructor stub
+		 
 	}
 	public String getInquireNo() {
 		return inquireNo;
@@ -79,6 +86,13 @@ public class ProductInquiryVo {
 		return content;
 	}
 	public void setContent(String content) {
+		if(content !=null) {
+			if(content.length()>=10) {
+			this.contentTitl = content.substring(0,10) +".....";
+			}else {
+			this.contentTitl =  content + ".......";
+			}
+		}
 		this.content = content;
 	}
 	public String getEnrollDate() {
@@ -161,7 +175,11 @@ public class ProductInquiryVo {
 		return replyEnrollDate;
 	}
 	public void setReplyEnrollDate(String replyEnrollDate) {
-		this.replyEnrollDate = replyEnrollDate;
+		if(replyEnrollDate!=null) {
+			this.replyEnrollDate = replyEnrollDate.substring(0,10);
+			}else {
+			this.replyEnrollDate = replyEnrollDate;
+			}
 	}
 	public String getReplyUpdateDate() {
 		return replyUpdateDate;
@@ -184,6 +202,8 @@ public class ProductInquiryVo {
 				+ ", replyUpdateDate=" + replyUpdateDate + ", replyDelYn=" + replyDelYn + ", productInquriyFileVo="
 				+ productInquriyFileVo + ", list=" + list + "]";
 	}
+	
+	
 	
 	
 	

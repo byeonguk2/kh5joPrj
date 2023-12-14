@@ -264,7 +264,7 @@
     modalSureButton.addEventListener('click', () => {
     modal.classList.add('modal-sure-hiddnen');
     
-    location.href='/nongra/admin/reviewDelete?DeleteNo=' + window.x
+    location.href='/nongra/common/reviewDelete?DeleteNo=' + window.x
     });
 	
   

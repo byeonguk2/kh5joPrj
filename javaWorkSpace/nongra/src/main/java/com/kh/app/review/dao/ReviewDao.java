@@ -667,6 +667,20 @@ public class ReviewDao {
 		JDBCTemplate.close(pstmt);
 		return result;
 		}
+	// 판매자 답변달기
+	public int replyWrite(Connection conn, String content, String reviewNo) throws Exception {
+		
+		String sql = "UPDATE REVIEW SET REPLY_DATE = SYSDATE, REPLY_CONTENT = ? WHERE REVIEW_NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1,content);
+		pstmt.setString(2,reviewNo);
+
+		int result = pstmt.executeUpdate();
+
+		//close
+		JDBCTemplate.close(pstmt);
+		return result;
+	}
 }
 						
 
