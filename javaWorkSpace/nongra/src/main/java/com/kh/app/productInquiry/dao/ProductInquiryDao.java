@@ -291,15 +291,13 @@ public class ProductInquiryDao {
 	      return cnt;	
 	}
 	// 상품 번호 기준으로 문의 리스트 가져오기[전체]
-	public List<ProductInquiryVo> sellerInquiryLookUp(Connection conn, PageVo pvo, String saleNo, String memberNo) throws Exception {
+	public List<ProductInquiryVo> memberInquiryShow(Connection conn, PageVo pvo, String saleNo, String memberNo) throws Exception {
 		
 		//sql
 		String sql = "SELECT I.INQUIRE_NO ,I.CONSUMER_NO ,I.SALES_NO , I.CONTENT ,I.ENROLL_DATE ,I.DEL_YN ,I.INQUIRE_REPLY , I.SECRET_YN ,I.INQUIRE_REPLY_ENROLL_DATE ,I.REPLY_UPDATE_DATE ,I.REPLY_DEL_YN ,IF.INQUIRE_FILE ,IF.FILE_SRC ,SR.TITLE ,S.SELLER_NO ,BUSINESS_NAME ,M.NAME FROM INQUIRE I LEFT JOIN INQUIRE_FILE IF ON I.INQUIRE_NO = IF.INQUIRE_NO JOIN SALES_REGISTR SR ON I.SALES_NO = SR.SALES_NO JOIN SELLER S  ON S.SELLER_NO = SR.SELLER_NO JOIN MEMBER M ON M.MEMBER_NO  = I.CONSUMER_NO WHERE I.DEL_YN = 'N' AND SR.SALES_NO = ? ORDER BY I.INQUIRE_NO DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, saleNo);
 		System.out.println("sql문 성공");
-		
-		
 		
 		//rs
 		ResultSet rs = pstmt.executeQuery();
@@ -390,6 +388,44 @@ public class ProductInquiryDao {
 		return ProductInquiryVoList;
 		
 }
+	// 상품문의 파일받기 
+	public int memberInquiryWrite(Connection conn, ProductInquiryVo vo) throws Exception {
+		//sql
+		String sql = "INSERT INTO INQUIRE (inquire_no,consumer_no,sales_no,content,enroll_date,secret_yn) VALUES (SEQ_INQUIRE.NEXTVAL,?,?,?,sysdate,?)";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, vo.getConsumerNo());	
+		pstmt.setString(2, vo.getSalesNo());	
+		pstmt.setString(3, vo.getContent());
+		pstmt.setString(4, vo.getSecretYn());
+		int result = pstmt.executeUpdate();		
+
+		//close
+		JDBCTemplate.close(pstmt);
+
+		return result;
+	}
+	// 상품문의 파일받기 사진
+	public int memberInquiryWritePicture(Connection conn, ArrayList<String> strlist) throws SQLException {
+		
+		String	sql = "INSERT INTO INQUIRE_FILE (inquire_file,inquire_no,file_src) values (SEQ_INQUIRE_FILE.NEXTVAL,SEQ_INQUIRE.CURRVAL,?)";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		int result =0;
+		for (String str :strlist) {
+			System.out.println("리뷰사진"  );
+			pstmt.setString(1, str);
+			result = pstmt.executeUpdate();
+			if(result !=1) {
+				return 0;
+			}
+		}
+		
+		//close
+		JDBCTemplate.close(pstmt);
+
+
+		return result;
+		
+	}
 		
 	
 }//class

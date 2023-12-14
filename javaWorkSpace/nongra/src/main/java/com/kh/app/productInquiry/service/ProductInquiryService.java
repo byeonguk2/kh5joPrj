@@ -1,6 +1,7 @@
 package com.kh.app.productInquiry.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.kh.app.page.vo.PageVo;
@@ -93,16 +94,40 @@ public class ProductInquiryService {
 				
 		// dao
 		ProductInquiryDao dao = new ProductInquiryDao();
-		List<ProductInquiryVo> list = dao.sellerInquiryLookUp(conn,pvo,saleNo,memberNo);
+		List<ProductInquiryVo> list = dao.memberInquiryShow(conn,pvo,saleNo,memberNo);
 		// close 
 				
 		JDBCTemplate.close(conn);
 		
 		return list; 
 				
-		}		
+		}
+	// 상품문의 파일받기
+	public int memberInquiryWrite(ProductInquiryVo vo, ArrayList<String> strlist) throws Exception {
+		// conn
+		Connection conn = JDBCTemplate.getConnection();
+						
+		// dao
+		ProductInquiryDao dao = new ProductInquiryDao();
+		int result = dao.memberInquiryWrite(conn,vo);
+		
+		if(result ==1 && strlist.size()>0) {
+			result = dao.memberInquiryWritePicture(conn,strlist);
+		}
+				
+		//result
+		if(result ==1 ) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		// close 
+		JDBCTemplate.close(conn);
+		
+		return result; 	
 	}
-	
+}
 
 
 

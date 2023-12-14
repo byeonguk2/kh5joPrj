@@ -31,7 +31,7 @@
 		}
 		#main-area{
 		display: grid;
-		grid-template-columns: 80px 8fr;
+		grid-template-columns: 250px 8fr;
 		}
 		}
 		#headerer{
@@ -101,7 +101,7 @@
                             	</td> 
 							   </c:when>
 							   <c:otherwise>
-							      <td>포장지가 찢어져서 왔습니다.</td>
+							      <td>${vo.content}</td>
 							   </c:otherwise>
 							</c:choose>                		
                                                       
@@ -145,26 +145,23 @@
 										    </c:otherwise>
 										</c:choose>                                       
                                     </div>
-                                    <div class="user-iquery-qustion-answer-date">
-                                        <span>${vo.enrollDate}</span>
-                                        
-                                           <c:choose>
-										    <c:when test="${not empty vo.inquireReply}">
-										    	<span>
-                                      		<!-- 	 <div>
-                                            	<button class="change-btn" >수정</button><span>|</span><button class="delete-btn">삭제</button>
-                                        		</div> -->
-                                    			</span>	
-										    </c:when>
-										    <c:otherwise>
-										    	<span>
-		                                         <div></div>
-		                                        </span>
-										    </c:otherwise>
-										</c:choose> 
-                                        
-                                       
+                                   <c:choose>
+								    <c:when test="${not empty vo.replyEnrollDate}">
+								    <div class="user-iquery-qustion-answer-date">
+                                        <span>${vo.replyEnrollDate}</span>
                                     </div>
+                                    <div>
+								    </c:when>
+								    <c:otherwise>
+								   </c:otherwise>
+									</c:choose> 	    
+                                   
+                                   <div class="reivew-picture-box">
+				                     <c:forEach items="${vo.list}" var="list1">
+				                     <img src=${list1.fileSrc} alt="리뷰사진" class="review0">
+				                     </c:forEach>
+				                    </div>
+				                    
                                 </td>
                             </tr>
                          </c:forEach>
@@ -232,10 +229,10 @@ for(let i=0; i<answer1.length; ++i){
 
 
  function pageNext(){
-	 location.href = '/nongra/admin/member/manageInquiry?pno=' + <%=pvo.getCurrentPage()+1%> + '&searchType=' + '<%= searchMap.get("searchType") %>' + '&searchValue=' + '<%=searchMap.get("searchValue")%>';
+	 location.href = '/nongra/member/manageInquiry?pno=' + <%=pvo.getCurrentPage()+1%> + '&searchType=' + '<%= searchMap.get("searchType") %>' + '&searchValue=' + '<%=searchMap.get("searchValue")%>';
  };
 	 function pagePrevious(){
-		 location.href = '/nongra/admin/member/manageInquiry?pno=' + <%=pvo.getCurrentPage()-1%> + '&searchType=' + '<%= searchMap.get("searchType") %>' + '&searchValue=' + '<%=searchMap.get("searchValue")%>';  
+		 location.href = '/nongra/member/manageInquiry?pno=' + <%=pvo.getCurrentPage()-1%> + '&searchType=' + '<%= searchMap.get("searchType") %>' + '&searchValue=' + '<%=searchMap.get("searchValue")%>';  
 	 };
 			 
  <%} else{%>

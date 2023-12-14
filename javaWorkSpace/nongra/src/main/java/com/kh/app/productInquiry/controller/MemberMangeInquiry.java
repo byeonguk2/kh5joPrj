@@ -35,15 +35,13 @@ public class MemberMangeInquiry extends HttpServlet {
 					
 			
 			
-			if(req.getAttribute("DeleteYn") !=null) {
-				req.setAttribute("DeleteYn",req.getAttribute("DeleteYn") );	
-			}
+		
 				
 		try {
 			ProductInquiryService ps = new ProductInquiryService();
 			//data 
-//			int listCount = ps.selectInquiryCountByMemberNo(loginMember.getNo());
-			int listCount = ps.selectInquiryCountByMemberNo("1");
+			int listCount = ps.selectInquiryCountByMemberNo(loginMember.getNo());
+//			int listCount = ps.selectInquiryCountByMemberNo("1");
 			String currentPage_ =req.getParameter("pno");
 			if(currentPage_ ==null) {
 				currentPage_ ="1";
@@ -57,8 +55,8 @@ public class MemberMangeInquiry extends HttpServlet {
 			
 		
 			//service
-//			List<ProductInquiryVo> produtInquiryVoList  = ps.memberInquiryLookUp(pvo,loginMember.getNo());
-			List<ProductInquiryVo> produtInquiryVoList  = ps.memberInquiryLookUp(pvo,"1");
+			List<ProductInquiryVo> produtInquiryVoList  = ps.memberInquiryLookUp(pvo,loginMember.getNo());
+//			List<ProductInquiryVo> produtInquiryVoList  = ps.memberInquiryLookUp(pvo,"1");
 			
 			
 		
