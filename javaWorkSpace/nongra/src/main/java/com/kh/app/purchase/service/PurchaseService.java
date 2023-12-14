@@ -237,19 +237,38 @@ public class PurchaseService {
 		PurchaseOrderCheckoutVo orderCheckOutVo = new PurchaseOrderCheckoutVo();
 			//주문번호에 맞는 장바구니 목록
 		List<PurchaseCartVo> purchaseCartVoList = dao.endOrderCart(conn, orderNo);
-		
-		
+		orderCheckOutVo.setCartVoList(purchaseCartVoList);
 			//주문번호에 맞는 배송지 정보
-//		PurchaseAddressVo addressVo = dao.endOrderAddress(conn, orderNo);
-//		orderCheckOutVo.setAddressVo(addressVo);
-//		
-		//tx
+		PurchaseAddressVo addressVo = dao.endOrderAddress(conn, orderNo);
+		orderCheckOutVo.setAddressVo(addressVo);
+	
+		//close
+		JDBCTemplate.close(conn);
+		
+		return orderCheckOutVo;
+	}
 
+	//주문 환불
+	public int orderRefund(String orderNo, String refundReason) throws Exception {
+		//conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//dao
+		PurchaseDao dao = new PurchaseDao();
+			//환불상태변경
+		int result = dao.orderRefund(conn, orderNo, refundReason);
+		
+		//tx
+		if(result==1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
 		
 		//close
 		JDBCTemplate.close(conn);
 		
-		return null;
+		return result;
 	}
 
 }

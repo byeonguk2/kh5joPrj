@@ -1,0 +1,138 @@
+@charset "UTF-8";
+#cover{
+    width: 1050px;
+    height: 200px;
+    margin: auto;
+}
+main{
+	margin-top: 20px;
+}
+
+/* 주문서 txt  */
+.order-head{
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 900;
+}
+.head-text{
+    font-size: 20px;
+    font-weight: 900;
+    
+}
+
+/* 주문상품 */
+.order{
+    margin-top: 15px;
+    height: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgb(202, 202, 202);
+    margin-bottom: 20px;
+}
+
+.detailVerArea{
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+.detailVerArea > tr{
+    width: 100%;
+}
+
+.product-image-area{
+    width: 10%;
+}
+.product-name-area{
+    width: 40%;
+}
+.product-price-area{
+    width: 15%;
+}
+.product-option-area{
+    width: 15%;
+}
+.product-ea-area{
+    width: 10%;
+}
+.product-price{
+    width: 10%;
+}
+.product-price-area > div:nth-child(1){
+    text-decoration:line-through;
+    color: lightgrey;
+}
+.price{
+    text-align: right;
+    padding: 20px;
+}
+
+
+.product-image-area{
+    display: flex;
+    place-content: center center;
+    padding-left: 10px;
+    padding-left: 40px;
+}
+.product-image-area > img{
+    height: 150px;
+    width: 100px;
+    object-fit: contain;
+}
+
+.orderer-area{
+    margin-top: 40px;
+    width: 100%;
+    margin-bottom: 40px;
+}
+.orderer-area > div{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.orderer-area tr > td:nth-child(1){
+    width: 100px;
+}
+
+.delivery-area tr > td:nth-child(1){
+    width: 100px;
+}
+.head-text{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.hi > div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 100%;
+}
+#haha{
+    width: 200px;
+    height: 30px;
+    font-size: 15px;
+}
+h3{
+    padding-right: 10px;
+}
+.b{
+    display: none;
+}
+form{
+    border-top: 5px solid black;
+}
+#reBtn{
+    width: 200px;
+    height: 80px;
+    background-color: white;
+    border: 5px solid #75442767;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #754327;
+}
