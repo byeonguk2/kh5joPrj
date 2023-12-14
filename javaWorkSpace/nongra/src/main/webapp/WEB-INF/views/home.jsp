@@ -21,10 +21,6 @@ pageEncoding="UTF-8"%>
 		grid-template-columns: 1fr 1050px 1fr;
 	}
 
-	#shadow{
-		box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.07);
-	}
-
 	/* 슬라이드 */
 	#demo{
 		margin-bottom: 100px;
@@ -356,7 +352,7 @@ pageEncoding="UTF-8"%>
 				<img src="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/cc2f7b09-2c3a-4526-892e-3afc0ed79d61.png" alt="Los Angeles" class="d-block w-100">
 			</div>
 			<div class="carousel-item">
-				<img src="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/d302a6ae-1ea5-484c-9faa-be1e508f0ac7.jpg" alt="Chicago" class="d-block w-100">
+				<img src="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/7072317a-dbfa-4aa2-a83e-b873fc54be18.jpg" alt="Chicago" class="d-block w-100">
 			</div>
 			<div class="carousel-item">
 				<img src="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/eb7244c9-dd99-4153-8ce2-b87586e5b52e.jpg" alt="New York" class="d-block w-100">
@@ -409,41 +405,41 @@ pageEncoding="UTF-8"%>
 			</div>
 			<div class="item-area">
 				<div class="item">
-					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
+					<img src="/nongra/resources/upload/img/kkk.jpeg" alt="">
 					<button class="modal-open shopingCart-btn">
 						<!-- 카트 ajax -->
 						<span class="cart-icon"></span>
 						담기
 					</button>
-					<h3 class="item-guide">[델리치오] 호주산 목초육 안심 스테이크 250g (냉장)</h3>
-					<span class="price">20000원</span>
+					<h3 class="item-guide">[귤로장생] 고당도 원드래곤 감귤세트 800g </h3>
+					<span class="price">9000원</span>
 				</div>
 				<div class="item">
-					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
+					<img src="https://img-cf.kurly.com/cdn-cgi/image/width=360,height=468,fit=crop,quality=85/shop/data/goods/1581671553838l0.jpg" alt="">
 					<button class="modal-open shopingCart-btn">
 						<span class="cart-icon"></span>
 						담기
 					</button>
-					<h3 class="item-guide">[델리치오] 호주산 목초육 안심 스테이크 250g (냉장)</h3>
-					<span class="price">20000원</span>
+					<h3 class="item-guide">유명산지 현묵딸기😘 500g</h3>
+					<span class="price">12000</span>
 				</div>
 				<div class="item">
-					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
+					<img src="https://img-cf.kurly.com/cdn-cgi/image/width=360,height=468,fit=crop,quality=85/shop/data/goods/1636078029415l0.jpg" alt="">
 					<button class="shopingCart-btn">
 						<span class="cart-icon"></span>
 						"담기"
 					</button>
-					<h3 class="item-guide">[델리치오] 호주산 목초육 안심 스테이크 250g (냉장)</h3>
-					<span class="price">20000원</span>
+					<h3 class="item-guide">한입 꿀희성구마 1kg</h3>
+					<span class="price">5600원</span>
 				</div>
 				<div class="item">
-					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
+					<img src="https://product-image.kurly.com/product/image/e006210a-4338-4e93-b873-d14ec0c42b73.jpg" alt="">
 					<button class="shopingCart-btn">
 						<span class="cart-icon"></span>
 						담기
 					</button>
-					<h3 class="item-guide">[델리치오] 호주산 목초육 안심 스테이크 250g (냉장)</h3>
-					<span class="price">20000원</span>
+					<h3 class="item-guide">제주 병욱갈치 (왕특대) 700g (생물)</h3>
+					<span class="price">40600원</span>
 				</div>
 			</div>
 		</div> 
@@ -504,7 +500,7 @@ pageEncoding="UTF-8"%>
 			</div>
 			<div class="btn-area">
 				<button id="modal-close">취소</button>
-				<button class="cart-btn" onclick="insertCart()">장바구니</button>
+				<button class="cart-btn" onclick="return insertCart()">장바구니</button>
 			</div>
 	</div>	
 </div>
@@ -735,6 +731,11 @@ let minus = document.querySelectorAll(".minus");
 for (let i = 0; i < minus.length; ++i) {
 	minus[i].addEventListener('click', (node) => {
 
+		const quantity = document.querySelector(".quantity").innerText;
+		if(quantity <= 1){
+			return false;
+		}
+
 		const num = node.currentTarget.nextElementSibling;
 
 		console.log(num);
@@ -775,10 +776,12 @@ function insertCart() {
 	},
 	body: JSON.stringify(dataToSend) // 데이터를 JSON 문자열로 변환하여 전송
 	})
-	.then(resp => resp.json())
+	.then(resp => resp.text())
 	.then(data => {
 	// 서버에서 받은 응답 데이터를 처리
-	console.log(data);
+		alert(data);
+		const modal = document.querySelector(".modal");
+		modal.classList.toggle("modal-none", true);
 	})
 	.catch(error => {
 	// 에러 처리
