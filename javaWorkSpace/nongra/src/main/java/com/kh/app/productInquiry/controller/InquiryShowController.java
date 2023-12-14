@@ -25,7 +25,8 @@ public class InquiryShowController extends HttpServlet {
 			HttpSession session = req.getSession();
 			
 			MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
-			String salesNo = req.getParameter("salesNo");
+			String salesNo = req.getParameter("saleNo");
+			System.out.println("판매번호" +salesNo);
 			
 			
 		try {

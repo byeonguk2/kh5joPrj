@@ -34,7 +34,9 @@ public class MemberReviewWriteController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		HttpSession session = req.getSession();		
-		MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+	    MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+	    
+	    System.out.println("리뷰작성 로그인 멤버 " + loginMember);
 		String memberNo = loginMember.getNo();
 
 		String cbNo = req.getParameter("cbNo"); 
@@ -112,7 +114,7 @@ public class MemberReviewWriteController extends HttpServlet {
 		
 	} catch (Exception e) {
 		e.printStackTrace();
-	System.out.println("리뷰 멤버 페이지 에러");
+	System.out.println("리뷰 멤버 작성 에러");
 		session.setAttribute("alertMsg", "리뷰 작성실패");
 		resp.sendRedirect("/nongra/member/orderDetail");
 		}

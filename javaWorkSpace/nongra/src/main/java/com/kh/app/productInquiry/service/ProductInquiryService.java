@@ -74,13 +74,13 @@ public class ProductInquiryService {
 		
 	}
 	// 상품번호 기준으로 문의 개수 가져오기[전체]
-	public int selectInquiryCountByItemNo(String saleNo, String memberNo) throws Exception {
+	public int selectInquiryCountByItemNo(String memberNo, String salesNo) throws Exception {
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
 						
 		// dao
 		ProductInquiryDao dao = new ProductInquiryDao();
-		int cnt = dao.selectInquiryCountByItemNo(conn,saleNo,memberNo);
+		int cnt = dao.selectInquiryCountByItemNo(conn,memberNo,salesNo);
 		
 		// close
 		JDBCTemplate.close(conn);
@@ -88,13 +88,13 @@ public class ProductInquiryService {
 		return cnt;
 	}
 	// 상품 번호 기준으로 문의 리스트 가져오기[전체]
-	public List<ProductInquiryVo> memberInquiryShow(PageVo pvo, String saleNo, String memberNo) throws Exception {
+	public List<ProductInquiryVo> memberInquiryShow(PageVo pvo, String memberNo, String saleNo) throws Exception {
 		// conn
 		Connection conn = JDBCTemplate.getConnection();
 				
 		// dao
 		ProductInquiryDao dao = new ProductInquiryDao();
-		List<ProductInquiryVo> list = dao.memberInquiryShow(conn,pvo,saleNo,memberNo);
+		List<ProductInquiryVo> list = dao.memberInquiryShow(conn,pvo,memberNo,saleNo);
 		// close 
 				
 		JDBCTemplate.close(conn);

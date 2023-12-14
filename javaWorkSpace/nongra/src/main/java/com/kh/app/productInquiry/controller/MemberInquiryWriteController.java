@@ -43,9 +43,11 @@ public class MemberInquiryWriteController extends HttpServlet {
 		String memberNo = loginMember.getNo();
 
 		String salesNo = req.getParameter("salesNo"); 
+		System.out.println("상품번호 상품번호 "+salesNo);
 		String content = req.getParameter("content");
 		String secretYn = req.getParameter("secretYn");
 		ProductInquiryVo vo = new ProductInquiryVo();
+		
 		
 	try {
 			
@@ -65,8 +67,9 @@ public class MemberInquiryWriteController extends HttpServlet {
 		}
          
 		ArrayList<String> strlist = new ArrayList<String>();
-         
+        if(fileList.size()>0) { 
         for(Part part : fileList) {
+        	System.out.println("파일반복몇번?");
         	Part f = part;
         	
         	//읽기 준비
@@ -84,7 +87,8 @@ public class MemberInquiryWriteController extends HttpServlet {
   	      String ext = submittedFileName.substring(index);
   	      String fileName = sep +  randomName   + ext;
   	      String src = sep + "nongra" +sep +"resources" + sep + "upload" + sep + "img" + sep + "inquiry" + fileName;
-  	      System.out.println(src);
+  	      System.out.println("파일 소스작성");
+
   	      strlist.add(src);
   	    
   	      File target = new File(path + fileName);
@@ -100,6 +104,7 @@ public class MemberInquiryWriteController extends HttpServlet {
   	      in.close();
   	      out.close();
         }
+       }
         
       
 

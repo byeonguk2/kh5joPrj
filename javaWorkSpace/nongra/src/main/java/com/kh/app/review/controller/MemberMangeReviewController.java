@@ -59,8 +59,8 @@ public class MemberMangeReviewController extends HttpServlet{
 			
 		
 			//service
-//			List<ReviewVo> ReviewVoList = rs.memberReviewLookUp(pvo,loginMember.getNo());
-			List<ReviewVo> ReviewVoList = rs.memberReviewLookUp(pvo,"1");
+			List<ReviewVo> ReviewVoList = rs.memberReviewLookUp(pvo,loginMember.getNo());
+//			List<ReviewVo> ReviewVoList = rs.memberReviewLookUp(pvo,"1");
 			
 			for (ReviewVo reviewVo : ReviewVoList) {
 				System.out.println(reviewVo.getReviewFileVolist());
