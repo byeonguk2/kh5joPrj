@@ -40,9 +40,8 @@ public class MemberInquiryWriteController extends HttpServlet {
 		
 		HttpSession session = req.getSession();		
 		MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
-		System.out.println("로그인 멤버" + loginMember);
 		String memberNo = loginMember.getNo();
-//		String memberNo = "1";
+
 		String salesNo = req.getParameter("salesNo"); 
 		String content = req.getParameter("content");
 		String secretYn = req.getParameter("secretYn");

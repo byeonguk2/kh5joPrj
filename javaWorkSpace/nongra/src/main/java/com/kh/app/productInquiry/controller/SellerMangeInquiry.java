@@ -35,8 +35,7 @@ public class SellerMangeInquiry extends HttpServlet {
 				
 				ProductInquiryService ps = new ProductInquiryService();
 				//data 
-//				int listCount = ps.selectInquiryCountBySellerNo(loginMember.getNo());
-				int listCount = ps.selectInquiryCountBySellerNo("1");
+				int listCount = ps.selectInquiryCountBySellerNo(sellerVo.getSellerNo());
 				String currentPage_ =req.getParameter("pno");
 				if(currentPage_ ==null) {
 					currentPage_ ="1";
@@ -50,8 +49,7 @@ public class SellerMangeInquiry extends HttpServlet {
 				
 			
 				//service
-//				List<ProductInquiryVo> produtInquiryVoList  = ps.sellerInquiryLookUp(pvo,loginMember.getNo());
-				List<ProductInquiryVo> produtInquiryVoList  = ps.sellerInquiryLookUp(pvo,"1");
+				List<ProductInquiryVo> produtInquiryVoList  = ps.sellerInquiryLookUp(pvo,sellerVo.getSellerNo());
 				
 				
 				// result (==view)

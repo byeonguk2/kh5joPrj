@@ -43,8 +43,8 @@ public class MemberMangeReviewController extends HttpServlet{
 			
 			ReviewService rs = new ReviewService();
 			//data 
-//			int listCount = rs.selectReviewCount(loginMember.getNo());
-			int listCount = rs.selectReviewCountByMemberNo("1");
+		    int listCount = rs.selectReviewCountByMemberNo(loginMember.getNo());
+			//int listCount = rs.selectReviewCountByMemberNo("1");
 			String currentPage_ =req.getParameter("pno");
 			if(currentPage_ ==null) {
 				currentPage_ ="1";

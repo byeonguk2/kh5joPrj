@@ -33,10 +33,10 @@ public class SellerManageReviewController extends HttpServlet {
 			
 			ReviewService rs = new ReviewService();
 			//data 
-//			int listCount = rs.selectSellerReviewCount(sellerVo.getSellerNo());
+
 			
-//			int listCount = rs.selectReviewCountBySellerNo(sellerVo.getSellerNo());
-			int listCount = rs.selectReviewCountBySellerNo("1");
+			int listCount = rs.selectReviewCountBySellerNo(sellerVo.getSellerNo());
+			
 			String currentPage_ =req.getParameter("pno");
 			if(currentPage_ == null) {
 				currentPage_ ="1";

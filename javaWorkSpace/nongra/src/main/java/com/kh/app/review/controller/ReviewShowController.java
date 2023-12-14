@@ -35,8 +35,7 @@ public class ReviewShowController extends HttpServlet {
 			ReviewService rs = new ReviewService();
 			//data 
 			
-			int listCount =rs.selectReviewCountByItemNo("1",loginMember.getNo());
-//			int listCount = rs.selectReviewCountByItemNo("1","1");
+			int listCount =rs.selectReviewCountByItemNo(salesNo,loginMember.getNo());
 			String currentPage_ =req.getParameter("pno");
 			if(currentPage_ ==null) {
 				currentPage_ ="1";
@@ -47,8 +46,7 @@ public class ReviewShowController extends HttpServlet {
 			PageVo pvo =  new PageVo(listCount, currentPage, pageLimit, boardLimit);
 			
 			//service
-//			 List<ReviewVo> ReviewVoList = rs.memberReviewShow(pvo,"1","1");
-			List<ReviewVo> ReviewVoList = rs.memberReviewShow(pvo,"1",loginMember.getNo());
+			List<ReviewVo> ReviewVoList = rs.memberReviewShow(pvo,salesNo,loginMember.getNo());
 			
 			
 			// result (==view)

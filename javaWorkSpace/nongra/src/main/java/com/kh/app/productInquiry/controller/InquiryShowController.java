@@ -45,7 +45,7 @@ public class InquiryShowController extends HttpServlet {
 			
 			//service
 			 List<ProductInquiryVo> produtInquiryVoList = ps.memberInquiryShow(pvo,loginMember.getNo(),salesNo);
-//			List<ReviewVo> ReviewVoList = rs.memberReviewShow(pvo,"1",loginMember.getNo());
+
 			
 			
 			// result (==view)

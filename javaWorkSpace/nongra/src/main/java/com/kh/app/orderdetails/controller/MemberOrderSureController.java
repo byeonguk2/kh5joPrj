@@ -23,8 +23,7 @@ public class MemberOrderSureController extends HttpServlet{
 			
 		 HttpSession session = req.getSession();
          MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
-         String ohNo = "21"; 
-//        		 (String) req.getParameter("ohNo");
+         String ohNo = req.getParameter("ohNo");
         
                               
      try {
@@ -32,7 +31,6 @@ public class MemberOrderSureController extends HttpServlet{
     	 OrderDetailService os = new OrderDetailService();
 
          //service
-//    	 int result = os.memberorderSure(ohNo);
          int result = os.memberorderSure(ohNo);
          
 //          result (==view)

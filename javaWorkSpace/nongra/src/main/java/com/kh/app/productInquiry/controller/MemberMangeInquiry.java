@@ -56,7 +56,7 @@ public class MemberMangeInquiry extends HttpServlet {
 		
 			//service
 			List<ProductInquiryVo> produtInquiryVoList  = ps.memberInquiryLookUp(pvo,loginMember.getNo());
-//			List<ProductInquiryVo> produtInquiryVoList  = ps.memberInquiryLookUp(pvo,"1");
+
 			
 			
 		
