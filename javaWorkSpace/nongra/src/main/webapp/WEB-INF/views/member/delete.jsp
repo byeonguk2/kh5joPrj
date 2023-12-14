@@ -75,8 +75,9 @@
                 <div class="btn">
                     <button type="submit" style='cursor:pointer' class="button1">탈퇴</button>
                     <a href="/nongra/home" class="button2">탈퇴취소</a>
-
+					
                 </div>
+                
             <input type=hidden name="no" value="<%=loginMember.getNo()%>">
             </div>
             </form>
