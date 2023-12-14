@@ -126,6 +126,8 @@ public class PurchaseService {
 		String orderNo = dao.takeCartNo(conn, loginMember);
 			//장바구니 END_YN 'Y'로 변경
 		int updateResult = dao.cartEndYnUpdate(conn, orderNo);
+			//새장바구니 만들기
+		int newCartResult = dao.makeNewCart(conn, loginMember);
 			//주문 정보 입력
 		int orderInformationResult = dao.putOrderInformation(conn, addressNo, totalPrice, request);
 			//방금 넣은 주문 정보 번호 가져오기
@@ -142,7 +144,7 @@ public class PurchaseService {
 		session.setAttribute("loginMember",loginMember );
 		
 		//tx
-		if(orderNo != null && updateResult == 1 && orderInformationResult ==1 && orderInformationNo != null && orderHistoryResult == 1 && balanceResult == 1 && balancePoint != null) {
+		if(orderNo != null && updateResult == 1 && orderInformationResult ==1 && orderInformationNo != null && orderHistoryResult == 1 && balanceResult == 1 && balancePoint != null &&newCartResult==1) {
 			JDBCTemplate.commit(conn);
 		}else {
 			JDBCTemplate.rollback(conn);
