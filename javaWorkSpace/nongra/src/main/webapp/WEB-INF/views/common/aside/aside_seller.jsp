@@ -61,16 +61,16 @@
         </div>   
         <div class="menu"><a href="/nongra/seller/note/send">보낸쪽지</a></div>
         <div class="menu"><a href="/nongra/seller/note/recive">받은쪽지</a></div>
-        <div class="aside-item sitem10">
+        <a href="/nongra/contact/notice" class="aside-item sitem10">
             <div class="side-icon" id="icon-book"></div>
             <label>공지사항</label>
             <div class="down_icon"></div>
-        </div>    
-        <div class="aside-item sitem11">
+        </a>    
+        <a href="/nongra/contact/faq" class="aside-item sitem11">
             <div class="side-icon" id="icon-phone"></div>
             <label>고객센터</label>
             <div class="down_icon"></div>
-        </div>     
+        </a>     
         <div class="aside-item aside-last-item">
             <div>
                 <div><strong>고객센터 문의</strong></div>

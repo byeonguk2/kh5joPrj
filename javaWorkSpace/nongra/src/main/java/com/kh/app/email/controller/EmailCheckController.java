@@ -112,7 +112,7 @@ public class EmailCheckController extends HttpServlet{
 	         if(sendOk) {
 	        	 Gson gson = new Gson();
 	        	 alertMsg = "이메일이 발송 되었습니다. "
-	        	 		+ "인증번호 유효시간은 10분입니다.";
+	        	 		+ "인증번호 유효시간은 5분입니다.";
 	        	 String[] success = {alertMsg};
 	        	 String successJson = gson.toJson(success);
 	        	 HttpSession servletSession = req.getSession();

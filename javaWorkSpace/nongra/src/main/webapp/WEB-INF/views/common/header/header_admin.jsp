@@ -34,10 +34,10 @@
     <!-- 관리자 페이지 네비바 -->
     <div class="nav-area">
 		<nav class="nav-main" id="nav-main">
-	        <a href="/nongra/admin/select" class="chagePage pix">회원관리</a>
+	        <a href="/nongra/admin/findAllMembers" class="chagePage pix">회원관리</a>
 	        <a href="" class="chagePage">상품관리</a>
-	        <a href="" class="chagePage">통계관리</a>
-	        <a href="" class="chagePage">게시판관리</a>
+	        <a href="/nongra/admin/manageReview" class="chagePage">리뷰관리</a>
+	        <a href="/nongra/admin/notice/manage " class="chagePage">게시판관리</a>
 	        <a href="" class="chagePage">주문관리</a>
 	        <a href="" class="chagePage pix">카테고리 관리</a>
 		</nav>

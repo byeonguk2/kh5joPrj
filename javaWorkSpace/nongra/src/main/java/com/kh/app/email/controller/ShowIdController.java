@@ -13,7 +13,7 @@ import com.google.gson.JsonObject;
 import com.kh.app.email.service.EmailService;
 
 @WebServlet("/email/selectId")
-public class ShowIdController extends HttpServlet {
+public class showIdController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

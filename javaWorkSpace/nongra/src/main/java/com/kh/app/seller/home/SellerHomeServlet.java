@@ -32,7 +32,7 @@ public class SellerHomeServlet extends HttpServlet {
 		}catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("로그인 실패");
-			resp.sendRedirect("/nongra/loginS");
+			resp.sendRedirect("/nongra/seller/login");
 		}
 		
 		

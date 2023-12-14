@@ -168,11 +168,11 @@
 									</tr>
 									<tr>
 										<td class="title">변경할 비밀번호: </td>
-										<td><input name="pwd" type="text"></td>
+										<td><input name="pwd" type="password"></td>
 									</tr>
 									<tr>
 										<td class="title">비밀번호 확인: </td>
-										<td><input name="pwd_re" type="text"></td>
+										<td><input name="pwd_re" type="password"></td>
 									</tr>
                             	</tbody>
                             </table>
