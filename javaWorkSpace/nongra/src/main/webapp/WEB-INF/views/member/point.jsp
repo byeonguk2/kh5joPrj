@@ -29,13 +29,12 @@
                 </div>
                 <div id="box">
                     <div id="img_coin3">
-                        <span id="balance3">충전 포인트</span>
+                        <span id="balance3">최근 충전 포인트</span>
                         <span id="balance4" name="chargePoint"><%=pv.getChargePoint() %></span>
                     </div>
                     <div id="img_coin4">
-                        <span id="balance5">사용 포인트</span>
+                        <span id="balance5">최근 사용 포인트</span>
                         <span id="balance6"name="usePoint"><%=-pv.getUsePoint() %></span>
-
                     </div>
                     
                     <button style='cursor:pointer;' type="button" class="btn" onclick="a01();">충전</button>

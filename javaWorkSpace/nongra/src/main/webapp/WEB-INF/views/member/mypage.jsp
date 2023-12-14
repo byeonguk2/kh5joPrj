@@ -163,8 +163,8 @@ body {
 
 				</div>
 				
-				<c:forEach items="${ReviewVoList}" var="vo"  >
 				<div id="box3">
+				<c:forEach items="${ReviewVoList}" var="vo"  >
 					<div id="img_box">
 						<a href=""><img src="/nongra${vo.thumbnail}" alt="상품사진"></a>
 					</div>
@@ -185,8 +185,9 @@ body {
 							alt="썸네일사진원본파일명"> 
 					</div> --%>
 
-				</div>
 				</c:forEach>
+				</div>
+				<br><br><br><br><br><br><br><br>
 			</div>
 
 
