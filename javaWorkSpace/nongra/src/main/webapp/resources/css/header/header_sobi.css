@@ -145,7 +145,7 @@ nav > a:nth-child(1) {
 	/* animation: nav-down 0.1s ease; */
 }
 
-ul {
+#ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -153,7 +153,7 @@ ul {
   background-color: #f1f1f1;
 }
 
-li a {
+#li a {
   display: block;
   color: #000;
   padding: 8px 16px;
@@ -161,7 +161,7 @@ li a {
 }
 
 /* 마우스 호버시 색깔 변화 */
-li a:hover {
+#li a:hover {
   background-color: #555;
   color: white;
 }
