@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.kh.app.admin.service.AdminService;
 import com.kh.app.admin.vo.AdminVo;
 
-@WebServlet("/admin/login")
+@WebServlet("/loginA")
 public class AdminLoginController extends HttpServlet{
 
 	@Override
@@ -27,12 +27,12 @@ public class AdminLoginController extends HttpServlet{
 		HttpSession session = req.getSession();
 		try {
 			String id = req.getParameter("id");
-			String password = req.getParameter("password");
-			System.out.println(id+password);
+			String pwd = req.getParameter("pwd");
+			System.out.println(id+pwd);
 			
 			AdminVo vo = new AdminVo();
 			vo.setAdminId(id);
-			vo.setAdminPwd(password);
+			vo.setAdminPwd(pwd);
 			
 			AdminService adminService = new AdminService();
 			AdminVo loginAdmin = adminService.login(vo);
@@ -42,13 +42,14 @@ public class AdminLoginController extends HttpServlet{
 			}
 			
 			req.getSession().setAttribute("loginAdmin", loginAdmin);
-			req.getSession().setAttribute("arlet", "로그인 성공!");
+			req.getSession().setAttribute("alertMsg", "로그인 성공!");
 			
-			resp.sendRedirect("/nongra/admin/select");
+			resp.sendRedirect("/nongra/admin/findAllMembers");
 			
 		}catch (Exception e) {
+			e.printStackTrace();
 			session.setAttribute("alertMsg", "로그인이 실패했습니다.");
-			resp.sendRedirect("/nongra/admin/select");
+			resp.sendRedirect("/nongra/loginA");
 		}
 	}
 	

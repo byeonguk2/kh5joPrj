@@ -894,7 +894,7 @@ public class AdminDao {
 
 	public AdminVo login(Connection conn, AdminVo vo) throws Exception {
 		
-		String sql = "SELECT * FROM ADMIN WHERE ID = ? AND PWD = ?";
+		String sql = "SELECT * FROM MANAGER WHERE ID = ? AND PWD = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, vo.getAdminId());
 		pstmt.setString(2, vo.getAdminPwd());
@@ -906,7 +906,7 @@ public class AdminDao {
 			loginAdmin = new AdminVo(); 
 			loginAdmin.setManagerNo(rs.getString("MANAGER_NO"));
 			loginAdmin.setAdminId(rs.getString("ID"));
-			loginAdmin.setAdminPwd(rs.getString("PAW"));
+			loginAdmin.setAdminPwd(rs.getString("PWD"));
 			loginAdmin.setAdminNick(rs.getString("NICK"));
 			
 		}
