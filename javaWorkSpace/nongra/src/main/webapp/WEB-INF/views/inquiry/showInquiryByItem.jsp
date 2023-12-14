@@ -19,7 +19,7 @@
 <title>Insert title here</title>
 
 	<link rel="stylesheet" href="/nongra/resources/css/common/cssReset.css">
-	<link rel="stylesheet" href="/nongra/resources/css/inquiry/memberManageInquiry.css">
+	<link rel="stylesheet" href="/nongra/resources/css/inquiry/showInquiryByItem.css">
 
 <style>
 		body{
@@ -31,7 +31,7 @@
 		}
 		#main-area{
 		display: grid;
-		grid-template-columns: 80px 8fr;
+		grid-template-columns: 250px 8fr;
 		}
 		}
 		#headerer{
@@ -54,7 +54,7 @@
 		<%@ include file="/WEB-INF/views/common/aside/aside_sobi_main.jsp" %>
 			
 			
-			
+			<c:set var="votitle" value="${produtInquiryVoList[0]}"/>
 			
 			<div id="headerer">
 			
@@ -62,7 +62,9 @@
   <section class="product-inquery-section" >  
     <div class="product-inquery-header">
         <div class="product-inquery-title-box">
-            <h2>상품문의 관리</h2>
+            <h2>상품문의</h2>  <button class="product-inquery-btn">
+                <span>문의하기</span>
+            </button>
         </div>
         <ol class="product-inquery-annunce-ol">
             <li class="product-inquery-annunce-li">-상품에 대한 문의글 남기는 공간입니다.해당 게시판의 성격과 다른 글은 사전동의 없이 삭제 될 수 있습니다. </li>
@@ -101,7 +103,7 @@
                             	</td> 
 							   </c:when>
 							   <c:otherwise>
-							      <td>포장지가 찢어져서 왔습니다.</td>
+							      <td>${vo.content}</td>
 							   </c:otherwise>
 							</c:choose>                		
                                                       
@@ -146,25 +148,22 @@
 										</c:choose>                                       
                                     </div>
                                     <div class="user-iquery-qustion-answer-date">
-                                        <span>${vo.enrollDate}</span>
-                                        
-                                           <c:choose>
-										    <c:when test="${not empty vo.inquireReply}">
-										    	<span>
-                                      		<!-- 	 <div>
-                                            	<button class="change-btn" >수정</button><span>|</span><button class="delete-btn">삭제</button>
-                                        		</div> -->
-                                    			</span>	
-										    </c:when>
-										    <c:otherwise>
-										    	<span>
-		                                         <div></div>
-		                                        </span>
-										    </c:otherwise>
-										</c:choose> 
-                                        
-                                       
+                                        <span>${vo.replyEnrollDate}</span>
                                     </div>
+                                    <c:choose>
+								    <c:when test="${not empty vo.replyEnrollDate}">
+								    <div class="user-iquery-qustion-answer-date">
+                                        <span>${vo.replyEnrollDate}</span>
+                                    </div>
+								    </c:when>
+								    <c:otherwise>
+								   </c:otherwise>
+									</c:choose> 	    
+                                   <div class="reivew-picture-box">
+				                     <c:forEach items="${vo.list}" var="list1">
+				                     <img src=${list1.fileSrc} alt="리뷰사진" class="review0">
+				                     </c:forEach>
+				                    </div>
                                 </td>
                             </tr>
                          </c:forEach>
@@ -203,9 +202,67 @@
 			
 			</div>
 	</div>
+	
+	
 
 
 </body>
+
+<!-- 모달 상품 문의창  -->
+<div class="modal-review modal-review-hidden">
+    <div class="dialog-review">
+        <div class="dialog-review-header">
+            <h2>상품 문의</h2> <label for="review-cancel">X</label>
+        </div>
+        <div class="dialog-review-img-box">
+            
+            <span>${votitle.itemtitle}</span>
+        </div>
+
+        
+
+        <form action="/nongra/member/InquiryWrite"  method="post" enctype="multipart/form-data" >
+            <div class="dialog-review-content-box">
+                <div>내용</div>
+                
+                <textarea id="contents" placeholder="상품 특성에 맞는 문의를 작성해주세요.(20자 이상)" inputmode="text" aria-label="textarea-message" name="content" class="css-5etceh e1tjt2bn1"></textarea>
+
+            </div>
+
+            <div>
+    			<div>        
+	            <div>
+                <div class="dialog-review-content-picture-input-box">
+                    <h3>사진 첨부</h3>
+                    <div>
+                        <input id="my-input" type="file" name='f'  multiple   >
+                       <!--  <button class="dialog-review-content-picture-input-btn" onclick="onClickUpload()" type="button"><img src="" alt=""></button> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialog-review-caution ">
+                <label class="dialog-review-caution-label"></label>
+                <ul class="dialog-review-caution-ul">
+                    <li class="dialog-review-caution-li">사진은 최대 8장까지, 30MB 이하의 이미지만 업로드가 가능합니다.</li>
+                    <li class="dialog-review-caution-li">상품과 무관하거나 반복되는 동일 단어/문장을 사용하여 후기로 볼 수 없는 글, 판매자와 고객의 후기 이용을 방해한다고 판단되는 경우, 배송 박스, 구매 상품을 구분할 수 없는 전체 사진, 화면캡쳐, 음란 및 부적절하거나 불법적인 내용은 통보없이 삭제 될 수 있습니다.</li>
+                    <li class="dialog-review-caution-li">전화번호, 이메일, 주소, 계좌번호 등 개인정보가 노출되지 않도록 주의해주세요.</li>
+                </ul>
+            </div>
+            <div class="dialog-review-caution-secret">
+                <label class="dialog-review-caution-label"></label>
+                <input type="checkbox" name="secretYn" value='Y'>
+                <span>문의 비밀글</span>
+            </div>
+
+            <div class="dialog-review-button-end-box">
+                <button id="review-cancel" type="button" >취소</button>
+                <button id="review-regiseter" name="salesNo" value="${votitle.salesNo}">등록</button>
+            </div>
+        </form> 
+    </div>
+
+
 </html>
 
 <script>
@@ -226,6 +283,13 @@ for(let i=0; i<answer1.length; ++i){
 } )      
 }
 
+const ser =  document.querySelectorAll(".secreet-text")
+
+	for(let i=0; i<ser.length; ++i){
+		ser[i].addEventListener('click',()=>{
+			alert("비밀글 입니다")
+		})
+	}
 
 /*페이징 처리  */
 <% if(searchMap !=null){  %>
@@ -243,15 +307,41 @@ for(let i=0; i<answer1.length; ++i){
  function pageNext(){
 	 
  
-	 	location.href = '/nongra/member/manageInquiry?pno=' + <%=pvo.getCurrentPage()+1%>
+	 	location.href = '/nongra/member/showInquiryByItem?pno=' + <%=pvo.getCurrentPage()+1%>
        
     }
 
     function pagePrevious(){
-    	location.href = '/nongra/member/manageInquiry?pno=' + <%=pvo.getCurrentPage()-1%>
+    	location.href = '/nongra/member/showInquiryByItem?pno=' + <%=pvo.getCurrentPage()-1%>
     	     
        }
  <%}%>
+ 
+ // 모달 후기작성 버튼
+ const reviewModalOpenButton = document.querySelectorAll(".product-inquery-btn")
+  
+ const reviewModalCloseButton = document.querySelector("#review-cancel")
+
+ const reivewModalSureButton1 = document.querySelector("#review-regiseter")
+
+ const reviewModal = document.querySelector(".modal-review")
+
+ for(let i=0; i<reviewModalOpenButton.length; i++){
+      reviewModalOpenButton[i].addEventListener('click', () => {
+          
+          reviewModal.classList.remove('modal-review-hidden');
+  });
+
+  }
+
+  reviewModalCloseButton.addEventListener('click', () => {
+      reviewModal.classList.add('modal-review-hidden');
+  });
+
+  reivewModalSureButton1.addEventListener('click', () => {
+      reviewModal.classList.add('modal-review-hidden');
+
+  });
 
 
 </script>

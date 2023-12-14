@@ -107,7 +107,11 @@ public class ProductInquiryVo {
 		return secretYn;
 	}
 	public void setSecretYn(String secretYn) {
-		this.secretYn = secretYn;
+		if(secretYn == null) {
+			this.secretYn ="N";
+		}else {
+			this.secretYn =secretYn;
+		}
 	}
 	public String getSellerNo() {
 		return sellerNo;

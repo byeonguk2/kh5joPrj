@@ -508,6 +508,23 @@
     color:white;
 }
 
+.reivew-picture-box{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 3px;
+    overflow: auto hidden;
+    padding: 15px 0px 2px;
+}
+
+
+.review0{
+   width: 93px;
+   height: 93px;
+   object-fit: cover
+}
+
+
+
 
 
 

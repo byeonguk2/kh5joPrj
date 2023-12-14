@@ -31,7 +31,7 @@
 		}
 		#main-area{
 		display: grid;
-		grid-template-columns: 230px 8fr;
+		grid-template-columns: 250px 8fr;
 		
 		}
 		#headerer{
@@ -137,26 +137,34 @@
 										    </c:otherwise>
 										</c:choose>                                       
                                     </div>
-                                    <div class="user-iquery-qustion-answer-date">
-                                        <span>${vo.enrollDate}</span>
-                                        
-                                           <c:choose>
-										    <c:when test="${not empty vo.inquireReply}">
-										    	<span>
-                                      		<!-- 	 <div>
-                                            	<button class="change-btn" >수정</button><span>|</span><button class="delete-btn">삭제</button>
-                                        		</div> -->
-                                    			</span>	
-										    </c:when>
-										    <c:otherwise>
-										    	<span>
-		                                         <div></div>
-		                                        </span>
-										    </c:otherwise>
-										</c:choose> 
-                                        
-                                       
+                                    <c:choose>
+								    <c:when test="${not empty vo.replyEnrollDate}">
+								    <div class="user-iquery-qustion-answer-date">
+                                        <span>${vo.replyEnrollDate}</span>
                                     </div>
+								    </c:when>
+								    <c:otherwise>
+								   </c:otherwise>
+									</c:choose> 	    
+                                  <div class ="review-btn-img-box">
+                                   <div class="reivew-picture-box">
+				                     <c:forEach items="${vo.list}" var="list1">
+				                     <img src=${list1.fileSrc} alt="리뷰사진" class="review0">
+				                     </c:forEach>
+				                  </div>
+				                  
+				                  <c:choose>
+				                  <c:when test="${not empty vo.inquireReply}">				                  
+				                  </c:when>
+				                  <c:otherwise>
+				                    <div>
+				                    	<button onclick >답변등록</button>
+				                    </div>
+				                  </c:otherwise>
+				                  </c:choose>
+				                  </div>
+				                    
+                                    
                                 </td>
                             </tr>
                          </c:forEach>
@@ -221,11 +229,11 @@ for(let i=0; i<answer1.length; ++i){
 <% if(searchMap !=null){  %>
 
 
- function pageNext(){
-	 location.href = '/nongra/admin/member/manageInquiry?pno=' + <%=pvo.getCurrentPage()+1%> + '&searchType=' + '<%= searchMap.get("searchType") %>' + '&searchValue=' + '<%=searchMap.get("searchValue")%>';
- };
+function pageNext(){
+	 location.href = '/nongra/admin/seller/manageInquiry?pno=' + <%=pvo.getCurrentPage()+1%> + '&searchType=' + '<%= searchMap.get("searchType") %>' + '&searchValue=' + '<%=searchMap.get("searchValue")%>';
+};
 	 function pagePrevious(){
-		 location.href = '/nongra/admin/member/manageInquiry?pno=' + <%=pvo.getCurrentPage()-1%> + '&searchType=' + '<%= searchMap.get("searchType") %>' + '&searchValue=' + '<%=searchMap.get("searchValue")%>';  
+		 location.href = '/nongra/admin/seller/manageInquiry?pno=' + <%=pvo.getCurrentPage()-1%> + '&searchType=' + '<%= searchMap.get("searchType") %>' + '&searchValue=' + '<%=searchMap.get("searchValue")%>';  
 	 };
 			 
  <%} else{%>
@@ -233,12 +241,12 @@ for(let i=0; i<answer1.length; ++i){
  function pageNext(){
 	 
  
-	 	location.href = '/nongra/member/manageInquiry?pno=' + <%=pvo.getCurrentPage()+1%>
+	 	location.href = '/nongra/seller/manageInquiry?pno=' + <%=pvo.getCurrentPage()+1%>
        
     }
 
     function pagePrevious(){
-    	location.href = '/nongra/member/manageInquiry?pno=' + <%=pvo.getCurrentPage()-1%>
+    	location.href = '/nongra/seller/manageInquiry?pno=' + <%=pvo.getCurrentPage()-1%>
     	     
        }
  <%}%>

@@ -19,7 +19,7 @@ import com.kh.app.productInquiry.vo.ProductInquiryVo;
 public class InquiryShowController extends HttpServlet {
 	
 	
-	//	상품기준 리뷰 조회
+	//	인콰이어리조회
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			HttpSession session = req.getSession();
@@ -32,8 +32,8 @@ public class InquiryShowController extends HttpServlet {
 			
 			ProductInquiryService ps = new ProductInquiryService();
 			//data 
-			int listCount =ps.selectInquiryCountByItemNo("1","1");
-			//	int listCount =ps.selectInquiryCountByMemberNo("1",loginMember.getNo());
+			int listCount =ps.selectInquiryCountByItemNo(loginMember.getNo(),salesNo);
+			
 			String currentPage_ =req.getParameter("pno");
 			if(currentPage_ ==null) {
 				currentPage_ ="1";
@@ -44,7 +44,7 @@ public class InquiryShowController extends HttpServlet {
 			PageVo pvo =  new PageVo(listCount, currentPage, pageLimit, boardLimit);
 			
 			//service
-			 List<ProductInquiryVo> produtInquiryVoList = ps.memberInquiryShow(pvo,"1","1");
+			 List<ProductInquiryVo> produtInquiryVoList = ps.memberInquiryShow(pvo,loginMember.getNo(),salesNo);
 //			List<ReviewVo> ReviewVoList = rs.memberReviewShow(pvo,"1",loginMember.getNo());
 			
 			
@@ -53,7 +53,7 @@ public class InquiryShowController extends HttpServlet {
 			req.setAttribute("produtInquiryVoList", produtInquiryVoList);
 			req.setAttribute("pvo", pvo);
 			resp.getWriter().write("성공");
-			req.getRequestDispatcher("/WEB-INF/views/review/showReviewByItem.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/inquiry/showInquiryByItem.jsp").forward(req, resp);
 			
 			
 		} catch (Exception e) {

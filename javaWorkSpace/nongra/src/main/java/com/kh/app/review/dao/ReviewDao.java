@@ -16,6 +16,7 @@ import java.util.Map;
 import javax.naming.spi.DirStateFactory.Result;
 
 import com.kh.app.page.vo.PageVo;
+import com.kh.app.productInquiry.vo.ProductInquiryVo;
 import com.kh.app.review.vo.ReviewFileVo;
 import com.kh.app.review.vo.ReviewVo;
 import com.kh.app.util.db.JDBCTemplate;
@@ -664,13 +665,9 @@ public class ReviewDao {
 
 		//close
 		JDBCTemplate.close(pstmt);
-		
-	
-
-		return result;}
-		
-		
-	}			
+		return result;
+		}
+}
 						
 
 

@@ -274,5 +274,25 @@ public class ReviewService {
 				JDBCTemplate.close(conn);
 				
 				return result;
-	}
+			}
+
+		/*
+		 * // 판매자 리뷰 작성 public int replyWrite() {
+		 * 
+		 * // conn Connection conn = JDBCTemplate.getConnection();
+		 * 
+		 * // dao ReviewDao dao = new ReviewDao(); int result = dao.reviewLike(conn,vo);
+		 * 
+		 * if(result ==1 ) { JDBCTemplate.commit(conn); }else {
+		 * JDBCTemplate.rollback(conn); }
+		 * 
+		 * // close
+		 * 
+		 * JDBCTemplate.close(conn);
+		 * 
+		 * return result;
+		 * 
+		 * }
+		 */
 }
+		 
