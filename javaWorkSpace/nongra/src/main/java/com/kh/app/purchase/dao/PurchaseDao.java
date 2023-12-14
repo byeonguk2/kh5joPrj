@@ -455,6 +455,20 @@ public class PurchaseDao {
 		return result;
 	}
 
+	//새로운 장바구니 생성
+	public int makeNewCart(Connection conn, MemberVo loginMember) throws Exception {
+		//sql
+		String sql = "INSERT INTO CART(NO, MEMBER_NO) VALUES(SEQ_CART.NEXTVAL, ?)";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, loginMember.getNo());
+		int result = pstmt.executeUpdate();
+		
+		//close
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
+
 
 
 
