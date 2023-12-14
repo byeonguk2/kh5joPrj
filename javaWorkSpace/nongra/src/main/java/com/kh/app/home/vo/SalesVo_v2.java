@@ -9,6 +9,7 @@ public class SalesVo_v2 {
 	private String title; // 제목
 	private String thumbNail; // 썸네일
 	private String price; // 가격
+	private String quantity;
 	
 	// rs에서 꺼낸 데이터를 임시로 담기 위해서만 사용
 	private String optionNo; // 옵션번호 
@@ -49,6 +50,30 @@ public class SalesVo_v2 {
 		this.refNo = refNo;
 		this.optionPrice = optionPrice;
 		this.optionName = optionName;
+	}
+
+	public SalesVo_v2(String salesNo, String title, String thumbNail, String price, String quantity, String optionNo,
+			String refNo, String optionPrice, String optionName, List<OptionVo_v2> optionVo, OptionVo_v2 opVo) {
+		super();
+		this.salesNo = salesNo;
+		this.title = title;
+		this.thumbNail = thumbNail;
+		this.price = price;
+		this.quantity = quantity;
+		this.optionNo = optionNo;
+		this.refNo = refNo;
+		this.optionPrice = optionPrice;
+		this.optionName = optionName;
+		OptionVo = optionVo;
+		this.opVo = opVo;
+	}
+
+	public String getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
 	}
 
 	public String getSalesNo() {
@@ -134,8 +159,10 @@ public class SalesVo_v2 {
 	@Override
 	public String toString() {
 		return "SalesVo_v2 [salesNo=" + salesNo + ", title=" + title + ", thumbNail=" + thumbNail + ", price=" + price
-				+ ", optionNo=" + optionNo + ", refNo=" + refNo + ", optionPrice=" + optionPrice + ", optionName="
-				+ optionName + ", OptionVo=" + OptionVo + ", opVo=" + opVo + "]";
+				+ ", quantity=" + quantity + ", optionNo=" + optionNo + ", refNo=" + refNo + ", optionPrice="
+				+ optionPrice + ", optionName=" + optionName + ", OptionVo=" + OptionVo + ", opVo=" + opVo + "]";
 	}
+
+	
 	
 }
