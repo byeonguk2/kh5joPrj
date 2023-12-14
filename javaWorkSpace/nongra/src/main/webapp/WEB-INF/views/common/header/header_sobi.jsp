@@ -63,9 +63,9 @@
 	<body>
 		<div id="wrap1">
             <header>
-                <ul class="gost">
-                    <li><a href="/nongra/member/login">일반 회원 로그인</a></li>
-                    <li><a href="/nongra/seller/login">파트너 로그인</a></li>
+                <ul class="gost" id="ul">
+                    <li id="li"><a href="/nongra/member/login">일반 회원 로그인</a></li>
+                    <li id="li"><a href="/nongra/seller/login">파트너 로그인</a></li>
                   </ul>
                 <div></div>
                 <div></div>
@@ -135,7 +135,7 @@
                     <a href="">베스트</a>
                     <a href="/nongra/tip/main">구매팁</a>
                     <a href="/nongra/event/list">이벤트</a>
-                    <a href="">배송안내</a>
+                    <a href="/nongra/delivery">배송안내</a>
                     
     
                 </nav>

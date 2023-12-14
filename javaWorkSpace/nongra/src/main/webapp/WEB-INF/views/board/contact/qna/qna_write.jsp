@@ -123,10 +123,10 @@
                                         <div class="qna_drop_wrap">
                                             <select name="qna_category2" id="qna_dropdown">
                                                 <option value>선택하세요</option>
-                                                <% for(Map.Entry<String, QnaMemberCateVo> entry : cateMap.entrySet()){ %>
+                                                <%-- <% for(Map.Entry<String, QnaMemberCateVo> entry : cateMap.entrySet()){ %>
                                                 <% if(entry.getKey().equals(x)) %>
                                                 	<option value="<%=vo.getCategoryId() %>"><%=vo.getCategoryName() %></option>
-                                                	<% } %> 
+                                                	<% } %>  --%>
                                             </select>
                                             <div class="qna_drop_opt">
                                                 <a href="#" class="qna_drop_select">
