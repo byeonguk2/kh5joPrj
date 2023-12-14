@@ -44,6 +44,8 @@ public class SellerEnroollController extends HttpServlet {
 			SellerVo joinVo = (SellerVo)session.getAttribute("joinVo");
 			session.removeAttribute("joinVo");
 			
+			System.out.println(joinVo);
+			
 			// 사업자 정보 받아오기
 			String business_no = req.getParameter("business_no");
 			String business_form = req.getParameter("business_form");

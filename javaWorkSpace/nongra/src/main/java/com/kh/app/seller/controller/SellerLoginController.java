@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.kh.app.seller.service.SellerService;
 import com.kh.app.seller.vo.SellerVo;
 
-@WebServlet("/loginS")
+@WebServlet("/seller/login")
 public class SellerLoginController extends HttpServlet {
 
 	@Override
@@ -51,7 +51,7 @@ public class SellerLoginController extends HttpServlet {
 			System.out.println("[ERROR-S004]로그인중 문제 발생.");
 			e.printStackTrace();
 			session.setAttribute("alertMsg", "로그인실패..");
-			resp.sendRedirect("/nongra/loginS");
+			resp.sendRedirect("/nongra/seller/login");
 		}
 		
 	}
