@@ -58,6 +58,7 @@ public class MemberMypageController extends HttpServlet {
 	          // result (==view)
      
      req.setAttribute("ReviewVoList", ReviewVoList);
+     System.out.println(ReviewVoList);
      req.setAttribute("pvo", pvo);
      req.getRequestDispatcher("/WEB-INF/views/member/mypage.jsp").forward(req, resp);
      
