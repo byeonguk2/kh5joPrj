@@ -471,19 +471,20 @@ pageEncoding="UTF-8"%>
 	<div class="dialog">
 			<div class="sales-title">
 				<div>
-					<img src="https://product-image.kurly.com/product/image/93e02bd6-4eb9-4a43-af19-0161d1799c01.jpg" alt="">
+					<img src="" alt="" class="madal-img">
 				</div>
 				<div>
-					<span>[전주 베테랑] 칼국수</span>
+					<span class="option-title"></span>
 				</div>
 			</div>
 			<div class="middle">
+				<input type="hidden" class="modal-hidden">
 				<span class="detail-name">[KF365] 간편한 6가지 해물 모듬 600g</span>
 				<span class="guide">적립제외상품</span>
 				<div class="calculation-area">
-					<span class="modal-price">8200원</span>
+					<span class="modal-price"></span>
 					<div class="calculation">
-						<button class="minus"> - </button>
+						<button class="minus">  </button>
 						<div class="quantity">1</div>
 						<button class="plus"></button>
 					</div>
@@ -495,7 +496,7 @@ pageEncoding="UTF-8"%>
 						
 					</select>
 					<div class="real-price">
-						<span>8200</span>
+						<span class="total-price">8200</span>
 						<span>원</span>
 					</div>
 				</div>
@@ -503,7 +504,7 @@ pageEncoding="UTF-8"%>
 			</div>
 			<div class="btn-area">
 				<button id="modal-close">취소</button>
-				<button class="cart-btn">장바구니</button>
+				<button class="cart-btn" onclick="insertCart()">장바구니</button>
 			</div>
 	</div>	
 </div>
@@ -601,9 +602,10 @@ pageEncoding="UTF-8"%>
 
 		let input = document.createElement('input');
 		input.type = 'hidden';
-		input.value = list[x].salesNo;
+		input.value = orderList[x].salesNo;
 		console.log(input);
 		btn.appendChild(input);
+
 		localStorage.setItem(orderList[x].salesNo, JSON.stringify({ "List" : orderList[x] }));
 
 		}
@@ -664,17 +666,126 @@ const close = document.querySelector("#modal-close");
 
 for (let i = 0; i < open.length; ++i) {
     open[i].addEventListener('click', (node) => {
-		const x = node.parentNode.target;
-        console.log("버튼이 클릭되었습니다:"+x);
+		let x = node.target.lastChild.value;
+        console.log("버튼이 클릭되었습니다:");
+		let item = localStorage.getItem(x);
+		const itemData = JSON.parse(item);
+		let optionVo = itemData.List.OptionVo;
+
+		// 중복을 제거한 새로운 배열 생성
+		let uniqueOptionNosSet = new Set(optionVo.map(option => option.optionNo));
+		console.log(uniqueOptionNosSet.size);
+
+		// uniqueOptionNos를 이용하여 중복이 제거된 배열 사용
+		for (const optionNo of uniqueOptionNosSet) {
+			// Find the first option with the corresponding optionNo
+			const uniqueOption = optionVo.find(option => option.optionNo === optionNo);
+
+			const select = document.querySelector(".select");
+			let option = document.createElement('option');
+			option.value = uniqueOption.optionNo;
+			option.innerHTML = "옵션이름:" + uniqueOption.optionName + "/ 옵션가격" + uniqueOption.optionPrice;
+			select.appendChild(option);
+		}
+		
+		const inputHidden = document.querySelector(".modal-hidden");
+		inputHidden.value = itemData.List.salesNo;
+
+		document.querySelector(".option-title").innerHTML = itemData.List.title;
+		document.querySelector(".madal-img").src = "/nongra"+itemData.List.thumbNail;
+
+		document.querySelector(".modal-price").innerHTML = itemData.List.price+"원";
+		document.querySelector(".total-price").innerHTML = itemData.List.price;
+
         modal.classList.toggle("modal-none", false);
     });
 }
 
 close.addEventListener('click', () => {
+	document.querySelector(".quantity").innerHTML = 1;
+	const select = document.querySelector(".select");
+	select.innerHTML = "";
     console.log("닫기 버튼이 클릭되었습니다.");
     modal.classList.toggle("modal-none", true);
 });
 	
+
+let plus = document.querySelectorAll(".plus");
+let totalprice = document.querySelector(".total-price");
+
+for (let i = 0; i < plus.length; ++i) {
+	plus[i].addEventListener('click', (node) => {
+
+		const num = node.currentTarget.previousElementSibling;
+		console.log(num);
+		num.innerHTML = parseInt(num.innerText)+1;
+
+		const totalPrice = document.querySelector(".total-price");
+		let price = document.querySelector(".modal-price").innerText;
+		if (price.length > 0) {
+    		price = price.slice(0, -1);
+		}
+		totalPrice.innerHTML = parseInt(totalPrice.innerText)+parseInt(price);
+
+	});
+}
+
+let minus = document.querySelectorAll(".minus");
+
+for (let i = 0; i < minus.length; ++i) {
+	minus[i].addEventListener('click', (node) => {
+
+		const num = node.currentTarget.nextElementSibling;
+
+		console.log(num);
+
+		if(parseInt(num.innerText) > 1){
+			num.innerHTML = parseInt(num.innerText)-1;
+		}
+
+		const totalPrice = document.querySelector(".total-price");
+		let price = document.querySelector(".modal-price").innerText;
+		if (price.length > 0) {
+    		price = price.slice(0, -1);
+		}
+		totalPrice.innerHTML = parseInt(totalPrice.innerText)-parseInt(price);
+
+	});
+}
+
+function insertCart() {
+
+	const optionNo = document.querySelector("select").value; //ok
+	const quantity = document.querySelector(".quantity").innerText; //ok
+	const salesNo = document.querySelector(".modal-hidden").value; //ok 
+	
+
+	// 서버에 전송할 데이터를 객체로 정의
+	const dataToSend = {
+	optionNo: optionNo,
+	quantity: quantity,
+	salesNo: salesNo
+	};
+
+	fetch("/nongra/home/select", {
+	method: "POST",
+	headers: {
+		"Content-Type": "application/json"
+		// 기타 필요한 헤더를 여기에 추가할 수 있습니다.
+	},
+	body: JSON.stringify(dataToSend) // 데이터를 JSON 문자열로 변환하여 전송
+	})
+	.then(resp => resp.json())
+	.then(data => {
+	// 서버에서 받은 응답 데이터를 처리
+	console.log(data);
+	})
+	.catch(error => {
+	// 에러 처리
+	console.error("Error:", error);
+	});
+
+}
 
 </script>
 

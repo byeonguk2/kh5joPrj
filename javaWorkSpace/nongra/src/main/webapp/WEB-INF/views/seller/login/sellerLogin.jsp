@@ -16,7 +16,7 @@
         <div class="css-auhedv">
             <h1>파트너 로그인</h1>
             <div>
-                <form action="/nongra/seller/login" method="post">
+                <form action="/nongra/loginS" method="post">
                     <input autocomplete="off" type="text" placeholder="아이디를 입력해주세요" name="id" maxlength="16" class="css-18jns9z" value="">
                     <input autocomplete="off" type="password" placeholder="비밀번호를 입력해주세요" name="pwd" maxlength="16" class="css-q5u0mo" value="">
                     <button type="submit">로그인</button>

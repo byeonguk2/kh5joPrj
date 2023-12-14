@@ -76,80 +76,97 @@ public class HomeDao {
 		}
 
 	// 
-	public List<SalesVo_v2> selectItemList(List<String> noList, Connection conn) throws Exception {
-		
-		// 해당하는 상품 구하기
-		String sql = "SELECT SR.SALES_NO, SR.PRICE, SR.THUMBNAIL, SR.TITLE, SO.OPTION_NO, SO.OPTION_NAME, SO.OPTION_PRICE FROM SALES_REGISTR SR JOIN SALES_OPTION SO ON SR.SALES_NO = SO.SALES_NO WHERE SR.SALES_NO = ?";
-		
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		List<SalesVo_v2> salesVoList = new ArrayList<SalesVo_v2>();
-		List<SalesVo_v2> result = null;
-		
-		for (String no : noList) {
+		public List<SalesVo_v2> selectItemList(List<String> noList, Connection conn) throws Exception {
 			
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, no);
+			// 해당하는 상품 구하기
+			String sql = "SELECT SR.SALES_NO, SR.PRICE, SR.THUMBNAIL, SR.TITLE, SO.OPTION_NO, SO.OPTION_NAME, SO.OPTION_PRICE FROM SALES_REGISTR SR JOIN SALES_OPTION SO ON SR.SALES_NO = SO.SALES_NO WHERE SR.SALES_NO = ?";
 			
-			rs = pstmt.executeQuery();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
 			
-			while(rs.next()) {
-				
-				// 데이터 받아오기
-				String salesNo = rs.getString("SALES_NO");
-				String price = rs.getString("PRICE");
-				String thumbnail = rs.getString("THUMBNAIL");
-				String title = rs.getString("TITLE");
-				String optionNo = rs.getString("OPTION_NO");
-				String optionName = rs.getString("OPTION_NAME");
-				String optionPrice = rs.getString("OPTION_PRICE");
-				
-				SalesVo_v2 SalesVo = new SalesVo_v2(salesNo, title, thumbnail, price, optionNo, salesNo, optionPrice, optionName);
-				
-				// 이객체에 모든 데이터들을 다 받았을 것이다.
-				salesVoList.add(SalesVo);
-				
-			}
+			List<SalesVo_v2> salesVoList = new ArrayList<SalesVo_v2>();
+			List<SalesVo_v2> result = null;
 			
-			// 맵 생성
-			Map<String,SalesVo_v2> map = new HashMap<String,SalesVo_v2>();
-			for(SalesVo_v2 salesVo : salesVoList) {
-				// 키값을 상품번호로 두고 밸류로 상품vo를 가진다.
-				map.put(salesVo.getSalesNo() , salesVo);
-			}
-			
-			for(SalesVo_v2 salesVo : salesVoList) {
+			for (String no : noList) {
 				
-				// 옵션값들만 따로 저장
-				String optionNo = salesVo.getOptionNo();
-				String optionName = salesVo.getOptionName();
-				String optionPrice = salesVo.getOptionPrice();
-				String refNo = salesVo.getRefNo();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, no);
 				
-				OptionVo_v2 optionVo = new OptionVo_v2(optionNo, refNo, optionPrice, optionName);
-				SalesVo_v2 target = map.get(optionVo.getRefNo());
-				target.getOptionVo().add(optionVo);
+				rs = pstmt.executeQuery();
 				
-			}
-			
-			result = new ArrayList(map.values());
-			
-			for(SalesVo_v2 salesVo : result) {
-				List<OptionVo_v2> optionList = salesVo.getOptionVo();
-				for(OptionVo_v2 optionVo : optionList) {
-					salesVo.setOpVo(optionVo);
+				while(rs.next()) {
+					
+					// 데이터 받아오기
+					String salesNo = rs.getString("SALES_NO");
+					String price = rs.getString("PRICE");
+					String thumbnail = rs.getString("THUMBNAIL");
+					String title = rs.getString("TITLE");
+					String optionNo = rs.getString("OPTION_NO");
+					String optionName = rs.getString("OPTION_NAME");
+					String optionPrice = rs.getString("OPTION_PRICE");
+					
+					SalesVo_v2 SalesVo = new SalesVo_v2(salesNo, title, thumbnail, price, optionNo, salesNo, optionPrice, optionName);
+					
+					// 이객체에 모든 데이터들을 다 받았을 것이다.
+					salesVoList.add(SalesVo);
+					
 				}
+				
+				// 맵 생성
+				Map<String,SalesVo_v2> map = new HashMap<String,SalesVo_v2>();
+				for(SalesVo_v2 salesVo : salesVoList) {
+					// 키값을 상품번호로 두고 밸류로 상품vo를 가진다.
+					map.put(salesVo.getSalesNo() , salesVo);
+				}
+				
+				for(SalesVo_v2 salesVo : salesVoList) {
+					
+					// 옵션값들만 따로 저장
+					String optionNo = salesVo.getOptionNo();
+					String optionName = salesVo.getOptionName();
+					String optionPrice = salesVo.getOptionPrice();
+					String refNo = salesVo.getRefNo();
+					
+					OptionVo_v2 optionVo = new OptionVo_v2(optionNo, refNo, optionPrice, optionName);
+					SalesVo_v2 target = map.get(optionVo.getRefNo());
+					target.getOptionVo().add(optionVo);
+					
+				}
+				
+				result = new ArrayList(map.values());
+				
+				for(SalesVo_v2 salesVo : result) {
+					List<OptionVo_v2> optionList = salesVo.getOptionVo();
+					for(OptionVo_v2 optionVo : optionList) {
+						salesVo.setOpVo(optionVo);
+					}
+				}
+				
 			}
 			
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rs);
+			
+			System.out.println(result);
+			
+			return result;
 		}
-		
-		JDBCTemplate.close(pstmt);
-		JDBCTemplate.close(rs);
-		
-		System.out.println(result);
-		
-		return result;
-	}
+
+		public int insertCart(SalesVo_v2 vo, Connection conn, String cartNo) throws Exception {
+			
+			String sql = "INSERT INTO CART_BREAKDOWN (NO,CART_NO,SALES_NO,OPTION_NO,EA) values (SEQ_CART_BREAKDOWN.NEXTVAL,?,?,?,?)";
+			
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, cartNo);
+			pstmt.setString(2, vo.getSalesNo());
+			pstmt.setString(3, vo.getOptionNo());
+			pstmt.setString(4, vo.getQuantity());
+			
+			int result = pstmt.executeUpdate();
+			
+			JDBCTemplate.close(pstmt);
+			
+			return result;
+		}
 
 }
