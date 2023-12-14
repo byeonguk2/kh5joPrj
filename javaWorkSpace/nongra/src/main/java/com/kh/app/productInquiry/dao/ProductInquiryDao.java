@@ -291,7 +291,7 @@ public class ProductInquiryDao {
 	      return cnt;	
 	}
 	// 상품 번호 기준으로 문의 리스트 가져오기[전체]
-	public List<ProductInquiryVo> memberInquiryShow(Connection conn, PageVo pvo, String saleNo, String memberNo) throws Exception {
+	public List<ProductInquiryVo> memberInquiryShow(Connection conn, PageVo pvo, String memberNo, String saleNo) throws Exception {
 		
 		//sql
 		String sql = "SELECT I.INQUIRE_NO ,I.CONSUMER_NO ,I.SALES_NO , I.CONTENT ,I.ENROLL_DATE ,I.DEL_YN ,I.INQUIRE_REPLY , I.SECRET_YN ,I.INQUIRE_REPLY_ENROLL_DATE ,I.REPLY_UPDATE_DATE ,I.REPLY_DEL_YN ,IF.INQUIRE_FILE ,IF.FILE_SRC ,SR.TITLE ,S.SELLER_NO ,BUSINESS_NAME ,M.NAME FROM INQUIRE I LEFT JOIN INQUIRE_FILE IF ON I.INQUIRE_NO = IF.INQUIRE_NO JOIN SALES_REGISTR SR ON I.SALES_NO = SR.SALES_NO JOIN SELLER S  ON S.SELLER_NO = SR.SELLER_NO JOIN MEMBER M ON M.MEMBER_NO  = I.CONSUMER_NO WHERE I.DEL_YN = 'N' AND SR.SALES_NO = ? ORDER BY I.INQUIRE_NO DESC";

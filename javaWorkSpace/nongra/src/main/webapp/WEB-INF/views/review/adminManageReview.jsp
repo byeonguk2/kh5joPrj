@@ -279,7 +279,12 @@
 	c.innerHTML = "리뷰관리";
 
 
+<<<<<<< Updated upstream
 	
+=======
+	menu2.innerHTML = "";
+    menu1.innerHTML = "";
+>>>>>>> Stashed changes
 		
 	
 	
