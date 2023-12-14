@@ -1,4 +1,5 @@
 
+<%@page import="com.kh.app.review.vo.ReviewVo"%>
 <%@page import="java.util.List"%>
 <%@page import="com.kh.app.orderdetails.vo.OrderDetailVo"%>
 <%@page import="java.util.Map"%>
@@ -168,15 +169,22 @@ body {
 				</div>
 
 				<div id="box3">
-					<%for (OrderDetailVo vo : ReviewVoList) {%>
-						<%if (vo.getThumbnail().equals("")) {%>
+					<%for (int i = 0 ; i < 6; ++i) { 
+						OrderDetailVo vo = null;
+						try{
+							vo = ReviewVoList.get(i);
+						}catch(Exception e){
+							
+						}
+					
+					%>
+						<%if (vo != null &&vo.getThumbnail() != null) {%>
 							<div id="img_box">
-								<img src="https://dummyimage.com/100x100/000/fff.png&text=sample"alt="썸네일사진원본파일명">
+								<a href=""><img src="/nongra<%= vo.getThumbnail() %>" alt="상품사진"></a>
 							</div>
 						<%}else{%>
 							<div id="img_box">
-								<a href=""><img src="/nongra<%= vo.getThumbnail() %>" alt="상품사진"></a>
-								<% System.out.println(vo.getThumbnail()); %>
+								<a href=""><img src="https://png.pngtree.com/png-vector/20190926/ourmid/pngtree-groceries-bag-line-icon-vector-png-image_1744058.jpg"alt="썸네일사진원본파일명"></a>
 							</div>
 						<%}%>
 					<%}%>
