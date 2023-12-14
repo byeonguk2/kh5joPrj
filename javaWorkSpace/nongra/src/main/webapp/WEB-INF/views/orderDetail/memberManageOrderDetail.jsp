@@ -105,7 +105,7 @@
                         ${vo.orderEnrollDate}
                     </td>
                     <td class="order-number-td">
-                        <a href="">${vo.orderNo}</a>    
+                        <a href="/nongra/mypage/order/checkout?orderNo=${vo.orderNo}" >${vo.orderNo}</a>    
                     </td>
                     <td class="order-price-td">
                         <span>${vo.totalPrice}원</span>

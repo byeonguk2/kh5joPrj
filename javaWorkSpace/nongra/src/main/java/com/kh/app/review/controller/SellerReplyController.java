@@ -27,7 +27,7 @@ public class SellerReplyController extends HttpServlet {
 			//서비스 
 			
 			ReviewService service = new ReviewService();
-			int result = service.replyWrite();
+			int result = service.replyWrite(content,reviewNo);
 			//결과
 			if(result!=1) {
 				throw new Exception();

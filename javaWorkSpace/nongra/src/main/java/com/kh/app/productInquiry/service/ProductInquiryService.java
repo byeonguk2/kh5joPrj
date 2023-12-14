@@ -127,7 +127,23 @@ public class ProductInquiryService {
 		
 		return result; 	
 	}
+	// 판매자 상품문의 답변
+	public int replyWrite(String content, String inquireNo) throws Exception {
+		//conn
+		Connection conn = JDBCTemplate.getConnection();
+		//dao
+		ProductInquiryDao dao = new ProductInquiryDao(); 
+		int result = dao.replyWrite(conn,content,inquireNo);
+		 
+		 if(result ==1 ) { JDBCTemplate.commit(conn); }else {
+		 JDBCTemplate.rollback(conn); }
+		 
+		 // close
+		 JDBCTemplate.close(conn);
+		 return result;
+	}
 }
+
 
 
 

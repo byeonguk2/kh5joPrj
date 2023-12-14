@@ -94,9 +94,7 @@
 						       <span class="review-date">${vo.updateDate}</span>
 						   </c:otherwise>
 						</c:choose>
-                        sadasdasd
-                    asdasdasd
-                        asd
+                   
                          <button class="review-recommend-btn">
                              <span class="review-b"></span>
                              <span class="review-like">도움돼요 ${vo.likeCnt}</span>
@@ -166,9 +164,9 @@
 					</c:choose>
                     		 	
                          
-                         		<div>
+                         	<!-- 	<div>
                          		 <button class="change-btn" >수정</button><span>|</span><button class="delete-btn">삭제</button>
-                          		</div>
+                          		</div> -->
                     		</div>
 					    </c:otherwise>
 					</c:choose>
@@ -223,11 +221,11 @@
         <div class="review-answer-dialog-div1">
             <h1>답변작성</h1> <label for="review-answer-modal-btn-cancel2">X</label>
         </div>
-     <form class="review-answer-dialog-form" action="">
-        <textarea placeholder=" 고객님께 답글을 남겨주세요" name="" id="" cols="30" rows="10"></textarea>
+     <form class="review-answer-dialog-form" action="/nongra/seller/replyWrite" method="post">
+        <textarea placeholder=" 고객님께 답글을 남겨주세요" name="content" cols="30" rows="10"></textarea>
         <div>
         <button id="review-answer-modal-btn-cancel2" type="button">취소</button>
-        <button class="review-answer-modal-btn-register" >등록</button>
+        <button class="review-answer-modal-btn-register" name="reviewNo" value="" >등록</button>
         </div>
     </form>
     </div>
@@ -276,10 +274,24 @@
 
   const x =document.querySelectorAll(".reply-span1")
     const y =document.querySelectorAll(".owner-reply-box2");
+  	
+  //이거 버튼
+  	const buttonValue = document.querySelector(".review-answer-modal-btn-register");
+  //이거 리뷰넘	
+  	const buttontToValue = document.querySelectorAll(".reviewNO"); 
+ 
+  
+  
     
     
     for(let i=0; i<x.length; ++i){
         x[i].addEventListener('click',()=>{
+        	
+        	buttonValue.value = buttontToValue[i].innerText;
+        	console.log(buttonValue)
+        	
+        	
+        	
         y[i].classList.toggle("owner-reply-box3")
         	for(let j=0; j<x.length; ++j){
         		if(i!=j){
@@ -300,12 +312,18 @@
     var modalReviewCloseButton = document.querySelector("#review-answer-modal-btn-cancel2")
     const modalReviewRegisterButton  = document.querySelector(".review-answer-modal-btn-register")
     const modalReview = document.querySelector(".review-answer-modal")
+    
+  
+    
+  
+    
 
 
     //쓰기
     for(let i=0; i<modalReviewOpenButton.length; i++){
         modalReviewOpenButton[i].addEventListener('click', () => {
             modalReview.classList.remove('review-answer-modal-hidden');
+            
            
     });
 

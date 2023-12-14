@@ -94,9 +94,9 @@
 							<c:choose>
 							   <c:when test="${vo.secretYn eq 'Y'}">
 							    <td >
-                                    <span class="secreet-text">비밀글입니다.</span>
+                                    <span class="secreet-text">${vo.contentTitl}</span>
                                     <div style="display: inline-block; padding-left: 5px;">
-                                    <img src="/resources/inquiry/lock.svg">
+                                    <img src="/nongra/resources/img/inquiry/lock.svg">
                                     </div>                                   
                             	</td> 
 							   </c:when>
@@ -125,7 +125,7 @@
                                            <span>Q)</span> 
                                            
                                            
-                                           <span> 아랫부분에 구멍이 나서 샜어요 어떻게 하나요?</span>
+                                           <span> ${vo.content}</span>
                                         </div>
                                     </div>
     

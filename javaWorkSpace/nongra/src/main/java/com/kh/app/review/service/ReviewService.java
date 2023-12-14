@@ -275,24 +275,28 @@ public class ReviewService {
 				
 				return result;
 			}
-
-		/*
-		 * // 판매자 리뷰 작성 public int replyWrite() {
-		 * 
-		 * // conn Connection conn = JDBCTemplate.getConnection();
-		 * 
-		 * // dao ReviewDao dao = new ReviewDao(); int result = dao.reviewLike(conn,vo);
-		 * 
-		 * if(result ==1 ) { JDBCTemplate.commit(conn); }else {
-		 * JDBCTemplate.rollback(conn); }
-		 * 
-		 * // close
-		 * 
-		 * JDBCTemplate.close(conn);
-		 * 
-		 * return result;
-		 * 
-		 * }
-		 */
+			
+		// 판매자 답변달기
+		public int replyWrite(String content, String reviewNo) throws Exception {
+		  //conn
+		   Connection conn = JDBCTemplate.getConnection();
+		  //dao
+		   ReviewDao dao = new ReviewDao(); 
+		   int result = dao.replyWrite(conn,content,reviewNo);
+		 
+		   if(result ==1 ) { JDBCTemplate.commit(conn); }
+		   else {
+			 JDBCTemplate.rollback(conn); 
+			 }
+			 
+		 // close
+		 
+		 JDBCTemplate.close(conn);
+		 
+		 return result;
+				
+			}
 }
+
+	
 		 

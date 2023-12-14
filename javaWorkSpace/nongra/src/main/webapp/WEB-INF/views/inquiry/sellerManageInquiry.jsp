@@ -79,6 +79,7 @@
                         </tr>
                     </thead>
                     <c:forEach items="${produtInquiryVoList}" var="vo">
+                     <div class ="inquireNo" style="display : none">${vo.inquireNo}</div>
                     <tbody class="product-inquery-tbody ">
                 		<tr class="product-inquery-sercret product-inquery-normal ">
                             <td>${vo.itemtitle}</td>
@@ -86,14 +87,14 @@
 							<c:choose>
 							   <c:when test="${vo.secretYn eq 'Y'}">
 							    <td >
-                                    <span class="secreet-text">비밀글입니다.</span>
+                                    <span class="secreet-text">${vo.contentTitl}</span>
                                     <div style="display: inline-block; padding-left: 5px;">
-                                    <img src="/resources/inquiry/lock.svg">
+                                    <img src="/nongra/resources/img/inquiry/lock.svg">
                                     </div>                                   
                             	</td> 
 							   </c:when>
 							   <c:otherwise>
-							      <td>포장지가 찢어져서 왔습니다.</td>
+							      <td>${vo.content}</td>
 							   </c:otherwise>
 							</c:choose>                		
                                                       
@@ -117,7 +118,7 @@
                                            <span>Q)</span> 
                                            
                                            
-                                           <span> 아랫부분에 구멍이 나서 샜어요 어떻게 하나요?</span>
+                                           <span>${vo.content}</span>
                                         </div>
                                     </div>
     
@@ -154,11 +155,12 @@
 				                  </div>
 				                  
 				                  <c:choose>
-				                  <c:when test="${not empty vo.inquireReply}">				                  
+				                  <c:when test="${not empty vo.inquireReply}">
+				                  
 				                  </c:when>
 				                  <c:otherwise>
 				                    <div>
-				                    	<button onclick >답변등록</button>
+				                    	<button class="register-btn" >답변 등록</button>
 				                    </div>
 				                  </c:otherwise>
 				                  </c:choose>
@@ -204,6 +206,23 @@
 		
 	</div>
 </body>
+
+<!-- 답변 작성  -->
+<div class="review-answer-modal review-answer-modal-hidden">
+    <div class="review-answer-dialog">
+        <div class="review-answer-dialog-div1">
+            <h1>답변작성</h1> <label for="review-answer-modal-btn-cancel2">X</label>
+        </div>
+     <form class="review-answer-dialog-form" action="/nongra/seller/InquiryreplyWrite" method="post">
+        <textarea placeholder=" 고객님께 문의 답변을 남겨주세요" name="content" cols="30" rows="10"></textarea>
+        <div>
+        <button id="review-answer-modal-btn-cancel2" type="button">취소</button>
+        <button class="review-answer-modal-btn-register" name="inquireNo" value="" >등록</button>
+        </div>
+    </form>
+    </div>
+</div>
+
 </html>
 
 <script>
@@ -212,11 +231,16 @@
 //판매자 답변 토글 //
 const answer1 =document.querySelectorAll(".product-inquery-normal")
 const answer2 =document.querySelectorAll(".produt-inquery-answer-tr1");
+const buttontToValue = document.querySelectorAll(".inquireNo");
+const buttonValue = document.querySelector(".review-answer-modal-btn-register");
 
 for(let i=0; i<answer1.length; ++i){
     answer1[i].addEventListener('click',()=>{
+    	buttonValue.value = buttontToValue[i].innerText;
+    	console.log(buttonValue)
     answer2[i].classList.toggle("produt-inquery-answer-tr")
-	for(let j=0; j<x.length; ++j){
+    
+	for(let j=0; j<answer1.length; ++j){
 		if(i!=j){
 			answer2[j].classList.add("produt-inquery-answer-tr")
 		}
@@ -250,6 +274,43 @@ function pageNext(){
     	     
        }
  <%}%>
+ 
+//답변 등록 버튼 //
+	
+ const modalReviewOpenButton  = document.querySelectorAll(".register-btn")
+ var modalReviewCloseButton = document.querySelector("#review-answer-modal-btn-cancel2")
+ const modalReviewRegisterButton  = document.querySelector(".review-answer-modal-btn-register")
+ const modalReview = document.querySelector(".review-answer-modal")
+ 
+
+ 
+
+ 
+
+
+ //쓰기
+ for(let i=0; i<modalReviewOpenButton.length; i++){
+     modalReviewOpenButton[i].addEventListener('click', () => {
+         modalReview.classList.remove('review-answer-modal-hidden');
+         
+        
+ });
+
+ }
+
+  
+ modalReviewCloseButton.addEventListener('click', () => {
+     modalReview.classList.add('review-answer-modal-hidden');
+ }); 
+
+ //등록
+ modalReviewRegisterButton.addEventListener('click', () => {
+     modalReview.classList.add('review-answer-modal-hidden');
+
+ });
+ 
+ 
+ 
 
 
 </script>
