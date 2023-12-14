@@ -325,6 +325,10 @@ pageEncoding="UTF-8"%>
 		background-color: white;
 	}
 
+	.select{
+		width: 150px;
+	}
+
 </style>
 </head>
 <body>
@@ -374,7 +378,7 @@ pageEncoding="UTF-8"%>
 				<span class="title-top">✨리뷰 작성이 많은순🏅</span>
 				<p class="title-bottom">농라 추천 득템 기회❗️</p>
 			</div>
-			<div class="item-area first">
+			<div class="item-area first modal-open">
 				
 			</div>
 		</div>
@@ -385,7 +389,7 @@ pageEncoding="UTF-8"%>
 				<span class="title-top">✨가장 많이 주문한 상품🏅</span>
 				<p class="title-bottom">농라 회원들의 베스트 상품들❗️</p>
 			</div>
-			<div class="item-area tow">
+			<div class="item-area tow modal-open">
 				<!-- 자바스크립트로 처리할거임 -->
 					
 			</div>
@@ -416,7 +420,7 @@ pageEncoding="UTF-8"%>
 				</div>
 				<div class="item">
 					<img src="https://product-image.kurly.com/cdn-cgi/image/fit=crop,width=360,height=468,quality=85/product/image/fc3eb710-126d-4c18-b776-ac6809b07a73.jpeg" alt="">
-					<button class="shopingCart-btn">
+					<button class="modal-open shopingCart-btn">
 						<span class="cart-icon"></span>
 						담기
 					</button>
@@ -449,7 +453,7 @@ pageEncoding="UTF-8"%>
 				<span class="title-top">✨리뷰 좋아요가 많은 상품들🥩</span>
 				<p class="title-bottom">농라 회원님들의 평가가 좋은 상품❗️</p>
 			</div>
-			<div class="item-area three">
+			<div class="item-area three modal-open">
 				
 			</div>
 		</div>
@@ -487,7 +491,9 @@ pageEncoding="UTF-8"%>
 			</div>
 			<div class="bottom">
 				<div class="total-price-area">
-					<p class="total">합계</p>
+					<select class="select">
+						
+					</select>
 					<div class="real-price">
 						<span>8200</span>
 						<span>원</span>
@@ -503,8 +509,9 @@ pageEncoding="UTF-8"%>
 </div>
 
 <script>
+	
+	getSales();
 
-	window.onload = function(){
     function getSales() {
 	// 모든 데이터 바로 요청받기
 	fetch("/nongra/home/select")
@@ -550,6 +557,11 @@ pageEncoding="UTF-8"%>
 			span2.classList.add("price");
 			span2.appendChild(document.createTextNode(list[x].price+'원'))
 			div.appendChild(span2);
+			let input = document.createElement('input');
+			input.type = 'hidden';
+			input.value = list[x].salesNo;
+			btn.appendChild(input);
+			localStorage.setItem(list[x].salesNo, JSON.stringify({ "List" : list[x] }));
 
 		}
 
@@ -587,9 +599,16 @@ pageEncoding="UTF-8"%>
 		span2.appendChild(document.createTextNode(orderList[x].price+'원'))
 		div.appendChild(span2);
 
+		let input = document.createElement('input');
+		input.type = 'hidden';
+		input.value = list[x].salesNo;
+		console.log(input);
+		btn.appendChild(input);
+		localStorage.setItem(orderList[x].salesNo, JSON.stringify({ "List" : orderList[x] }));
+
 		}
 
-		for (const x in orderList) {
+		for (const x in ReviewLikeList) {
 
 		const frist = document.querySelector(".three");
 		// 디브 생성
@@ -622,33 +641,39 @@ pageEncoding="UTF-8"%>
 		span2.appendChild(document.createTextNode(ReviewLikeList[x].price+'원'))
 		div.appendChild(span2);
 
+		let input = document.createElement('input');
+		input.type = 'hidden';
+		input.value = ReviewLikeList[x].salesNo;
+		btn.appendChild(input);
+		localStorage.setItem(ReviewLikeList[x].salesNo, JSON.stringify({ "List" : ReviewLikeList[x] }));
+
 		}
 
 	})
 	}
     
-	getSales();
-	}
-    // 디브 선택
-	const modal = document.querySelector(".modal");
-	// 모달창 열기버튼
-	const open = document.querySelectorAll(".modal-open");
 
-	//모달창 닫기버튼
-	const close = document.querySelector("#modal-close");
+// 디브 선택
+const modal = document.querySelector(".modal");
+// 모달창 열기버튼
+const open = document.querySelectorAll(".modal-open");
 
-	
-	// 모달창 열기
-	for(let i=0; i<open.length; ++i){
-        open[i].addEventListener('click',()=>{
-		modal.classList.toggle("modal-none")       
-    } )      
-    }
+//모달창 닫기버튼
+const close = document.querySelector("#modal-close");
 
-	//모달창 닫기
-	close.addEventListener('click',()=>{
-		modal.classList.toggle("modal-none")       
-    } ) 
+
+for (let i = 0; i < open.length; ++i) {
+    open[i].addEventListener('click', (node) => {
+		const x = node.parentNode.target;
+        console.log("버튼이 클릭되었습니다:"+x);
+        modal.classList.toggle("modal-none", false);
+    });
+}
+
+close.addEventListener('click', () => {
+    console.log("닫기 버튼이 클릭되었습니다.");
+    modal.classList.toggle("modal-none", true);
+});
 	
 
 </script>

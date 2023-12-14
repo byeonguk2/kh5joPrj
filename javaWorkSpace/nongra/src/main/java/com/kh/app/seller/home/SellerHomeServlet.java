@@ -21,12 +21,6 @@ public class SellerHomeServlet extends HttpServlet {
 			
 			HttpSession session = req.getSession();
 			SellerVo loginSeller = (SellerVo)session.getAttribute("loginSeller");
-			
-			if(loginSeller == null) {
-				session.setAttribute("alertMsg", "로그인후 이용하세요.");
-				throw new Exception();
-			}
-			
 
 			if(loginSeller.getPermitYn().equals("N")) {
 				session.setAttribute("alertMsg", "사업자 권한 수락후 로그인 가능합니다.");
@@ -38,7 +32,7 @@ public class SellerHomeServlet extends HttpServlet {
 		}catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("로그인 실패");
-			resp.sendRedirect("/nongra/seller/login");
+			resp.sendRedirect("/nongra/loginS");
 		}
 		
 		
