@@ -423,12 +423,13 @@
                         <div>※ 배송완료 상태일 경우에만 환불이 가능합니다.</div>
                         <div>※ 농라는 통신판매중개자로서 주문, 품질, 교환/환불 등 의무와 책읨을 부담하지 않습니다.</div>
                     </div>
-
+					<div id="hoho"></div>
                     <div class="pay-btn-area">
                         <button class="pay-btn" type="submit"><span id=pay-btn-price>0</span>원 결제하기</button>
                     </div>
 
             </form>
+            <div id="footer"></div>
         </main>
 	</div>
 </body>

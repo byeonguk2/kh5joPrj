@@ -107,7 +107,7 @@
 					<form action="/nongra/mypage/order/checkout" method="post" class="hi">
                         <input class="b" type="text" name="orderNo" value="<%=cartVoList.get(0).getOrderNumber() %>">
                         <br>
-                        <div>
+                        <div id="h3-area">
                             <h3>환불사유 :    </h3><input id="haha" type="text" name="REFUND_REASON">
                         </div>
                         <br>

@@ -42,11 +42,12 @@
 	                </table>
 	            </div>
 	            <div class="button-area"><button id="fbutton" onclick="location.href='/nongra/member/orderDetail'">주문 상세보기</button></div>
-	            <div class="button-area"><button id="tbutton" onclick="location.href='/nongra/상품페이지로~~'">쇼핑 계속하기</button></div>
+	            <div class="button-area"><button id="tbutton" onclick="location.href='/nongra/home'">쇼핑 계속하기</button></div>
 				
 			</div>
-
+			
         </main>
+        <footer></footer>
 	</div>
 </body>
 </html>
