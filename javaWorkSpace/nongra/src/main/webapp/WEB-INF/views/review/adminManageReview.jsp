@@ -276,11 +276,10 @@
 	
 	const menu1 = document.querySelector(" aside > :nth-child(2) > a ");
 	const menu2 = document.querySelector(" aside > :nth-child(3) > a ");
-	c.innerHTML = "원 하 는 값";
+	c.innerHTML = "리뷰관리";
 
 
-	menu2.innerHTML = "원하는값";
-    menu1.innerHTML = "원하는값";
+	
 		
 	
 	
