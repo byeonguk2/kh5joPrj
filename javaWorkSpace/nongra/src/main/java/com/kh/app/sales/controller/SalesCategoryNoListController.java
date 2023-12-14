@@ -34,6 +34,7 @@ public class SalesCategoryNoListController extends HttpServlet{
 			req.setAttribute("listCount", listCount);
 			req.setAttribute("salesVoList", salesVoList);
 			req.getRequestDispatcher("/WEB-INF/views/sales/salesList.jsp").forward(req, resp);
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

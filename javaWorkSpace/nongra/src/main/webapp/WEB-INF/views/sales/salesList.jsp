@@ -54,8 +54,8 @@
 							<img src="/nongra${ salesVo.fileName }" alt="썸네일사진" onclick="showDetails(${salesVo.salesNo})">
 							<button>담기</button>
 							<div>
-								<button onclick="reviewByItem(${salesVo.salesNo});">후기조회</button>
-								<button onclick="showInquiryByItem(${salesVo.salesNo});">문의조회</button>
+								<button onclick="reviewByItem('${salesVo.salesNo}');">후기조회</button>
+								<button onclick="showInquiryByItem('${salesVo.salesNo}');">문의조회</button>
 							</div>
 							<div>${ salesVo.title }</div>
 							<div>${ salesVo.price }원</div>
@@ -110,25 +110,11 @@
         }
         
         function reviewByItem(salesNo){
-        	fetch("/nongra/member/showReviewByItem?saleNo" + salesNo)
-        	.then( (resp) => resp.text())
-        	.then( (data) => {
-        		console.log(data);
-        	})
-        	.catch( (err) => {
-        		console.log('실패');
-        	})
+        	window.location.href = "/nongra/member/showReviewByItem?saleNo=" + salesNo;
         }
         
         function showInquiryByItem(salesNo){
-        	fetch("/nongra/member/showInquiryByItem?saleNo" + salesNo)
-        	.then( (resp) => resp.text())
-        	.then( (data) => {
-        		console.log(data);
-        	})
-        	.catch( (err) => {
-        		console.log('실패');
-        	})
+        	window.location.href = "/nongra/member/showInquiryByItem?saleNo=" + salesNo;
         }
         
     </script>

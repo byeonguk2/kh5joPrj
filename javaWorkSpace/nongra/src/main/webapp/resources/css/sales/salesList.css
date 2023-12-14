@@ -40,9 +40,13 @@ main{
 .main-area > div{
     display: grid;
     width: 250px;
-    height: 350px;
+    height: 400px;
     justify-content: center;
     margin-bottom: 40px;
+}
+
+.main-area > div > div > button{
+    width: 250px;
 }
 .main-area > div > div:nth-child(1){
     width: 200px;

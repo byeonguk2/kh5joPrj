@@ -16,12 +16,13 @@
 
 	.content-area{
 		display: grid;
-		grid-template-rows: 100px 300px 420px 100px;
+		grid-template-rows: 100px 720px 100px;
 		grid-template-columns: 1fr 1fr 4fr 1fr;
 		border: 1px solid gray;
 		margin: 10px;
 		border-radius: 20px;
-		box-sizing: border-box;		
+		box-sizing: border-box;
+		align-items: center;		
 	}
 
 	.content-area h1{
@@ -33,8 +34,16 @@
 	}
 	.input-area *{
 		display: block;
-		margin-top: 15px;
+		margin-top : 16px;
+		margin-bottom : 18px;
+		height: 100%;
 	}
+	
+	.input-area > input[type=text]{
+		display: block;
+		padding : 6px;
+	}
+	
 	.category-area{
 		display: flex;
 	}
@@ -108,6 +117,7 @@
 					<div>재고</div>
 					<div>원산지</div>
 					<div>상품 카테고리</div>
+					<div>썸네일 이미지</div>
 				</div>
 					<div class="input-area">
 						<input type="text" name="title">
@@ -116,22 +126,19 @@
 						<input type="text" name="origin">
 						<div class="category-area">
 							<input type="hidden" name="categoryNo1" />
-   							<span id="categoryLabel1" >카테고리를 선택해주세요</span>
-							<button type="button" name="category1" onclick="openPopUp();">카테고리1</button>
+   							<span id="categoryLabel1" >대분류</span>
+							<button type="button" name="category1" onclick="openPopUp();">대분류</button>
 							<input type="hidden" name="categoryNo2" />
-   							<span id="categoryLabel2" >카테고리를 선택해주세요</span>
-							<button type="button" name="category2" onclick="openPopUp2();">카테고리2</button>
+   							<span id="categoryLabel2" >소분류</span>
+							<button type="button" name="category2" onclick="openPopUp2();">소분류</button>
 						</div>
-						<input type="file" name="part" accept="image/*">썸네일이미지
+						<input type="file" name="part" accept="image/*">
 					
 					</div>
 					<div></div>
-					<div>
 						
-					</div>
 
 
-					<div></div>
 					<div class="submit">
 						<input type="submit" value="다음">
 					</div>

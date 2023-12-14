@@ -16,7 +16,7 @@
 
 	.content-area{
 		display: grid;
-		grid-template-rows: 100px 300px 420px 100px;
+		grid-template-rows: 100px 720px 100px;
 		grid-template-columns: 1fr 1fr 4fr 1fr;
 		border: 1px solid gray;
 		margin: 10px;
@@ -42,12 +42,33 @@
 		margin : 0px;
 	}
 	.input-area{
+		display : grid;
+		grid-temple-colums : 1fr 1fr;
 		grid-column: span 2;
+	}
+	.input-area *{
+		width: 120px;
+		height: 44px;
+	}
+	
+	
+	.input-area > button , input[type=file]::file-selector-button{
+		width: 120px;
+		height: 44px;
+		background-color: white;
+		border: 1px solid #754327;
+    	color: #754327;
+		border-radius: 5px;
 	}
 	.container{
 		grid-column: span 2;
 	}
-
+	.text-area{
+		display : grid;
+		grid-temple-colums : 1fr 1fr;
+	}
+	
+	
 	.text-area div{ 
 		margin: 25px;
 	}
@@ -117,25 +138,20 @@
 				<h1><span>상품등록</span></h1>
 				<div></div>
 				<div class="text-area">
-					<div>판매글 내용</div>
-					<label id="option-text" for="option">물품 옵션 설정
+					<div><strong>상품 옵션 설정</strong></div>
+					<div><strong>판매글 내용</strong>
 						<input type="hidden" id="jsonData" name="jsonData" value="khhhhhhhhhhhh">
-					</label>
+					</div>
 				</div>
 					<div class="input-area">
 						<button type="button" name="option" onclick="openPopUp3();">상품옵션</button>
-						<input type="file" name="file" accept="image/*" multiple="multiple">상품설명
+						<input type="file" name="file" accept="image/*" multiple="multiple">
 					
 					</div>
-					<div></div>
-					<div>
 						
-					</div>
 
 
-					<div></div>
 					<div class="submit">
-						<button type="button">이전</button>
 						<input type="submit" value="완료">
 					</div>
 				</form>
