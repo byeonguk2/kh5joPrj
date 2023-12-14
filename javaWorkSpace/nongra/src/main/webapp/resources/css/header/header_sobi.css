@@ -150,6 +150,9 @@ nav > a:nth-child(1) {
   margin: 0;
   padding: 0;
   width: 150px;
+  margin-top: 20px;
+	margin-left: 900px;
+	z-index: 1;
   background-color: #f1f1f1;
 }
 

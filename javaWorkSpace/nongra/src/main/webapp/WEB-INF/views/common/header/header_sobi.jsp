@@ -47,9 +47,6 @@
 			}
             .gost{
                 position: absolute;
-                margin-top: 20px;
-                margin-left: 900px;
-                z-index: 1;
                 display: none;
             }
             .gost-coming{
